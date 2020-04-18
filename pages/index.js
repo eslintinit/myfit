@@ -1,4 +1,4 @@
-import Layout from 'components/layout'
+import Layout from 'components/Layout'
 import { getWorkouts } from 'lib/api'
 import Workouts from 'components/Workouts'
 

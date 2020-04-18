@@ -136,6 +136,8 @@ const ExerciseDescription = styled.div`
 export default ({ workout }) => {
   const { back } = useRouter()
 
+  if (!workout) return null
+
   return (
     <Container image={workout.image.url}>
       <Header>
