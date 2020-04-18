@@ -1,7 +1,14 @@
-import '../styles/index.css'
+import { Reset } from 'styled-reset'
+import FontsStyles from 'styles/fonts'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <FontsStyles />
+      <Reset />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp

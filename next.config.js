@@ -1,6 +1,7 @@
 require('dotenv').config()
 const path = require('path')
 const withPWA = require('next-pwa')
+// const withImages = require('next-images')
 
 module.exports = withPWA({
   target: 'serverless',
@@ -10,6 +11,15 @@ module.exports = withPWA({
   },
   webpack(config, options) {
     config.resolve.modules.push(path.resolve('./'))
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: {
+        test: /\.(js|ts)x?$/,
+      },
+      use: ['@svgr/webpack'],
+    })
+
     return config
   },
   pwa: {

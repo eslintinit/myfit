@@ -1,19 +1,34 @@
 import styled from 'styled-components'
+import { PRIMARY, BLACK, GREY, DARK_GREY, SOFT_ORANGE } from 'styles/colors'
 
-export const Container = styled.div``
-
-export const Navigation = styled.nav``
-export const Menu = styled.button``
-export const Logo = styled.div``
-export const Notifications = styled.div``
-
-export const Content = styled.div``
-
-export const Tabs = styled.div``
-export const Tab = styled.div`
-  ${(props) => props.active && ` color: ${BLACK}; `}
+export const Workouts = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  height: calc(100vh - 100px);
+  margin-top: 24px;
 `
-export const Workouts = styled.div``
-export const Card = styled.div``
-export const Title = styled.h2``
-export const Subtitle = styled.p``
+export const Card = styled.div`
+  flex-basis: calc(50% - 8px);
+  border-radius: 8px;
+  background: ${SOFT_ORANGE};
+  height: 200px;
+  margin-bottom: 16px;
+  padding: 16px 12px;
+  box-sizing: border-box;
+  :nth-child(2) {
+    margin-left: 16px;
+  }
+`
+export const Title = styled.h2`
+  color: ${BLACK};
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+`
+export const Subtitle = styled.p`
+  color: ${DARK_GREY};
+  font-size: 14px;
+`
