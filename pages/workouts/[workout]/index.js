@@ -13,8 +13,15 @@ const Container = styled.div`
   background: #fcfcfc;
   height: 100vh;
   box-sizing: border-box;
-  background-image: url(https://i.imgur.com/SPewObX.png);
-  background-size: cover;
+  background-image: url(${(props) =>
+    props.image === 'https://www.datocms-assets.com/26095/1587178652-mask-1.png'
+      ? 'https://i.imgur.com/SPewObX.png'
+      : props.image});
+
+  background-size: ${(props) =>
+    props.image === 'https://www.datocms-assets.com/26095/1587178652-mask-1.png'
+      ? 'cover'
+      : 'contain'};
 `
 
 const Content = styled.div`
@@ -138,6 +145,7 @@ export default ({ workout }) => {
 
   if (!workout) return null
 
+  console.log(workout.image.url)
   return (
     <Container image={workout.image.url}>
       <Header>

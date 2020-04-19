@@ -6,8 +6,7 @@ const withPWA = require('next-pwa')
 module.exports = withPWA({
   target: 'serverless',
   env: {
-    NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN:
-      process.env.NEXT_EXAMPLE_CMS_DATOCMS_API_TOKEN,
+    DATOCMS_API_TOKEN: process.env.DATOCMS_API_TOKEN,
   },
   webpack(config, options) {
     config.resolve.modules.push(path.resolve('./'))
