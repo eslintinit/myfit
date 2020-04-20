@@ -25,33 +25,27 @@ const Container = styled.div`
   justify-content: space-between;
   margin-top: 24px;
 `
-const CardOne = styled.div`
+const Card = styled.div`
+  border-radius: 8px;
+  flex-basis: calc(50% - 8px);
+  margin-bottom: 16px;
+`
+
+const CardOne = styled(Card)`
   background: #FFF8E1;
   height: 232px;
-  border-radius: 8px;
-  flex-basis: calc(50% - 8px);
-  margin-bottom: 16px;
 `
-const CardTwo = styled.div`
+const CardTwo = styled(Card)`
   background: #FFEFF4;
   height: 260px;
-  border-radius: 8px;
-  flex-basis: calc(50% - 8px);
-  margin-bottom: 16px;
 `
-const CardThree = styled.div`
+const CardThree = styled(Card)`
   background: #D6EDFF;
   height: 174px;
-  border-radius: 8px;
-  flex-basis: calc(50% - 8px);
-  margin-bottom: 16px;
 `
-const CardFour = styled.div`
+const CardFour = styled(Card)`
   background: #FFEBE0;
   height: 146px;
-  border-radius: 8px;
-  flex-basis: calc(50% - 8px);
-  margin-bottom: 16px;
 `
 
 export default () => (
