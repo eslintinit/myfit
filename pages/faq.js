@@ -32,6 +32,8 @@ const Container = styled.div`
   justify-content: space-between;
   height: 66px;
   align-items: center;
+  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
+  border-radius: 8px;
 `
 
 const TextBold = styled.div`
@@ -39,6 +41,8 @@ const TextBold = styled.div`
   font-size: 14px;
   line-height: 18px;
   color: BLACK;
+  padding-top: 24px;
+  padding-bottom: 24px;
 `
 
 const Text = styled.div`
@@ -69,6 +73,9 @@ export default () => (
       <Container>
         <TextBold>What shipping methods are available and how much do they cost?</TextBold>
         <Arrow />
+      </Container>
+      <Container>
+        <Text>For your convenience, we ship via FedEx, DHL & USPS. The store is plugged directly into the shipping provider's shipping calculator, the rates for which are based on your location, package weight, and package dimensions.  To calculate the cost of shipping for your order, put in your ZIP code during checkout and click continue.</Text>
       </Container>
       <Container>
         <TextBold>How do I track my order?</TextBold>
