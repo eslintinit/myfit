@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Back from 'public/icons/Back.svg'
 import Arrow from 'public/icons/Arrow.svg'
+import { BLACK, DARK_GREY } from 'styles/colors'
 
 const Navigation = styled.div`
   text-align: center;
@@ -16,7 +17,7 @@ const FAQ = styled.div`
   font-weight: bold;
   font-size: 16px;
   line-height: 20px;
-  color: BLACK;
+  color: ${BLACK};
   margin-bottom: 4px;
   flex-grow: 1;
   padding-right: 28px;
@@ -53,14 +54,14 @@ const TextBold = styled.div`
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
-  color: BLACK;
+  color: ${BLACK};
   width: 80%;
 `
 
 const Text = styled.div`
   font-size: 14px;
   line-height: 18px;
-  color: #5B5B5B;
+  color: ${DARK_GREY};
   padding-top: 8px;
 `
 

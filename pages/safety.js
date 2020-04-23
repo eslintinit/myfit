@@ -4,6 +4,7 @@ import EU from 'public/icons/EU.svg'
 import Dashboard from 'public/icons/Dashboard.svg'
 import Natural from 'public/icons/Natural.svg'
 import Question from 'public/icons/Question.svg'
+import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, SOFT_PINK, SOFT_ORANGE, PRIMARY } from 'styles/colors'
 
 const Navigation = styled.div`
   text-align: center;
@@ -15,7 +16,7 @@ const Navigation = styled.div`
 `
 
 const NavigationTitle = styled.div`
-  color: BLACK;
+  color: ${BLACK};
   font-weight: bold;
   font-size: 16px;
   line-height: 20px;
@@ -38,14 +39,14 @@ const TextBold = styled.div`
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
-  color: BLACK;
+  color: ${BLACK};
   margin-top: 16px;
 `
 
 const Text = styled.div`
   font-size: 12px;
   line-height: 16px;
-  color: #5B5B5B;
+  color: ${DARK_GREY};
   margin-top: 8px;
 `
 
@@ -58,28 +59,28 @@ const Card = styled.div`
 `
 
 const CardOne = styled(Card)`
-  background: #FFF8E1;
+  background: ${SOFT_YELLOW};
   height: 232px;
 `
 
 const CardTwo = styled(Card)`
-  background: #FFEFF4;
+  background: ${SOFT_PINK};
   height: 260px;
 `
 
 const CardThree = styled(Card)`
-  background: #D6EDFF;
+  background: ${SOFT_BLUE};
   height: 174px;
 `
 
 const CardFour = styled(Card)`
-  background: #FFEBE0;
+  background: ${SOFT_ORANGE};
   height: 146px;
 `
 
 const Link = styled.a`
   text-decoration: none;
-  color: #FA4504;
+  color: ${PRIMARY};
 `
 
 export default () => (
