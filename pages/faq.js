@@ -31,7 +31,6 @@ const Container = styled.div`
   padding-top: 24px;
   padding-bottom: 24px;
   border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  border-radius: 8px;
 `
 
 const Question = styled.div`

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import Dashboard from 'public/icons/Dashboard.svg'
 import Question from 'public/icons/Question.svg'
@@ -5,7 +6,8 @@ import Arrow from 'public/icons/Arrow.svg'
 import Contact from 'public/icons/Contact Us.svg'
 import Telegram from 'public/icons/Telegram.svg'
 import Facebook from 'public/icons/Facebook.svg'
-import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, GREY } from 'styles/colors'
+import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, GREY, PRIMARY } from 'styles/colors'
+import TextareaAutosize from 'react-textarea-autosize';
 
 
 
@@ -90,7 +92,11 @@ const ChatName = styled.p`
 const GetInTouch = styled.div`
   background: ${BLACK};
   padding: 24px 16px 56px 16px;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 20px 20px 0px 0px;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  box-sizing: border-box;
 `
 
 const GetInTouchText = styled.div`
@@ -114,7 +120,6 @@ const TextNormal = styled.div`
 const YourQuestion = styled.div`
   margin-bottom: 23.5px;
   border-bottom: 1.5px solid rgba(189, 189, 189, 0.25);
-  border-radius: 8px;
 `
 
 const Message = styled.div`
@@ -123,66 +128,100 @@ const Message = styled.div`
   line-height: 18px;
   color: ${DARK_GREY};
   margin-bottom: 14px;
-  margin-top: 87px;
+  margin-top: 8px;
 `
+// margin-top: 87px;
 
 const SendMessage = styled.div`
-  background: rgba(250, 69, 4, 0.2);
   border-radius: 8px;
   padding: 15px 16px;
   text-align: center;
-  color: rgba(255, 255, 255, 0.2);
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
+  ${props => props.active ? `
+    background: ${PRIMARY};
+    color: white
+  ` : `
+    background: rgba(250, 69, 4, 0.2);
+    color: rgba(255, 255, 255, 0.2);
+  `}
 `
 
 
-export default () => (
-  <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100vh' }}>
-    <div style={{ padding: '16px' }}>
-      <Navigation>
-        <Dashboard />
-        <NavigationTitle>Contact Us</NavigationTitle>
-      </Navigation>
-      <FAQ>
-        <Question />
-        <Text>
-          <Bold>FAQ</Bold>
-          <Normal>Find answers to popular questions here</Normal>
-        </Text>
-        <Arrow style={{ transform: 'rotate(270deg)' }}/>
-      </FAQ>
-      <ChatBot>
-        <Container>
-          <Contact />
+export default () => {
+  const [text, setText] = useState('');
+
+  const sendMessage = () => {
+    console.log(text)
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100vh' }}>
+      <div style={{ padding: '16px' }}>
+        <Navigation>
+          <Dashboard />
+          <NavigationTitle>Contact Us</NavigationTitle>
+        </Navigation>
+        <FAQ>
+          <Question />
           <Text>
-            <Bold>Use Chat Bot</Bold>
-            <Normal>Select messenger for communication</Normal>
+            <Bold>FAQ</Bold>
+            <Normal>Find answers to popular questions here</Normal>
           </Text>
-        </Container>
-        <Chat>
-          <Telegram />
-          <ChatName>Telegram</ChatName>
           <Arrow style={{ transform: 'rotate(270deg)' }}/>
-        </Chat>
-        <Chat>
-          <Facebook />
-          <ChatName>Facebook Messenger</ChatName>
-          <Arrow style={{ transform: 'rotate(270deg)' }}/>
-        </Chat>
-      </ChatBot>
+        </FAQ>
+        <ChatBot>
+          <Container>
+            <Contact />
+            <Text>
+              <Bold>Use Chat Bot</Bold>
+              <Normal>Select messenger for communication</Normal>
+            </Text>
+          </Container>
+          <Chat>
+            <Telegram />
+            <ChatName>Telegram</ChatName>
+            <Arrow style={{ transform: 'rotate(270deg)' }}/>
+          </Chat>
+          <Chat>
+            <Facebook />
+            <ChatName>Facebook Messenger</ChatName>
+            <Arrow style={{ transform: 'rotate(270deg)' }}/>
+          </Chat>
+        </ChatBot>
+      </div>
+      <GetInTouch>
+        <GetInTouchText>
+          <TextBold>Get In Touch</TextBold>
+          <TextNormal>You can leave your question here and we will reply to you shortly by email.</TextNormal>
+        </GetInTouchText>
+        <YourQuestion>
+          <TextNormal style={{ fontWeight: 'bold'}}>Your Question</TextNormal>
+          <TextareaAutosize
+            style={{
+              background: 'black',
+              border: 'none',
+              fontWeight: 'normal',
+              fontSize: '14px',
+              lineHeight: '18px',
+              color: GREY,
+              marginBottom: '14px',
+              // marginTop: '87px',
+              marginTop: '8px',
+              outline: 'none',
+              width: '100%'
+            }}
+            placeholder="Enter message"
+            value={text}
+            onChange={e => setText(e.target.value)}
+          />
+        </YourQuestion>
+        <SendMessage
+        onClick={sendMessage}
+        active={text !== ''}
+        >Send Message</SendMessage>
+      </GetInTouch>
     </div>
-    <GetInTouch>
-      <GetInTouchText>
-        <TextBold>Get In Touch</TextBold>
-        <TextNormal>You can leave your question here and we will reply to you shortly by email.</TextNormal>
-      </GetInTouchText>
-      <YourQuestion>
-        <TextNormal style={{ fontWeight: 'bold'}}>Your Question</TextNormal>
-        <Message>Enter Message</Message>
-      </YourQuestion>
-      <SendMessage>Send Message</SendMessage>
-    </GetInTouch>
-  </div>
-)
+  )
+}
