@@ -14,13 +14,13 @@ const NavigationBar = styled.div`
   height: 44px;
   display: flex;
   align-items: center;
-  margin: 0px 16px 24px 16px;
+  margin: 16px 16px 24px 16px;
 `
 
 const OpenMenu = styled.div`
   margin-left: 8px;
   margin-right: 28px;
-  width: 40%;
+  width: 154px;
 `
 
 const Account = styled.div`
@@ -66,10 +66,10 @@ const Logout = styled.div`
   padding-top: 28px;
 `
 
-export default () => (
-    <div style={{ height: '100vh', background: BLACK }}>
+export default ({ setShowSidebar }) => (
+    <div style={{ height: '100vh', background: BLACK, width: 246 }}>
       <NavigationBar>
-        <Close />
+        <Close onClick={() => setShowSidebar(false)} />
       </NavigationBar>
       <OpenMenu>
         <Account>

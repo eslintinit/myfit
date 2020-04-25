@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import Care from 'public/icons/Care.svg'
 import EU from 'public/icons/EU.svg'
@@ -5,13 +6,35 @@ import Dashboard from 'public/icons/Dashboard.svg'
 import Natural from 'public/icons/Natural.svg'
 import Question from 'public/icons/Question.svg'
 import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, SOFT_PINK, SOFT_ORANGE, PRIMARY } from 'styles/colors'
+import Sidebar from 'components/Sidebar'
+
+const Wrapper = styled.div`
+display: flex;
+flex-direction: row;
+    background: ${BLACK};
+`
+
+const Page = styled.div`
+  padding: 16px;
+  background: #fff;
+  # transition: 0.2s;
+  border-radius: ${props => props.showSidebar ? '20px' : '0px'};
+  ${props => props.showSidebar && `
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100vw;
+    position: fixed;
+    left: 188px;
+    transform: scale(0.85);
+  `}
+`
 
 const Navigation = styled.div`
   text-align: center;
   height: 44px;
   display: flex;
   justify-content: center;
-	align-items: flex-end;
+	align-items: center;
   justify-content: space-between;
 `
 
@@ -83,35 +106,46 @@ const Link = styled.a`
   color: ${PRIMARY};
 `
 
-export default () => (
-  <div style={{ padding: '16px' }}>
-    <Navigation>
-      <Dashboard />
-      <NavigationTitle>Safety</NavigationTitle>
-    </Navigation>
-    <Container>
-      <Column>
-        <CardOne>
-          <Natural />
-          <TextBold>MyFit resistance bands are made from 100% natural latex.</TextBold>
-          <Text>If you are allergic to latex, we would advise consulting with a health professional before using it.</Text>
-        </CardOne>
-        <CardThree>
-          <EU />
-          <TextBold>MyFit Resistance Bands are CE regulated in conformity with EU regulations.</TextBold>
-        </CardThree>
-      </Column>
-      <Column>
-        <CardTwo>
-          <Care />
-          <TextBold>Please use with care.</TextBold>
-          <Text>Whilst our bands are great are creating resistance, it’s important that you use them with the safety of your body in mind. Like any other gym weights, if you lift too heavy, you can cause damage.</Text>
-        </CardTwo>
-        <CardFour>
-          <Question/>
-          <TextBold>You can find our contact details at <Link href="https://google.com">my-fit.io</Link> if you have any other questions.</TextBold>
-        </CardFour>
-      </Column>
-    </Container>
-  </div>
-)
+export default () => {
+  const [showSidebar, setShowSidebar] = useState(false)
+
+  return (
+    <Wrapper>
+      {showSidebar &&
+        <Sidebar setShowSidebar={setShowSidebar} />
+      }
+      <Page showSidebar={showSidebar}>
+        <Navigation>
+          {!showSidebar &&
+            <Dashboard onClick={() => setShowSidebar(true)} />
+          }
+          <NavigationTitle>Safety</NavigationTitle>
+        </Navigation>
+        <Container>
+          <Column>
+            <CardOne>
+              <Natural />
+              <TextBold>MyFit resistance bands are made from 100% natural latex.</TextBold>
+              <Text>If you are allergic to latex, we would advise consulting with a health professional before using it.</Text>
+            </CardOne>
+            <CardThree>
+              <EU />
+              <TextBold>MyFit Resistance Bands are CE regulated in conformity with EU regulations.</TextBold>
+            </CardThree>
+          </Column>
+          <Column>
+            <CardTwo>
+              <Care />
+              <TextBold>Please use with care.</TextBold>
+              <Text>Whilst our bands are great are creating resistance, it’s important that you use them with the safety of your body in mind. Like any other gym weights, if you lift too heavy, you can cause damage.</Text>
+            </CardTwo>
+            <CardFour>
+              <Question/>
+              <TextBold>You can find our contact details at <Link href="https://google.com">my-fit.io</Link> if you have any other questions.</TextBold>
+            </CardFour>
+          </Column>
+        </Container>
+      </Page>
+    </Wrapper>
+  )
+}
