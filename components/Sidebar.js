@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import Close from 'public/icons/Close.svg'
 import Home from 'public/icons/Home.svg'
@@ -45,6 +47,11 @@ const Point = styled.div`
   align-items: center;
   color: #FFFFFF;
   margin-bottom: 12px;
+  ${props => props.active && `
+    background: rgba(250, 69, 4, 0.2);
+    border-radius: 8px;
+    color: ${PRIMARY};
+  `}
 `
 
 const TextPoint = styled.p`
@@ -54,11 +61,6 @@ const TextPoint = styled.p`
   margin-left: 12px;
 `
 
-const ChosenPoint = styled(Point)`
-  background: rgba(250, 69, 4, 0.2);
-  border-radius: 8px;
-  color: ${PRIMARY};
-`
 
 const Logout = styled.div`
   border-top: 1px solid rgba(189, 189, 189, 0.35);
@@ -66,7 +68,12 @@ const Logout = styled.div`
   padding-top: 28px;
 `
 
-export default ({ setShowSidebar }) => (
+export default ({ setShowSidebar }) => {
+  const { route } = useRouter()
+  console.log(route)
+
+
+  return (
     <div style={{ height: '100vh', background: BLACK, width: 246 }}>
       <NavigationBar>
         <Close onClick={() => setShowSidebar(false)} />
@@ -77,34 +84,42 @@ export default ({ setShowSidebar }) => (
           <Text>Susie Little</Text>
         </Account>
         <MenuPoints>
-          <ChosenPoint>
+          <Point>
             <Home />
             <TextPoint>Home</TextPoint>
-          </ChosenPoint>
+          </Point>
           <Point>
             <Shop />
             <TextPoint>Shop MyFit</TextPoint>
           </Point>
-          <Point>
-            <Safety />
-            <TextPoint>Safety</TextPoint>
-          </Point>
-          <Point>
-            <About />
-            <TextPoint>About Us</TextPoint>
-          </Point>
-          <Point>
-            <Contact />
-            <TextPoint>Contact Us</TextPoint>
-          </Point>
+          <Link href="/safety">
+            <Point active={route === '/safety'}>
+              <Safety />
+              <TextPoint>Safety</TextPoint>
+            </Point>
+          </Link>
+          <Link href="/about_us">
+            <Point active={route === '/about_us'}>
+                <About />
+                <TextPoint>About Us</TextPoint>
+            </Point>
+          </Link>
+          <Link href="/contact_us">
+            <Point active={route === '/contact_us'}>
+              <Contact />
+              <TextPoint>Contact Us</TextPoint>
+            </Point>
+          </Link>
           <Point>
             <Review />
             <TextPoint>Review</TextPoint>
           </Point>
-          <Point>
-            <Settings />
-            <TextPoint>Settings</TextPoint>
-          </Point>
+          <Link href="/settings">
+            <Point active={route === "/settings"}>
+              <Settings />
+              <TextPoint>Settings</TextPoint>
+            </Point>
+          </Link>
         </MenuPoints>
         <Logout>
           <Point>
@@ -114,5 +129,5 @@ export default ({ setShowSidebar }) => (
         </Logout>
       </OpenMenu>
     </div>
-
-)
+  )
+}

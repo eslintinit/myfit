@@ -9,9 +9,9 @@ import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, SOFT_PINK, SOFT_ORANGE, PRIMA
 import Sidebar from 'components/Sidebar'
 
 const Wrapper = styled.div`
-display: flex;
-flex-direction: row;
-    background: ${BLACK};
+  display: flex;
+  flex-direction: row;
+  background: ${BLACK};
 `
 
 const Page = styled.div`

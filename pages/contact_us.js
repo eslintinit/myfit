@@ -11,7 +11,6 @@ import TextareaAutosize from 'react-textarea-autosize';
 import Sidebar from 'components/Sidebar'
 
 
-
 const Navigation = styled.div`
   text-align: center;
   height: 44px;
@@ -162,8 +161,7 @@ export default () => {
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100vh' }}>
       <div style={{ padding: '16px' }}>
         <Navigation>
-          {showSidebar ?
-            <Sidebar /> :
+          {!showSidebar &&
             <Dashboard onClick={() => setShowSidebar(true)} />
           }
           <NavigationTitle>Contact Us</NavigationTitle>
