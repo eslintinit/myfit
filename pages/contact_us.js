@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import Dashboard from 'public/icons/Dashboard.svg'
 import Question from 'public/icons/Question.svg'
 import Arrow from 'public/icons/Arrow.svg'
-import Contact from 'public/icons/Contact Us.svg'
+import Contact from 'public/icons/Contact_Us.svg'
 import Telegram from 'public/icons/Telegram.svg'
 import Facebook from 'public/icons/Facebook.svg'
 import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, GREY, PRIMARY } from 'styles/colors'
 import TextareaAutosize from 'react-textarea-autosize';
+import Sidebar from 'components/Sidebar'
 
 
 
@@ -151,6 +152,7 @@ const SendMessage = styled.div`
 
 export default () => {
   const [text, setText] = useState('');
+  const [showSidebar, setShowSidebar] = useState(false)
 
   const sendMessage = () => {
     console.log(text)
@@ -160,7 +162,10 @@ export default () => {
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100vh' }}>
       <div style={{ padding: '16px' }}>
         <Navigation>
-          <Dashboard />
+          {showSidebar ?
+            <Sidebar /> :
+            <Dashboard onClick={() => setShowSidebar(true)} />
+          }
           <NavigationTitle>Contact Us</NavigationTitle>
         </Navigation>
         <FAQ>
