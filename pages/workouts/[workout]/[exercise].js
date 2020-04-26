@@ -100,17 +100,19 @@ export default ({ exercise }) => {
       <Header>
         <Back onClick={back} />
       </Header>
-      <iframe
-        src={`https://player.vimeo.com/video/${exercise.video.providerUid}?title=0&byline=0&portrait=0`}
-        style={{
-          width: '100vw',
-          height: 300,
-          marginLeft: -16,
-        }}
-        frameborder="0"
-        allow="autoplay; fullscreen"
-        allowfullscreen
-      ></iframe>
+      {exercise.video && (
+        <iframe
+          src={`https://player.vimeo.com/video/${exercise.video.providerUid}?title=0&byline=0&portrait=0`}
+          style={{
+            width: '100vw',
+            height: 300,
+            marginLeft: -16,
+          }}
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+        ></iframe>
+      )}
       <Content>
         <ContentHeader>
           <Name>{exercise.name}</Name>
