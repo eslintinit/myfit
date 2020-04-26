@@ -67,6 +67,9 @@ const Logout = styled.div`
   margin-top: 56px;
   padding-top: 28px;
 `
+const SafetyIcon = styled(Safety)`
+  fill: gba(189, 189, 189, 0.35);
+`
 
 export default ({ setShowSidebar }) => {
   const { route } = useRouter()
@@ -80,6 +83,7 @@ export default ({ setShowSidebar }) => {
       </NavigationBar>
       <OpenMenu>
         <Account>
+          <img src='https://i.imgur.com/PtZghFA.png' style={{ width: '33%', marginBottom: '16px'}}/>
           <Text>Hej,</Text>
           <Text>Susie Little</Text>
         </Account>
@@ -94,7 +98,7 @@ export default ({ setShowSidebar }) => {
           </Point>
           <Link href="/safety">
             <Point active={route === '/safety'}>
-              <Safety />
+              <Safety className='SafetyIcon'/>
               <TextPoint>Safety</TextPoint>
             </Point>
           </Link>

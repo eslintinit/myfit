@@ -4,6 +4,7 @@ import Dashboard from 'public/icons/Dashboard.svg'
 import Notification from 'public/icons/Notification.svg'
 import Key from 'public/icons/Key.svg'
 import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
+import Sidebar from 'components/Sidebar'
 
 
 const NavigationBar = styled.div`

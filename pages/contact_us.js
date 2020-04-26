@@ -10,6 +10,26 @@ import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, GREY, PRIMARY } from 'styles/
 import TextareaAutosize from 'react-textarea-autosize';
 import Sidebar from 'components/Sidebar'
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  background: ${BLACK};
+`
+
+const Page = styled.div`
+  background: #fff;
+  width: 100%;
+  # transition: 0.2s;
+  border-radius: ${props => props.showSidebar ? '20px' : '0px'};
+  ${props => props.showSidebar && `
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100vw;
+    position: fixed;
+    left: 188px;
+    transform: scale(0.85);
+  `}
+`
 
 const Navigation = styled.div`
   text-align: center;
@@ -158,73 +178,78 @@ export default () => {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100vh' }}>
-      <div style={{ padding: '16px' }}>
-        <Navigation>
-          {!showSidebar &&
-            <Dashboard onClick={() => setShowSidebar(true)} />
-          }
-          <NavigationTitle>Contact Us</NavigationTitle>
-        </Navigation>
-        <FAQ>
-          <Question />
-          <Text>
-            <Bold>FAQ</Bold>
-            <Normal>Find answers to popular questions here</Normal>
-          </Text>
-          <Arrow style={{ transform: 'rotate(270deg)' }}/>
-        </FAQ>
-        <ChatBot>
-          <Container>
-            <Contact />
+    <Wrapper>
+      {showSidebar &&
+        <Sidebar setShowSidebar={setShowSidebar} />
+      }
+      <Page showSidebar={showSidebar}>
+        <div style={{ padding: '16px' }}>
+          <Navigation>
+            {!showSidebar &&
+              <Dashboard onClick={() => setShowSidebar(true)} />
+            }
+            <NavigationTitle>Contact Us</NavigationTitle>
+          </Navigation>
+          <FAQ>
+            <Question />
             <Text>
-              <Bold>Use Chat Bot</Bold>
-              <Normal>Select messenger for communication</Normal>
+              <Bold>FAQ</Bold>
+              <Normal>Find answers to popular questions here</Normal>
             </Text>
-          </Container>
-          <Chat>
-            <Telegram />
-            <ChatName>Telegram</ChatName>
             <Arrow style={{ transform: 'rotate(270deg)' }}/>
-          </Chat>
-          <Chat>
-            <Facebook />
-            <ChatName>Facebook Messenger</ChatName>
-            <Arrow style={{ transform: 'rotate(270deg)' }}/>
-          </Chat>
-        </ChatBot>
-      </div>
-      <GetInTouch>
-        <GetInTouchText>
-          <TextBold>Get In Touch</TextBold>
-          <TextNormal>You can leave your question here and we will reply to you shortly by email.</TextNormal>
-        </GetInTouchText>
-        <YourQuestion>
-          <TextNormal style={{ fontWeight: 'bold'}}>Your Question</TextNormal>
-          <TextareaAutosize
-            style={{
-              background: 'black',
-              border: 'none',
-              fontWeight: 'normal',
-              fontSize: '14px',
-              lineHeight: '18px',
-              color: GREY,
-              marginBottom: '14px',
-              // marginTop: '87px',
-              marginTop: '8px',
-              outline: 'none',
-              width: '100%'
-            }}
-            placeholder="Enter message"
-            value={text}
-            onChange={e => setText(e.target.value)}
-          />
-        </YourQuestion>
-        <SendMessage
-        onClick={sendMessage}
-        active={text !== ''}
-        >Send Message</SendMessage>
-      </GetInTouch>
-    </div>
+          </FAQ>
+          <ChatBot>
+            <Container>
+              <Contact />
+              <Text>
+                <Bold>Use Chat Bot</Bold>
+                <Normal>Select messenger for communication</Normal>
+              </Text>
+            </Container>
+            <Chat>
+              <Telegram />
+              <ChatName>Telegram</ChatName>
+              <Arrow style={{ transform: 'rotate(270deg)' }}/>
+            </Chat>
+            <Chat>
+              <Facebook />
+              <ChatName>Facebook Messenger</ChatName>
+              <Arrow style={{ transform: 'rotate(270deg)' }}/>
+            </Chat>
+          </ChatBot>
+        </div>
+        <GetInTouch>
+          <GetInTouchText>
+            <TextBold>Get In Touch</TextBold>
+            <TextNormal>You can leave your question here and we will reply to you shortly by email.</TextNormal>
+          </GetInTouchText>
+          <YourQuestion>
+            <TextNormal style={{ fontWeight: 'bold'}}>Your Question</TextNormal>
+            <TextareaAutosize
+              style={{
+                background: 'black',
+                border: 'none',
+                fontWeight: 'normal',
+                fontSize: '14px',
+                lineHeight: '18px',
+                color: GREY,
+                marginBottom: '14px',
+                // marginTop: '87px',
+                marginTop: '8px',
+                outline: 'none',
+                width: '100%'
+              }}
+              placeholder="Enter message"
+              value={text}
+              onChange={e => setText(e.target.value)}
+            />
+          </YourQuestion>
+          <SendMessage
+          onClick={sendMessage}
+          active={text !== ''}
+          >Send Message</SendMessage>
+        </GetInTouch>
+      </Page>
+    </Wrapper>
   )
 }

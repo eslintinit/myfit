@@ -1,9 +1,31 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import Dashboard from 'public/icons/Dashboard.svg'
 import Instagram from 'public/icons/Instagram.svg'
 import Facebook from 'public/icons/FacebookIcon.svg'
 import Twitter from 'public/icons/Twitter.svg'
 import { BLACK, DARK_GREY, PRIMARY } from 'styles/colors'
+import Sidebar from 'components/Sidebar'
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  background: ${BLACK};
+`
+
+const Page = styled.div`
+  background: #fff;
+  # transition: 0.2s;
+  border-radius: ${props => props.showSidebar ? '20px' : '0px'};
+  ${props => props.showSidebar && `
+    height: 100vh;
+    box-sizing: border-box;
+    width: 100vw;
+    position: fixed;
+    left: 188px;
+    transform: scale(0.85);
+  `}
+`
 
 const NavigationBar = styled.div`
   text-align: center;
@@ -77,28 +99,38 @@ const SocialText = styled.p`
   flex-grow: 1;
 `
 
-export default () => (
-    <div>
-      <NavigationBar>
-        <Dashboard />
-        <NavigationTitle>About us</NavigationTitle>
-      </NavigationBar>
-      <Content>
-        <ContentTitle>MyFit are a UK company looking to revolutionise the way we workout!</ContentTitle>
-        <Pictures>
-          <img src='https://i.imgur.com/FU5O4kf.png' width='164px' height='164px' style={{ paddingRight: '15px' }}/>
-          <img src='https://i.imgur.com/zsEImLx.png' width='164px' height='164px'/>
-        </Pictures>
-        <InfoBold>Resistance bands are cool</InfoBold>
-        <InfoNormal>- but they’re a lot cooler when they’ve been created and designed to allow you to replicate nearly all gym workouts. We’ve managed to create resistance from the comfort of your own home without compromising on your workout goals. </InfoNormal>
-        <InfoBold>The MyFit app is your go-to for all resistance workouts created by our own experts! </InfoBold>
-      </Content>
-      <SocialLinks>
-        <SocialText>Join us in the resistance workout revolution.</SocialText>
-        <Facebook style={{ marginRight: '12px' }}/>
-        <Twitter style={{ marginRight: '12px' }}/>
-        <Instagram />
-      </SocialLinks>
-    </div>
+export default () => {
+  const [showSidebar, setShowSidebar] = useState(false)
 
+  return (
+    <Wrapper>
+      {showSidebar &&
+        <Sidebar setShowSidebar={setShowSidebar} />
+      }
+      <Page showSidebar={showSidebar}>
+        <NavigationBar>
+          {!showSidebar &&
+            <Dashboard onClick={() => setShowSidebar(true)} />
+          }
+          <NavigationTitle>About us</NavigationTitle>
+        </NavigationBar>
+        <Content>
+          <ContentTitle>MyFit are a UK company looking to revolutionise the way we workout!</ContentTitle>
+          <Pictures>
+            <img src='https://i.imgur.com/FU5O4kf.png' width='164px' height='164px' style={{ paddingRight: '15px' }}/>
+            <img src='https://i.imgur.com/zsEImLx.png' width='164px' height='164px'/>
+          </Pictures>
+          <InfoBold>Resistance bands are cool</InfoBold>
+          <InfoNormal>- but they’re a lot cooler when they’ve been created and designed to allow you to replicate nearly all gym workouts. We’ve managed to create resistance from the comfort of your own home without compromising on your workout goals. </InfoNormal>
+          <InfoBold>The MyFit app is your go-to for all resistance workouts created by our own experts! </InfoBold>
+        </Content>
+        <SocialLinks>
+          <SocialText>Join us in the resistance workout revolution.</SocialText>
+          <Facebook style={{ marginRight: '12px' }}/>
+          <Twitter style={{ marginRight: '12px' }}/>
+          <Instagram />
+        </SocialLinks>
+      </Page>
+    </Wrapper>
   )
+}
