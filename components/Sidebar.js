@@ -34,20 +34,21 @@ const Text = styled.p`
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
-  color: #FFFFFF;
+  color: #ffffff;
 `
 
-const MenuPoints = styled.div`
-`
+const MenuPoints = styled.div``
 
 const Point = styled.div`
   padding: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 12px;
-  ${props => props.active && `
+  ${(props) =>
+    props.active &&
+    `
     background: rgba(250, 69, 4, 0.2);
     border-radius: 8px;
     color: ${PRIMARY};
@@ -61,7 +62,6 @@ const TextPoint = styled.p`
   margin-left: 12px;
 `
 
-
 const Logout = styled.div`
   border-top: 1px solid rgba(189, 189, 189, 0.35);
   margin-top: 56px;
@@ -73,8 +73,11 @@ const SafetyIcon = styled(Safety)`
 
 export default ({ setShowSidebar }) => {
   const { route } = useRouter()
-  console.log(route)
 
+  const homeActive = route === '/'
+  const safetyActive = route === '/safety'
+  const aboutUsActive = route === '/about_us'
+  const contactUsActive = route === '/contact_us'
 
   return (
     <div style={{ height: '100vh', background: BLACK, width: 246 }}>
@@ -83,34 +86,39 @@ export default ({ setShowSidebar }) => {
       </NavigationBar>
       <OpenMenu>
         <Account>
-          <img src='https://i.imgur.com/PtZghFA.png' style={{ width: '33%', marginBottom: '16px'}}/>
+          <img
+            src="https://i.imgur.com/PtZghFA.png"
+            style={{ width: '33%', marginBottom: '16px' }}
+          />
           <Text>Hej,</Text>
           <Text>Susie Little</Text>
         </Account>
         <MenuPoints>
-          <Point>
-            <Home />
-            <TextPoint>Home</TextPoint>
-          </Point>
+          <Link href="/">
+            <Point active={homeActive}>
+              <Home fill={homeActive ? PRIMARY : 'white'} />
+              <TextPoint>Home</TextPoint>
+            </Point>
+          </Link>
           <Point>
             <Shop />
             <TextPoint>Shop MyFit</TextPoint>
           </Point>
           <Link href="/safety">
-            <Point active={route === '/safety'}>
-              <Safety className='SafetyIcon'/>
+            <Point active={safetyActive}>
+              <Safety fill={safetyActive ? PRIMARY : 'white'} />
               <TextPoint>Safety</TextPoint>
             </Point>
           </Link>
           <Link href="/about_us">
-            <Point active={route === '/about_us'}>
-                <About />
-                <TextPoint>About Us</TextPoint>
+            <Point active={aboutUsActive}>
+              <About fill={aboutUsActive ? PRIMARY : 'white'} />
+              <TextPoint>About Us</TextPoint>
             </Point>
           </Link>
           <Link href="/contact_us">
-            <Point active={route === '/contact_us'}>
-              <Contact />
+            <Point active={contactUsActive}>
+              <Contact fill={contactUsActive ? PRIMARY : 'white'} />
               <TextPoint>Contact Us</TextPoint>
             </Point>
           </Link>
@@ -118,12 +126,10 @@ export default ({ setShowSidebar }) => {
             <Review />
             <TextPoint>Review</TextPoint>
           </Point>
-          <Link href="/settings">
-            <Point active={route === "/settings"}>
-              <Settings />
-              <TextPoint>Settings</TextPoint>
-            </Point>
-          </Link>
+          <Point>
+            <Settings />
+            <TextPoint>Settings</TextPoint>
+          </Point>
         </MenuPoints>
         <Logout>
           <Point>
