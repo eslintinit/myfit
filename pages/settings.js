@@ -6,12 +6,11 @@ import Key from 'public/icons/Key.svg'
 import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
 import Sidebar from 'components/Sidebar'
 
-
 const NavigationBar = styled.div`
   text-align: center;
   height: 44px;
   display: flex;
-	align-items: flex-end;
+  align-items: flex-end;
   margin-bottom: 24px;
 `
 
@@ -25,9 +24,7 @@ const NavigationTitle = styled.div`
   padding-right: 27px;
 `
 
-const Content = styled.div`
-
-`
+const Content = styled.div``
 
 const CoverImage = styled.div`
   border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
@@ -64,32 +61,34 @@ const Text = styled.p`
   color: ${DARK_GREY};
 `
 
-export default () => (
-  <div style={{ padding: '16px' }}>
-    <NavigationBar>
-      <Dashboard />
-      <NavigationTitle>Settings</NavigationTitle>
-    </NavigationBar>
-    <CoverImage>
-      <TextBold>Your cover image</TextBold>
-    </CoverImage>
-    <PersonalInfo>
-      <Text>Full Name</Text>
-      <Text>Email</Text>
-    </PersonalInfo>
-    <Notifications>
-      <div style={{ display: 'flex', flexDirection: 'row', paddingBottom: '24px' }}>
-        <Notification style={{ marginRight: '16px' }}/>
-        <TextBold>Send me push notification</TextBold>
-      </div>
-      <Text>About new video content</Text>
-      <Text>About new product</Text>
-      <Text>MyFit Updates</Text>
-    </Notifications>
-    <ChangePassword>
-      <Key style={{ marginRight: '16px' }}/>
-      <TextBold>Change password</TextBold>
-    </ChangePassword>
-  </div>
+export default () => <div>settings</div>
 
-)
+// export default () => (
+//   <div style={{ padding: '16px' }}>
+//     <NavigationBar>
+//       <Dashboard />
+//       <NavigationTitle>Settings</NavigationTitle>
+//     </NavigationBar>
+//     <CoverImage>
+//       <TextBold>Your cover image</TextBold>
+//     </CoverImage>
+//     <PersonalInfo>
+//       <Text>Full Name</Text>
+//       <Text>Email</Text>
+//     </PersonalInfo>
+//     <Notifications>
+//       <div style={{ display: 'flex', flexDirection: 'row', paddingBottom: '24px' }}>
+//         <Notification style={{ marginRight: '16px' }}/>
+//         <TextBold>Send me push notification</TextBold>
+//       </div>
+//       <Text>About new video content</Text>
+//       <Text>About new product</Text>
+//       <Text>MyFit Updates</Text>
+//     </Notifications>
+//     <ChangePassword>
+//       <Key style={{ marginRight: '16px' }}/>
+//       <TextBold>Change password</TextBold>
+//     </ChangePassword>
+//   </div>
+
+// )

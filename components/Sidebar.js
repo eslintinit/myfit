@@ -78,6 +78,8 @@ export default ({ setShowSidebar }) => {
   const safetyActive = route === '/safety'
   const aboutUsActive = route === '/about_us'
   const contactUsActive = route === '/contact_us'
+  const settingsActive = route === '/settings'
+  const reviewActive = route === '/review'
 
   return (
     <div style={{ height: '100vh', background: BLACK, width: 246 }}>
@@ -128,14 +130,18 @@ export default ({ setShowSidebar }) => {
               <TextPoint>Contact Us</TextPoint>
             </Point>
           </Link>
-          <Point>
-            <Review />
-            <TextPoint>Review</TextPoint>
-          </Point>
-          <Point>
-            <Settings />
-            <TextPoint>Settings</TextPoint>
-          </Point>
+          <Link href="/review">
+            <Point active={reviewActive}>
+              <Review fill={reviewActive ? PRIMARY : 'white'} />
+              <TextPoint>Review</TextPoint>
+            </Point>
+          </Link>
+          <Link href="/settings">
+            <Point active={settingsActive}>
+              <Settings fill={settingsActive ? PRIMARY : 'white'} />
+              <TextPoint>Settings</TextPoint>
+            </Point>
+          </Link>
         </MenuPoints>
         <Logout>
           <Point>
