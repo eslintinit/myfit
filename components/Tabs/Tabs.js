@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import * as S from './Navigation.styled'
+import * as S from './Tabs.styled'
 
-export default function Navigation() {
+export default function Tabs() {
   const { route } = useRouter()
 
   return (

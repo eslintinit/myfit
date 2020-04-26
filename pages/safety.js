@@ -1,3 +1,4 @@
+import Layout from 'components/Layout'
 import { useState } from 'react'
 import styled from 'styled-components'
 import Care from 'public/icons/Care.svg'
@@ -120,60 +121,52 @@ export default () => {
   const [showSidebar, setShowSidebar] = useState(false)
 
   return (
-    <Wrapper>
-      {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
-      <Page showSidebar={showSidebar}>
-        <Navigation>
-          {!showSidebar && <Dashboard onClick={() => setShowSidebar(true)} />}
-          <NavigationTitle>Safety</NavigationTitle>
-        </Navigation>
-        <Container>
-          <Column>
-            <CardOne>
-              <Natural />
-              <TextBold>
-                MyFit resistance bands are made from 100% natural latex.
-              </TextBold>
-              <Text>
-                If you are allergic to latex, we would advise consulting with a
-                health professional before using it.
-              </Text>
-            </CardOne>
-            <CardThree>
-              <EU />
-              <TextBold>
-                MyFit Resistance Bands are CE regulated in conformity with EU
-                regulations.
-              </TextBold>
-            </CardThree>
-          </Column>
-          <Column>
-            <CardTwo>
-              <Care />
-              <TextBold>Please use with care.</TextBold>
-              <Text>
-                Whilst our bands are great are creating resistance, it’s
-                important that you use them with the safety of your body in
-                mind. Like any other gym weights, if you lift too heavy, you can
-                cause damage.
-              </Text>
-            </CardTwo>
-            <CardFour>
-              <Question />
-              <TextBold>
-                You can find our contact details at{' '}
-                <Link
-                  href="https://myfitproducts.com/pages/contact"
-                  target="_blank"
-                >
-                  my-fit.io
-                </Link>{' '}
-                if you have any other questions.
-              </TextBold>
-            </CardFour>
-          </Column>
-        </Container>
-      </Page>
-    </Wrapper>
+    <Layout>
+      <Container>
+        <Column>
+          <CardOne>
+            <Natural />
+            <TextBold>
+              MyFit resistance bands are made from 100% natural latex.
+            </TextBold>
+            <Text>
+              If you are allergic to latex, we would advise consulting with a
+              health professional before using it.
+            </Text>
+          </CardOne>
+          <CardThree>
+            <EU />
+            <TextBold>
+              MyFit Resistance Bands are CE regulated in conformity with EU
+              regulations.
+            </TextBold>
+          </CardThree>
+        </Column>
+        <Column>
+          <CardTwo>
+            <Care />
+            <TextBold>Please use with care.</TextBold>
+            <Text>
+              Whilst our bands are great are creating resistance, it’s important
+              that you use them with the safety of your body in mind. Like any
+              other gym weights, if you lift too heavy, you can cause damage.
+            </Text>
+          </CardTwo>
+          <CardFour>
+            <Question />
+            <TextBold>
+              You can find our contact details at{' '}
+              <Link
+                href="https://myfitproducts.com/pages/contact"
+                target="_blank"
+              >
+                my-fit.io
+              </Link>{' '}
+              if you have any other questions.
+            </TextBold>
+          </CardFour>
+        </Column>
+      </Container>
+    </Layout>
   )
 }

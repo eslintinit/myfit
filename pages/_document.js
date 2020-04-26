@@ -105,6 +105,7 @@ export default class MyDocument extends Document {
             property="og:image"
             content="https://yourdomain.com/favicon/apple-touch-icon.png"
           />
+          <script src="https://player.vimeo.com/api/player.js"></script>
         </Head>
         <body>
           <Main />

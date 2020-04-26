@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { getWorkout, getWorkouts } from 'lib/api'
 import styled from 'styled-components'
@@ -6,7 +7,7 @@ import Back from 'public/icons/Back.svg'
 import Favorite from 'public/icons/Like-filled.svg'
 import Time from 'public/icons/Time.svg'
 import TimeSmall from 'public/icons/Time-small.svg'
-import { BLACK, DARK_GREY, GREY } from 'styles/colors'
+import { BLACK, DARK_GREY, GREY, PRIMARY } from 'styles/colors'
 
 const Container = styled.div`
   padding: 14px 16px;
@@ -30,6 +31,8 @@ const Content = styled.div`
   border-top-left-radius: 20px;
   padding: 32px 16px;
   margin-top: 434px;
+  margin-left: -16px;
+  margin-right: -16px;
 `
 
 const Header = styled.header`
@@ -143,9 +146,35 @@ const ExerciseDescription = styled.div`
 export default ({ workout }) => {
   const { back } = useRouter()
 
+  const [isFavorite, setFavorite] = useState(false)
+
+  const initFavorite = () => {
+    let favoritesString = window.localStorage.getItem('favorites')
+    setFavorite(favoritesString.indexOf(workout.url) > -1)
+  }
+
+  const toggleFavorite = () => {
+    const favoritesString = window.localStorage.getItem('favorites')
+    let favoritesArray = favoritesString.split(',')
+
+    if (favoritesArray.indexOf(workout.url) > -1) {
+      favoritesArray = favoritesArray.filter((fav) => fav !== workout.url)
+    } else {
+      favoritesArray.push(workout.url)
+    }
+
+    window.localStorage.setItem('favorites', favoritesArray.join())
+    setFavorite(!isFavorite)
+  }
+
+  useEffect(() => {
+    // Done to only set on client side as server side doesn't have access to
+    // window object
+    initFavorite()
+  }, [])
+
   if (!workout) return null
 
-  console.log(workout.image.url)
   return (
     <Container image={workout.image.url}>
       <Header>
@@ -164,7 +193,13 @@ export default ({ workout }) => {
               <NumberOfExercises>{workout.time}</NumberOfExercises>
             </InfoBottom>
           </Info>
-          <Favorite />
+          <Favorite
+            fill={isFavorite ? PRIMARY : 'transparent'}
+            stroke={isFavorite ? 'none' : BLACK}
+            strokeWidth={1.5}
+            stroke-location="inside"
+            onClick={toggleFavorite}
+          />
         </ContentHeader>
 
         <Label>Benefits</Label>

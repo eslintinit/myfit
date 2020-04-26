@@ -1,3 +1,4 @@
+import Layout from 'components/Layout'
 import { useState } from 'react'
 import styled from 'styled-components'
 import Dashboard from 'public/icons/Dashboard.svg'
@@ -47,9 +48,7 @@ const NavigationTitle = styled.div`
   padding-right: 27px;
 `
 
-const Content = styled.div`
-  margin: 0px 16px;
-`
+const Content = styled.div``
 
 const ContentTitle = styled.p`
   font-weight: bold;
@@ -90,6 +89,7 @@ const SocialLinks = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  margin-left: -16px;
 `
 
 const SocialText = styled.p`
@@ -105,13 +105,8 @@ export default () => {
   const [showSidebar, setShowSidebar] = useState(false)
 
   return (
-    <Wrapper>
-      {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
-      <Page showSidebar={showSidebar}>
-        <NavigationBar>
-          {!showSidebar && <Dashboard onClick={() => setShowSidebar(true)} />}
-          <NavigationTitle>About us</NavigationTitle>
-        </NavigationBar>
+    <Layout>
+      <div style={{ marginTop: 24 }}>
         <Content>
           <ContentTitle>
             MyFit are a UK company looking to revolutionise the way we workout!
@@ -154,7 +149,7 @@ export default () => {
             <Instagram />
           </a>
         </SocialLinks>
-      </Page>
-    </Wrapper>
+      </div>
+    </Layout>
   )
 }

@@ -1,3 +1,4 @@
+import Layout from 'components/Layout'
 import { useState } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
@@ -128,6 +129,7 @@ const GetInTouch = styled.div`
   bottom: 0;
   width: 100vw;
   box-sizing: border-box;
+  margin-left: -16px;
 `
 
 const GetInTouchText = styled.div`
@@ -191,48 +193,37 @@ export default () => {
   }
 
   return (
-    <Wrapper>
-      {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
-      <Page showSidebar={showSidebar}>
-        <div style={{ padding: '16px' }}>
-          <Navigation>
-            {!showSidebar && <Dashboard onClick={() => setShowSidebar(true)} />}
-            <NavigationTitle>Contact Us</NavigationTitle>
-          </Navigation>
-
-          <Link href="/faq">
-            <FAQ>
-              <Question />
-              <Text>
-                <Bold>FAQ</Bold>
-                <Normal>Find answers to popular questions here</Normal>
-              </Text>
-              <Arrow style={{ transform: 'rotate(270deg)' }} />
-            </FAQ>
-          </Link>
-          <ChatBot>
-            <Container>
-              <Contact />
-              <Text>
-                <Bold>Use Chat Bot</Bold>
-                <Normal>Select messenger for communication</Normal>
-              </Text>
-            </Container>
-            <Chat href="https://t.me/ignatif" target="_blank">
-              <Telegram />
-              <ChatName>Telegram</ChatName>
-              <Arrow style={{ transform: 'rotate(270deg)' }} />
-            </Chat>
-            <Chat
-              href="https://www.facebook.com/MyFitProducts/"
-              target="_blank"
-            >
-              <Facebook />
-              <ChatName>Facebook Messenger</ChatName>
-              <Arrow style={{ transform: 'rotate(270deg)' }} />
-            </Chat>
-          </ChatBot>
-        </div>
+    <Layout>
+      <div style={{ width: '100%', marginTop: 24 }}>
+        <Link href="/faq">
+          <FAQ>
+            <Question />
+            <Text>
+              <Bold>FAQ</Bold>
+              <Normal>Find answers to popular questions here</Normal>
+            </Text>
+            <Arrow style={{ transform: 'rotate(270deg)' }} />
+          </FAQ>
+        </Link>
+        <ChatBot>
+          <Container>
+            <Contact />
+            <Text>
+              <Bold>Use Chat Bot</Bold>
+              <Normal>Select messenger for communication</Normal>
+            </Text>
+          </Container>
+          <Chat href="https://t.me/ignatif" target="_blank">
+            <Telegram />
+            <ChatName>Telegram</ChatName>
+            <Arrow style={{ transform: 'rotate(270deg)' }} />
+          </Chat>
+          <Chat href="https://www.facebook.com/MyFitProducts/" target="_blank">
+            <Facebook />
+            <ChatName>Facebook Messenger</ChatName>
+            <Arrow style={{ transform: 'rotate(270deg)' }} />
+          </Chat>
+        </ChatBot>
         <GetInTouch>
           <GetInTouchText>
             <TextBold>Get In Touch</TextBold>
@@ -268,7 +259,7 @@ export default () => {
             Send Message
           </SendMessage>
         </GetInTouch>
-      </Page>
-    </Wrapper>
+      </div>
+    </Layout>
   )
 }

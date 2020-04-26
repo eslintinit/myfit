@@ -1,3 +1,4 @@
+import Layout from 'components/Layout'
 import { useState } from 'react'
 import styled from 'styled-components'
 import Dashboard from 'public/icons/Dashboard.svg'
@@ -61,7 +62,11 @@ const Text = styled.p`
   color: ${DARK_GREY};
 `
 
-export default () => <div>settings</div>
+export default () => (
+  <Layout>
+    <div>settings</div>
+  </Layout>
+)
 
 // export default () => (
 //   <div style={{ padding: '16px' }}>
