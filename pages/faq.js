@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styled from 'styled-components'
 import Back from 'public/icons/Back.svg'
 import Arrow from 'public/icons/Arrow.svg'
@@ -67,7 +68,9 @@ const Text = styled.div`
 export default () => (
   <div style={{ padding: '16px' }}>
     <Navigation>
-      <Back />
+      <Link href="/contact_us">
+        <Back />
+      </Link>
       <FAQ>FAQ</FAQ>
     </Navigation>
     <Container>
@@ -84,10 +87,18 @@ export default () => (
     </Container>
     <Answer>
       <Question>
-        <TextBold>What shipping methods are available and how much do they cost?</TextBold>
-        <Arrow style={{ transform: 'rotate(180deg)' }}/>
+        <TextBold>
+          What shipping methods are available and how much do they cost?
+        </TextBold>
+        <Arrow style={{ transform: 'rotate(180deg)' }} />
       </Question>
-      <Text>For your convenience, we ship via FedEx, DHL & USPS. The store is plugged directly into the shipping provider's shipping calculator, the rates for which are based on your location, package weight, and package dimensions.  To calculate the cost of shipping for your order, put in your ZIP code during checkout and click continue.</Text>
+      <Text>
+        For your convenience, we ship via FedEx, DHL & USPS. The store is
+        plugged directly into the shipping provider's shipping calculator, the
+        rates for which are based on your location, package weight, and package
+        dimensions. To calculate the cost of shipping for your order, put in
+        your ZIP code during checkout and click continue.
+      </Text>
     </Answer>
     <Container>
       <TextBold>How do I track my order?</TextBold>

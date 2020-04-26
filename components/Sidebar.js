@@ -100,10 +100,16 @@ export default ({ setShowSidebar }) => {
               <TextPoint>Home</TextPoint>
             </Point>
           </Link>
-          <Point>
-            <Shop />
-            <TextPoint>Shop MyFit</TextPoint>
-          </Point>
+          <a
+            href="https://www.instagram.com/p/B-A_SMJjy-s/?igshid=4h2e2xwn3qz3"
+            target="_blank"
+            style={{ textDecoration: 'none' }}
+          >
+            <Point>
+              <Shop />
+              <TextPoint>Shop MyFit</TextPoint>
+            </Point>
+          </a>
           <Link href="/safety">
             <Point active={safetyActive}>
               <Safety fill={safetyActive ? PRIMARY : 'white'} />

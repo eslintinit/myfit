@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import styled from 'styled-components'
 import Dashboard from 'public/icons/Dashboard.svg'
 import Question from 'public/icons/Question.svg'
@@ -6,8 +7,15 @@ import Arrow from 'public/icons/Arrow.svg'
 import Contact from 'public/icons/Contact_Us.svg'
 import Telegram from 'public/icons/Telegram.svg'
 import Facebook from 'public/icons/Facebook.svg'
-import { BLACK, DARK_GREY, SOFT_BLUE, SOFT_YELLOW, GREY, PRIMARY } from 'styles/colors'
-import TextareaAutosize from 'react-textarea-autosize';
+import {
+  BLACK,
+  DARK_GREY,
+  SOFT_BLUE,
+  SOFT_YELLOW,
+  GREY,
+  PRIMARY,
+} from 'styles/colors'
+import TextareaAutosize from 'react-textarea-autosize'
 import Sidebar from 'components/Sidebar'
 
 const Wrapper = styled.div`
@@ -20,8 +28,10 @@ const Page = styled.div`
   background: #fff;
   width: 100%;
   # transition: 0.2s;
-  border-radius: ${props => props.showSidebar ? '20px' : '0px'};
-  ${props => props.showSidebar && `
+  border-radius: ${(props) => (props.showSidebar ? '20px' : '0px')};
+  ${(props) =>
+    props.showSidebar &&
+    `
     height: 100vh;
     box-sizing: border-box;
     width: 100vw;
@@ -93,11 +103,12 @@ const Container = styled.div`
   align-items: center;
 `
 
-const Chat = styled.div`
+const Chat = styled.a`
   margin-top: 16px;
   margin-left: 38px;
   display: flex;
   align-items: center;
+  text-decoration: none;
 `
 
 const ChatName = styled.p`
@@ -124,7 +135,7 @@ const GetInTouchText = styled.div`
 `
 
 const TextBold = styled.p`
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
@@ -159,45 +170,46 @@ const SendMessage = styled.div`
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
-  ${props => props.active ? `
+  ${(props) =>
+    props.active
+      ? `
     background: ${PRIMARY};
     color: white
-  ` : `
+  `
+      : `
     background: rgba(250, 69, 4, 0.2);
     color: rgba(255, 255, 255, 0.2);
   `}
 `
 
-
 export default () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState('')
   const [showSidebar, setShowSidebar] = useState(false)
 
   const sendMessage = () => {
-    console.log(text)
+    alert('Thanks. We will contact you shortly')
   }
 
   return (
     <Wrapper>
-      {showSidebar &&
-        <Sidebar setShowSidebar={setShowSidebar} />
-      }
+      {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
       <Page showSidebar={showSidebar}>
         <div style={{ padding: '16px' }}>
           <Navigation>
-            {!showSidebar &&
-              <Dashboard onClick={() => setShowSidebar(true)} />
-            }
+            {!showSidebar && <Dashboard onClick={() => setShowSidebar(true)} />}
             <NavigationTitle>Contact Us</NavigationTitle>
           </Navigation>
-          <FAQ>
-            <Question />
-            <Text>
-              <Bold>FAQ</Bold>
-              <Normal>Find answers to popular questions here</Normal>
-            </Text>
-            <Arrow style={{ transform: 'rotate(270deg)' }}/>
-          </FAQ>
+
+          <Link href="/faq">
+            <FAQ>
+              <Question />
+              <Text>
+                <Bold>FAQ</Bold>
+                <Normal>Find answers to popular questions here</Normal>
+              </Text>
+              <Arrow style={{ transform: 'rotate(270deg)' }} />
+            </FAQ>
+          </Link>
           <ChatBot>
             <Container>
               <Contact />
@@ -206,25 +218,33 @@ export default () => {
                 <Normal>Select messenger for communication</Normal>
               </Text>
             </Container>
-            <Chat>
+            <Chat href="https://t.me/ignatif" target="_blank">
               <Telegram />
               <ChatName>Telegram</ChatName>
-              <Arrow style={{ transform: 'rotate(270deg)' }}/>
+              <Arrow style={{ transform: 'rotate(270deg)' }} />
             </Chat>
-            <Chat>
+            <Chat
+              href="https://www.facebook.com/MyFitProducts/"
+              target="_blank"
+            >
               <Facebook />
               <ChatName>Facebook Messenger</ChatName>
-              <Arrow style={{ transform: 'rotate(270deg)' }}/>
+              <Arrow style={{ transform: 'rotate(270deg)' }} />
             </Chat>
           </ChatBot>
         </div>
         <GetInTouch>
           <GetInTouchText>
             <TextBold>Get In Touch</TextBold>
-            <TextNormal>You can leave your question here and we will reply to you shortly by email.</TextNormal>
+            <TextNormal>
+              You can leave your question here and we will reply to you shortly
+              by email.
+            </TextNormal>
           </GetInTouchText>
           <YourQuestion>
-            <TextNormal style={{ fontWeight: 'bold'}}>Your Question</TextNormal>
+            <TextNormal style={{ fontWeight: 'bold' }}>
+              Your Question
+            </TextNormal>
             <TextareaAutosize
               style={{
                 background: 'black',
@@ -237,17 +257,16 @@ export default () => {
                 // marginTop: '87px',
                 marginTop: '8px',
                 outline: 'none',
-                width: '100%'
+                width: '100%',
               }}
               placeholder="Enter message"
               value={text}
-              onChange={e => setText(e.target.value)}
+              onChange={(e) => setText(e.target.value)}
             />
           </YourQuestion>
-          <SendMessage
-          onClick={sendMessage}
-          active={text !== ''}
-          >Send Message</SendMessage>
+          <SendMessage onClick={sendMessage} active={text !== ''}>
+            Send Message
+          </SendMessage>
         </GetInTouch>
       </Page>
     </Wrapper>
