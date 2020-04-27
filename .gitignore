@@ -4,5 +4,8 @@
 .next
 node_modules/
 .DS_Store
+
 sw.js
 sw.map.js
+workbox-*.js
+workbox-*.js.map
