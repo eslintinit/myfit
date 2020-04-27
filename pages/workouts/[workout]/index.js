@@ -150,12 +150,12 @@ export default ({ workout }) => {
 
   const initFavorite = () => {
     let favoritesString = window.localStorage.getItem('favorites')
-    setFavorite(favoritesString.indexOf(workout.url) > -1)
+    setFavorite((favoritesString || '').indexOf(workout.url) > -1)
   }
 
   const toggleFavorite = () => {
     const favoritesString = window.localStorage.getItem('favorites')
-    let favoritesArray = favoritesString.split(',')
+    let favoritesArray = (favoritesString || '').split(',')
 
     if (favoritesArray.indexOf(workout.url) > -1) {
       favoritesArray = favoritesArray.filter((fav) => fav !== workout.url)

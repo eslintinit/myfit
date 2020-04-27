@@ -2,7 +2,7 @@
 .now
 
 .next
-node_modules
+node_modules/
 .DS_Store
 sw.js
 sw.map.js
