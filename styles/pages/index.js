@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import { BLACK, DARK_GREY, SOFT_ORANGE } from 'styles/colors'
 
 export const Workouts = styled.div`
