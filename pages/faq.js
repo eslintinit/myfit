@@ -1,108 +1,47 @@
 import Link from 'next/link'
-import styled from 'styled-components'
 import Back from 'public/icons/Back.svg'
 import Arrow from 'public/icons/Arrow.svg'
-import { BLACK, DARK_GREY } from 'styles/colors'
 
-const Navigation = styled.div`
-  text-align: center;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 24px;
-`
-
-const FAQ = styled.div`
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  color: ${BLACK};
-  margin-bottom: 4px;
-  flex-grow: 1;
-  padding-right: 28px;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-`
-
-const Question = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`
-
-const Answer = styled.div`
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  border-radius: 8px;
-  padding-top: 24px;
-  padding-bottom: 24px;
-`
-
-const TextBold = styled.div`
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
-  color: ${BLACK};
-  width: 80%;
-`
-
-const Text = styled.div`
-  font-size: 14px;
-  line-height: 18px;
-  color: ${DARK_GREY};
-  padding-top: 8px;
-`
+import * as S from 'styles/pages/faq'
 
 export default () => (
   <div style={{ padding: '16px' }}>
-    <Navigation>
+    <S.Navigation>
       <Link href="/contact_us">
         <Back />
       </Link>
-      <FAQ>FAQ</FAQ>
-    </Navigation>
-    <Container>
-      <TextBold>Do you ship internationally?</TextBold>
+      <S.FAQ>FAQ</S.FAQ>
+    </S.Navigation>
+    <S.Container>
+      <S.TextBold>Do you ship internationally?</S.TextBold>
       <Arrow />
-    </Container>
-    <Container>
-      <TextBold>What payment methods do you accept?</TextBold>
+    </S.Container>
+    <S.Container>
+      <S.TextBold>What payment methods do you accept?</S.TextBold>
       <Arrow />
-    </Container>
-    <Container>
-      <TextBold>What if I received the wrong or defective product(s)?</TextBold>
+    </S.Container>
+    <S.Container>
+      <S.TextBold>What if I received the wrong or defective product(s)?</S.TextBold>
       <Arrow />
-    </Container>
-    <Answer>
-      <Question>
-        <TextBold>
+    </S.Container>
+    <S.Answer>
+      <S.Question>
+        <S.TextBold>
           What shipping methods are available and how much do they cost?
-        </TextBold>
+        </S.TextBold>
         <Arrow style={{ transform: 'rotate(180deg)' }} />
-      </Question>
-      <Text>
+      </S.Question>
+      <S.Text>
         For your convenience, we ship via FedEx, DHL & USPS. The store is
         plugged directly into the shipping provider's shipping calculator, the
         rates for which are based on your location, package weight, and package
         dimensions. To calculate the cost of shipping for your order, put in
         your ZIP code during checkout and click continue.
-      </Text>
-    </Answer>
-    <Container>
-      <TextBold>How do I track my order?</TextBold>
+      </S.Text>
+    </S.Answer>
+    <S.Container>
+      <S.TextBold>How do I track my order?</S.TextBold>
       <Arrow />
-    </Container>
+    </S.Container>
   </div>
 )

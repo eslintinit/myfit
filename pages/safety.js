@@ -1,172 +1,65 @@
 import Layout from 'components/Layout'
 import { useState } from 'react'
-import styled from 'styled-components'
+
 import Care from 'public/icons/Care.svg'
 import EU from 'public/icons/EU.svg'
 import Dashboard from 'public/icons/Dashboard.svg'
 import Natural from 'public/icons/Natural.svg'
 import Question from 'public/icons/Question.svg'
-import {
-  BLACK,
-  DARK_GREY,
-  SOFT_BLUE,
-  SOFT_YELLOW,
-  SOFT_PINK,
-  SOFT_ORANGE,
-  PRIMARY,
-} from 'styles/colors'
 import Sidebar from 'components/Sidebar'
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  background: ${BLACK};
-`
-
-const Page = styled.div`
-  padding: 16px;
-  background: #fff;
-  # transition: 0.2s;
-  border-radius: ${(props) => (props.showSidebar ? '20px' : '0px')};
-  ${(props) =>
-    props.showSidebar &&
-    `
-    height: 100vh;
-    box-sizing: border-box;
-    width: 100vw;
-    position: fixed;
-    left: 188px;
-    transform: scale(0.85);
-  `}
-`
-
-const Navigation = styled.div`
-  text-align: center;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
-`
-
-const NavigationTitle = styled.div`
-  color: ${BLACK};
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 4px;
-  flex-grow: 1;
-  padding-right: 27px;
-`
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 24px;
-`
-
-const Column = styled.div`
-  flex-basis: calc(50% - 8px);
-`
-const TextBold = styled.div`
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
-  color: ${BLACK};
-  margin-top: 16px;
-`
-
-const Text = styled.div`
-  font-size: 12px;
-  line-height: 16px;
-  color: ${DARK_GREY};
-  margin-top: 8px;
-`
-
-const Card = styled.div`
-  border-radius: 8px;
-  margin-bottom: 16px;
-  padding-top: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-`
-
-const CardOne = styled(Card)`
-  background: ${SOFT_YELLOW};
-  height: 232px;
-`
-
-const CardTwo = styled(Card)`
-  background: ${SOFT_PINK};
-  height: 260px;
-`
-
-const CardThree = styled(Card)`
-  background: ${SOFT_BLUE};
-  height: 174px;
-`
-
-const CardFour = styled(Card)`
-  background: ${SOFT_ORANGE};
-  height: 146px;
-`
-
-const Link = styled.a`
-  text-decoration: none;
-  color: ${PRIMARY};
-`
+import * as S from 'styles/pages/safety'
 
 export default () => {
   const [showSidebar, setShowSidebar] = useState(false)
 
   return (
     <Layout>
-      <Container>
-        <Column>
-          <CardOne>
+      <S.Container>
+        <S.Column>
+          <S.CardOne>
             <Natural />
-            <TextBold>
+            <S.TextBold>
               MyFit resistance bands are made from 100% natural latex.
-            </TextBold>
-            <Text>
+            </S.TextBold>
+            <S.Text>
               If you are allergic to latex, we would advise consulting with a
               health professional before using it.
-            </Text>
-          </CardOne>
-          <CardThree>
+            </S.Text>
+          </S.CardOne>
+          <S.CardThree>
             <EU />
-            <TextBold>
+            <S.TextBold>
               MyFit Resistance Bands are CE regulated in conformity with EU
               regulations.
-            </TextBold>
-          </CardThree>
-        </Column>
-        <Column>
-          <CardTwo>
+            </S.TextBold>
+          </S.CardThree>
+        </S.Column>
+        <S.Column>
+          <S.CardTwo>
             <Care />
-            <TextBold>Please use with care.</TextBold>
-            <Text>
+            <S.TextBold>Please use with care.</S.TextBold>
+            <S.Text>
               Whilst our bands are great are creating resistance, it’s important
               that you use them with the safety of your body in mind. Like any
               other gym weights, if you lift too heavy, you can cause damage.
-            </Text>
-          </CardTwo>
-          <CardFour>
+            </S.Text>
+          </S.CardTwo>
+          <S.CardFour>
             <Question />
-            <TextBold>
+            <S.TextBold>
               You can find our contact details at{' '}
-              <Link
+              <S.Link
                 href="https://myfitproducts.com/pages/contact"
                 target="_blank"
               >
                 my-fit.io
-              </Link>{' '}
+              </S.Link>{' '}
               if you have any other questions.
-            </TextBold>
-          </CardFour>
-        </Column>
-      </Container>
+            </S.TextBold>
+          </S.CardFour>
+        </S.Column>
+      </S.Container>
     </Layout>
   )
 }

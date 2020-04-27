@@ -1,66 +1,13 @@
 import Layout from 'components/Layout'
+import Sidebar from 'components/Sidebar'
 import { useState } from 'react'
-import styled from 'styled-components'
+
 import Dashboard from 'public/icons/Dashboard.svg'
 import Notification from 'public/icons/Notification.svg'
 import Key from 'public/icons/Key.svg'
-import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
-import Sidebar from 'components/Sidebar'
 
-const NavigationBar = styled.div`
-  text-align: center;
-  height: 44px;
-  display: flex;
-  align-items: flex-end;
-  margin-bottom: 24px;
-`
+import * as S from 'styles/pages/settings'
 
-const NavigationTitle = styled.div`
-  color: ${BLACK};
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 4px;
-  flex-grow: 1;
-  padding-right: 27px;
-`
-
-const Content = styled.div``
-
-const CoverImage = styled.div`
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  margin-bottom: 24px;
-`
-
-const PersonalInfo = styled.div`
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  margin-bottom: 24px;
-`
-
-const Notifications = styled.div`
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  margin-bottom: 24px;
-`
-
-const ChangePassword = styled.div`
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  padding-bottom: 24px;
-  display: flex;
-  flex-direction: row;
-`
-const TextBold = styled.p`
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
-  color: ${BLACK};
-`
-
-const Text = styled.p`
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 133.83%;
-  color: ${DARK_GREY};
-`
 
 export default () => (
   <Layout>
@@ -70,30 +17,30 @@ export default () => (
 
 // export default () => (
 //   <div style={{ padding: '16px' }}>
-//     <NavigationBar>
+//     <S.NavigationBar>
 //       <Dashboard />
-//       <NavigationTitle>Settings</NavigationTitle>
-//     </NavigationBar>
-//     <CoverImage>
-//       <TextBold>Your cover image</TextBold>
-//     </CoverImage>
-//     <PersonalInfo>
-//       <Text>Full Name</Text>
-//       <Text>Email</Text>
-//     </PersonalInfo>
-//     <Notifications>
+//       <S.NavigationTitle>Settings</S.NavigationTitle>
+//     </S.NavigationBar>
+//     <S.CoverImage>
+//       <S.TextBold>Your cover image</S.TextBold>
+//     </S.CoverImage>
+//     <S.PersonalInfo>
+//       <S.Text>Full Name</S.Text>
+//       <S.Text>Email</S.Text>
+//     </S.PersonalInfo>
+//     <S.Notifications>
 //       <div style={{ display: 'flex', flexDirection: 'row', paddingBottom: '24px' }}>
 //         <Notification style={{ marginRight: '16px' }}/>
-//         <TextBold>Send me push notification</TextBold>
+//         <S.TextBold>Send me push notification</S.TextBold>
 //       </div>
-//       <Text>About new video content</Text>
-//       <Text>About new product</Text>
-//       <Text>MyFit Updates</Text>
-//     </Notifications>
-//     <ChangePassword>
+//       <S.Text>About new video content</S.Text>
+//       <S.Text>About new product</S.Text>
+//       <S.Text>MyFit Updates</S.Text>
+//     </S.Notifications>
+//     <S.ChangePassword>
 //       <Key style={{ marginRight: '16px' }}/>
-//       <TextBold>Change password</TextBold>
-//     </ChangePassword>
+//       <S.TextBold>Change password</S.TextBold>
+//     </S.ChangePassword>
 //   </div>
 
 // )
