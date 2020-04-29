@@ -83,7 +83,7 @@ outline: none;
 flex-grow: 1;
 `
 
-export const Login = styled.div`
+export const SignUp = styled.div`
   border-radius: 8px;
   padding: 15px 16px;
   margin-top: 40px;

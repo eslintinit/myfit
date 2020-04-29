@@ -15,7 +15,7 @@ import * as S from 'styles/pages/sign_up'
 export default () => {
   const [text, setText] = useState('')
 
-  const login = () => {
+  const signUp = () => {
     alert('Thanks. We will contact you shortly')
   }
 
@@ -72,9 +72,9 @@ export default () => {
             />
             <Info />
           </S.Field>
-          <S.Login onClick={login} active={text !== ''}>
+          <S.SignUp onClick={signUp} active={text !== ''}>
             Create Account
-          </S.Login>
+          </S.SignUp>
         </S.InfoBlock>
       </S.Bg>
     </div>
