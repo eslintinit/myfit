@@ -8,7 +8,7 @@ import * as S from 'styles/pages/question'
 
 
 export default () => {
-  const [color, setColor] = useState()
+  const [color, setColor] = useState('default')
 
   return (
     <div>
@@ -27,8 +27,8 @@ export default () => {
           <S.TextBold>How often do you go to the gym?</S.TextBold>
           <S.Points>
             <S.Point1
-              onClick={(e) => setColor(e.target.value)}
-              active={color !== ''}
+              onClick={() => setColor(color === 'default' ? 'active' : 'default')}
+              active={color === 'active'}
             >I don`t</S.Point1>
             <S.Point2>Rarely</S.Point2>
             <S.Point3>Regularly</S.Point3>

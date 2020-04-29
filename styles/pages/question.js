@@ -73,13 +73,11 @@ export const Point = styled.div`
   font-size: 14px;
   line-height: 18px;
   position: absolute;
+
+  background: ${SOFT_ORANGE};
+  color: ${PRIMARY};
   ${(props) =>
-    props.active
-      ? `
-    background: ${SOFT_ORANGE};
-    color: ${PRIMARY};
-  `
-      : `
+    props.active && `
     background: ${PRIMARY};
     color: white;
   `}
