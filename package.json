@@ -2,7 +2,7 @@
   "name": "cms-datocms",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next && node src",
+    "dev": "next && node server-qraphql/src",
     "build": "next build",
     "start": "next start"
   },
