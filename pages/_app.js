@@ -7,10 +7,10 @@ import { ApolloProvider } from "@apollo/react-hooks";
 
 function MyApp({ Component, pageProps }) {
 
-//localStorage.setItem('token', "");
+//localStorage.setItem("token", "");
 
 const link = new HttpLink({
-  headers: { "Authorization": "Bearer " + localStorage.getItem('token') },
+  headers: { "Authorization": "Bearer " + localStorage.getItem("token") },
   uri: "http://localhost:4000/"
 })
 
