@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 
 import Back from 'public/icons/Back.svg'
 import NoSee from 'public/icons/NoSeeG.svg'
@@ -12,12 +14,33 @@ import Profile from 'public/icons/Profile.svg'
 import * as S from 'styles/pages/sign_up'
 
 
-export default () => {
-  const [text, setText] = useState('')
 
-  const signUp = () => {
-    alert('Thanks. We will contact you shortly')
+
+
+export default () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const SIGNUP_USER = gql`
+  mutation signup($email: String!, $password: String!, $name: String!) {
+    signup(email: $email, password:$password, name:$name){
+      token
+    }
   }
+`;
+
+  /*
+  const signUp = () => {
+    //alert('Thanks. We will contact you shortly')
+  }
+  */
+
+  const [signUp] = useMutation(SIGNUP_USER, {
+    onCompleted({ token }) {
+      localStorage.setItem("token", token);
+    }
+  });
 
   return (
     <div>
@@ -44,6 +67,8 @@ export default () => {
             <Profile />
             <S.Input
               placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </S.Field>
           <S.Text>Email</S.Text>
@@ -51,6 +76,8 @@ export default () => {
             <Email />
             <S.Input
               placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </S.Field>
           <S.Text>Password</S.Text>
@@ -59,12 +86,12 @@ export default () => {
             <S.Input
               placeholder="Create password"
               type="password"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <NoSee />
           </S.Field>
-          <S.Text>Authentication Cod</S.Text>
+          <S.Text>Authentication Code</S.Text>
           <S.Field>
             <Lock />
             <S.Input
@@ -72,7 +99,9 @@ export default () => {
             />
             <Info />
           </S.Field>
-          <S.SignUp onClick={signUp} active={text !== ''}>
+          <S.SignUp onClick={
+            signUp({variables: {signup: name, email, password }})
+          } active={password && email && name !== ''}>
             Create Account
           </S.SignUp>
         </S.InfoBlock>
