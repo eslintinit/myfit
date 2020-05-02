@@ -1,16 +1,14 @@
 import styled from 'styled-components'
 
-import {
-  BLACK,
-  DARK_GREY,
-  GREY,
-  PRIMARY,
-  SOFT_ORANGE,
-} from 'styles/colors'
+import { BLACK, DARK_GREY, GREY, PRIMARY, SOFT_ORANGE } from 'styles/colors'
 
 export const Bg = styled.div`
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.5) 100%),
-  url(https://i.imgur.com/zRrcCEH.png);
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.33) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url(https://i.imgur.com/zRrcCEH.png);
   height: 100vh;
   background-repeat: no-repeat;
   display: flex;
@@ -34,26 +32,26 @@ export const Skip = styled.button`
 
 export const InfoBlock = styled.div`
   border-radius: 20px 20px 0px 0px;
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
 `
- export const Line = styled.hr`
+export const Line = styled.hr`
   height: 2px;
   background: ${PRIMARY};
   width: 22vw;
   border-radius: 4px;
   border: none;
- `
- export const TextBold = styled.p`
-   font-weight: bold;
-   font-size: 24px;
-   line-height: 36px;
-   width: 75vw;
-   color: BLACK;
-   text-transform: capitalize;
- `
+`
+export const TextBold = styled.p`
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 36px;
+  width: 75vw;
+  color: BLACK;
+  text-transform: capitalize;
+`
 export const Points = styled.div`
   align-self: center;
   display: flex;
@@ -67,8 +65,8 @@ export const Point = styled.div`
   height: 96px;
   border-radius: 50%;
   display: flex;
-	justify-content: center;
-	align-items: center;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
@@ -77,11 +75,11 @@ export const Point = styled.div`
   background: ${SOFT_ORANGE};
   color: ${PRIMARY};
   ${(props) =>
-    props.active && `
+    props.active &&
+    `
     background: ${PRIMARY};
     color: white;
   `}
-
 `
 export const Point1 = styled(Point)`
   right: 10px;

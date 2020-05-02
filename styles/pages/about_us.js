@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
-import {
-  BLACK,
-  DARK_GREY,
-  PRIMARY,
-} from 'styles/colors'
-
+import { BLACK, DARK_GREY, PRIMARY } from 'styles/colors'
 
 export const Content = styled.div``
 

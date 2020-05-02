@@ -1,12 +1,6 @@
 import styled from 'styled-components'
 
-import {
-  BLACK,
-  DARK_GREY,
-  GREY,
-  PRIMARY,
-  SOFT_ORANGE,
-} from 'styles/colors'
+import { BLACK, DARK_GREY, GREY, PRIMARY, SOFT_ORANGE } from 'styles/colors'
 
 export const Cards = styled.div`
   display: flex;
@@ -32,7 +26,7 @@ export const CaptionOne = styled(Caption)`
 `
 
 export const CaptionTwo = styled(Caption)`
-  background: #F8F8F8;
+  background: #f8f8f8;
 `
 
 export const HeadText = styled.h1`

@@ -1,10 +1,6 @@
 import styled from 'styled-components'
 
-import {
-  BLACK,
-  GREY,
-  PRIMARY,
-} from 'styles/colors'
+import { BLACK, DARK_GREY, GREY, PRIMARY } from 'styles/colors'
 
 export const Bg = styled.div`
   display: flex;
@@ -53,7 +49,7 @@ export const Step = styled.div`
   padding-bottom: 28px;
   padding-left: 20px;
   position: relative;
-  border-left: 1.5px solid ${PRIMARY};;
+  border-left: 1.5px solid ${PRIMARY};
 `
 
 export const LastStep = styled.div`
@@ -79,7 +75,7 @@ export const Picture = styled.img`
 `
 
 export const Tip = styled.div`
-  background: #F8F8F8;
+  background: #f8f8f8;
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 24px;
@@ -92,8 +88,8 @@ export const NumberTip = styled.div`
   font-size: 12px;
   line-height: 16px;
   display: flex;
-	justify-content: center;
-	align-items: center;
+  justify-content: center;
+  align-items: center;
   color: white;
   width: 40px;
   height: 20px;

@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
-import {
-  BLACK,
-  DARK_GREY,
-  GREY,
-  PRIMARY,
-} from 'styles/colors'
+import { BLACK, DARK_GREY, GREY, PRIMARY } from 'styles/colors'
 
 export const Bg = styled.div`
-  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.5) 100%),
-  url(https://i.imgur.com/zRrcCEH.png);
+  background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.33) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url(https://i.imgur.com/zRrcCEH.png);
   height: 100vh;
   background-repeat: no-repeat;
   display: flex;
@@ -24,18 +23,18 @@ export const NavigationBar = styled.div`
 
 export const InfoBlock = styled.div`
   border-radius: 20px 20px 0px 0px;
-  background: #FFFFFF;
+  background: #ffffff;
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
 `
- export const Line = styled.hr`
+export const Line = styled.hr`
   height: 2px;
   background: ${PRIMARY};
   width: 22vw;
   border-radius: 4px;
   border: none;
- `
+`
 
 export const Caption = styled.div`
   margin-bottom: 40px;
@@ -73,14 +72,14 @@ export const Field = styled.div`
 `
 
 export const Input = styled.input`
-border: none;
-font-weight: normal;
-font-size: 14px;
-line-height: 18px;
-color: ${BLACK};
-margin: 15px 16px;
-outline: none;
-flex-grow: 1;
+  border: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${BLACK};
+  margin: 15px 16px;
+  outline: none;
+  flex-grow: 1;
 `
 
 export const SignUp = styled.div`

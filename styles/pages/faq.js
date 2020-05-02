@@ -1,9 +1,6 @@
 import styled from 'styled-components'
 
-import { BLACK,
-  DARK_GREY, 
-} from 'styles/colors'
-
+import { BLACK, DARK_GREY } from 'styles/colors'
 
 export const Navigation = styled.div`
   text-align: center;

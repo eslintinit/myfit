@@ -1,12 +1,6 @@
 import styled from 'styled-components'
 
-import {
-  BLACK,
-  DARK_GREY,
-  PRIMARY,
-  GREY,
-  SOFT_ORANGE,
-} from 'styles/colors'
+import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
 
 export const NavigationBar = styled.div`
   text-align: center;
