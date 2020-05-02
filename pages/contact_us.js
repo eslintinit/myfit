@@ -1,5 +1,5 @@
-import Layout from 'components/Layout'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 
 import Dashboard from 'public/icons/Dashboard.svg'
@@ -22,38 +22,43 @@ export default () => {
   }
 
   return (
-    <Layout>
-      <div style={{ width: '100%', marginTop: 24 }}>
-        <Link href="/faq">
-          <S.FAQ>
-            <Question />
-            <S.Text>
-              <S.Bold>FAQ</S.Bold>
-              <S.Normal>Find answers to popular questions here</S.Normal>
-            </S.Text>
-            <Arrow style={{ transform: 'rotate(270deg)' }} />
-          </S.FAQ>
-        </Link>
-        <S.ChatBot>
-          <S.Container>
-            <Contact />
-            <S.Text>
-              <S.Bold>Use Chat Bot</S.Bold>
-              <S.Normal>Select messenger for communication</S.Normal>
-            </S.Text>
-          </S.Container>
-          <S.Chat href="https://t.me/ignatif" target="_blank">
-            <Telegram />
-            <S.ChatName>Telegram</S.ChatName>
-            <Arrow style={{ transform: 'rotate(270deg)' }} />
-          </S.Chat>
-          <S.Chat href="https://www.facebook.com/MyFitProducts/" target="_blank">
-            <Facebook />
-            <S.ChatName>Facebook Messenger</S.ChatName>
-            <Arrow style={{ transform: 'rotate(270deg)' }} />
-          </S.Chat>
-        </S.ChatBot>
-        <S.GetInTouch>
+    <div style={{ width: '100%', marginTop: 24 }}>
+      <Link href="/faq">
+        <S.FAQ>
+          <Question />
+          <S.Text>
+            <S.Bold>FAQ</S.Bold>
+            <S.Normal>Find answers to popular questions here</S.Normal>
+          </S.Text>
+          <Arrow style={{ transform: 'rotate(270deg)' }} />
+        </S.FAQ>
+      </Link>
+      <S.ChatBot>
+        <S.Container>
+          <Contact />
+          <S.Text>
+            <S.Bold>Use Chat Bot</S.Bold>
+            <S.Normal>Select messenger for communication</S.Normal>
+          </S.Text>
+        </S.Container>
+        <S.Chat href="https://t.me/ignatif" target="_blank">
+          <Telegram />
+          <S.ChatName>Telegram</S.ChatName>
+          <Arrow style={{ transform: 'rotate(270deg)' }} />
+        </S.Chat>
+        <S.Chat href="https://www.facebook.com/MyFitProducts/" target="_blank">
+          <Facebook />
+          <S.ChatName>Facebook Messenger</S.ChatName>
+          <Arrow style={{ transform: 'rotate(270deg)' }} />
+        </S.Chat>
+      </S.ChatBot>
+
+      <AnimatePresence>
+        <S.GetInTouch
+          initial={{ marginBottom: -343 }}
+          animate={{ marginBottom: 0 }}
+          exit={{ marginBottom: -343 }}
+        >
           <S.GetInTouchText>
             <S.TextBold>Get In Touch</S.TextBold>
             <S.TextNormal>
@@ -75,7 +80,7 @@ export default () => {
             Send Message
           </S.SendMessage>
         </S.GetInTouch>
-      </div>
-    </Layout>
+      </AnimatePresence>
+    </div>
   )
 }

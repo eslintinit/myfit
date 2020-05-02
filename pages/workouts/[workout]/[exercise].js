@@ -8,7 +8,6 @@ import Favorite from 'public/icons/Like-filled.svg'
 import { BLACK, DARK_GREY, GREY, LIGHT_GREY, PRIMARY } from 'styles/colors'
 
 import Back from 'public/icons/Back.svg'
-import Layout from 'components/Layout'
 import { getExercises, getExercise } from 'lib/api'
 
 const Header = styled.header`

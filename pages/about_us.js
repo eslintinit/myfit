@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Layout from 'components/Layout'
 
 import Instagram from 'public/icons/Instagram.svg'
 import Facebook from 'public/icons/FacebookIcon.svg'
@@ -11,37 +10,37 @@ export default () => {
   const [showSidebar, setShowSidebar] = useState(false)
 
   return (
-    <Layout>
-      <div style={{ marginTop: 24 }}>
-        <S.Content>
-          <S.ContentTitle>
-            MyFit are a UK company looking to revolutionise the way we workout!
-          </S.ContentTitle>
-          <S.Pictures>
-            <img
-              src="https://i.imgur.com/FU5O4kf.png"
-              width="164px"
-              height="164px"
-              style={{ paddingRight: '15px' }}
-            />
-            <img
-              src="https://i.imgur.com/zsEImLx.png"
-              width="164px"
-              height="164px"
-            />
-          </S.Pictures>
-          <S.InfoBold>Resistance bands are cool</S.InfoBold>
-          <S.InfoNormal>
-            - but they’re a lot cooler when they’ve been created and designed to
-            allow you to replicate nearly all gym workouts. We’ve managed to
-            create resistance from the comfort of your own home without
-            compromising on your workout goals.{' '}
-          </S.InfoNormal>
-          <S.InfoBold>
-            The MyFit app is your go-to for all resistance workouts created by
-            our own experts!{' '}
-          </S.InfoBold>
-        </S.Content>
+    <div style={{ marginTop: 24 }}>
+      <S.Content>
+        <S.ContentTitle>
+          MyFit are a UK company looking to revolutionise the way we workout!
+        </S.ContentTitle>
+        <S.Pictures>
+          <img
+            src="https://i.imgur.com/FU5O4kf.png"
+            width="164px"
+            height="164px"
+            style={{ paddingRight: '15px' }}
+          />
+          <img
+            src="https://i.imgur.com/zsEImLx.png"
+            width="164px"
+            height="164px"
+          />
+        </S.Pictures>
+        <S.InfoBold>Resistance bands are cool</S.InfoBold>
+        <S.InfoNormal>
+          - but they’re a lot cooler when they’ve been created and designed to
+          allow you to replicate nearly all gym workouts. We’ve managed to
+          create resistance from the comfort of your own home without
+          compromising on your workout goals.{' '}
+        </S.InfoNormal>
+        <S.InfoBold>
+          The MyFit app is your go-to for all resistance workouts created by our
+          own experts!{' '}
+        </S.InfoBold>
+      </S.Content>
+      {/*
         <S.SocialLinks>
           <S.SocialText>
             Join us in the resistance workout revolution.
@@ -57,7 +56,7 @@ export default () => {
             <Instagram />
           </a>
         </S.SocialLinks>
-      </div>
-    </Layout>
+        */}
+    </div>
   )
 }
