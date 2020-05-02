@@ -50,7 +50,7 @@ export default ({ show, close }) => {
             target="_blank"
             style={{ textDecoration: 'none' }}
           >
-            <S.Point onClick={close}>
+            <S.Point>
               <Shop />
               <S.TextPoint>Shop MyFit</S.TextPoint>
             </S.Point>
@@ -78,7 +78,7 @@ export default ({ show, close }) => {
             target="_blank"
             style={{ textDecoration: 'none' }}
           >
-            <S.Point onClick={close}>
+            <S.Point>
               <Review fill="white" />
               <S.TextPoint>Review</S.TextPoint>
             </S.Point>
