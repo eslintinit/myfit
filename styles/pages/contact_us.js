@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import TextareaAutosize from 'react-textarea-autosize'
 
@@ -10,7 +11,6 @@ import {
   GREY,
   PRIMARY,
 } from 'styles/colors'
-
 
 export const Text = styled.div`
   margin-left: 14px;
@@ -71,7 +71,7 @@ export const ChatName = styled.p`
   color: ${BLACK};
 `
 
-export const GetInTouch = styled.div`
+export const GetInTouch = styled(motion.div)`
   background: ${BLACK};
   padding: 24px 16px 56px 16px;
   border-radius: 20px 20px 0px 0px;

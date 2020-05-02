@@ -3,7 +3,7 @@ import Logo from 'public/Logo.svg'
 import Menu from 'public/icons/Dashboard.svg'
 import Notifications from 'public/icons/Notify.svg'
 
-import * as S from './Header.styled'
+import * as S from 'styles/components/Header'
 
 const routeTitleMap = {
   '/safety': 'Safety',
@@ -20,7 +20,11 @@ const Header = ({ showSidebar, setShowSidebar }) => {
 
   return (
     <S.Header>
-      {showSidebar ? <div /> : <Menu onClick={() => setShowSidebar(true)} />}
+      {showSidebar ? (
+        <div style={{ width: 27 }} />
+      ) : (
+        <Menu onClick={() => setShowSidebar(true)} />
+      )}
       {showLogo ? (
         <Logo />
       ) : (

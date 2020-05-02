@@ -4,7 +4,9 @@ import { PRIMARY, BLACK, GREY } from 'styles/colors'
 export const Tabs = styled.div`
   margin-top: 24px;
   margin-right: 30px;
+  position: fixed;
 `
+
 export const Tab = styled.div`
   writing-mode: vertical-lr;
   text-orientation: mixed;

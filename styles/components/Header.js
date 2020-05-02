@@ -8,6 +8,7 @@ export const Header = styled.header`
   align-items: center;
 
   height: 44px;
+  min-height: 44px;
 `
 
 export const HeaderTitle = styled.div`

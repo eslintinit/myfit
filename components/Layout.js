@@ -4,7 +4,7 @@ import Header from 'components/Header'
 import Sidebar from 'components/Sidebar'
 import Tabs from 'components/Tabs'
 
-import * as S from './Layout.styled'
+import * as S from 'styles/components/Layout'
 
 export default ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false)
@@ -15,12 +15,14 @@ export default ({ children }) => {
 
   return (
     <S.Wrapper>
-      {showSidebar && <Sidebar setShowSidebar={setShowSidebar} />}
+      <Sidebar show={showSidebar} close={() => setShowSidebar(false)} />
       <S.Page showSidebar={showSidebar}>
         <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
         <S.Content>
           {showTabs && <Tabs />}
-          {children}
+          <div style={{ marginLeft: showTabs ? 46 : 0, width: '100%' }}>
+            {children}
+          </div>
         </S.Content>
       </S.Page>
     </S.Wrapper>

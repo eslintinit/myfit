@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-import * as S from './Tabs.styled'
+import * as S from 'styles/components/Tabs'
 
 export default function Tabs() {
   const { route } = useRouter()
