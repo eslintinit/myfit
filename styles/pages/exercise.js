@@ -101,3 +101,70 @@ export const TipText = styled.p`
   color: ${DARK_GREY};
   margin-top: 8px;
 `
+
+export const Header = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 44px;
+`
+
+export const Content = styled.div`
+  bottom: 0;
+  background: white;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 32px 16px;
+  width: 100vw;
+  margin-left: -16px;
+  margin-top: 12px;
+  box-sizing: border-box;
+`
+
+export const ContentHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+export const Name = styled.div`
+  color: ${BLACK};
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 8px;
+`
+
+export const Description = styled.div`
+  color: ${DARK_GREY};
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 16px;
+`
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+export const DetailedButton = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: #f8f8f8;
+  border-radius: 8px;
+  align-items: center;
+  margin-left: 16px;
+  width: calc(100% - 56px);
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  /* identical to box height */
+
+  text-align: center;
+`
