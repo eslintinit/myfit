@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
+import Cookie from 'js-cookie';
+
 import Back from 'public/icons/Back.svg'
 import NoSee from 'public/icons/NoSeeG.svg'
 import Email from 'public/icons/Email.svg'
@@ -38,7 +40,7 @@ export default () => {
 
   const [signUp] = useMutation(SIGNUP_USER, {
     onCompleted({ token }) {
-      localStorage.setItem("token", token);
+      Cookie.set("token", token);
     }
   });
 
@@ -99,8 +101,11 @@ export default () => {
             />
             <Info />
           </S.Field>
-          <S.SignUp onClick={
-            signUp({variables: {signup: name, email, password }})
+          <S.SignUp onClick={ (e) => {
+            e.preventDefault();
+            signUp({variables: {name, email, password }});
+
+          }
           } active={password && email && name !== ''}>
             Create Account
           </S.SignUp>

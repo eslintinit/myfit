@@ -12,6 +12,9 @@ import Settings from 'public/icons/Settings.svg'
 import SignOut from 'public/icons/SignOut.svg'
 import { BLACK, PRIMARY } from 'styles/colors'
 
+import { useQuery } from '@apollo/react-hooks'
+import gql from "graphql-tag"
+
 const NavigationBar = styled.div`
   height: 44px;
   display: flex;
@@ -80,6 +83,20 @@ export default ({ setShowSidebar }) => {
   const contactUsActive = route === '/contact_us'
   const settingsActive = route === '/settings'
   const reviewActive = route === '/review'
+  
+  const GET_MY_NAME = gql`
+  
+    query {
+      me {
+      name
+      }   
+    }
+`;
+
+const [data] = useQuery(GET_MY_NAME);
+
+//console.log(JSON.stringify(data));
+ 
 
   return (
     <div style={{ height: '100vh', background: BLACK, width: 246 }}>
@@ -93,7 +110,7 @@ export default ({ setShowSidebar }) => {
             style={{ width: '33%', marginBottom: '16px' }}
           />
           <Text>Hej,</Text>
-          <Text>Susie Little</Text>
+          <Text>popka</Text>
         </Account>
         <MenuPoints>
           <Link href="/">
