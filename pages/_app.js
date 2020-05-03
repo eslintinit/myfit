@@ -12,7 +12,7 @@ import { parseCookies } from "../lib/parseCookies";
 
 function MyApp({ Component, pageProps, token }) {
 
-Cookie.set("token", "");
+//Cookie.set("token", "");
 
 console.log(JSON.stringify(token));
 
@@ -41,8 +41,8 @@ const client = new ApolloClient({
   )
 }
 
-MyApp.getInitialProps = ({ ctx }) => {
-  const cookies = parseCookies(ctx);
+MyApp.getInitialProps = ({ req }) => {
+  const cookies = parseCookies(req);
 
   return {
     token: cookies.token

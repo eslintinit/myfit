@@ -84,7 +84,7 @@ export default ({ setShowSidebar }) => {
   const settingsActive = route === '/settings'
   const reviewActive = route === '/review'
   
-  const GET_MY_NAME = gql`
+ /* const GET_MY_NAME = gql`
   
     query {
       me {
@@ -96,7 +96,7 @@ export default ({ setShowSidebar }) => {
 const [data] = useQuery(GET_MY_NAME);
 
 //console.log(JSON.stringify(data));
- 
+ */
 
   return (
     <div style={{ height: '100vh', background: BLACK, width: 246 }}>
