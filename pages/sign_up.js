@@ -39,8 +39,9 @@ export default () => {
   */
 
   const [signUp] = useMutation(SIGNUP_USER, {
-    onCompleted({ token }) {
-      Cookie.set("token", token);
+    onCompleted({ signup }) {
+      console.log("Get token value = ", signup.token);
+      Cookie.set('token', signup.token);
     }
   });
 

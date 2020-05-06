@@ -5,6 +5,7 @@ import { getWorkouts } from 'lib/api'
 import * as S from 'styles/pages/index'
 
 export default ({ workouts }) => {
+  
   return (
     <Layout>
       <S.Workouts>

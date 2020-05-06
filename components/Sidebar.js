@@ -12,8 +12,8 @@ import Settings from 'public/icons/Settings.svg'
 import SignOut from 'public/icons/SignOut.svg'
 import { BLACK, PRIMARY } from 'styles/colors'
 
-import { useQuery } from '@apollo/react-hooks'
-import gql from "graphql-tag"
+import { useQuery } from '@apollo/react-hooks';
+import gql from "graphql-tag";
 
 const NavigationBar = styled.div`
   height: 44px;
@@ -84,19 +84,17 @@ export default ({ setShowSidebar }) => {
   const settingsActive = route === '/settings'
   const reviewActive = route === '/review'
   
- /* const GET_MY_NAME = gql`
-  
-    query {
-      me {
+   const GET_MY_NAME = gql`
+    
+     query {
+       me {
       name
-      }   
-    }
-`;
+     }   
+     }
+    
+`
 
-const [data] = useQuery(GET_MY_NAME);
-
-//console.log(JSON.stringify(data));
- */
+const { error, data } = useQuery(GET_MY_NAME)
 
   return (
     <div style={{ height: '100vh', background: BLACK, width: 246 }}>
@@ -110,7 +108,9 @@ const [data] = useQuery(GET_MY_NAME);
             style={{ width: '33%', marginBottom: '16px' }}
           />
           <Text>Hej,</Text>
-          <Text>popka</Text>
+           {console.log("Query data = " + data)}
+           {console.log("Query error = " + error)}
+           {data && data.me.name ? <Text>{data.me.name}</Text> : <Text>Error!</Text>}
         </Account>
         <MenuPoints>
           <Link href="/">
