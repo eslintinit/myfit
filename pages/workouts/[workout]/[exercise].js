@@ -4,13 +4,118 @@ import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
 import Arrow from 'public/icons/Arrow.svg'
+import Minus10 from 'public/icons/minus10.svg'
+import Next from 'public/icons/Next.svg'
+import Plus10 from 'public/icons/plus10.svg'
+import Pause from 'public/icons/Pause.svg'
 import Favorite from 'public/icons/Like-filled.svg'
 import { BLACK, DARK_GREY, GREY, LIGHT_GREY, PRIMARY } from 'styles/colors'
 
 import Back from 'public/icons/Back.svg'
 import { getExercises, getExercise } from 'lib/api'
 
-import * as S from 'styles/pages/exercise'
+const Header = styled.header`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  height: 44px;
+`
+
+const Bg = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: ${BLACK};
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding-top: 24px;
+`
+
+const VideoNavigation = styled.div`
+  align-self: center;
+`
+
+const Timeline = styled.div`
+  margin: 16px;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 14px;
+  color: ${DARK_GREY};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+
+`
+
+const Line = styled.div`
+  height: 2px;
+  width: 75vw;
+  background: rgba(189, 189, 189, 0.35);
+  border-radius: 8px;
+  margin: 0px 4px;
+`
+
+const Active = styled.div`
+  height: 2px;
+  width: 35%;
+  background: ${PRIMARY};
+  border-radius: 8px;
+`
+
+const Content = styled.div`
+  background: white;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  padding: 32px 16px;
+`
+
+const ContentHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const Name = styled.div`
+  color: ${BLACK};
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 8px;
+`
+
+const Description = styled.div`
+  color: ${DARK_GREY};
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 16px;
+`
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const DetailedButton = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: #f8f8f8;
+  border-radius: 8px;
+  align-items: center;
+  margin-left: 16px;
+  width: calc(100% - 56px);
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  /* identical to box height */
+
+  text-align: center;
+`
 
 export default ({ exercise }) => {
   const { back } = useRouter()
@@ -24,106 +129,79 @@ export default ({ exercise }) => {
   return (
     <div
       style={{
-        padding: '14px 16px 0',
-        background: 'rgba(0, 0, 0, 0.03)',
-        boxSizing: 'border-box',
-        overflow: 'scroll',
-        backgroundImage: 'url(https://i.imgur.com/SPewObX.png)',
-        backgroundSize: 'cover',
+        backgroundImage: 'url(https://i.imgur.com/VXpZfAC.png)',
         height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
       }}
     >
-      <S.Header>
+      <Header>
         <Back onClick={back} />
-      </S.Header>
-      <S.Content>
-        <S.ContentHeader>
-          <S.Name>{exercise.name}</S.Name>
-          <S.Description>{exercise.description}</S.Description>
-          <S.Caption>
-            {exercise.video && (
-              <iframe
-                src={`https://player.vimeo.com/video/${exercise.video.providerUid}?title=0&byline=0&portrait=0`}
-                style={{
-                  width: '100vw',
-                  height: 243,
-                  marginLeft: -16,
-                }}
-                frameborder="0"
-                allow="autoplay; fullscreen"
-                allowfullscreen
+      </Header>
+      {/*
+      {exercise.video && (
+        <iframe
+          src={`https://player.vimeo.com/video/${exercise.video.providerUid}?title=0&byline=0&portrait=0`}
+          style={{
+            width: '100vw',
+            height: 300,
+            marginLeft: -16,
+          }}
+          frameborder="0"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+        ></iframe>
+      )}
+      */}
+      <Bg>
+        <VideoNavigation>
+          <Minus10 style={{
+            marginRight: '24px',
+          }}/>
+          <Next />
+          <Pause style={{
+            margin: '0px 48px',
+          }}/>
+          <Next style={{
+            transform: 'rotate(180deg)',
+          }}/>
+          <Plus10 style={{
+            marginLeft: '24px',
+          }}/>
+        </VideoNavigation>
+        <Timeline>
+          <p>30:56</p>
+          <Line>
+            <Active />
+          </Line>
+          <p>90:00</p>
+        </Timeline>
+        <Content>
+          <ContentHeader>
+            <Name>{exercise.name}</Name>
+            <Description>{exercise.description}</Description>
+            <Info>
+              <Favorite
+                fill={isFavorite ? PRIMARY : 'transparent'}
+                stroke={isFavorite ? 'none' : BLACK}
+                strokeWidth={1.5}
+                stroke-location="inside"
               />
-            )}
-          </S.Caption>
-
-          <S.Text style={{ marginBottom: 16 }}>{exercise.intro}</S.Text>
-          <S.Tip>
-            <S.NumberTip>Tip 1</S.NumberTip>
-            <S.TipText>
-              If you can’t quite perform a standard pushup with good form, drop
-              down to a modified stance on your knees — you’ll still reap many
-              of the benefits from this exercise while building strength.{' '}
-            </S.TipText>
-          </S.Tip>
-          <S.Steps>
-            <S.Step>
-              <S.Ellipse />
-              <S.StepText>Step 1</S.StepText>
-              <S.Picture src="https://i.imgur.com/cmkxCa7.png" />
-              <S.Text>
-                Start in a plank position. Your core should be tight, shoulders
-                pulled down and back, and your neck neutral.
-              </S.Text>
-            </S.Step>
-            <S.Step>
-              <S.Ellipse />
-              <S.StepText>Step 2</S.StepText>
-              <S.Picture src="https://i.imgur.com/gCEpzXf.png" />
-              <S.Text>
-                Bend your elbows and begin to lower your body down to the floor.
-                When your chest grazes it, extend your elbows and return to the
-                start. Focus on keeping your elbows close to your body during
-                the movement.
-              </S.Text>
-            </S.Step>
-            <S.LastStep>
-              <S.Ellipse />
-              <S.StepText>Step 3</S.StepText>
-              <S.Picture src="https://i.imgur.com/JZVq0wW.png" />
-              <S.Text>Complete 3 sets of as many reps as possible.</S.Text>
-            </S.LastStep>
-          </S.Steps>
-          <S.Tip>
-            <S.NumberTip>Tip 2</S.NumberTip>
-            <S.TipText>
-              Starting with your right arm, bend your elbow and pull the weight
-              straight up toward your chest, making sure to engage your lat, and
-              stopping just below your chest.
-            </S.TipText>
-          </S.Tip>
-          {/*
-          <S.Info>
-            <Favorite
-              fill={isFavorite ? PRIMARY : 'transparent'}
-              stroke={isFavorite ? 'none' : BLACK}
-              strokeWidth={1.5}
-              stroke-location="inside"
-            />
-
-            <DetailedButton>
-              Detailed Instructions
-              <Arrow
-                style={{
-                  position: 'absolute',
-                  right: 12,
-                  transform: 'rotate(-90deg)',
-                }}
-              />
-            </DetailedButton>
-          </S.Info>
-          */}
-        </S.ContentHeader>
-      </S.Content>
+              <DetailedButton>
+                Detailed Instructions
+                <Arrow
+                  style={{
+                    position: 'absolute',
+                    right: 12,
+                    transform: 'rotate(-90deg)',
+                  }}
+                />
+              </DetailedButton>
+            </Info>
+          </ContentHeader>
+        </Content>
+      </Bg>
     </div>
   )
 }

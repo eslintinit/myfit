@@ -9,6 +9,7 @@ function MyApp({ Component, pageProps }) {
   const hideLayout =
     route === '/workouts/[workout]' ||
     route === '/workouts/[workout]/[exercise]' ||
+    route === '/question' ||
     route === '/faq'
 
   return (
