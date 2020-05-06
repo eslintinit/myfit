@@ -46,7 +46,6 @@ const Timeline = styled.div`
   flex-direction: row;
   align-items: center;
   align-self: center;
-
 `
 
 const Line = styled.div`
