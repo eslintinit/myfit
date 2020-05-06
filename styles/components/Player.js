@@ -1,13 +1,6 @@
 import styled from 'styled-components'
 import { BLACK, DARK_GREY, PRIMARY } from 'styles/colors'
 
-export const Active = styled.div`
-  height: 2px;
-  width: 35%;
-  background: ${PRIMARY};
-  border-radius: 8px;
-`
-
 export const Bg = styled.div`
   display: flex;
   flex-direction: column;
@@ -41,14 +34,6 @@ export const Timeline = styled.div`
   align-self: center;
   width: calc(100% - 32px);
   margin: 16px;
-`
-
-export const Line = styled.div`
-  height: 2px;
-  width: 75vw;
-  background: rgba(189, 189, 189, 0.35);
-  border-radius: 8px;
-  margin: 0px 4px;
 `
 
 // :focus::-webkit-slider-runnable-track {
@@ -102,4 +87,9 @@ export const RangeInput = styled.input`
     color-stop(${(props) => props.value}, ${PRIMARY}),
     color-stop(${(props) => props.value}, rgba(189, 189, 189, 0.35))
   );
+`
+
+export const PlayerWrapper = styled.div`
+  position: relative;
+  padding-top: 177.25%; /* Player ratio: 100 / (360 / 640) */
 `

@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
 import Layout from 'components/Layout'
+import 'styles/index.css'
 
 // https://vimeo.com/108980280 - Canyon
 // https://vimeo.com/248940683 - Apple Watch

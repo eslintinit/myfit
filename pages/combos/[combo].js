@@ -71,6 +71,8 @@ const Active = styled.div`
 `
 
 const Content = styled.div`
+  width: 100vw;
+  box-sizing: border-box;
   background: white;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;

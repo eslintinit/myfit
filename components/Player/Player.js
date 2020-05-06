@@ -10,11 +10,10 @@ import Play from 'public/icons/Play.svg'
 import Duration from 'components/Player/Duration'
 
 import {
-  Active,
+  PlayerWrapper,
   Bg,
   VideoNavigation,
   Timeline,
-  Line,
   RangeInput,
 } from 'styles/components/Player'
 
@@ -63,17 +62,25 @@ export default () => {
 
   return (
     <>
-      <ReactPlayer
-        url="https://vimeo.com/248940683"
-        width="100vw"
-        height="655px"
-        ref={playerRef}
-        playing={playing}
-        onProgress={handleProgress}
-        onDuration={handleDuration}
-        controls={false}
-        style={{ zIndex: -1 }}
-      />
+      <PlayerWrapper>
+        <ReactPlayer
+          url="https://vimeo.com/248940683"
+          width="100%"
+          height="100%"
+          className="react-player"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+          ref={playerRef}
+          playing={playing}
+          onProgress={handleProgress}
+          onDuration={handleDuration}
+          controls={false}
+          style={{ zIndex: -1 }}
+        />
+      </PlayerWrapper>
       <Bg>
         <VideoNavigation>
           <Minus10

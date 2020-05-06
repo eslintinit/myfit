@@ -25,6 +25,15 @@ export default ({ children }) => {
           </div>
         </S.Content>
       </S.Page>
+      <style jsx global>
+        {`
+          .react-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        `}
+      </style>
     </S.Wrapper>
   )
 }
