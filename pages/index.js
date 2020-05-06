@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Layout from 'components/Layout'
 import { getWorkouts } from 'lib/api'
 import { useRouter } from 'next/router'
+import Logo from 'public/Logo.svg'
 
 import { useState } from 'react';
 
@@ -40,7 +41,7 @@ export default ({ workouts }) => {
           </Link>
         ))}
       </S.Workouts>
-    </Layout> : <div>Loading...</div>
+    </Layout> : <Logo style={{position:'absolute', left:'50%', top:'50%'}} />
   )
 }
 
