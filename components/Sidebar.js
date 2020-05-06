@@ -14,6 +14,7 @@ import { BLACK, PRIMARY } from 'styles/colors'
 
 import { useQuery } from '@apollo/react-hooks';
 import gql from "graphql-tag";
+import Cookie from 'js-cookie';
 
 const NavigationBar = styled.div`
   height: 44px;
@@ -92,7 +93,15 @@ export default ({ setShowSidebar }) => {
      }   
      }
     
-`
+`;
+
+const router = useRouter();
+
+const signOut = (e) => {
+  e.preventDefault();
+  Cookie.remove('token');
+  router.push('/login')
+};
 
 const { error, data } = useQuery(GET_MY_NAME)
 
@@ -108,8 +117,6 @@ const { error, data } = useQuery(GET_MY_NAME)
             style={{ width: '33%', marginBottom: '16px' }}
           />
           <Text>Hej,</Text>
-           {console.log("Query data = " + data)}
-           {console.log("Query error = " + error)}
            {data && data.me.name ? <Text>{data.me.name}</Text> : <Text>Error!</Text>}
         </Account>
         <MenuPoints>
@@ -163,7 +170,7 @@ const { error, data } = useQuery(GET_MY_NAME)
         <Logout>
           <Point>
             <SignOut />
-            <TextPoint>Sign Out</TextPoint>
+            <TextPoint onClick ={(e) => signOut(e)}>Sign Out</TextPoint>
           </Point>
         </Logout>
       </OpenMenu>

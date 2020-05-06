@@ -4,6 +4,8 @@ import gql from "graphql-tag";
 
 import Cookie from 'js-cookie';
 
+import { useRouter } from 'next/router'
+
 import Back from 'public/icons/Back.svg'
 import NoSee from 'public/icons/NoSeeG.svg'
 import Email from 'public/icons/Email.svg'
@@ -32,6 +34,8 @@ export default () => {
   }
 `;
 
+const router = useRouter();
+
   /*
   const signUp = () => {
     //alert('Thanks. We will contact you shortly')
@@ -42,6 +46,7 @@ export default () => {
     onCompleted({ signup }) {
       console.log("Get token value = ", signup.token);
       Cookie.set('token', signup.token);
+      router.push('/')
     }
   });
 

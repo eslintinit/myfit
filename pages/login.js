@@ -3,6 +3,9 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import Cookie from 'js-cookie';
 
+import { useRouter } from 'next/router'
+
+
 import Back from 'public/icons/Back.svg'
 import Arrow from 'public/icons/Arrow.svg'
 import NoSee from 'public/icons/NoSee.svg'
@@ -20,7 +23,7 @@ export default () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-
+  const router = useRouter();
 
   const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -34,6 +37,7 @@ export default () => {
     onCompleted({ login }) {
       console.log("Get token value = ", login.token);
       Cookie.set('token', login.token);
+      router.push('/')
     }
   });
   
