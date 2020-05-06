@@ -16,6 +16,8 @@ import { BLACK, DARK_GREY, GREY, LIGHT_GREY, PRIMARY } from 'styles/colors'
 import Back from 'public/icons/Back.svg'
 import { getExercises, getExercise } from 'lib/api'
 
+import * as S from 'styles/pages/exercise'
+
 const Header = styled.header`
   display: flex;
   flex-direction: row;
@@ -33,8 +35,9 @@ const Bg = styled.div`
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   padding-top: 24px;
-  position: fixed;
-  bottom: 128px;
+  # position: fixed;
+  # bottom: 128px;
+  margin-top: -80px;
 `
 
 const VideoNavigation = styled.div`
@@ -77,8 +80,10 @@ const Content = styled.div`
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   padding: 32px 16px;
-  position: fixed;
-  bottom: 0;
+  margin-top: -20px;
+  # position: fixed;
+  # bottom: 0;
+  # margin-top: -115px;
 `
 
 const ContentHeader = styled.div`
@@ -166,6 +171,7 @@ export default ({ exercise }) => {
           <Description>
             Challenging your balance is an essential part of exercise.
           </Description>
+          {/*
           <Info>
             <Favorite
               fill={isFavorite ? PRIMARY : 'transparent'}
@@ -184,6 +190,72 @@ export default ({ exercise }) => {
               />
             </DetailedButton>
           </Info>
+          */}
+          <S.Tip>
+            <S.NumberTip>Tip 1</S.NumberTip>
+            <S.TipText>
+              If you can’t quite perform a standard pushup with good form, drop
+              down to a modified stance on your knees — you’ll still reap many
+              of the benefits from this exercise while building strength.{' '}
+            </S.TipText>
+          </S.Tip>
+          <S.Steps>
+            <S.Step>
+              <S.Ellipse />
+              <S.StepText>Step 1</S.StepText>
+              <S.Picture src="https://i.imgur.com/cmkxCa7.png" />
+              <S.Text>
+                Start in a plank position. Your core should be tight, shoulders
+                pulled down and back, and your neck neutral.
+              </S.Text>
+            </S.Step>
+            <S.Step>
+              <S.Ellipse />
+              <S.StepText>Step 2</S.StepText>
+              <S.Picture src="https://i.imgur.com/gCEpzXf.png" />
+              <S.Text>
+                Bend your elbows and begin to lower your body down to the floor.
+                When your chest grazes it, extend your elbows and return to the
+                start. Focus on keeping your elbows close to your body during
+                the movement.
+              </S.Text>
+            </S.Step>
+            <S.LastStep>
+              <S.Ellipse />
+              <S.StepText>Step 3</S.StepText>
+              <S.Picture src="https://i.imgur.com/JZVq0wW.png" />
+              <S.Text>Complete 3 sets of as many reps as possible.</S.Text>
+            </S.LastStep>
+          </S.Steps>
+          <S.Tip>
+            <S.NumberTip>Tip 2</S.NumberTip>
+            <S.TipText>
+              Starting with your right arm, bend your elbow and pull the weight
+              straight up toward your chest, making sure to engage your lat, and
+              stopping just below your chest.
+            </S.TipText>
+          </S.Tip>
+          {/*
+          <S.Info>
+            <Favorite
+              fill={isFavorite ? PRIMARY : 'transparent'}
+              stroke={isFavorite ? 'none' : BLACK}
+              strokeWidth={1.5}
+              stroke-location="inside"
+            />
+
+            <DetailedButton>
+              Detailed Instructions
+              <Arrow
+                style={{
+                  position: 'absolute',
+                  right: 12,
+                  transform: 'rotate(-90deg)',
+                }}
+              />
+            </DetailedButton>
+          </S.Info>
+          */}
         </ContentHeader>
       </Content>
     </div>

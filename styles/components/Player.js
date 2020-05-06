@@ -7,14 +7,15 @@ export const Bg = styled.div`
   background: ${BLACK};
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  padding-top: 24px;
+  padding-top: 16px;
+  padding-bottom: 8px;
   margin-top: -20px;
-  position: fixed;
   max-width: 100vw;
   width: 100vw;
-  position: fixed;
-  bottom: 164px;
-  padding-bottom: 20px;
+  # position: fixed;
+  # bottom: 164px;
+  margin-top: -84px;
+  z-index: 1;
 `
 
 export const VideoNavigation = styled.div`
@@ -33,7 +34,7 @@ export const Timeline = styled.div`
   align-items: center;
   align-self: center;
   width: calc(100% - 32px);
-  margin: 16px;
+  margin: 8px 16px;
 `
 
 // :focus::-webkit-slider-runnable-track {
