@@ -3,11 +3,16 @@ import Layout from 'components/Layout'
 import { getWorkouts } from 'lib/api'
 import { useRouter } from 'next/router'
 
+import { useState } from 'react';
+
 import Cookie from 'js-cookie';
 
 import * as S from 'styles/pages/index'
 
 export default ({ workouts }) => {
+
+  
+
   const token = Cookie.get('token');
   
   if (typeof window !== 'undefined') {
@@ -16,9 +21,10 @@ export default ({ workouts }) => {
   if (!token) {
     router.push('/login');
   }
-};
   
-  return (
+}
+  
+  return ( token ?
     <Layout>
       <S.Workouts>
         {(workouts || []).map((workout) => (
@@ -34,18 +40,17 @@ export default ({ workouts }) => {
           </Link>
         ))}
       </S.Workouts>
-    </Layout>
+    </Layout> : <div>Loading...</div>
   )
 }
 
 export async function getStaticProps({ preview }) {
   
   const workouts = (await getWorkouts(preview)) || []
-  /* const cookies = parseCookies(ctx);
-  console.log("cookies on page = ", cookies); */
+  
   return {
     props: { workouts },
-    //token: cookies.token
+    
 
   }
 }
