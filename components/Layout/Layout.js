@@ -11,17 +11,18 @@ import * as S from './Layout.styled'
 
 export default ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false)
-  const route  = useRouter()
+  const { route } = useRouter()
+  const router = useRouter()
 
-  const token = Cookie.get('token');
+   const token = Cookie.get('token');
   
   if (typeof window !== 'undefined') {
   console.log("tut =" + token);
   if (!token) {
-    route.push('/login');
+    router.push('/login');
   }
   
-}
+} 
 
   const showTabs =
     route === '/' || route === '/favorites' || route === '/combos'
