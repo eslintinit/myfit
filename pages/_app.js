@@ -21,13 +21,13 @@ const cache = new InMemoryCache();
 const link = new HttpLink({
   headers: { "Authorization": "Bearer " + token},
   uri: "http://localhost:4000/",
+  fetch
   
 });
 
 const client = new ApolloClient({
   link,
-  cache,
-  fetch
+  cache
 });
 
 
