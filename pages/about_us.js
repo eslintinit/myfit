@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import Layout from 'components/Layout'
 
+
+
+
 import Instagram from 'public/icons/Instagram.svg'
 import Facebook from 'public/icons/FacebookIcon.svg'
 import Twitter from 'public/icons/Twitter.svg'
@@ -10,7 +13,9 @@ import * as S from 'styles/pages/about_us'
 export default () => {
   const [showSidebar, setShowSidebar] = useState(false)
 
-  return (
+  
+
+  return ( 
     <Layout>
       <div style={{ marginTop: 24 }}>
         <S.Content>
@@ -58,6 +63,6 @@ export default () => {
           </a>
         </S.SocialLinks>
       </div>
-    </Layout>
+    </Layout> 
   )
 }

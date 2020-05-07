@@ -2,6 +2,7 @@ import Layout from 'components/Layout'
 import { useState } from 'react'
 import Link from 'next/link'
 
+
 import Dashboard from 'public/icons/Dashboard.svg'
 import Question from 'public/icons/Question.svg'
 import Arrow from 'public/icons/Arrow.svg'
@@ -17,11 +18,15 @@ export default () => {
   const [text, setText] = useState('')
   const [showSidebar, setShowSidebar] = useState(false)
 
+  
+  
+
+
   const sendMessage = () => {
     alert('Thanks. We will contact you shortly')
   }
 
-  return (
+  return ( 
     <Layout>
       <div style={{ width: '100%', marginTop: 24 }}>
         <Link href="/faq">
@@ -76,6 +81,6 @@ export default () => {
           </S.SendMessage>
         </S.GetInTouch>
       </div>
-    </Layout>
+    </Layout> 
   )
 }

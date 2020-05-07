@@ -1,19 +1,13 @@
 import Link from 'next/link'
 import Layout from 'components/Layout'
 import { getWorkouts } from 'lib/api'
-import { useRouter } from 'next/router'
-import Logo from 'public/Logo.svg'
-
-import { useState } from 'react';
-
-import Cookie from 'js-cookie';
 
 import * as S from 'styles/pages/index'
 
 export default ({ workouts }) => {
 
   
-
+/* 
   const token = Cookie.get('token');
   
   if (typeof window !== 'undefined') {
@@ -23,9 +17,9 @@ export default ({ workouts }) => {
     router.push('/login');
   }
   
-}
+} */
   
-  return ( token ?
+  return ( //token ?
     <Layout>
       <S.Workouts>
         {(workouts || []).map((workout) => (
@@ -41,7 +35,7 @@ export default ({ workouts }) => {
           </Link>
         ))}
       </S.Workouts>
-    </Layout> : <Logo style={{position:'absolute', left:'50%', top:'50%'}} />
+    </Layout> //: <Logo style={{position:'absolute', left:'50%', top:'50%'}} />
   )
 }
 
