@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
     route === '/player/three' ||
     route === '/faq' ||
     route === '/slash_screen' ||
-    route === '/welcome_screen' ||
+    route === '/wellcome_screen' ||
     route === '/onboarding'
 
   return (
