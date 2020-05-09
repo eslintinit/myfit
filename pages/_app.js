@@ -21,7 +21,9 @@ function MyApp({ Component, pageProps }) {
     route === '/faq' ||
     route === '/slash_screen' ||
     route === '/wellcome_screen' ||
-    route === '/onboarding'
+    route === '/onboarding' ||
+    route === '/login' ||
+    route === '/sign_up'
 
   return (
     <>

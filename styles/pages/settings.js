@@ -2,47 +2,36 @@ import styled from 'styled-components'
 
 import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
 
-export const NavigationBar = styled.div`
-  text-align: center;
-  height: 44px;
+
+export const Content = styled.div`
   display: flex;
-  align-items: flex-end;
-  margin-bottom: 24px;
+  flex-direction: column;
+  width: 100vw;
+  margin-top: 24px;
 `
-
-export const NavigationTitle = styled.div`
-  color: ${BLACK};
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  margin-bottom: 4px;
-  flex-grow: 1;
-  padding-right: 27px;
-`
-
-export const Content = styled.div``
 
 export const CoverImage = styled.div`
   border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  margin-bottom: 24px;
+  padding-bottom: 16px;
 `
 
-export const PersonalInfo = styled.div`
+export const Box = styled.div`
   border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  margin-bottom: 24px;
+  padding: 24px 0px;
 `
-
-export const Notifications = styled.div`
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  margin-bottom: 24px;
-`
-
-export const ChangePassword = styled.div`
-  border-bottom: 1.5px solid rgba(189, 189, 189, 0.1);
-  padding-bottom: 24px;
+export const Info = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `
+export const UserText = styled.p`
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${BLACK};
+  margin-left: 16px;
+`
+
 export const TextBold = styled.p`
   font-weight: bold;
   font-size: 14px;
@@ -53,6 +42,6 @@ export const TextBold = styled.p`
 export const Text = styled.p`
   font-weight: bold;
   font-size: 12px;
-  line-height: 133.83%;
+  line-height: 16px;
   color: ${DARK_GREY};
 `

@@ -3,48 +3,58 @@ import { useState } from 'react'
 
 import Dashboard from 'public/icons/Dashboard.svg'
 import Notification from 'public/icons/Notification.svg'
-import Key from 'public/icons/Key.svg'
+import Key from 'public/icons/KeyRed.svg'
+import Arrow from 'public/icons/ArrowRight.svg'
+import Profile from 'public/icons/Profile.svg'
+import Email from 'public/icons/Email.svg'
+import Photo from 'public/icons/PhotoRed.svg'
 
 import * as S from 'styles/pages/settings'
 
 export default () => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100vw',
-      marginTop: 24,
-    }}
-  >
-    {/*
-      <S.CoverImage>
-        <S.TextBold>Your cover image</S.TextBold>
-      </S.CoverImage>
-      <S.PersonalInfo>
-        <S.Text>Full Name</S.Text>
-        <S.Text>Email</S.Text>
-      </S.PersonalInfo>
-      */}
-    <S.Notifications>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          paddingBottom: '24px',
-        }}
-      >
-        <Notification style={{ marginRight: '16px' }} />
+  <S.Content>
+    <S.CoverImage>
+      <S.TextBold>Your cover image</S.TextBold>
+      <S.Info>
+        <img src='https://i.imgur.com/7wnzfta.png' />
+        <Photo />
+      </S.Info>
+    </S.CoverImage>
+    <S.Box>
+      <S.Text>Full Name</S.Text>
+      <S.Info>
+        <Profile />
+        <S.UserText>Susie Little</S.UserText>
+        <Arrow />
+      </S.Info>
+      <S.Text>Email</S.Text>
+      <S.Info>
+        <Email />
+        <S.UserText>myfit@gmail.com</S.UserText>
+        <Arrow />
+      </S.Info>
+    </S.Box>
+    <S.Box>
+      <S.Info>
+        <Notification />
         <S.TextBold>Send me push notification</S.TextBold>
-      </div>
-      {/*
+      </S.Info>
+      <S.Info>
         <S.Text>About new video content</S.Text>
+      </S.Info>
+      <S.Info>
         <S.Text>About new product</S.Text>
+      </S.Info>
+      <S.Info>
         <S.Text>MyFit Updates</S.Text>
-      */}
-    </S.Notifications>
-    <S.ChangePassword>
-      <Key style={{ marginRight: '16px' }} />
-      <S.TextBold>Change password</S.TextBold>
-    </S.ChangePassword>
-  </div>
+      </S.Info>
+    </S.Box>
+    <S.Box>
+      <S.Info>
+        <Key />
+        <S.TextBold>Change password</S.TextBold>
+        <Arrow />
+      </S.Info>
+    </S.Box>
+  </S.Content>
 )
