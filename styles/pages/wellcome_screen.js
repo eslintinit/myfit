@@ -13,16 +13,18 @@ export const Bg = styled.div`
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  padding: 16px;
-  position: absolute;
+  padding: 0px 16px;
 `
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+  padding-top: 176px;
 `
 
 export const Text = styled.p`
@@ -52,7 +54,6 @@ export const SignUp = styled.div`
   color: white;
   border-radius: 8px;
   padding: 15px 16px;
-  margin-top: 24px;
   width: 90%;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(6px);
@@ -61,7 +62,7 @@ export const SignUp = styled.div`
 export const Login = styled.div`
   border-radius: 8px;
   padding: 15px 16px;
-  margin-top: 24px;
+  margin: 24px 0px 56px;
   width: 90%;
   background: ${PRIMARY};
   font-weight: bold;
