@@ -1,4 +1,12 @@
 import { useState } from 'react'
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+
+import { validate } from 'email-validator';
+
+import Cookie from 'js-cookie';
+
+import { useRouter } from 'next/router'
 
 import Back from 'public/icons/Back.svg'
 import NoSee from 'public/icons/NoSeeG.svg'
@@ -13,17 +21,33 @@ import * as S from 'styles/pages/sign_up'
 
 
 export default () => {
-  const [text, setText] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const signUp = () => {
-    alert('Thanks. We will contact you shortly')
+  const router = useRouter();
+
+  const SIGNUP_USER = gql`
+  mutation signup($email: String!, $password: String!, $name: String!) {
+    signup(email: $email, password:$password, name:$name){
+      token
+    }
   }
+`;
 
+const [signUp] = useMutation(SIGNUP_USER, {
+  onCompleted({ signup }) {
+    console.log("Get token value = ", signup.token);
+    Cookie.set('token', signup.token);
+    router.push('/')
+  }
+});
+ 
   return (
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back />
+          <Back onClick={() => router.push('/wellcome_screen')} />
         </S.NavigationBar>
         <S.InfoBlock>
         <div style={{display: 'flex', flexDirection: 'row', marginBottom: '16px'}}>
@@ -44,6 +68,9 @@ export default () => {
             <Profile />
             <S.Input
               placeholder="Enter your name"
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </S.Field>
           <S.Text>Email</S.Text>
@@ -51,6 +78,9 @@ export default () => {
             <Email />
             <S.Input
               placeholder="Enter email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </S.Field>
           <S.Text>Password</S.Text>
@@ -59,8 +89,8 @@ export default () => {
             <S.Input
               placeholder="Create password"
               type="password"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <NoSee />
           </S.Field>
@@ -72,7 +102,11 @@ export default () => {
             />
             <Info />
           </S.Field>
-          <S.SignUp onClick={signUp} active={text !== ''}>
+          <S.SignUp onClick={ (e) => {
+            e.preventDefault();
+            signUp({variables: {name, email, password }});
+          }
+          } active={password && validate(email) && name !== ''}>
             Create Account
           </S.SignUp>
         </S.InfoBlock>

@@ -1,8 +1,18 @@
 import Logo from 'public/LogoW.svg'
 
+import { useRouter } from 'next/router'
+
 import * as S from 'styles/pages/wellcome_screen'
 
-export default () => (
+
+
+export default () => {
+
+  const router = useRouter()
+
+
+
+return (
   <div>
     <S.Bg>
       <S.Container>
@@ -10,8 +20,9 @@ export default () => (
         <S.Line />
         <S.Text>Join the Resistance Workout Revolution</S.Text>
       </S.Container>
-      <S.SignUp>Sign Up</S.SignUp>
-      <S.Login>Login</S.Login>
+      <S.SignUp onClick={() => router.push('/sign_up')}>Sign Up</S.SignUp>
+      <S.Login onClick={() => router.push('/login')}>Login</S.Login>
     </S.Bg>
   </div>
 )
+}

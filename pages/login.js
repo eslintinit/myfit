@@ -1,5 +1,13 @@
 import { useState } from 'react'
 
+import { useMutation } from "@apollo/react-hooks";
+
+import Cookie from 'js-cookie';
+
+import { useRouter } from 'next/router'
+
+import gql from 'graphql-tag'
+
 import Back from 'public/icons/Back.svg'
 import Arrow from 'public/icons/Arrow.svg'
 import NoSee from 'public/icons/NoSee.svg'
@@ -11,17 +19,34 @@ import { GREY, BLACK } from 'styles/colors'
 
 
 export default () => {
-  const [text, setText] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-  const login = () => {
-    alert('Thanks. We will contact you shortly')
+  const router = useRouter()
+
+  const LOGIN_USER = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password:$password){
+      token
+    }
   }
+`;
+
+const [login, { error }] = useMutation(LOGIN_USER, {
+  onCompleted({ login }) {
+    console.log("Get token value = ", login.token);
+    Cookie.set('token', login.token);
+    router.push('/')
+  }
+});
+
+if (error) alert('Invalid Email or Password')
 
   return (
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back />
+          <Back onClick={() => router.push('/wellcome_screen')} />
         </S.NavigationBar>
         <S.InfoBlock>
           <S.Caption>
@@ -37,8 +62,11 @@ export default () => {
           <S.Text>Email</S.Text>
           <S.Email>
             <Email />
-            <S.Input
+            <S.Input      
               placeholder="myfit@gmailcom"
+              type="email"        
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}              
             />
           </S.Email>
           <S.Text>Password</S.Text>
@@ -47,13 +75,18 @@ export default () => {
             <S.Input
               placeholder="Input password"
               type="password"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <NoSee />
           </S.Password>
           <S.RedText>Forgot password?</S.RedText>
-          <S.Login onClick={login} active={text !== ''}>
+          <S.Login onClick={ 
+            (e) => {
+            e.preventDefault();
+            login({ variables:{ email, password } });
+            }
+            } active={email && password !== ''}>
             Login
           </S.Login>
         </S.InfoBlock>
