@@ -1,26 +1,27 @@
 import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
+import { withApollo } from '../apollo/client'
 
-import { ApolloClient } from "apollo-boost";
+/* import { ApolloClient } from "apollo-boost";
 import { HttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hoc";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import fetch from 'node-fetch';
-
+ */
 //import Cookie from 'js-cookie';
-import { parseCookies } from "../lib/parseCookies";
+//import { parseCookies } from "../lib/parseCookies";
 
-function MyApp({ Component, pageProps, token }) {
+function MyApp({ Component, pageProps, /* token */ }) {
 
 //console.log (token);
 
 
 
 
-const cache = new InMemoryCache();
+/* const cache = new InMemoryCache();
 const link = new HttpLink({
   headers: { "Authorization": "Bearer " + token},
-  uri: "http://localhost:4000/",
+  uri: "http://90.188.249.253:4000/",
   fetch
   
 });
@@ -28,21 +29,22 @@ const link = new HttpLink({
 const client = new ApolloClient({
   link,
   cache
-});
+}); */
 
 
   return (
     <>
-    <ApolloProvider client={client}>
+    
       <FontsStyles />
       <Reset />
       <Component {...pageProps} />
-    </ApolloProvider>
+    
     </>
   )
 }
 
- MyApp.getInitialProps = ({ ctx }) => {
+
+/*   MyApp.getInitialProps = ({ ctx }) => {
   //console.log(ctx.req);
 
   
@@ -52,7 +54,7 @@ const client = new ApolloClient({
   return {
     token: cookies.token
   }; 
-  
-}; 
+   
+};   */
 
-export default MyApp
+export default withApollo(MyApp)
