@@ -4,7 +4,7 @@ const { makeSchema } = require('nexus')
 //const { PrismaClient } = require('@prisma/client')
 const { permissions } = require('./permissions')
 const types = require('./types')
-import { graphql, make } from 'graphql'
+import { graphql } from 'graphql'
 import { applyMiddleware } from 'graphql-middleware'
 
 //const prisma = new PrismaClient()
