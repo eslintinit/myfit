@@ -18,6 +18,7 @@ export default () => (
       <S.Info>
         <img src='https://i.imgur.com/7wnzfta.png' />
         <Photo />
+        <p>Change picture</p>
       </S.Info>
     </S.CoverImage>
     <S.Box>
@@ -41,12 +42,24 @@ export default () => (
       </S.Info>
       <S.Info>
         <S.Text>About new video content</S.Text>
+        <S.Switcher>
+          <S.SwitcherBg></S.SwitcherBg>
+          <S.Ellipse></S.Ellipse>
+        </S.Switcher>
       </S.Info>
       <S.Info>
         <S.Text>About new product</S.Text>
+        <S.Switcher>
+          <S.SwitcherBg></S.SwitcherBg>
+          <S.Ellipse></S.Ellipse>
+        </S.Switcher>
       </S.Info>
       <S.Info>
         <S.Text>MyFit Updates</S.Text>
+        <S.Switcher>
+          <S.SwitcherBg></S.SwitcherBg>
+          <S.Ellipse></S.Ellipse>
+        </S.Switcher>
       </S.Info>
     </S.Box>
     <S.Box>

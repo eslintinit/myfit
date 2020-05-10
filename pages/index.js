@@ -12,7 +12,7 @@ export default ({ workouts }) => {
           as={`/workouts/${workout.url}`}
           key={workout.id}
         >
-          <S.Card image={workout.image.url}>
+          <S.Card height={workout.height} image={workout.image.url}>
             <S.Title>{workout.name}</S.Title>
             <S.Subtitle>{`${workout.exercices.length} exercises`}</S.Subtitle>
           </S.Card>
