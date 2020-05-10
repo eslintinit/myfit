@@ -1,3 +1,5 @@
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 const { compare, hash } = require('bcryptjs')
 const { sign } = require('jsonwebtoken')
 const { idArg, mutationType, stringArg } = require('nexus')
@@ -14,7 +16,7 @@ const Mutation = mutationType({
       },
       resolve: async (parent, { name, email, password }, ctx) => {
         const hashedPassword = await hash(password, 10)
-        const user = await ctx.prisma.user.create({
+        const user = await prisma.user.create({
           data: {
             name,
             email,
