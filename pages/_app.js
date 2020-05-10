@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps, token }) {
 const cache = new InMemoryCache();
 const link = new HttpLink({
   headers: { "Authorization": "Bearer " + token},
-  uri: "http://localhost:4000/",
+  uri: "http://90.188.249.253:4000/",
   fetch
   
 });
