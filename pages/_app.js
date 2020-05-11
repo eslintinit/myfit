@@ -5,12 +5,12 @@ import Layout from 'components/Layout'
 
 import 'styles/index.css'
 
-import { ApolloClient } from "apollo-boost";
-import { HttpLink } from "apollo-link-http";
-import { ApolloProvider } from "@apollo/react-hoc";
-import { InMemoryCache } from "apollo-cache-inmemory";
-import fetch from 'node-fetch';
-import { parseCookies } from "../lib/parseCookies";
+import { ApolloClient } from 'apollo-boost'
+import { HttpLink } from 'apollo-link-http'
+import { ApolloProvider } from '@apollo/react-hoc'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import fetch from 'node-fetch'
+import { parseCookies } from '../lib/parseCookies'
 import Redirect from '../components/Redirect'
 
 // https://vimeo.com/108980280 - Canyon
@@ -28,62 +28,52 @@ function MyApp({ Component, pageProps, token }) {
     route === '/player/two' ||
     route === '/player/three' ||
     route === '/faq' ||
-    route === '/slash_screen' ||
-    route === '/wellcome_screen' ||
-    route === '/onboarding' ||
-    route === '/login' ||
-    route === '/sign_up'
- 
+    route === '/auth/slash_screen' ||
+    route === '/auth/welcome' ||
+    route === '/auth/onboarding' ||
+    route === '/auth/login' ||
+    route === '/auth/signup'
 
-    const cache = new InMemoryCache();
-    const link = new HttpLink({
-      headers: { "Authorization": "Bearer " + token},
-      uri: "http://localhost:4000/",
-      fetch
-      
-    });
-    
-    const client = new ApolloClient({
-      link,
-      cache
-    });
-      
+  const cache = new InMemoryCache()
+  const link = new HttpLink({
+    headers: { Authorization: 'Bearer ' + token },
+    uri: 'http://localhost:4000/',
+    fetch,
+  })
+
+  const client = new ApolloClient({
+    link,
+    cache,
+  })
 
   return (
     <>
-    <ApolloProvider client={client}>
-      <>
-        <Reset />
-        <FontsStyles />
-      </>
-      <Redirect>
-      {hideLayout ? (
-        
-        <Component {...pageProps} />
-        
-      ) : (
-        
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      
-      )}
-      </Redirect>
-    </ApolloProvider>
+      <ApolloProvider client={client}>
+        <>
+          <Reset />
+          <FontsStyles />
+        </>
+        <Redirect>
+          {hideLayout ? (
+            <Component {...pageProps} />
+          ) : (
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          )}
+        </Redirect>
+      </ApolloProvider>
     </>
   )
 }
 
-
 MyApp.getInitialProps = ({ ctx }) => {
-  //console.log(ctx.req);  
-    const cookies = parseCookies(ctx.req);
-    console.log("cookies = ", cookies);
+  //console.log(ctx.req);
+  const cookies = parseCookies(ctx.req)
+  console.log('cookies = ', cookies)
   return {
-    token: cookies.token
-  };  
-}; 
-
-
+    token: cookies.token,
+  }
+}
 
 export default MyApp

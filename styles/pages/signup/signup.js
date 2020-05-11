@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion, AnimatePresence } from 'framer-motion'
 
 import { BLACK, DARK_GREY, GREY, PRIMARY } from 'styles/colors'
 
@@ -21,7 +22,7 @@ export const NavigationBar = styled.div`
   padding: 16px;
 `
 
-export const InfoBlock = styled.div`
+export const InfoBlock = styled(motion.div)`
   border-radius: 20px 20px 0px 0px;
   background: #ffffff;
   padding: 24px 16px;
@@ -85,7 +86,6 @@ export const Input = styled.input`
 export const SignUp = styled.div`
   border-radius: 8px;
   padding: 15px 16px;
-  margin-top: 40px;
   text-align: center;
   font-weight: bold;
   font-size: 14px;

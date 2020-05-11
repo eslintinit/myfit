@@ -14,37 +14,33 @@ import SignOut from 'public/icons/SignOut.svg'
 import * as S from 'styles/components/Sidebar'
 import { PRIMARY } from 'styles/colors'
 
-import { useQuery } from '@apollo/react-hooks';
-import gql from "graphql-tag";
-import Cookie from 'js-cookie';
+import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag'
+import Cookie from 'js-cookie'
 
 export default ({ show, close }) => {
   const { route } = useRouter()
   const router = useRouter()
-  
 
   const GET_MY_NAME = gql`
-    
-  query {
-    me {
-   name
-  }   
-  }
- 
-`;
-
+    query {
+      me {
+        name
+      }
+    }
+  `
 
   const signOut = (e) => {
-    e.preventDefault();
-    Cookie.remove('token');
-    router.push('/wellcome_screen')
-  };
+    e.preventDefault()
+    Cookie.remove('token')
+    router.push('/welcome')
+  }
 
   const { error, data } = useQuery(GET_MY_NAME)
 
   if (error) {
-    Cookie.remove('token');
-    router.push('/wellcome_screen')
+    Cookie.remove('token')
+    router.push('/welcome')
   }
 
   const homeActive =
@@ -66,7 +62,13 @@ export default ({ show, close }) => {
             style={{ width: '33%', marginBottom: '16px' }}
           />
           <S.Text>Hej,</S.Text>
-          <S.Text>{data && data.me.name ? <S.Text>{data.me.name}</S.Text> : <S.Text>Loading...</S.Text>}</S.Text>
+          <S.Text>
+            {data && data.me.name ? (
+              <S.Text>{data.me.name}</S.Text>
+            ) : (
+              <S.Text>Loading...</S.Text>
+            )}
+          </S.Text>
         </S.Account>
         <S.MenuPoints>
           <Link href="/">
@@ -123,7 +125,7 @@ export default ({ show, close }) => {
         <S.Logout>
           <S.Point>
             <SignOut />
-            <S.TextPoint  onClick ={(e) => signOut(e)}>Sign Out</S.TextPoint>
+            <S.TextPoint onClick={(e) => signOut(e)}>Sign Out</S.TextPoint>
           </S.Point>
         </S.Logout>
       </S.OpenMenu>

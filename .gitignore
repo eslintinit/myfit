@@ -9,3 +9,5 @@ sw.js
 sw.map.js
 workbox-*.js
 workbox-*.js.map
+
+.vercel

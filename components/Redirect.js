@@ -5,33 +5,30 @@ import Logo from 'public/LogoWhite.svg'
 
 import * as S from 'styles/pages/slash_screen'
 
-
 export default ({ children }) => {
+  const router = useRouter()
+  const { route } = useRouter()
 
-const router = useRouter()
-const { route } = useRouter()
+  const cancelRedirect =
+    route === '/auth/welcome' ||
+    route === '/auth/login' ||
+    route === '/auth/signup' ||
+    route === '/auth/onboarding'
 
-const cancelRedirect = 
-route === '/wellcome_screen' ||
-route === '/login' ||
-route === '/sign_up'
+  const token = Cookie.get('token')
 
-const token = Cookie.get('token');
+  if (typeof window !== 'undefined') {
+    if (!token && !cancelRedirect) {
+      router.push('/auth/onboarding')
+    }
+  }
 
-if (typeof window !== 'undefined') {
-console.log("tut = " + token);
-if (!token && !cancelRedirect ) {
- router.push('/wellcome_screen');
-}
-}
+  if (!token && !cancelRedirect)
+    return (
+      <S.Bg>
+        <Logo />
+      </S.Bg>
+    )
 
-
-if (!token && !cancelRedirect) return(
-    <S.Bg>
-      <Logo />
-    </S.Bg>
-   )
-
-if (token || cancelRedirect ) return (children)
-  
+  if (token || cancelRedirect) return children
 }
