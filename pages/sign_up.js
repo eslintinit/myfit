@@ -25,6 +25,8 @@ export default () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [errorStyle, setErrorStyle] = useState(false)
+
   const router = useRouter();
 
   const SIGNUP_USER = gql`
@@ -35,6 +37,8 @@ export default () => {
   }
 `;
 
+
+
 const [signUp] = useMutation(SIGNUP_USER, {
   onCompleted({ signup }) {
     console.log("Get token value = ", signup.token);
@@ -42,7 +46,6 @@ const [signUp] = useMutation(SIGNUP_USER, {
     router.push('/')
   }
 });
- 
   return (
     <div>
       <S.Bg>
@@ -80,7 +83,14 @@ const [signUp] = useMutation(SIGNUP_USER, {
               placeholder="Enter email"
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value); 
+              }}
+              onBlur={() => {
+                if (!validate(email)) setErrorStyle(true);
+                else setErrorStyle(false);
+              }}
+              style={errorStyle ? {color: 'red'} : null}
             />
           </S.Field>
           <S.Text>Password</S.Text>
@@ -91,6 +101,7 @@ const [signUp] = useMutation(SIGNUP_USER, {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              
             />
             <NoSee />
           </S.Field>
@@ -114,3 +125,12 @@ const [signUp] = useMutation(SIGNUP_USER, {
     </div>
   )
 }
+function newFunction_1(email, setErrorStyle) {
+  newFunction(email, setErrorStyle);
+}
+
+function newFunction(email, setErrorStyle) {
+  if (validate(email))
+    setErrorStyle(false);
+}
+

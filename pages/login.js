@@ -22,6 +22,8 @@ export default () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [errorStyle, setErrorStyle] = useState(false)
+
   const router = useRouter()
 
   const LOGIN_USER = gql`
@@ -37,10 +39,19 @@ const [login, { error }] = useMutation(LOGIN_USER, {
     console.log("Get token value = ", login.token);
     Cookie.set('token', login.token);
     router.push('/')
+    
   }
+  
 });
 
-if (error) alert('Invalid Email or Password')
+
+
+
+
+
+
+
+
 
   return (
     <div>
@@ -66,25 +77,28 @@ if (error) alert('Invalid Email or Password')
               placeholder="myfit@gmailcom"
               type="email"        
               value={email}
-              onChange={(e) => setEmail(e.target.value)}              
+              onChange={(e) =>{setErrorStyle(false); setEmail(e.target.value)}} 
+              style={errorStyle && (email && password !== '') ? {color: 'red'} : null}             
             />
           </S.Email>
           <S.Text>Password</S.Text>
-          <S.Password>
-            <Key />
+          <S.Password >
+            <Key style={error ? {color: 'red'} : null} />
             <S.Input
               placeholder="Input password"
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {setErrorStyle(false); setPassword(e.target.value)}}
+              style={errorStyle ? {color: 'red'} : null}
             />
             <NoSee />
-          </S.Password>
+          </S.Password >
           <S.RedText>Forgot password?</S.RedText>
           <S.Login onClick={ 
             (e) => {
             e.preventDefault();
             login({ variables:{ email, password } });
+            if (error) setErrorStyle(true);
             }
             } active={email && password !== ''}>
             Login
