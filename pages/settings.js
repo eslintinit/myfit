@@ -14,21 +14,23 @@ import * as S from 'styles/pages/settings'
 export default () => (
   <S.Content>
     <S.CoverImage>
-      <S.TextBold>Your cover image</S.TextBold>
-      <S.Info>
+      <S.TextImage>Your cover image</S.TextImage>
+      <S.InfoImage>
         <img src='https://i.imgur.com/7wnzfta.png' />
+        <S.Upload>
         <Photo />
-        <p>Change picture</p>
-      </S.Info>
+        <S.PictureText>Change picture</S.PictureText>
+        </S.Upload>
+      </S.InfoImage>
     </S.CoverImage>
     <S.Box>
-      <S.Text>Full Name</S.Text>
-      <S.Info>
+      <S.TextPersonal>Full Name</S.TextPersonal>
+      <S.InfoName>
         <Profile />
         <S.UserText>Susie Little</S.UserText>
         <Arrow />
-      </S.Info>
-      <S.Text>Email</S.Text>
+      </S.InfoName>
+      <S.TextPersonal>Email</S.TextPersonal>
       <S.Info>
         <Email />
         <S.UserText>myfit@gmail.com</S.UserText>
@@ -40,27 +42,27 @@ export default () => (
         <Notification />
         <S.TextBold>Send me push notification</S.TextBold>
       </S.Info>
-      <S.Info>
+      <S.InfoNotification>
         <S.Text>About new video content</S.Text>
         <S.Switcher>
           <S.SwitcherBg></S.SwitcherBg>
           <S.Ellipse></S.Ellipse>
         </S.Switcher>
-      </S.Info>
-      <S.Info>
+      </S.InfoNotification>
+      <S.InfoNotification>
         <S.Text>About new product</S.Text>
         <S.Switcher>
           <S.SwitcherBg></S.SwitcherBg>
           <S.Ellipse></S.Ellipse>
         </S.Switcher>
-      </S.Info>
-      <S.Info>
+      </S.InfoNotification>
+      <S.InfoNotification>
         <S.Text>MyFit Updates</S.Text>
         <S.Switcher>
           <S.SwitcherBg></S.SwitcherBg>
           <S.Ellipse></S.Ellipse>
         </S.Switcher>
-      </S.Info>
+      </S.InfoNotification>
     </S.Box>
     <S.Box>
       <S.Info>
