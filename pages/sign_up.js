@@ -78,7 +78,7 @@ const [signUp] = useMutation(SIGNUP_USER, {
               value={name}
               onChange={(e) => setName(e.target.value)}
               onBlur={() => {
-                if (!regName.test(name) && TypeNameMetaFieldDef !== '') setErrorName(true);
+                if (!regName.test(name) && name !== '') setErrorName(true);
                 else setErrorName(false);
               }}
               style={errorName ? {color: 'red'} : null}
