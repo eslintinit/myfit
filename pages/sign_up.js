@@ -25,7 +25,10 @@ export default () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [errorStyle, setErrorStyle] = useState(false)
+  const regName = /^[a-zA-Z]+ [a-zA-Z]/
+
+  const [errorName, setErrorName] = useState(false)
+  const [errorEmail, setErrorEmail] = useState(false)
 
   const router = useRouter();
 
@@ -74,6 +77,11 @@ const [signUp] = useMutation(SIGNUP_USER, {
               type="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              onBlur={() => {
+                if (!regName.test(name) && TypeNameMetaFieldDef !== '') setErrorName(true);
+                else setErrorName(false);
+              }}
+              style={errorName ? {color: 'red'} : null}
             />
           </S.Field>
           <S.Text>Email</S.Text>
@@ -87,10 +95,10 @@ const [signUp] = useMutation(SIGNUP_USER, {
                 setEmail(e.target.value); 
               }}
               onBlur={() => {
-                if (!validate(email)) setErrorStyle(true);
-                else setErrorStyle(false);
+                if (!validate(email) && email !== '') setErrorEmail(true);
+                else setErrorEmail(false);
               }}
-              style={errorStyle ? {color: 'red'} : null}
+              style={errorEmail ? {color: 'red'} : null}
             />
           </S.Field>
           <S.Text>Password</S.Text>
@@ -117,20 +125,12 @@ const [signUp] = useMutation(SIGNUP_USER, {
             e.preventDefault();
             signUp({variables: {name, email, password }});
           }
-          } active={password && validate(email) && name !== ''}>
+          } active={password && validate(email) && regName.test(name) !== ''}>
             Create Account
           </S.SignUp>
         </S.InfoBlock>
       </S.Bg>
     </div>
   )
-}
-function newFunction_1(email, setErrorStyle) {
-  newFunction(email, setErrorStyle);
-}
-
-function newFunction(email, setErrorStyle) {
-  if (validate(email))
-    setErrorStyle(false);
 }
 
