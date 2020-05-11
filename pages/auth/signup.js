@@ -25,12 +25,14 @@ export default () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [authCode, setAuthCode] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
   const regName = /^[a-zA-Z]+ [a-zA-Z]/
 
   const [errorName, setErrorName] = useState(false)
   const [errorEmail, setErrorEmail] = useState(false)
+  const [errorAuthCode, setErrorAuthCode] = useState(false)
 
   const router = useRouter()
 
@@ -94,10 +96,6 @@ export default () => {
                 type="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                onBlur={() => {
-                  if (!regName.test(name) && name !== '') setErrorName(true)
-                  else setErrorName(false)
-                }}
                 style={errorName ? { color: 'red' } : null}
               />
             </S.Field>
@@ -136,7 +134,19 @@ export default () => {
             <S.Text>Authentication Cod</S.Text>
             <S.Field>
               <Lock />
-              <S.Input placeholder="Enter Code" />
+              <S.Input
+                placeholder="Enter Code"
+                value={authCode}
+                onChange={(e) => setAuthCode(e.target.value)}
+                onBlur={() => {
+                  if (authCode !== '' && authCode !== '1234') {
+                    setErrorAuthCode(true)
+                  } else {
+                    setErrorAuthCode(false)
+                  }
+                }}
+                style={errorAuthCode ? { color: 'red' } : null}
+              />
               <Info />
             </S.Field>
             <S.SignUp

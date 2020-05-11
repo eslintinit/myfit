@@ -9,12 +9,9 @@ export const HeroVideos = styled.div`
 `
 
 export const BigCard = styled.div`
-  background-image: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.5) 100%
-    ),
-    url('https://i.imgur.com/e3Fkael.png');
+  background: url(${(props) => props.image});
+  background-size: cover;
+
   border-radius: 8px;
   width: 78vw;
   height: 228px;
