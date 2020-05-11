@@ -102,3 +102,7 @@ export const Login = styled.div`
     background: rgba(250, 69, 4, 0.2);
   `}
 `
+
+export const Error = styled.span`
+  color: red;
+`

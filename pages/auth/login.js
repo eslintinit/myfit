@@ -35,7 +35,7 @@ export default () => {
     }
   `
 
-  const [login, { error }] = useMutation(LOGIN_USER, {
+  const [login, { error, data }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
       console.log('Get token value = ', login.token)
       Cookie.set('token', login.token)
@@ -81,7 +81,15 @@ export default () => {
                 */}
               </div>
             </S.Caption>
-            <S.Text>Email</S.Text>
+            <S.Text
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              Email {error && <S.Error>Something is wrong</S.Error>}
+            </S.Text>
             <S.Email>
               <Email />
               <S.Input
@@ -93,9 +101,7 @@ export default () => {
                   setEmail(e.target.value)
                 }}
                 style={
-                  errorStyle && email && password !== ''
-                    ? { color: 'red' }
-                    : null
+                  error && email && password !== '' ? { color: 'red' } : null
                 }
               />
             </S.Email>

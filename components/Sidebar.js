@@ -33,14 +33,14 @@ export default ({ show, close }) => {
   const signOut = (e) => {
     e.preventDefault()
     Cookie.remove('token')
-    router.push('/welcome')
+    router.push('/auth/welcome')
   }
 
   const { error, data } = useQuery(GET_MY_NAME)
 
   if (error) {
     Cookie.remove('token')
-    router.push('/welcome')
+    router.push('/auth/welcome')
   }
 
   const homeActive =
@@ -61,7 +61,7 @@ export default ({ show, close }) => {
             src="https://i.imgur.com/PtZghFA.png"
             style={{ width: '33%', marginBottom: '16px' }}
           />
-          <S.Text>Hej,</S.Text>
+          <S.Text>Hey,</S.Text>
           <S.Text>
             {data && data.me.name ? (
               <S.Text>{data.me.name}</S.Text>

@@ -23,12 +23,12 @@ export default ({ children }) => {
     }
   }
 
-  if (!token && !cancelRedirect)
-    return (
-      <S.Bg>
-        <Logo />
-      </S.Bg>
-    )
+  if (!token && !cancelRedirect) return children
+  // (
+  // <S.Bg>
+  //   <Logo />
+  // </S.Bg>
+  // )
 
   if (token || cancelRedirect) return children
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
@@ -133,9 +133,13 @@ const DetailedButton = styled.div`
 `
 
 export default ({ exercise }) => {
-  const { back } = useRouter()
+  const { back, push } = useRouter()
 
   const [isFavorite, setFavorite] = useState(false)
+
+  useEffect(() => {
+    window.scrollTo(0, 150)
+  }, [])
 
   return (
     <div
@@ -146,8 +150,8 @@ export default ({ exercise }) => {
         justifyContent: 'space-between',
       }}
     >
-      <Header>
-        <Back style={{ zIndex: 2 }} onClick={back} />
+      <Header style={{ zIndex: 2 }}>
+        <Back onClick={() => push('/combos')} />
       </Header>
       {/*
       {exercise.video && (
@@ -165,7 +169,7 @@ export default ({ exercise }) => {
       )}
       */}
       <Player />
-      <Content>
+      <Content style={{ marginTop: 0 }}>
         <ContentHeader>
           <Name>Exercise 1</Name>
           <Description>
