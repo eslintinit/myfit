@@ -4,26 +4,27 @@ import { BLACK, DARK_GREY, SOFT_ORANGE } from 'styles/colors'
 
 export const Workouts = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;
-  height: calc(100vh - 100px);
+  justify-content: flex-start;
+  height: 1044px;
   margin-top: 24px;
 `
 export const Card = styled.div`
   flex-basis: calc(50% - 8px);
   background-image: url(${(props) => props.image});
   border-radius: 8px;
-  height: 200px;
+  height: ${(props) => props.height}px;
+  max-height: ${(props) => props.height}px;
   margin-bottom: 16px;
   padding: 16px 12px;
-  box-sizing: border-box;
-  :nth-child(2) {
-    margin-left: 16px;
-  }
   background-size: cover;
+  :nth-child(-n + 4) {
+    margin-right: 16px;
+  }
+  box-sizing: content-box;
 `
+
 export const Title = styled.h2`
   color: ${BLACK};
   font-size: 18px;
