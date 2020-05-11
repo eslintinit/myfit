@@ -3,20 +3,25 @@ import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
 import Layout from 'components/Layout'
 
+import Cookie from 'js-cookie'
+
 import 'styles/index.css'
 
 import { ApolloClient } from 'apollo-boost'
 import { HttpLink } from 'apollo-link-http'
 import { ApolloProvider } from '@apollo/react-hoc'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import fetch from 'node-fetch'
+import fetch from 'isomorphic-unfetch'
 import { parseCookies } from '../lib/parseCookies'
 
 import Redirect from '../components/Redirect'
 
 // https://vimeo.com/108980280 - Canyon
 // https://vimeo.com/248940683 - Apple Watch
-function MyApp({ Component, pageProps, token }) {
+function MyApp({ Component, pageProps }) {
+
+  const token = Cookie.get('token')
+
   const { route } = useRouter()
   console.log(route)
   const hideLayout =
@@ -39,13 +44,14 @@ function MyApp({ Component, pageProps, token }) {
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'http://localhost:4000/',
+    uri: 'http://90.188.249.253:4000/',
     fetch,
   })
 
   const client = new ApolloClient({
     link,
     cache,
+    
   })
 
   return (
@@ -69,14 +75,16 @@ function MyApp({ Component, pageProps, token }) {
   )
 }
 
-MyApp.getInitialProps = ({ ctx }) => {
-  //console.log(ctx.req);
+
+
+/* MyApp.getInitialProps = ({ ctx }) => {
+  console.log('ctx.req = ', ctx.req.headers);
   const cookies = parseCookies(ctx.req)
   // const cookies = parseCookies(req);
   console.log('cookies = ', cookies)
   return {
     token: cookies.token,
   }
-}
+} */
 
 export default MyApp
