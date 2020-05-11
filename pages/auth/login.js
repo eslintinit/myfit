@@ -15,7 +15,7 @@ import EyeClosed from 'public/icons/NoSeeG.svg'
 import Email from 'public/icons/Email.svg'
 import Key from 'public/icons/Key.svg'
 
-import * as S from 'styles/pages/signup/login'
+import * as S from 'styles/pages/auth/login'
 import { GREY, BLACK } from 'styles/colors'
 
 export default () => {
@@ -47,7 +47,7 @@ export default () => {
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back onClick={() => router.push('/signup/welcome')} />
+          <Back onClick={() => router.push('/auth/welcome')} />
         </S.NavigationBar>
         <AnimatePresence>
           <S.InfoBlock

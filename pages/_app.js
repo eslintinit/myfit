@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps, token }) {
     route === '/auth/login' ||
     route === '/auth/signup'
 
-// http://90.188.249.253:4000/
+  // http://90.188.249.253:4000/
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
@@ -69,18 +69,11 @@ function MyApp({ Component, pageProps, token }) {
   )
 }
 
-<<<<<<< HEAD
 MyApp.getInitialProps = ({ ctx }) => {
   //console.log(ctx.req);
   const cookies = parseCookies(ctx.req)
+  // const cookies = parseCookies(req);
   console.log('cookies = ', cookies)
-=======
-
-MyApp.getInitialProps = ({ req })  => {
-    //console.log('req = ', req.cookie);  
-    const cookies = parseCookies(req);
-    console.log("cookies = ", cookies);
->>>>>>> d8fa244b4c158a5864a66a60b17bc16ddb0b4653
   return {
     token: cookies.token,
   }

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
@@ -18,7 +19,7 @@ import Lock from 'public/icons/Lock.svg'
 import Photo from 'public/icons/Photo.svg'
 import Profile from 'public/icons/Profile.svg'
 
-import * as S from 'styles/pages/sign_up'
+import * as S from 'styles/pages/auth/signup'
 
 export default () => {
   const [name, setName] = useState('')
@@ -52,97 +53,103 @@ export default () => {
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back onClick={() => router.push('/wellcome_screen')} />
+          <Back onClick={() => router.push('/auth/welcome')} />
         </S.NavigationBar>
-        <S.InfoBlock>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              marginBottom: '16px',
-            }}
+        <AnimatePresence>
+          <S.InfoBlock
+            initial={{ marginBottom: -608 }}
+            animate={{ marginBottom: 0 }}
+            exit={{ marginBottom: -608 }}
           >
-            <S.Line></S.Line>
-            <S.Line></S.Line>
-            <S.Line></S.Line>
-            <S.Line></S.Line>
-          </div>
-          <S.Caption>
-            <S.TextBold>New Account</S.TextBold>
             <div
               style={{
                 display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-end',
+                flexDirection: 'row',
+                marginBottom: '16px',
               }}
             >
-              <Photo style={{ marginBottom: '8px' }} />
-              <S.Text>Upload picture</S.Text>
+              <S.Line></S.Line>
+              <S.Line></S.Line>
+              <S.Line></S.Line>
+              <S.Line></S.Line>
             </div>
-          </S.Caption>
-          <S.Text>Full name</S.Text>
-          <S.Field>
-            <Profile />
-            <S.Input
-              placeholder="Enter your name"
-              type="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              onBlur={() => {
-                if (!regName.test(name) && name !== '') setErrorName(true)
-                else setErrorName(false)
+            <S.Caption>
+              <S.TextBold>New Account</S.TextBold>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                }}
+              >
+                <Photo style={{ marginBottom: '8px' }} />
+                <S.Text>Upload picture</S.Text>
+              </div>
+            </S.Caption>
+            <S.Text>Full name</S.Text>
+            <S.Field>
+              <Profile />
+              <S.Input
+                placeholder="Enter your name"
+                type="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                onBlur={() => {
+                  if (!regName.test(name) && name !== '') setErrorName(true)
+                  else setErrorName(false)
+                }}
+                style={errorName ? { color: 'red' } : null}
+              />
+            </S.Field>
+            <S.Text>Email</S.Text>
+            <S.Field>
+              <Email />
+              <S.Input
+                placeholder="Enter email"
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                }}
+                onBlur={() => {
+                  if (!validate(email) && email !== '') setErrorEmail(true)
+                  else setErrorEmail(false)
+                }}
+                style={errorEmail ? { color: 'red' } : null}
+              />
+            </S.Field>
+            <S.Text>Password</S.Text>
+            <S.Field>
+              <Key />
+              <S.Input
+                placeholder="Create password"
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {showPassword ? (
+                <EyeOpened onClick={() => setShowPassword(false)} />
+              ) : (
+                <EyeClosed onClick={() => setShowPassword(true)} />
+              )}
+            </S.Field>
+            <S.Text>Authentication Cod</S.Text>
+            <S.Field>
+              <Lock />
+              <S.Input placeholder="Enter Code" />
+              <Info />
+            </S.Field>
+            <S.SignUp
+              onClick={(e) => {
+                e.preventDefault()
+                signUp({ variables: { name, email, password } })
               }}
-              style={errorName ? { color: 'red' } : null}
-            />
-          </S.Field>
-          <S.Text>Email</S.Text>
-          <S.Field>
-            <Email />
-            <S.Input
-              placeholder="Enter email"
-              type="email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value)
-              }}
-              onBlur={() => {
-                if (!validate(email) && email !== '') setErrorEmail(true)
-                else setErrorEmail(false)
-              }}
-              style={errorEmail ? { color: 'red' } : null}
-            />
-          </S.Field>
-          <S.Text>Password</S.Text>
-          <S.Field>
-            <Key />
-            <S.Input
-              placeholder="Create password"
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {showPassword ? (
-              <EyeOpened onClick={() => setShowPassword(false)} />
-            ) : (
-              <EyeClosed onClick={() => setShowPassword(true)} />
-            )}
-          </S.Field>
-          <S.Text>Authentication Cod</S.Text>
-          <S.Field>
-            <Lock />
-            <S.Input placeholder="Enter Code" />
-            <Info />
-          </S.Field>
-          <S.SignUp
-            onClick={(e) => {
-              e.preventDefault()
-              signUp({ variables: { name, email, password } })
-            }}
-            active={password && validate(email) && regName.test(name) !== ''}
-          >
-            Create Account
-          </S.SignUp>
-        </S.InfoBlock>
+              active={password && validate(email) && regName.test(name) !== ''}
+            >
+              Create Account
+            </S.SignUp>
+          </S.InfoBlock>
+        </AnimatePresence>
       </S.Bg>
     </div>
   )

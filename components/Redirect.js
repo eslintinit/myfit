@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 
 import Logo from 'public/LogoWhite.svg'
 
-import * as S from 'styles/pages/slash_screen'
+import * as S from 'styles/pages/auth/slash_screen'
 
 export default ({ children }) => {
   const router = useRouter()

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Arrow from 'public/icons/ArrowWhite.svg'
 
-import * as S from 'styles/pages/onboarding'
+import * as S from 'styles/pages/auth/onboarding'
 
 export default () => (
   <div>
@@ -20,7 +20,7 @@ export default () => (
           </S.Points>
         </S.Text>
       </S.VideoBg>
-      <Link href="/signup/welcome_screen">
+      <Link href="/auth/welcome">
         <S.Button>
           <p>Get Started</p>
           <Arrow />
