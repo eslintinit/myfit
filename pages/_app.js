@@ -9,7 +9,7 @@ import { ApolloClient } from "apollo-boost";
 import { HttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hoc";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import fetch from 'node-fetch';
+import fetch from 'node-fetch'
 import { parseCookies } from "../lib/parseCookies";
 import Redirect from '../components/Redirect'
 
@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps, token }) {
     const cache = new InMemoryCache();
     const link = new HttpLink({
       headers: { "Authorization": "Bearer " + token},
-      uri: "http://localhost:4000/",
+      uri: "http://90.188.249.253:4000/",
       fetch
       
     });
@@ -75,9 +75,9 @@ function MyApp({ Component, pageProps, token }) {
 }
 
 
-MyApp.getInitialProps = ({ ctx }) => {
-  //console.log(ctx.req);  
-    const cookies = parseCookies(ctx.req);
+MyApp.getInitialProps = ({ req })  => {
+    //console.log('req = ', req.cookie);  
+    const cookies = parseCookies(req);
     console.log("cookies = ", cookies);
   return {
     token: cookies.token
