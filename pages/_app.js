@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'http://backend:4000/graphql',
+    uri: 'https://myfit.jjjuk.now.sh/graphql',
     fetch,
   })
 
