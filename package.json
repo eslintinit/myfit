@@ -7,7 +7,7 @@
     "start": "next start && node src"
   },
   "dependencies": {
-    "@prisma/client": "2.0.0-alpha.1207",
+    "@prisma/client": "2.0.0-beta.2",
     "@svgr/webpack": "^5.3.1",
     "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",
@@ -54,7 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
-    "@prisma/cli": "2.0.0-alpha.1207"
+    "@prisma/cli": "2.0.0-beta.2"
   },
   "prettier": {
     "singleQuote": true,
