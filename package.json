@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start && node src"
   },
   "dependencies": {
     "@svgr/webpack": "^5.3.1",
