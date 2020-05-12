@@ -41,4 +41,4 @@ server.start(
   );
   
   
-  export default server.createHandler({ path: '/graphql' })
+  //export default server.createHandler({ path: '/graphql' })
