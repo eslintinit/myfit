@@ -38,7 +38,7 @@ export default () => {
           <Care />
           <S.TextBold>Please use with care.</S.TextBold>
           <S.Text>
-            Whilst our bands are great are creating resistance, it’s important
+            Whilst our bands are great at creating resistance, it’s important
             that you use them with the safety of your body in mind. Like any
             other gym weights, if you lift too heavy, you can cause damage.
           </S.Text>
