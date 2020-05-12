@@ -40,7 +40,7 @@ export default ({ show, close }) => {
 
   if (error) {
     Cookie.remove('token')
-    router.push('/auth/welcome')
+    router.push('/auth/onboarding')
   }
 
   const homeActive =

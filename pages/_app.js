@@ -12,7 +12,7 @@ import { HttpLink } from 'apollo-link-http'
 import { ApolloProvider } from '@apollo/react-hoc'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'isomorphic-unfetch'
-import { parseCookies } from '../lib/parseCookies'
+//import { parseCookies } from '../lib/parseCookies'
 
 import Redirect from '../components/Redirect'
 
@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'http://90.188.249.253:4000/',
+    uri: 'http://localhost:4000/',
     fetch,
   })
 
