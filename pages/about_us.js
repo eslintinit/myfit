@@ -13,7 +13,7 @@ export default () => {
     <div style={{ marginTop: 24 }}>
       <S.Content>
         <S.ContentTitle>
-          MyFit are a UK company looking to revolutionise the way we workout!
+          MyFit are a UK company looking to revolutionise the way we workout
         </S.ContentTitle>
         <S.Pictures>
           <img
@@ -30,14 +30,22 @@ export default () => {
         </S.Pictures>
         <S.InfoBold>Resistance bands are cool</S.InfoBold>
         <S.InfoNormal>
-          - but they’re a lot cooler when they’ve been created and designed to
-          allow you to replicate nearly all gym workouts. We’ve managed to
-          create resistance from the comfort of your own home without
-          compromising on your workout goals.{' '}
+          - but we’re going a step-ahead to ensure you maximise your potential.
+          Our health experts have devoted a great amount of time in creating a
+          variety of workouts, whatever your health goals are. We’ve managed to
+          create resistance from the comfort of your own home, without
+          compromising on the quality.
+          <br />
+          <br />
+          The exclusive MyFit app is your go-to for all resistance workouts
+          created by our own experts. We aim to regularly upload new workouts to
+          freshen up your workout routine!
         </S.InfoNormal>
         <S.InfoBold>
-          The MyFit app is your go-to for all resistance workouts created by our
-          own experts!{' '}
+          Let’s get fit together.
+          <br />
+          <br />
+          Team MyFit
         </S.InfoBold>
       </S.Content>
       {/*

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { withStyles } from '@material-ui/core/styles'
 
 import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
 
@@ -53,7 +54,6 @@ export const InfoName = styled(Info)`
 
 export const InfoNotification = styled(Info)`
   margin-top: 24px;
-  width: calc(100% - 40px);
 `
 
 export const UserText = styled.p`
