@@ -16,12 +16,12 @@
       "use": "@now/next"
     },
     {
-      "src": "src/index.js",
+      "src": "backend/src/index.js",
       "use": "@now/node"
     }
   ],
   "routes": [
-    { "src": "/graphql", "dest": "/src/index.js" },
+    { "src": "/graphql", "dest": "backend/src/index.js" },
     {
       "src": "/(.*)",
       "dest": "/$1",
