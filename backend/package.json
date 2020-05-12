@@ -14,7 +14,9 @@
     "nexus-prisma": "0.11.1"
   },
   "scripts": {
-    "dev": "node src"
+    "dev": "node src",
+    "postinstall": "yarn prisma:generate",
+    "prisma:generate": "prisma generate --schema=./prisma/schema.prisma"
   },
   "devDependencies": {
     "@prisma/cli": "2.0.0-beta.2"
