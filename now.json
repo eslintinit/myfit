@@ -16,7 +16,7 @@
       "use": "@now/next"
     },
     {
-      "src": "backend/src/index.js",
+      "src": "backend/src",
       "use": "@now/node",
       "config": { "maxLambdaSize": "20mb" }
     }
