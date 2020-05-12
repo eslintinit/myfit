@@ -11,3 +11,5 @@ workbox-*.js
 workbox-*.js.map
 
 .vercel
+
+backend/

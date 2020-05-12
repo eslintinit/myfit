@@ -16,12 +16,12 @@
       "use": "@now/next"
     },
     {
-      "src": "backend/src/index.js",
+      "src": "src/index.js",
       "use": "@now/node-server@canary"
     }
   ],
   "routes": [
-    { "src": "/graphql", "dest": "/backend/src/index.js" },
+    { "src": "/graphql", "dest": "/src/index.js" },
     {
       "src": "/(.*)",
       "dest": "/$1",
