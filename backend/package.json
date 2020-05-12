@@ -2,7 +2,7 @@
   "name": "graphql-auth",
   "version": "1.0.0",
   "dependencies": {
-    "@prisma/client": "2.0.0-beta.2",
+    "@prisma/client": "2.0.0-alpha.1207",
     "bcryptjs": "2.4.3",
     "cookie": "^0.4.1",
     "cookies": "^0.8.0",
@@ -14,12 +14,10 @@
     "nexus-prisma": "0.11.1"
   },
   "scripts": {
-    "dev": "node src",
-    "postinstall": "yarn prisma:generate",
-    "prisma:generate": "prisma generate --schema=./prisma/schema.prisma"
+    "dev": "node src"
   },
   "devDependencies": {
-    "@prisma/cli": "2.0.0-beta.2"
+    "@prisma/cli": "2.0.0-alpha.1207"
   },
   "prettier": {
     "singleQuote": true,
