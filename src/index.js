@@ -14,8 +14,8 @@ const server = new GraphQLServer({
     types,
     plugins: [nexusPrismaPlugin()],
     outputs: {
-      schema: join(__dirname + '/../schema.graphql'),
-      typegen: join(__dirname + '/generated/nexus.ts'),
+      schema: __dirname + '/../schema.graphql',
+      typegen: __dirname + '/generated/nexus.ts',
     },
   }),
   middlewares: [permissions],

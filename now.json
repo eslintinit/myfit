@@ -17,7 +17,7 @@
     },
     {
       "src": "src/index.js",
-      "use": "@now/node-server@canary"
+      "use": "@now/node"
     }
   ],
   "routes": [
