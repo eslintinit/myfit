@@ -17,7 +17,7 @@
     },
     {
       "src": "backend/src/index.js",
-      "use": "@now/node-server",
+      "use": "@now/node-server@0.4.26",
       "config": { "maxLambdaSize": "20mb" }
     }
   ],
