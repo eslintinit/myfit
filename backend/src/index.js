@@ -28,10 +28,10 @@ new GraphQLServer({
     endpoint: '/graphql',
     playground: '/graphql',
     subscriptions: false,
-    cors: {
+    /* cors: {
       credentials: true,
       origin: 'https://myfit.jjjuk.now.sh'
-    }  
+    }   */
   },
   () =>  console.log(`🚀 Server ready`)
   );
