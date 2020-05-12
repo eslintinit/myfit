@@ -5,10 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start && node src",
-    "postinstall": "yarn prisma:generate",
-    "prisma:generate": "prisma generate --schema=./prisma/schema.prisma",
-    "server": "node src"
+    "start": "next start && node src"
   },
   "dependencies": {
     
