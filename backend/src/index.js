@@ -5,15 +5,17 @@ const { PrismaClient } = require('@prisma/client')
 const { permissions } = require('./permissions')
 const types = require('./types')
 
+import { join } from 'path';
+
 const prisma = new PrismaClient()
 
-new GraphQLServer({
+const server = new GraphQLServer({
   schema: makeSchema({
     types,
     plugins: [nexusPrismaPlugin()],
     outputs: {
-      schema: __dirname + '/../schema.graphql',
-      typegen: __dirname + '/generated/nexus.ts',
+      schema: join(__dirname + '/../schema.graphql'),
+      typegen: join(__dirname + '/generated/nexus.ts'),
     },
   }),
   middlewares: [permissions],
@@ -23,7 +25,9 @@ new GraphQLServer({
       prisma,
     }
   },
-}).start(
+})
+
+server.start(
   {
     endpoint: '/graphql',
     playground: '/graphql',
@@ -35,3 +39,6 @@ new GraphQLServer({
   },
   () =>  console.log(`🚀 Server ready`)
   );
+  
+  
+  export default server.createHandler({ path: '/graphql' })
