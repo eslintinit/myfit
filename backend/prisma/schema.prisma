@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://tzdvcjog:heeQJn-NQQSzAfMkgUbuHWbCq-dMxigR@balarama.db.elephantsql.com:5432/tzdvcjog"
+}
+
+model User {
+  email    String? @unique
+  gym      String?
+  id       Int     @default(autoincrement()) @id
+  imgurl   String?
+  name     String?
+  password String?
+
+  @@map (name: "users")
+}
