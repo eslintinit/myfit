@@ -48,7 +48,7 @@ export default () => {
     onCompleted({ signup }) {
       console.log('Get token value = ', signup.token)
       Cookie.set('token', signup.token)
-      router.push('/')
+      router.push('/auth/question')
     },
   })
   return (

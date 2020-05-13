@@ -13,3 +13,4 @@ workbox-*.js.map
 .vercel
 
 backend/
+.vercel

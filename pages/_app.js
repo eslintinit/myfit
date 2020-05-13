@@ -40,11 +40,11 @@ function MyApp({ Component, pageProps }) {
     route === '/auth/login' ||
     route === '/auth/signup'
 
-  // http://90.188.249.253:4000/
+  // https://backend.jjjuk.now.sh/
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'https://myfit.jjjuk.now.sh/graphql',
+    uri: 'http://localhost:4000/',
     fetch,
   })
 
