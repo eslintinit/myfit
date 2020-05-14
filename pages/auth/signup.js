@@ -44,7 +44,7 @@ export default () => {
     }
   `
 
-  const [signUp] = useMutation(SIGNUP_USER, {
+  const [signUp,{ loading }] = useMutation(SIGNUP_USER, {
     onCompleted({ signup }) {
       console.log('Get token value = ', signup.token)
       Cookie.set('token', signup.token)
@@ -88,7 +88,13 @@ export default () => {
                 <S.Text>Upload picture</S.Text>
               </div>
             </S.Caption>
-            <S.Text>Full name</S.Text>
+            <S.Text
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+            >Full name {errorName && <S.Error>Invalid Name</S.Error>}</S.Text>
             <S.Field>
               <Profile />
               <S.Input
@@ -97,9 +103,19 @@ export default () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 style={errorName ? { color: 'red' } : null}
+                onBlur={() => {
+                  if (!regName.test(name) && name !== '') setErrorName(true)
+                  else setErrorName(false)
+                }}
               />
             </S.Field>
-            <S.Text>Email</S.Text>
+              <S.Text
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+              >Email {errorEmail && <S.Error>Invalid Email</S.Error>}</S.Text>
             <S.Field>
               <Email />
               <S.Input
@@ -131,7 +147,7 @@ export default () => {
                 <EyeClosed onClick={() => setShowPassword(true)} />
               )}
             </S.Field>
-            <S.Text>Authentication Cod</S.Text>
+            <S.Text>Authentication Code</S.Text>
             <S.Field>
               <Lock />
               <S.Input
@@ -152,9 +168,9 @@ export default () => {
             <S.SignUp
               onClick={(e) => {
                 e.preventDefault()
-                signUp({ variables: { name, email, password } })
+                if (!loading) signUp({ variables: { name, email, password } })
               }}
-              active={password && validate(email) && regName.test(name) !== ''}
+              active={password && validate(email) && regName.test(name)}
             >
               Create Account
             </S.SignUp>

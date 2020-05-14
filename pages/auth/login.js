@@ -17,6 +17,7 @@ import Key from 'public/icons/Key.svg'
 
 import * as S from 'styles/pages/auth/login'
 import { GREY, BLACK } from 'styles/colors'
+import { route } from 'next/dist/next-server/server/router'
 
 export default () => {
   const [email, setEmail] = useState('')
@@ -30,16 +31,23 @@ export default () => {
   const LOGIN_USER = gql`
     mutation login($email: String!, $password: String!) {
       login(email: $email, password: $password) {
-        token
+        token,
+        user{
+          gym
+        }
       }
     }
   `
 
-  const [login, { error, data }] = useMutation(LOGIN_USER, {
+  const [login, { error, loading }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
+      
       console.log('Get token value = ', login.token)
       Cookie.set('token', login.token)
-      router.push('/')
+      if (login.user.gym !== "none" && 
+          login.user.gym !== "rarely" && 
+          login.user.gym !== "regulary" ) router.push('/auth/question')
+      else router.push('/')
     },
   })
 
@@ -124,13 +132,16 @@ export default () => {
                 <EyeClosed onClick={() => setShowPassword(true)} />
               )}
             </S.Password>
-            {/*
-            <S.RedText>Forgot password?</S.RedText>
-            */}
+            
+            <S.RedText onClick={()=>{              
+              router.push('/auth/resetpassword')
+            }
+            }>Forgot password?</S.RedText>
+            
             <S.Login
               onClick={(e) => {
                 e.preventDefault()
-                login({ variables: { email, password } })
+                if (!loading) login({ variables: { email, password } })
                 if (error) setErrorStyle(true)
               }}
               active={email && password !== ''}

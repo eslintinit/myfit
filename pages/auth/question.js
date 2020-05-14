@@ -28,7 +28,7 @@ export default () => {
       }
     }
   `
-  const [question] = useMutation( QUESTION,{
+  const [question, { loading }] = useMutation( QUESTION,{
     onCompleted({ question }){
       alert(question.gym)
       router.push('/')      
@@ -84,7 +84,7 @@ export default () => {
             (e) =>{
               e.preventDefault()
               const gym = pointOne ? "none" : pointTwo ? "rarely" : "regulary";
-              question({ variables: { gym } })
+              if (!loading) question({ variables: { gym } })
             }
           }
           >

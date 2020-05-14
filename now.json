@@ -1,15 +1,6 @@
 {
   "version": 2,
-  "build": {
-    "env": {
-      "DATOCMS_API_TOKEN": "@datocms_api_token",
-      "DATOCMS_PREVIEW_SECRET": "@datocms_preview_secret"
-    }
-  },
-  "env": {
-    "DATOCMS_API_TOKEN": "@datocms_api_token",
-    "DATOCMS_PREVIEW_SECRET": "@datocms_preview_secret"
-  },
+  
   "builds": [
     {
       "src": "./next.config.js",

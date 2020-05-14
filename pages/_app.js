@@ -38,13 +38,16 @@ function MyApp({ Component, pageProps }) {
     route === '/auth/welcome' ||
     route === '/auth/onboarding' ||
     route === '/auth/login' ||
-    route === '/auth/signup'
+    route === '/auth/signup' ||
+    route === '/auth/question' ||
+    route === '/auth/resetpassword' ||
+    route === '/auth/resetpassword/[resetToken]'
 
   // https://backend.jjjuk.now.sh/
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'http://localhost:4000/',
+    uri: 'https://backend.jjjuk.now.sh',
     fetch,
   })
 
@@ -56,7 +59,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={client}>      
         <>
           <Reset />
           <FontsStyles />
