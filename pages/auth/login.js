@@ -44,9 +44,7 @@ export default () => {
       
       console.log('Get token value = ', login.token)
       Cookie.set('token', login.token)
-      if (login.user.gym !== "none" && 
-          login.user.gym !== "rarely" && 
-          login.user.gym !== "regulary" ) router.push('/auth/question')
+      if (login.user.gym === "" ) router.push('/auth/question')
       else router.push('/')
     },
   })

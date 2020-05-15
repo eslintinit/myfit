@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useMutation } from '@apollo/react-hooks'
 
+import { validate } from 'email-validator'
+
 import { useRouter } from 'next/router'
 
 import gql from 'graphql-tag'
@@ -20,7 +22,22 @@ export default () => {
     const router = useRouter()
     const [email, setEmail] = useState('')
 
+    const [errorStyle, setErrorStyle] = useState(false)
 
+    const REQUEST_RESET = gql`
+    mutation requestReset($email: String!) {
+      requestReset(email: $email) {        
+          name
+          email        
+      }
+    }
+  `
+
+  const [ requestReset, {  error, loading }] = useMutation(REQUEST_RESET, {
+    onCompleted({ requestReset }) {
+      alert(`Dear ${requestReset.name}! Please check your email: ${requestReset.email}`)
+    }
+  })
 
 
 
@@ -77,7 +94,7 @@ export default () => {
                     justifyContent: 'space-between',
                   }}
                 >
-                  Email {/* error && <S.Error>Something is wrong</S.Error> */}
+                  Email { error && <S.Error>Something is wrong</S.Error>} { errorStyle && <S.Error>Invalid Email</S.Error>}
                 </S.Text>
                 <S.Email>
                   <Email />
@@ -86,21 +103,25 @@ export default () => {
                     type="email"
                     value={email}
                     onChange={(e) => {
-                      /* setErrorStyle(false) */
+                       setErrorStyle(false) 
                       setEmail(e.target.value)
                     }}
-                    /* style={
-                       error && email && password !== '' ? { color: 'red' } : null 
-                    } */
+                    onBlur={() => {
+                      if (!validate(email) && email !== '') setErrorStyle(true)
+                      else setErrorStyle(false)
+                    }}
+                     style={
+                       errorStyle && email !== '' ? { color: 'red' } : null 
+                    } 
                   />
                 </S.Email>
                 <S.Login
                   onClick={(e) => {
                     e.preventDefault()
-                    /* if (!loading) login({ variables: { email, password } })
-                    if (error) setErrorStyle(true) */
+                     if (!loading) requestReset({ variables: { email } })
+                   /* if (error) setErrorStyle(true) */
                   }}
-                  active={email !== ''}
+                  active={ validate (email) }
                 >
                   Send reset email
                 </S.Login>

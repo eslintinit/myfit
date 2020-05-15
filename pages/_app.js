@@ -47,7 +47,7 @@ function MyApp({ Component, pageProps }) {
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'https://backend.jjjuk.now.sh',
+    uri: 'http://90.188.249.253:4000',
     fetch,
   })
 

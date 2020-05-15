@@ -16,7 +16,18 @@ export default () => {
   const [pointTwo, setPointTwo] = useState(false)
   const [pointThree, setPointThree] = useState(false)
 
-  //const [gym, setGym] = useState("") 
+  const [round, setRound] = useState(0)
+
+
+ const quiz = [
+  ["How often do you go to the gym?","I don't", "Rarely", "Regulary"],
+  ["Number?","1", "2", "3"],
+  ["Letter?","a", "b", "c"]
+ ]
+
+ const [answer, setAnswer] = useState([])
+   
+ 
 
   
   const router = useRouter()
@@ -31,10 +42,10 @@ export default () => {
   const [question, { loading }] = useMutation( QUESTION,{
     onCompleted({ question }){
       alert(question.gym)
-      router.push('/')      
+      router.push('/')    
     }
 })
- 
+
 
   return (
     <div>
@@ -50,7 +61,7 @@ export default () => {
             <S.Line></S.Line>
             <S.Line></S.Line>
           </div>
-          <S.TextBold>How often do you go to the gym?</S.TextBold>
+          <S.TextBold>{quiz[round][0]}</S.TextBold>
           <S.Points>
             <S.Point1
               onClick={() => {
@@ -60,7 +71,7 @@ export default () => {
                 
               }}
               active={pointOne}
-            >I don`t</S.Point1>
+            >{quiz[round][1]}</S.Point1>
             <S.Point2
             onClick={() => {
               setPointOne(false);
@@ -68,7 +79,7 @@ export default () => {
               setPointThree(false)
               
             }}
-            active={pointTwo}>Rarely</S.Point2>
+            active={pointTwo}>{quiz[round][2]}</S.Point2>
             <S.Point3
             onClick={() => {
               setPointOne(false);
@@ -76,15 +87,26 @@ export default () => {
               setPointThree(!pointThree ? true : false)
                             
             }}
-            active={pointThree}>Regularly</S.Point3>
+            active={pointThree}>{quiz[round][3]}</S.Point3>
           </S.Points>
           <S.BottomNavigation 
           active={pointOne || pointTwo || pointThree}
           onClick={
             (e) =>{
               e.preventDefault()
-              const gym = pointOne ? "none" : pointTwo ? "rarely" : "regulary";
-              if (!loading) question({ variables: { gym } })
+                setAnswer([...answer, quiz[round][ pointOne ? 1 : pointTwo ? 2 : 3]])
+                setPointOne(false);
+                setPointTwo(false);
+                setPointThree(false)
+              
+              if (round === 2) {
+                
+                const gym = answer[0]
+                if (!loading) question({ variables: { gym } })
+              }
+              else setRound(round + 1)
+
+              
             }
           }
           >

@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/react-hooks'
 
 import { useRouter } from 'next/router'
 
+import Cookie from 'js-cookie'
+
 import gql from 'graphql-tag'
 
 import Back from 'public/icons/Back.svg'
@@ -17,7 +19,7 @@ import * as S from 'styles/pages/auth/login'
 
 export default () => {
     const router = useRouter()
-        
+
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
@@ -25,8 +27,26 @@ export default () => {
 
     const [errorStyle, setErrorStyle] = useState(false)
 
-    const resetToken = router.query.resetToken
+    const { resetToken } = router.query
 
+    console.log( "resetToken = ",resetToken)
+
+    const RESET_PASSWORD = gql`
+    mutation resetPassword($password: String! $resetToken: String!) {
+      resetPassword(password: $password resetToken: $resetToken) {        
+          token
+                
+      }
+    }
+  `
+
+  const [ resetPassword, {  error, loading }] = useMutation(RESET_PASSWORD, {
+    onCompleted({ resetPassword }) {
+        Cookie.set('token', resetPassword.token)
+        router.push('/')
+      
+    }
+  })
 
 
 
@@ -57,7 +77,7 @@ export default () => {
                     display: 'flex',
                     justifyContent: 'space-between',
                   }}
-                >Password {/*  error && <S.Error>Reset email expire</S.Error> */ }</S.Text>
+                >Password {  error && <S.Error>Reset email expired</S.Error>  }</S.Text>
             <S.Password>
               <Key />
               <S.Input
@@ -106,6 +126,7 @@ export default () => {
                 <S.Login
                   onClick={(e) => {
                     e.preventDefault()
+                    if (!loading) resetPassword({variables: { password, resetToken }})
                     
                   }}
                   active={(password === confirmPassword) && (password && confirmPassword !== '')}
