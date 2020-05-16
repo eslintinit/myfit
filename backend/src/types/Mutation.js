@@ -53,6 +53,26 @@ const Mutation = mutationType({
         }
       },
     })
+
+    t.field('question', {
+      type: 'User',
+      nullable: true,
+      args: {
+        gym: stringArg(),
+      },      
+      resolve: async (parent, { gym }, ctx) => {
+        const userId =  getUserId(ctx)
+        return await ctx.prisma.user.update({
+          data: {gym},
+          where: {id: userId},          
+        })
+        
+      },
+    })
+
+
+
+
   },
 })
 
