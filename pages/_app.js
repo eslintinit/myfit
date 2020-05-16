@@ -40,7 +40,8 @@ function MyApp({ Component, pageProps }) {
     route === '/auth/signup' ||
     route === '/auth/question' ||
     route === '/auth/resetpassword' ||
-    route === '/auth/resetpassword/[resetToken]'
+    route === '/auth/resetpassword/[resetToken]' ||
+    route === '/notifications'
 
   const cache = new InMemoryCache()
   const link = new HttpLink({

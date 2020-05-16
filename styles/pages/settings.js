@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 import { withStyles } from '@material-ui/core/styles'
 
-import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
+import {
+  BLACK,
+  DARK_GREY,
+  PRIMARY,
+  GREY,
+  SOFT_ORANGE
+} from 'styles/colors'
 
 
 export const Content = styled.div`
@@ -9,8 +15,6 @@ export const Content = styled.div`
   flex-direction: column;
   width: 100vw;
   margin-top: 24px;
-
-  /*background: rgba(0, 0, 0, 0.2);*/
 `
 
 export const CoverImage = styled.div`
@@ -97,6 +101,11 @@ export const PopOver = styled.div`
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  box-sizing: border-box;
+  margin-left: -16px;
 `
 
 export const Caption = styled.div`
