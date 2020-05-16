@@ -9,6 +9,8 @@ export const Content = styled.div`
   flex-direction: column;
   width: 100vw;
   margin-top: 24px;
+
+  /*background: rgba(0, 0, 0, 0.2);*/
 `
 
 export const CoverImage = styled.div`
@@ -89,23 +91,55 @@ export const TextPersonal = styled(Text)`
   margin-bottom: 16px;
 `
 
-export const Switcher = styled.div`
+export const PopOver = styled.div`
+  border-radius: 20px 20px 0px 0px;
+  background: #ffffff;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
 `
 
-export const SwitcherBg = styled.div`
-  width: 24px;
-  height: 8px;
-  background: ${SOFT_ORANGE};
+export const Caption = styled.div`
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
+export const TextPopOver = styled.div`
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: ${BLACK};
+  flex-grow: 1;
+`
+
+export const Field = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1.5px solid BLACK;
+  padding-bottom: 16px;
+`
+
+export const Input = styled.input`
+  border: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  color: ${BLACK};
+  outline: none;
+  flex-grow: 1;
+  margin-left: 16px;
+`
+export const Save = styled.div`
   border-radius: 8px;
-  position: absolute;
-`
-
-export const Ellipse = styled.div`
-  width: 16px;
-  height: 16px;
+  padding: 15px 16px;
+  margin-top: 40px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  color: white;
   background: ${PRIMARY};
-  border-radius: 50%;
-  position: relative;
-  left: 8px;
-  top: -4px;
 `

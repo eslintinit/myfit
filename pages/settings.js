@@ -1,5 +1,6 @@
 import Sidebar from 'components/Sidebar'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Switch from '@material-ui/core/Switch'
 import { withStyles } from '@material-ui/core/styles'
 import { deepOrange } from '@material-ui/core/colors'
@@ -8,10 +9,11 @@ import { grey } from '@material-ui/core/colors'
 import Dashboard from 'public/icons/Dashboard.svg'
 import Notification from 'public/icons/Notification.svg'
 import Key from 'public/icons/KeyRed.svg'
-import Arrow from 'public/icons/ArrowRight.svg'
+import Arrow from 'public/icons/VectorArrow.svg'
 import Profile from 'public/icons/Profile.svg'
 import Email from 'public/icons/Email.svg'
 import Photo from 'public/icons/PhotoRed.svg'
+import Close from 'public/icons/CloseBig.svg'
 
 import * as S from 'styles/pages/settings'
 
@@ -38,6 +40,11 @@ export default () => {
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked })
+  }
+
+  const [name, setName] = useState('')
+  const save = () => {
+    alert('Thanks. We will contact you shortly')
   }
 
   return (
@@ -111,6 +118,25 @@ export default () => {
           <Arrow />
         </S.Info>
       </S.Box>
+      <S.PopOver>
+          <S.Caption>
+            <S.TextPopOver>Your Full Name</S.TextPopOver>
+            <Close />
+          </S.Caption>
+          <S.TextPersonal>Full Name</S.TextPersonal>
+          <S.Field>
+            <Profile />
+            <S.Input
+              placeholder="Susie Little"
+              type="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </S.Field>
+          <S.Save onClick={save} >
+            Save
+          </S.Save>
+      </S.PopOver>
     </S.Content>
   )
 }
