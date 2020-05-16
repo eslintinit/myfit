@@ -3,14 +3,17 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = "postgres://tzdvcjog:heeQJn-NQQSzAfMkgUbuHWbCq-dMxigR@balarama.db.elephantsql.com:5432/tzdvcjog"
 }
 
 model User {
-  email    String  @unique
+  email    String? @unique
+  gym      String?
   id       Int     @default(autoincrement()) @id
   imgurl   String?
   name     String?
-  password String  @default("")
+  password String?
+
+  @@map (name: "users")
 }

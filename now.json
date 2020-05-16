@@ -1,31 +1,17 @@
 {
   "version": 2,
-  "build": {
-    "env": {
-      "DATOCMS_API_TOKEN": "@datocms_api_token",
-      "DATOCMS_PREVIEW_SECRET": "@datocms_preview_secret"
-    }
-  },
-  "env": {
-    "DATOCMS_API_TOKEN": "@datocms_api_token",
-    "DATOCMS_PREVIEW_SECRET": "@datocms_preview_secret"
-  },
+  
   "builds": [
     {
       "src": "./next.config.js",
       "use": "@now/next"
-    },
-    {
-      "src": "backend/src/index.js",
-      "use": "@now/node",
-      "config": { "maxLambdaSize": "20mb" }
     }
   ],
   "routes": [
-    { "src": "/graphql", "dest": "/backend/src/index.js" },
+    
     {
       "src": "/(.*)",
-      "dest": "/frontend/$1",
+      "dest": "/$1",
       "headers": {
         "x-request-path": "$1"
       }

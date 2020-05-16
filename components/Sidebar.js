@@ -40,7 +40,7 @@ export default ({ show, close }) => {
 
   if (error) {
     Cookie.remove('token')
-    router.push('/auth/welcome')
+    router.push('/auth/onboarding')
   }
 
   const homeActive =
@@ -61,13 +61,12 @@ export default ({ show, close }) => {
             src="https://i.imgur.com/PtZghFA.png"
             style={{ width: '33%', marginBottom: '16px' }}
           />
-          <S.Text>Hey,</S.Text>
+            {data && data.me.name ? ( 
+          <S.Text>Hey,</S.Text>) : (<S.Text>Wait for</S.Text>)}
           <S.Text>
-            {data && data.me.name ? (
-              <S.Text>{data.me.name}</S.Text>
+            {data && data.me.name ? (<S.Text>{data.me.name}</S.Text>
             ) : (
-              <S.Text>Loading...</S.Text>
-            )}
+            <S.Text>loading...</S.Text>)}
           </S.Text>
         </S.Account>
         <S.MenuPoints>

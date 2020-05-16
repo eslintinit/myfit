@@ -13,6 +13,7 @@ const permissions = shield({
     me: rules.isAuthenticatedUser,
   },
   Mutation: {
+    question: rules.isAuthenticatedUser,
   },
 })
 

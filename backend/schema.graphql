@@ -9,6 +9,7 @@ type AuthPayload {
 
 type Mutation {
   login(email: String, password: String): AuthPayload!
+  question(gym: String): User
   signup(email: String, name: String, password: String): AuthPayload!
 }
 
@@ -17,7 +18,8 @@ type Query {
 }
 
 type User {
-  email: String!
+  email: String
+  gym: String
   id: Int!
   imgurl: String
   name: String
