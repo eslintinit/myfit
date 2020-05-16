@@ -27,8 +27,7 @@ export default () => {
   const [password, setPassword] = useState('')
   const [authCode, setAuthCode] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-
-  const regName = /^[a-zA-Z]+ [a-zA-Z]/
+  const [showTooltip, setShowTooltip] = useState(false)
 
   const [errorName, setErrorName] = useState(false)
   const [errorEmail, setErrorEmail] = useState(false)
@@ -44,7 +43,7 @@ export default () => {
     }
   `
 
-  const [signUp,{ loading }] = useMutation(SIGNUP_USER, {
+  const [signUp, { loading }] = useMutation(SIGNUP_USER, {
     onCompleted({ signup }) {
       console.log('Get token value = ', signup.token)
       Cookie.set('token', signup.token)
@@ -70,13 +69,14 @@ export default () => {
                 marginBottom: '16px',
               }}
             >
-              <S.Line></S.Line>
+              <S.Line active></S.Line>
               <S.Line></S.Line>
               <S.Line></S.Line>
               <S.Line></S.Line>
             </div>
             <S.Caption>
               <S.TextBold>New Account</S.TextBold>
+              {/*
               <div
                 style={{
                   display: 'flex',
@@ -87,14 +87,17 @@ export default () => {
                 <Photo style={{ marginBottom: '8px' }} />
                 <S.Text>Upload picture</S.Text>
               </div>
+              */}
             </S.Caption>
             <S.Text
-            style={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-            >Full name {errorName && <S.Error>Invalid Name</S.Error>}</S.Text>
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              Full name {errorName && <S.Error>Invalid Name</S.Error>}
+            </S.Text>
             <S.Field>
               <Profile />
               <S.Input
@@ -104,18 +107,20 @@ export default () => {
                 onChange={(e) => setName(e.target.value)}
                 style={errorName ? { color: 'red' } : null}
                 onBlur={() => {
-                  if (!regName.test(name) && name !== '') setErrorName(true)
-                  else setErrorName(false)
+                  // if (!regName.test(name) && name !== '') setErrorName(true)
+                  // else setErrorName(false)
                 }}
               />
             </S.Field>
-              <S.Text
+            <S.Text
               style={{
                 alignItems: 'center',
                 display: 'flex',
                 justifyContent: 'space-between',
               }}
-              >Email {errorEmail && <S.Error>Invalid Email</S.Error>}</S.Text>
+            >
+              Email {errorEmail && <S.Error>Invalid Email</S.Error>}
+            </S.Text>
             <S.Field>
               <Email />
               <S.Input
@@ -163,14 +168,19 @@ export default () => {
                 }}
                 style={errorAuthCode ? { color: 'red' } : null}
               />
-              <Info />
+              <Info onClick={() => setShowTooltip(!showTooltip)} />
+              {showTooltip && (
+                <S.Tooltip>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </S.Tooltip>
+              )}
             </S.Field>
             <S.SignUp
               onClick={(e) => {
                 e.preventDefault()
                 if (!loading) signUp({ variables: { name, email, password } })
               }}
-              active={password && validate(email) && regName.test(name)}
+              active={password && validate(email)}
             >
               Create Account
             </S.SignUp>

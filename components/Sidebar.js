@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Swipeable } from 'react-swipeable'
 
 import Close from 'public/icons/Close.svg'
 import Home from 'public/icons/Home.svg'
@@ -50,84 +51,97 @@ export default ({ show, close }) => {
   const contactUsActive = route === '/contact_us'
   const settingsActive = route === '/settings'
 
+  const swipeHandler = ({ dir }) => {
+    if (dir === 'Left') {
+      close()
+    }
+  }
+
   return (
     <S.SidebarContainer show={show}>
-      <S.Header>
-        <Close onClick={close} />
-      </S.Header>
-      <S.OpenMenu>
-        <S.Account>
-          <img
-            src="https://i.imgur.com/PtZghFA.png"
-            style={{ width: '33%', marginBottom: '16px' }}
-          />
-            {data && data.me.name ? ( 
-          <S.Text>Hey,</S.Text>) : (<S.Text>Wait for</S.Text>)}
-          <S.Text>
-            {data && data.me.name ? (<S.Text>{data.me.name}</S.Text>
+      <Swipeable onSwiped={swipeHandler} preventDefaultTouchmoveEvent={false}>
+        <S.Header>
+          <Close onClick={close} />
+        </S.Header>
+        <S.OpenMenu>
+          <S.Account>
+            <img
+              src="https://i.imgur.com/PtZghFA.png"
+              style={{ width: '33%', marginBottom: '16px' }}
+            />
+            {data && data.me.name ? (
+              <S.Text>Hey,</S.Text>
             ) : (
-            <S.Text>loading...</S.Text>)}
-          </S.Text>
-        </S.Account>
-        <S.MenuPoints>
-          <Link href="/">
-            <S.Point active={homeActive} onClick={close}>
-              <Home fill={homeActive ? PRIMARY : 'white'} />
-              <S.TextPoint>Home</S.TextPoint>
-            </S.Point>
-          </Link>
-          <a
-            href="https://google.com"
-            target="_blank"
-            style={{ textDecoration: 'none' }}
-          >
+              <S.Text>Wait for</S.Text>
+            )}
+            <S.Text>
+              {data && data.me.name ? (
+                <S.Text>{data.me.name}</S.Text>
+              ) : (
+                <S.Text>loading...</S.Text>
+              )}
+            </S.Text>
+          </S.Account>
+          <S.MenuPoints>
+            <Link href="/">
+              <S.Point active={homeActive} onClick={close}>
+                <Home fill={homeActive ? PRIMARY : 'white'} />
+                <S.TextPoint>Home</S.TextPoint>
+              </S.Point>
+            </Link>
+            <a
+              href="https://google.com"
+              target="_blank"
+              style={{ textDecoration: 'none' }}
+            >
+              <S.Point>
+                <Shop />
+                <S.TextPoint>Shop MyFit</S.TextPoint>
+              </S.Point>
+            </a>
+            <Link href="/safety">
+              <S.Point active={safetyActive} onClick={close}>
+                <Safety fill={safetyActive ? PRIMARY : 'white'} />
+                <S.TextPoint>Safety</S.TextPoint>
+              </S.Point>
+            </Link>
+            <Link href="/about_us">
+              <S.Point active={aboutUsActive} onClick={close}>
+                <About fill={aboutUsActive ? PRIMARY : 'white'} />
+                <S.TextPoint>About Us</S.TextPoint>
+              </S.Point>
+            </Link>
+            <Link href="/contact_us">
+              <S.Point active={contactUsActive} onClick={close}>
+                <Contact fill={contactUsActive ? PRIMARY : 'white'} />
+                <S.TextPoint>Contact Us</S.TextPoint>
+              </S.Point>
+            </Link>
+            <a
+              href="https://google.com"
+              target="_blank"
+              style={{ textDecoration: 'none' }}
+            >
+              <S.Point>
+                <Review fill="white" />
+                <S.TextPoint>Review</S.TextPoint>
+              </S.Point>
+            </a>
+            <Link href="/settings">
+              <S.Point active={settingsActive} onClick={close}>
+                <Settings fill={settingsActive ? PRIMARY : 'white'} />
+                <S.TextPoint>Settings</S.TextPoint>
+              </S.Point>
+            </Link>
+          </S.MenuPoints>
+          <S.Logout>
             <S.Point>
-              <Shop />
-              <S.TextPoint>Shop MyFit</S.TextPoint>
+              <SignOut />
+              <S.TextPoint onClick={(e) => signOut(e)}>Sign Out</S.TextPoint>
             </S.Point>
-          </a>
-          <Link href="/safety">
-            <S.Point active={safetyActive} onClick={close}>
-              <Safety fill={safetyActive ? PRIMARY : 'white'} />
-              <S.TextPoint>Safety</S.TextPoint>
-            </S.Point>
-          </Link>
-          <Link href="/about_us">
-            <S.Point active={aboutUsActive} onClick={close}>
-              <About fill={aboutUsActive ? PRIMARY : 'white'} />
-              <S.TextPoint>About Us</S.TextPoint>
-            </S.Point>
-          </Link>
-          <Link href="/contact_us">
-            <S.Point active={contactUsActive} onClick={close}>
-              <Contact fill={contactUsActive ? PRIMARY : 'white'} />
-              <S.TextPoint>Contact Us</S.TextPoint>
-            </S.Point>
-          </Link>
-          <a
-            href="https://google.com"
-            target="_blank"
-            style={{ textDecoration: 'none' }}
-          >
-            <S.Point>
-              <Review fill="white" />
-              <S.TextPoint>Review</S.TextPoint>
-            </S.Point>
-          </a>
-          <Link href="/settings">
-            <S.Point active={settingsActive} onClick={close}>
-              <Settings fill={settingsActive ? PRIMARY : 'white'} />
-              <S.TextPoint>Settings</S.TextPoint>
-            </S.Point>
-          </Link>
-        </S.MenuPoints>
-        <S.Logout>
-          <S.Point>
-            <SignOut />
-            <S.TextPoint onClick={(e) => signOut(e)}>Sign Out</S.TextPoint>
-          </S.Point>
-        </S.Logout>
-      </S.OpenMenu>
+          </S.Logout>
+        </S.OpenMenu>
+      </Swipeable>
     </S.SidebarContainer>
   )
 }

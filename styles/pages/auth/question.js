@@ -39,7 +39,8 @@ export const InfoBlock = styled.div`
 `
 export const Line = styled.hr`
   height: 2px;
-  background: ${PRIMARY};
+  background: ${(props) =>
+    props.active ? PRIMARY : 'rgba(189, 189, 189, 0.25)'};
   width: 22vw;
   border-radius: 4px;
   border: none;

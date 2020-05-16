@@ -3,7 +3,6 @@ import { PRIMARY, BLACK, GREY } from 'styles/colors'
 
 export const Tabs = styled.div`
   margin-top: 24px;
-  margin-right: 30px;
   position: fixed;
 `
 
@@ -14,6 +13,9 @@ export const Tab = styled.div`
   margin-bottom: 32px;
   font-weight: 700;
   color: ${GREY};
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
   ${(props) =>
     props.active &&
     ` 
@@ -27,7 +29,7 @@ export const Tab = styled.div`
       height: 3px;
       content: '';
       width: 3px;
-      right: 20px;
+      right: 36px;
     }
   `}
 `

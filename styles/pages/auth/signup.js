@@ -31,7 +31,8 @@ export const InfoBlock = styled(motion.div)`
 `
 export const Line = styled.hr`
   height: 2px;
-  background: ${PRIMARY};
+  background: ${(props) =>
+    props.active ? PRIMARY : 'rgba(189, 189, 189, 0.25)'};
   width: 22vw;
   border-radius: 4px;
   border: none;
@@ -104,3 +105,24 @@ export const Error = styled.span`
   color: red;
 `
 
+export const Tooltip = styled.div`
+  position: absolute;
+  width: 180px;
+
+  background: #ffffff;
+  box-shadow: -2px 8px 20px rgba(239, 244, 245, 0.5);
+  border-radius: 8px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #5B5B5B;
+
+  background: #ffffff;
+  box-shadow: -2px 8px 20px rgba(239,244,245,0.5);
+  border-radius: 8px;
+  margin-top: -48px;
+  padding: 12px 12px 16px;
+  right: 16px;
+}
+`

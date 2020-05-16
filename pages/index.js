@@ -1,13 +1,10 @@
 import Link from 'next/link'
 import { getWorkouts } from 'lib/api'
 
-
-
 import * as S from 'styles/pages/index'
 
 export default ({ workouts }) => {
   return (
-    
     <S.Workouts>
       {(workouts || []).map((workout) => (
         <Link
@@ -22,7 +19,6 @@ export default ({ workouts }) => {
         </Link>
       ))}
     </S.Workouts>
-    
   )
 }
 

@@ -7,7 +7,7 @@ import gql from 'graphql-tag'
 import Back from 'public/icons/Back.svg'
 import Arrow from 'public/icons/ArrowG.svg'
 
-import * as S from 'styles/pages/question'
+import * as S from 'styles/pages/auth/question'
 
 export default () => {
   const [color, setColor] = useState('default')
@@ -19,8 +19,8 @@ export default () => {
 
   const quiz = [
     ['How often do you go to the gym?', "I don't", 'Rarely', 'Regulary'],
-    ['Number?', '1', '2', '3'],
-    ['Letter?', 'a', 'b', 'c'],
+    ['What muscle groups you want to build?', 'Chest', 'Back', 'Arms'],
+    ["What's your goal?", 'Looking good', 'Getting strong', 'Feeling healthy'],
   ]
 
   const [answer, setAnswer] = useState([])
@@ -56,10 +56,10 @@ export default () => {
               marginBottom: '16px',
             }}
           >
-            <S.Line></S.Line>
-            <S.Line></S.Line>
-            <S.Line></S.Line>
-            <S.Line></S.Line>
+            <S.Line active></S.Line>
+            <S.Line active={round === 0 || round === 1 || round === 2}></S.Line>
+            <S.Line active={round === 1 || round === 2}></S.Line>
+            <S.Line active={round === 2}></S.Line>
           </div>
           <S.TextBold>{quiz[round][0]}</S.TextBold>
           <S.Points>

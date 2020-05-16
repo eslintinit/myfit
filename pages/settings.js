@@ -2,8 +2,8 @@ import Sidebar from 'components/Sidebar'
 import { useState } from 'react'
 import Switch from '@material-ui/core/Switch'
 import { withStyles } from '@material-ui/core/styles'
-import { deepOrange } from '@material-ui/core/colors';
-import { grey } from '@material-ui/core/colors';
+import { deepOrange } from '@material-ui/core/colors'
+import { grey } from '@material-ui/core/colors'
 
 import Dashboard from 'public/icons/Dashboard.svg'
 import Notification from 'public/icons/Notification.svg'
@@ -27,22 +27,22 @@ const ActiveSwitch = withStyles({
   },
   checked: {},
   track: {},
-})(Switch);
+})(Switch)
 
 export default () => {
   const [state, setState] = React.useState({
     checkedA: true,
     checkedB: false,
     checkedC: true,
-  });
+  })
 
   const handleChange = (event) => {
-     setState({ ...state, [event.target.name]: event.target.checked });
-   };
-
+    setState({ ...state, [event.target.name]: event.target.checked })
+  }
 
   return (
     <S.Content>
+      {/*
       <S.CoverImage>
         <S.TextImage>Your cover image</S.TextImage>
         <S.InfoImage>
@@ -53,6 +53,7 @@ export default () => {
           </S.Upload>
         </S.InfoImage>
       </S.CoverImage>
+      */}
       <S.Box>
         <S.TextPersonal>Full Name</S.TextPersonal>
         <S.InfoName>
@@ -111,5 +112,5 @@ export default () => {
         </S.Info>
       </S.Box>
     </S.Content>
-  );
+  )
 }
