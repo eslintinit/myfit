@@ -19,7 +19,6 @@ import Redirect from '../components/Redirect'
 // https://vimeo.com/108980280 - Canyon
 // https://vimeo.com/248940683 - Apple Watch
 function MyApp({ Component, pageProps }) {
-
   const token = Cookie.get('token')
 
   const { route } = useRouter()
@@ -43,23 +42,21 @@ function MyApp({ Component, pageProps }) {
     route === '/auth/resetpassword' ||
     route === '/auth/resetpassword/[resetToken]'
 
-  // https://backend.jjjuk.now.sh/
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'https://backend.jjjuk.now.sh/',
+    uri: 'https://myfit-back.now.sh',
     fetch,
   })
 
   const client = new ApolloClient({
     link,
     cache,
-    
   })
 
   return (
     <>
-      <ApolloProvider client={client}>      
+      <ApolloProvider client={client}>
         <>
           <Reset />
           <FontsStyles />
@@ -77,8 +74,6 @@ function MyApp({ Component, pageProps }) {
     </>
   )
 }
-
-
 
 /* MyApp.getInitialProps = ({ ctx }) => {
   console.log('ctx.req = ', ctx.req.headers);

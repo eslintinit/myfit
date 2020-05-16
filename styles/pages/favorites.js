@@ -57,6 +57,8 @@ export const Picture = styled.img`
   width: 48px;
   height: 48px;
   margin-right: 16px;
+  object-fit: cover;
+  border-radius: 8px;
 `
 
 export const TextBold = styled.h3`

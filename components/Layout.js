@@ -25,7 +25,7 @@ export default ({ children }) => {
       setShowSidebar(false)
     }
 
-    if (absY > 300) {
+    if (absY > 400) {
       // if workouts route
       if (route === '/') {
         if (dir === 'Up') {
@@ -75,7 +75,7 @@ export default ({ children }) => {
         <S.Page showSidebar={showSidebar}>
           <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
           <S.Content ref={contentRef}>
-            {showTabs && <Tabs />}
+            {showTabs && <Tabs setShowSidebar={setShowSidebar} />}
             <div style={{ marginLeft: showTabs ? 46 : 0, width: '100%' }}>
               {children}
             </div>

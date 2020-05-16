@@ -40,8 +40,8 @@ export default ({ show, close }) => {
   const { error, data } = useQuery(GET_MY_NAME)
 
   if (error) {
-    Cookie.remove('token')
-    router.push('/auth/onboarding')
+    // Cookie.remove('token')
+    // router.push('/auth/onboarding')
   }
 
   const homeActive =

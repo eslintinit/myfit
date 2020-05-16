@@ -153,6 +153,7 @@ export default ({ exercise }) => {
       <Header style={{ zIndex: 2 }}>
         <Back onClick={() => push('/combos')} />
       </Header>
+
       {/*
       {exercise.video && (
         <iframe
@@ -170,6 +171,14 @@ export default ({ exercise }) => {
       */}
       <Player />
       <Content style={{ marginTop: 0 }}>
+        <Favorite
+          fill={isFavorite ? PRIMARY : 'transparent'}
+          stroke={isFavorite ? 'none' : BLACK}
+          strokeWidth={1.5}
+          stroke-location="inside"
+          style={{ marginBottom: 20 }}
+          onClick={() => setFavorite(!isFavorite)}
+        />
         <ContentHeader>
           <Name>Exercise 1</Name>
           <Description>

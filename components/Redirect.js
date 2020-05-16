@@ -18,16 +18,12 @@ export default ({ children }) => {
   const token = Cookie.get('token')
 
   if (typeof window !== 'undefined') {
-    if (!token && !cancelRedirect) {
-      router.push('/auth/onboarding')
-    }
+    // if (!token && !cancelRedirect) {
+    //   router.push('/auth/onboarding')
+    // }
   }
 
-  //else return (<S.Bg><Logo /></S.Bg>) 
-  
+  //else return (<S.Bg><Logo /></S.Bg>)
 
-
-  return (children)
-    
-  
+  return children
 }
