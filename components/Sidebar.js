@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Swipeable } from 'react-swipeable'
 
+import { useState } from 'react'
+
 import Close from 'public/icons/Close.svg'
 import Home from 'public/icons/Home.svg'
 import Shop from 'public/icons/Shop.svg'
@@ -22,6 +24,7 @@ import Cookie from 'js-cookie'
 export default ({ show, close }) => {
   const { route } = useRouter()
   const router = useRouter()
+  const [name, setName] = useState()
 
   const GET_MY_NAME = gql`
     query {
@@ -37,7 +40,11 @@ export default ({ show, close }) => {
     router.push('/auth/welcome')
   }
 
+  
+
   const { error, data } = useQuery(GET_MY_NAME)
+
+  if (!name && data && data.me.name) setName(data.me.name)
 
   if (error) {
     // Cookie.remove('token')
@@ -69,14 +76,14 @@ export default ({ show, close }) => {
               src="https://i.imgur.com/PtZghFA.png"
               style={{ width: '33%', marginBottom: '16px' }}
             />
-            {data && data.me.name ? (
+            {name ? (
               <S.Text>Hey,</S.Text>
             ) : (
               <S.Text>Wait for</S.Text>
             )}
             <S.Text>
-              {data && data.me.name ? (
-                <S.Text>{data.me.name}</S.Text>
+              {name ? (
+                <S.Text>{name}</S.Text>
               ) : (
                 <S.Text>loading...</S.Text>
               )}
