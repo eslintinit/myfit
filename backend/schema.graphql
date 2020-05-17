@@ -8,8 +8,13 @@ type AuthPayload {
 }
 
 type Mutation {
+  changeName(name: String): User
+  changePassword(password: String): User
   login(email: String, password: String): AuthPayload!
   question(gym: String): User
+  requestReset(email: String): User
+  resetPassword(password: String, resetToken: String): AuthPayload
+  setFavorite(exercise: String): User
   signup(email: String, name: String, password: String): AuthPayload!
 }
 
@@ -18,8 +23,12 @@ type Query {
 }
 
 type User {
-  email: String!
+  email: String
+  favorites: [String!]!
+  gym: String
   id: Int!
   imgurl: String
   name: String
+  resetToken: String
+  resetTokenExpiry: String
 }
