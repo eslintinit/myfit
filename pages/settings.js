@@ -2,6 +2,7 @@ import Sidebar from 'components/Sidebar'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Switch from '@material-ui/core/Switch'
+import FormGroup from '@material-ui/core/FormGroup'
 import { withStyles } from '@material-ui/core/styles'
 import { deepOrange } from '@material-ui/core/colors'
 import { grey } from '@material-ui/core/colors'
@@ -19,12 +20,26 @@ import * as S from 'styles/pages/settings'
 
 const ActiveSwitch = withStyles({
   switchBase: {
-    color: grey[400],
+    color: '#000',
     '&$checked': {
-      color: deepOrange[600],
+      color: '#FA4504',
     },
     '&$checked + $track': {
-      backgroundColor: deepOrange[100],
+      backgroundColor: grey[500],
+    },
+  },
+  checked: {},
+  track: {},
+})(Switch)
+
+const RSwitch = withStyles({
+  switchBase: {
+    color: '#000',
+    '&$checked': {
+      color: '#FA4504',
+    },
+    '&$checked + $track': {
+      backgroundColor: '#F8F8F8',
     },
   },
   checked: {},
@@ -32,11 +47,14 @@ const ActiveSwitch = withStyles({
 })(Switch)
 
 export default () => {
+
+  function SwitchesGroup() {
   const [state, setState] = React.useState({
     checkedA: true,
     checkedB: false,
     checkedC: true,
   })
+
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked })
@@ -76,6 +94,7 @@ export default () => {
         </S.Info>
       </S.Box>
       <S.Box>
+      <FormGroup>
         <S.Info>
           <Notification />
           <S.TextBold>Send me push notification</S.TextBold>
@@ -92,7 +111,7 @@ export default () => {
         </S.InfoNotification>
         <S.InfoNotification>
           <S.Text>About new product</S.Text>
-          <Switch
+          <RSwitch
             size="small"
             checked={state.checkedB}
             onChange={handleChange}
@@ -102,7 +121,7 @@ export default () => {
         </S.InfoNotification>
         <S.InfoNotification>
           <S.Text>MyFit Updates</S.Text>
-          <Switch
+          <ActiveSwitch
             size="small"
             checked={state.checkedC}
             onChange={handleChange}
@@ -110,6 +129,7 @@ export default () => {
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         </S.InfoNotification>
+      </FormGroup>
       </S.Box>
       <S.Box>
         <S.Info>
@@ -139,4 +159,5 @@ export default () => {
       </S.PopOver>
     </S.Content>
   )
+}
 }
