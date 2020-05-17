@@ -8,12 +8,15 @@ datasource db {
 }
 
 model User {
-  email    String? @unique
-  gym      String?
-  id       Int     @default(autoincrement()) @id
-  imgurl   String?
-  name     String?
-  password String?
+  email            String?  @unique
+  favorites        String[]
+  gym              String?
+  id               Int      @default(autoincrement()) @id
+  imgurl           String?
+  name             String?
+  password         String?
+  resetToken       String? @unique @map (name: "resettoken")
+  resetTokenExpiry String?         @map (name: "resettokenexpiry")
 
   @@map (name: "users")
 }

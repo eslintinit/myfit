@@ -14,6 +14,8 @@ const permissions = shield({
   },
   Mutation: {
     question: rules.isAuthenticatedUser,
+    changeName: rules.isAuthenticatedUser,
+    changePassword: rules.isAuthenticatedUser,
   },
 })
 

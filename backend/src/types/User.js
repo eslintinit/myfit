@@ -8,6 +8,9 @@ const User = objectType({
     t.model.email()
     t.model.imgurl()
     t.model.gym()
+    t.model.resetToken()
+    t.model.resetTokenExpiry()
+    t.model.favorites()
   },
 })
 
