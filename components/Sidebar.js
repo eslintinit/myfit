@@ -4,7 +4,9 @@ import { useTransition, useChain, animated, config } from 'react-spring'
 import { Swipeable } from 'react-swipeable'
 import Link from 'next/link'
 
-import { useState } from 'react'
+import { userName } from './context'
+
+import { useContext } from 'react'
 
 import Close from 'public/icons/Close.svg'
 import Home from 'public/icons/Home.svg'
@@ -22,6 +24,7 @@ import { PRIMARY } from 'styles/colors'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Cookie from 'js-cookie'
+
 
 export default ({ show, close, style }) => {
   const { route } = useRouter()
@@ -44,15 +47,15 @@ export default ({ show, close, style }) => {
     // onStart: onAnimationStart,
     // onRest: onAnimationEnd
   })
-  const [name, setName] = useState()
+  const { name } = useContext(userName)
 
-  const GET_MY_NAME = gql`
+/*   const GET_MY_NAME = gql`
     query {
       me {
         name
       }
     }
-  `
+  ` */
 
   const signOut = (e) => {
     e.preventDefault()
@@ -60,14 +63,16 @@ export default ({ show, close, style }) => {
     router.push('/auth/welcome')
   }
 
-  const { error, data } = useQuery(GET_MY_NAME)
+  /* const { error, data } = useQuery(GET_MY_NAME)
 
+  
   if (!name && data && data.me.name) setName(data.me.name)
 
-  if (error) {
-    // Cookie.remove('token')
-    // router.push('/auth/onboarding')
-  }
+  else if (error) {
+    Cookie.remove('token')
+    router.push('/auth/onboarding')
+ } */
+
 
   const homeActive =
     route === '/' || route === '/favorites' || route === '/combos'
@@ -107,9 +112,9 @@ export default ({ show, close, style }) => {
               src="https://i.imgur.com/PtZghFA.png"
               style={{ width: '33%', marginBottom: '16px' }}
             />
-            {name ? <S.Text>Hey,</S.Text> : <S.Text>{''}</S.Text>}
+           <S.Text>Hey,</S.Text>
             <S.Text>
-              {name ? <S.Text>{name}</S.Text> : <S.Text>{''}</S.Text>}
+             <S.Text>{name}</S.Text>
             </S.Text>
           </S.Account>
           <S.MenuPoints>

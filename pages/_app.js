@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
   const cache = new InMemoryCache()
   const link = new HttpLink({
     headers: { Authorization: 'Bearer ' + token },
-    uri: 'https://myfit-back.now.sh',
+    uri: 'https://backend.jjjuk.now.sh/',
     fetch,
   })
 
