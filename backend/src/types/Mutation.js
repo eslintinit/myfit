@@ -190,6 +190,26 @@ const Mutation = mutationType({
       },
     })
 
+    t.field('changeEmail', {
+      type: 'User',
+      nullable: true,
+      args: {
+        email: stringArg(),
+      },
+      resolve: async (parent, { email }, ctx) => {
+        const userId = getUserId(ctx)
+        const exists = await ctx.prisma.user.findOne({
+          where: { email }
+        })
+        console.log(exists)
+        if (exists) throw new Error(`User with email ${email} already exists`)
+        return await ctx.prisma.user.update({
+          data: { email },
+          where: { id: userId },
+        })
+      },
+    })
+
     t.field('changePassword', {
       type: 'User',
       nullable: true,

@@ -7,6 +7,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { deepOrange } from '@material-ui/core/colors'
 import { grey } from '@material-ui/core/colors'
 
+import { validate } from 'email-validator'
+
 import { userName, userEmail } from '../components/context'
 
 import { useMutation } from '@apollo/react-hooks'
@@ -131,15 +133,17 @@ export default () => {
     setShowChangeEmail(false)
     setShowChangeName(false)
     setShowChangePassword(false)
-    if (newName) {
+    if (newName && newName !== null && newName !== '') {
       changeName({ variables: { name: newName } })
       setNewName()      
     }
-    if (newEmail) {
+    if (newEmail && newEmail !== null && newEmail !== '') {
       changeEmail({ variables: { email: newEmail } })
+      setNewEmail()
     }
-    if (newPassword) {
+    if (newPassword && newPassword !== null && newPassword !== '') {
       changePassword ({ variables: { password: newPassword } })
+      setNewPassword()
     }
   }
   return (
@@ -235,7 +239,7 @@ export default () => {
                 onChange={(e) => setNewEmail(e.target.value)}
               />
             </S.Field>
-            <S.Save onClick={save}>Save</S.Save>
+            <S.Save onClick={save} active={validate(newEmail)}>Save</S.Save>
           </S.PopOver>
         </>
       )}
@@ -257,7 +261,7 @@ export default () => {
                 onChange={(e) => setNewName(e.target.value)}
               />
             </S.Field>
-            <S.Save onClick={save}>Save</S.Save>
+            <S.Save onClick={save} active={newName !== null && newName !== ''}>Save</S.Save>
           </S.PopOver>
         </>
       )}
@@ -289,7 +293,7 @@ export default () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </S.Field>
-            <S.Save onClick={save} active={newPassword === confirmPassword}>Save</S.Save>
+            <S.Save onClick={save} active={(newPassword === confirmPassword) && newPassword !== null && newPassword !== ''}>Save</S.Save>
           </S.PopOver>
         </>
       )}
