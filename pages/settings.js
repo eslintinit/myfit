@@ -127,23 +127,30 @@ export default () => {
   `
   const [changePassword] = useMutation(CHANGE_PASSWORD)
   
-
+  const close = () =>{
+    setShowChangeEmail(false)
+    setShowChangeName(false)
+    setShowChangePassword(false)
+    setNewName('')
+    setNewEmail('')
+    setNewPassword('')
+  }
 
   const save = () => {
     setShowChangeEmail(false)
     setShowChangeName(false)
     setShowChangePassword(false)
-    if (newName !== null && newName !== '') {
+    if (newName !== '') {
       changeName({ variables: { name: newName } })
-      setNewName()      
+      setNewName('')      
     }
-    if (newEmail !== null && newEmail !== '') {
+    if (newEmail !== '') {
       changeEmail({ variables: { email: newEmail } })
-      setNewEmail()
+      setNewEmail('')
     }
-    if (newPassword !== null && newPassword !== '') {
+    if (newPassword !== '') {
       changePassword ({ variables: { password: newPassword } })
-      setNewPassword()
+      setNewPassword('')
     }
   }
   return (
@@ -223,11 +230,11 @@ export default () => {
       </S.Box>
       {showChangeEmail && (
         <>
-          <S.Overlay onClick={save} />
+          <S.Overlay onClick={close} />
           <S.PopOver>
             <S.Caption>
               <S.TextPopOver>Your Email</S.TextPopOver>
-              <Close />
+              <Close onClick={close} />
             </S.Caption>
             <S.TextPersonal>Email</S.TextPersonal>
             <S.Field>
@@ -239,17 +246,17 @@ export default () => {
                 onChange={(e) => setNewEmail(e.target.value)}
               />
             </S.Field>
-            <S.Save onClick={save} active={validate(newEmail)}>Save</S.Save>
+            <S.Save onClick={validate(newEmail) && save} active={validate(newEmail)}>Save</S.Save>
           </S.PopOver>
         </>
       )}
        {showChangeName && (
         <>
-          <S.Overlay onClick={save} />
+          <S.Overlay onClick={close} />
           <S.PopOver>
             <S.Caption>
               <S.TextPopOver>Your Full Name</S.TextPopOver>
-              <Close />
+              <Close onClick={close} />
             </S.Caption>
             <S.TextPersonal>Full Name</S.TextPersonal>
             <S.Field>
@@ -261,17 +268,17 @@ export default () => {
                 onChange={(e) => setNewName(e.target.value)}
               />
             </S.Field>
-            <S.Save onClick={save} active={newName !== null && newName !== ''}>Save</S.Save>
+            <S.Save onClick={newName !== '' && save} active={newName !== ''}>Save</S.Save>
           </S.PopOver>
         </>
       )}
        {showChangePassword && (
         <>
-          <S.Overlay onClick={save} />
+          <S.Overlay onClick={close} />
           <S.PopOver>
             <S.Caption>
               <S.TextPopOver>Your New Password</S.TextPopOver>
-              <Close />
+              <Close onClick={close} />
             </S.Caption>
             <S.TextPersonal>Password</S.TextPersonal>
             <S.Field>
@@ -293,7 +300,7 @@ export default () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </S.Field>
-            <S.Save onClick={save} active={(newPassword === confirmPassword) && newPassword !== null && newPassword !== ''}>Save</S.Save>
+            <S.Save onClick={((newPassword === confirmPassword) && newPassword !== '') && save} active={(newPassword === confirmPassword) && newPassword !== ''}>Save</S.Save>
           </S.PopOver>
         </>
       )}

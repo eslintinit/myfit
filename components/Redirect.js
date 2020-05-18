@@ -47,7 +47,7 @@ const [email, setEmail] = useState()
 `
 const { error, data } = useQuery(ME)
 
-if (!email && data && data.me.email && !name && data.me.name) { 
+ if (!email && data && data.me.email && !name && data.me.name) { 
   console.log(data.me.name)
   setName(data.me.name) 
   setEmail(data.me.email) 
@@ -55,8 +55,8 @@ if (!email && data && data.me.email && !name && data.me.name) {
   
 } 
 else if (error && !cancelRedirect) {
-  Cookie.remove('token')
-  router.push('/auth/onboarding')
+  /* Cookie.remove('token')
+  router.push('/auth/onboarding') */
 }
   console.log('context = ', name, ' ', email)
   //else return (<S.Bg><Logo /></S.Bg>)
