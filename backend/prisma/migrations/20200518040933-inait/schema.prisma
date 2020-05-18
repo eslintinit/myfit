@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://vhooihskoobnxi:3a9e356fb5bf6916839a4f2aa704a43829b9b6381d5d53b28335dc4895cb5113@ec2-54-88-130-244.compute-1.amazonaws.com:5432/d5hremgpq4o1og"
+  url = "***"
 }
 
 model User {

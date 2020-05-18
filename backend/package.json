@@ -18,8 +18,12 @@
   },
   "scripts": {
     "dev": "node src",
-    "start": "node src/index.js",
-    "postinstall": "prisma generate"
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "generate": "npm -s run generate:prisma",
+    "generate:prisma": "prisma generate",
+    "postinstall": "npm -s run generate",
+    "start": "node src/index.js"
   },
   "devDependencies": {
     "@prisma/cli": "^2.0.0-beta.2"
