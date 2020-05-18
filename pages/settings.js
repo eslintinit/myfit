@@ -87,10 +87,10 @@ export default () => {
   const { email, setEmail } = useContext(userEmail)
 
 
-  const [newName, setNewName] = useState()
-  const [newPassword, setNewPassword] = useState()
-  const [confirmPassword, setConfirmPassword] = useState()
-  const [newEmail, setNewEmail] = useState()
+  const [newName, setNewName] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [newEmail, setNewEmail] = useState('')
 
   const CHANGE_NAME = gql`
     mutation changeName($name: String!) {
@@ -133,15 +133,15 @@ export default () => {
     setShowChangeEmail(false)
     setShowChangeName(false)
     setShowChangePassword(false)
-    if (newName && newName !== null && newName !== '') {
+    if (newName !== null && newName !== '') {
       changeName({ variables: { name: newName } })
       setNewName()      
     }
-    if (newEmail && newEmail !== null && newEmail !== '') {
+    if (newEmail !== null && newEmail !== '') {
       changeEmail({ variables: { email: newEmail } })
       setNewEmail()
     }
-    if (newPassword && newPassword !== null && newPassword !== '') {
+    if (newPassword !== null && newPassword !== '') {
       changePassword ({ variables: { password: newPassword } })
       setNewPassword()
     }
