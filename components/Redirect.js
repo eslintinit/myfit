@@ -55,8 +55,8 @@ const { error, data } = useQuery(ME)
   
 } 
 else if (error && !cancelRedirect) {
-  /* Cookie.remove('token')
-  router.push('/auth/onboarding') */
+   Cookie.remove('token')
+  router.push('/auth/onboarding') 
 }
   console.log('context = ', name, ' ', email)
   //else return (<S.Bg><Logo /></S.Bg>)
