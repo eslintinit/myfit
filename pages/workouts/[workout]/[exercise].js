@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
+import gql from 'graphql-tag'
+import { useMutation } from '@apollo/react-hooks'
 
 import Player from 'components/Player'
 
@@ -132,10 +134,21 @@ const DetailedButton = styled.div`
   text-align: center;
 `
 
+const TOGGLE_FAVORITE = gql`
+  mutation setFavorite($exercise: String!) {
+    setFavorite(exercise: $exercise) {
+      id
+      favorites
+    }
+  }
+`
+
 export default ({ exercise }) => {
   const { back, push } = useRouter()
 
   const [isFavorite, setFavorite] = useState(false)
+
+  const [toggleFavorite, { error, loading }] = useMutation(TOGGLE_FAVORITE)
 
   useEffect(() => {
     window.scrollTo(0, 150)
@@ -170,18 +183,32 @@ export default ({ exercise }) => {
       )}
       */}
       <Player />
-      <Content style={{ marginTop: 0 }}>
+      <Content
+        style={{
+          marginTop: 0,
+        }}
+      >
         <Favorite
           fill={isFavorite ? PRIMARY : 'transparent'}
           stroke={isFavorite ? 'none' : BLACK}
           strokeWidth={1.5}
           stroke-location="inside"
-          style={{ marginBottom: 20 }}
-          onClick={() => setFavorite(!isFavorite)}
+          style={{
+            position: 'absolute',
+            right: '16px',
+          }}
+          onClick={() => {
+            toggleFavorite({
+              variables: {
+                exercise: exercise.url,
+              },
+            })
+            setFavorite(!isFavorite)
+          }}
         />
         <ContentHeader>
           <Name>Exercise 1</Name>
-          <Description>
+          <Description style={{ width: '80%' }}>
             Challenging your balance is an essential part of exercise.
           </Description>
           {/*

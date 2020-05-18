@@ -16,3 +16,15 @@ export const HeaderTitle = styled.div`
   font-weight: bold;
   font-size: 16px;
 `
+
+export const MenuWrapper = styled.div`
+  opacity: 0;
+  transition: 1s;
+  height: 28px;
+  padding: 8px 8px 8px 0;
+  ${(props) =>
+    props.show &&
+    `
+    opacity: 1;
+  `};
+`

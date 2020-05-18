@@ -27,11 +27,6 @@ function MyApp({ Component, pageProps }) {
     route === '/workouts/[workout]' ||
     route === '/workouts/[workout]/[exercise]' ||
     route === '/combos/[combo]' ||
-    route === '/question' ||
-    route === '/player' ||
-    route === '/player/one' ||
-    route === '/player/two' ||
-    route === '/player/three' ||
     route === '/faq' ||
     route === '/auth/slash_screen' ||
     route === '/auth/welcome' ||

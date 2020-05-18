@@ -1,20 +1,22 @@
 import styled from 'styled-components'
+import { animated } from 'react-spring'
 import { BLACK, PRIMARY } from 'styles/colors'
 
-export const SidebarContainer = styled.div`
+export const SidebarContainer = styled(animated.div)`
   height: 100vh;
   background: ${BLACK};
-  width: 246px;
   margin-left: 0;
-  transition: 0.2s;
-  ${(props) => !props.show && ` margin-left: -240px; `}
-  ${(props) =>
-    props.show &&
-    `
-  transition-delay: 0.1s;
-  transition: 0.15s;
-  `}
 `
+// transition: 0.2s;
+// width: 246px;
+
+// ${(props) => !props.show && ` margin-left: -240px; `}
+// ${(props) =>
+//   props.show &&
+//   `
+// transition-delay: 0.1s;
+// transition: 0.15s;
+// `}
 
 export const Header = styled.div`
   height: 44px;

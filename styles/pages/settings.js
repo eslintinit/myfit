@@ -1,14 +1,7 @@
 import styled from 'styled-components'
 import { withStyles } from '@material-ui/core/styles'
 
-import {
-  BLACK,
-  DARK_GREY,
-  PRIMARY,
-  GREY,
-  SOFT_ORANGE
-} from 'styles/colors'
-
+import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
 
 export const Content = styled.div`
   display: flex;
@@ -93,6 +86,15 @@ export const Text = styled.p`
 
 export const TextPersonal = styled(Text)`
   margin-bottom: 16px;
+`
+
+export const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
 `
 
 export const PopOver = styled.div`

@@ -18,6 +18,20 @@ import Close from 'public/icons/CloseBig.svg'
 
 import * as S from 'styles/pages/settings'
 
+const FirstSwitch = withStyles({
+  switchBase: {
+    color: '#000',
+    '&$checked': {
+      color: '#FA4504',
+    },
+    '&$checked + $track': {
+      backgroundColor: '#F8F8F8',
+    },
+  },
+  checked: {},
+  track: {},
+})(Switch)
+
 const ActiveSwitch = withStyles({
   switchBase: {
     color: '#000',
@@ -25,7 +39,7 @@ const ActiveSwitch = withStyles({
       color: '#FA4504',
     },
     '&$checked + $track': {
-      backgroundColor: grey[500],
+      backgroundColor: '#F8F8F8',
     },
   },
   checked: {},
@@ -47,14 +61,14 @@ const RSwitch = withStyles({
 })(Switch)
 
 export default () => {
-
-  function SwitchesGroup() {
-  const [state, setState] = React.useState({
-    checkedA: true,
+  const [showChangeEmail, setShowChangeEmail] = useState(false)
+  const [showChangeName, setShowChangeName] = useState(false)
+  const [showChangePassword, setShowChangePassword] = useState(false)
+  const [state, setState] = useState({
+    checkedA: false,
     checkedB: false,
-    checkedC: true,
+    checkedC: false,
   })
-
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked })
@@ -62,9 +76,10 @@ export default () => {
 
   const [name, setName] = useState('')
   const save = () => {
-    alert('Thanks. We will contact you shortly')
+    setShowChangeEmail(false)
+    setShowChangeName(false)
+    setShowChangePassword(false)
   }
-
   return (
     <S.Content>
       {/*
@@ -81,83 +96,85 @@ export default () => {
       */}
       <S.Box>
         <S.TextPersonal>Full Name</S.TextPersonal>
-        <S.InfoName>
+        <S.InfoName onClick={() => setShowChangeName(true)}>
           <Profile />
           <S.UserText>Susie Little</S.UserText>
           <Arrow />
         </S.InfoName>
         <S.TextPersonal>Email</S.TextPersonal>
-        <S.Info>
+        <S.Info onClick={() => setShowChangeEmail(true)}>
           <Email />
           <S.UserText>myfit@gmail.com</S.UserText>
           <Arrow />
         </S.Info>
       </S.Box>
       <S.Box>
-      <FormGroup>
-        <S.Info>
-          <Notification />
-          <S.TextBold>Send me push notification</S.TextBold>
-        </S.Info>
-        <S.InfoNotification>
-          <S.Text>About new video content</S.Text>
-          <Switch
-            size="small"
-            checked={state.checkedA}
-            onChange={handleChange}
-            name="checkedA"
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-          />
-        </S.InfoNotification>
-        <S.InfoNotification>
-          <S.Text>About new product</S.Text>
-          <RSwitch
-            size="small"
-            checked={state.checkedB}
-            onChange={handleChange}
-            name="checkedB"
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-          />
-        </S.InfoNotification>
-        <S.InfoNotification>
-          <S.Text>MyFit Updates</S.Text>
-          <ActiveSwitch
-            size="small"
-            checked={state.checkedC}
-            onChange={handleChange}
-            name="checkedC"
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
-          />
-        </S.InfoNotification>
-      </FormGroup>
+        <FormGroup>
+          <S.Info>
+            <Notification />
+            <S.TextBold>Send me push notification</S.TextBold>
+          </S.Info>
+          <S.InfoNotification>
+            <S.Text>About new video content</S.Text>
+            <Switch
+              size="small"
+              checked={state.checkedA}
+              onChange={handleChange}
+              name="checkedA"
+              inputProps={{ 'aria-label': 'secondary checkbox' }}
+            />
+          </S.InfoNotification>
+          <S.InfoNotification>
+            <S.Text>About new product</S.Text>
+            <RSwitch
+              size="small"
+              checked={state.checkedB}
+              onChange={handleChange}
+              name="checkedB"
+              inputProps={{ 'aria-label': 'secondary checkbox' }}
+            />
+          </S.InfoNotification>
+          <S.InfoNotification>
+            <S.Text>MyFit Updates</S.Text>
+            <ActiveSwitch
+              size="small"
+              checked={state.checkedC}
+              onChange={handleChange}
+              name="checkedC"
+              inputProps={{ 'aria-label': 'secondary checkbox' }}
+            />
+          </S.InfoNotification>
+        </FormGroup>
       </S.Box>
       <S.Box>
-        <S.Info>
+        <S.Info onClick={() => setShowChangePassword(true)}>
           <Key />
           <S.TextBold>Change password</S.TextBold>
           <Arrow />
         </S.Info>
       </S.Box>
-      <S.PopOver>
-          <S.Caption>
-            <S.TextPopOver>Your Full Name</S.TextPopOver>
-            <Close />
-          </S.Caption>
-          <S.TextPersonal>Full Name</S.TextPersonal>
-          <S.Field>
-            <Profile />
-            <S.Input
-              placeholder="Enter your name"
-              type="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </S.Field>
-          <S.Save onClick={save} >
-            Save
-          </S.Save>
-      </S.PopOver>
+      {(showChangeEmail || showChangeName || showChangePassword) && (
+        <>
+          <S.Overlay onClick={save} />
+          <S.PopOver>
+            <S.Caption>
+              <S.TextPopOver>Your Full Name</S.TextPopOver>
+              <Close />
+            </S.Caption>
+            <S.TextPersonal>Full Name</S.TextPersonal>
+            <S.Field>
+              <Profile />
+              <S.Input
+                placeholder="Enter your name"
+                type="name"
+                value={name}
+                onChange={() => setShowChangePassword(e.target.value)}
+              />
+            </S.Field>
+            <S.Save onClick={save}>Save</S.Save>
+          </S.PopOver>
+        </>
+      )}
     </S.Content>
   )
-}
 }

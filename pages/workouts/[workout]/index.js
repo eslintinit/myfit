@@ -9,8 +9,6 @@ import Time from 'public/icons/Time.svg'
 import TimeSmall from 'public/icons/Time-small.svg'
 import { BLACK, DARK_GREY, GREY, PRIMARY } from 'styles/colors'
 
-
-
 const Container = styled.div`
   padding: 14px 16px;
   background: #fcfcfc;
@@ -184,7 +182,6 @@ export default ({ workout }) => {
       </Header>
 
       <Content>
-      
         <ContentHeader>
           <Info>
             <Name>{`${workout.name} Workout`}</Name>
@@ -196,6 +193,7 @@ export default ({ workout }) => {
               <NumberOfExercises>{workout.time}</NumberOfExercises>
             </InfoBottom>
           </Info>
+          {/*
           <Favorite
             fill={isFavorite ? PRIMARY : 'transparent'}
             stroke={isFavorite ? 'none' : BLACK}
@@ -203,6 +201,7 @@ export default ({ workout }) => {
             stroke-location="inside"
             onClick={toggleFavorite}
           />
+          */}
         </ContentHeader>
 
         <Label>Benefits</Label>
@@ -235,7 +234,6 @@ export default ({ workout }) => {
             </Link>
           ))}
         </Exercises>
-      
       </Content>
     </Container>
   )

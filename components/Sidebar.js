@@ -23,7 +23,7 @@ import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Cookie from 'js-cookie'
 
-export default ({ show, close }) => {
+export default ({ show, close, style }) => {
   const { route } = useRouter()
   const router = useRouter()
   const sidebarRef = useRef()
@@ -95,20 +95,21 @@ export default ({ show, close }) => {
   //     </animated.div>
   //   ) : null,
   return (
-    <S.SidebarContainer show={show}>
+    <S.SidebarContainer show={show} style={style}>
       <Swipeable onSwiped={swipeHandler} preventDefaultTouchmoveEvent={false}>
         <S.Header>
           <Close onClick={close} />
         </S.Header>
         <S.OpenMenu>
           <S.Account>
+            {/**/}
             <img
               src="https://i.imgur.com/PtZghFA.png"
               style={{ width: '33%', marginBottom: '16px' }}
             />
-            {name ? <S.Text>Hey,</S.Text> : <S.Text>Wait for</S.Text>}
+            {name ? <S.Text>Hey,</S.Text> : <S.Text>{''}</S.Text>}
             <S.Text>
-              {name ? <S.Text>{name}</S.Text> : <S.Text>loading...</S.Text>}
+              {name ? <S.Text>{name}</S.Text> : <S.Text>{''}</S.Text>}
             </S.Text>
           </S.Account>
           <S.MenuPoints>

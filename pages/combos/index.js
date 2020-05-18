@@ -1,3 +1,4 @@
+import { useTransition, animated } from 'react-spring'
 import { getCombos } from 'lib/api'
 import Link from 'next/link'
 
@@ -12,6 +13,121 @@ export default ({ combos }) => {
   const firstCombo = combos[0]
   const restCombos = combos.slice(1)
 
+  const transitions = useTransition(true, null, {
+    from: { opacity: 0, marginTop: 300 },
+    enter: { opacity: 1, marginTop: 0 },
+    leave: { opacity: 0, marginTop: -300 },
+  })
+  return transitions.map(
+    ({ item, key, props }) =>
+      item && (
+        <animated.div key={key} style={props}>
+          <div>
+            <S.HeroVideos>
+              {firstCombo && (
+                <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+                  <S.BigCard image={firstCombo.image.url}>
+                    <S.New>NEW</S.New>
+                    <Play />
+                    <S.Text>
+                      <S.BigBold>{firstCombo.name}</S.BigBold>
+                      <S.Time>
+                        <Time />
+                        <S.Min>{firstCombo.time}</S.Min>
+                      </S.Time>
+                    </S.Text>
+                  </S.BigCard>
+                </Link>
+              )}
+              <S.Points>
+                <S.Rectangle />
+                <S.Ellipse />
+                <S.Ellipse />
+              </S.Points>
+            </S.HeroVideos>
+
+            <S.Cards>
+              <S.RowOne>
+                <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+                  <S.CardOne>
+                    <Play />
+                    <S.Text>
+                      <S.Bold>Core burn</S.Bold>
+                      <S.Time>
+                        <Time />
+                        <S.Min>45 min</S.Min>
+                      </S.Time>
+                    </S.Text>
+                  </S.CardOne>
+                </Link>
+                <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+                  <S.CardThree>
+                    <Play />
+                    <S.Text>
+                      <S.Bold>Boulder shoulders</S.Bold>
+                      <S.Time>
+                        <Time />
+                        <S.Min>6 min</S.Min>
+                      </S.Time>
+                    </S.Text>
+                  </S.CardThree>
+                </Link>
+                <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+                  <S.CardFive>
+                    <Play />
+                    <S.Text>
+                      <S.Bold>Glute shaping</S.Bold>
+                      <S.Time>
+                        <Time />
+                        <S.Min>8 min</S.Min>
+                      </S.Time>
+                    </S.Text>
+                  </S.CardFive>
+                </Link>
+              </S.RowOne>
+              <S.RowTwo>
+                <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+                  <S.CardTwo>
+                    <Play />
+                    <S.Text>
+                      <S.Bold>Tricep Killer</S.Bold>
+                      <S.Time>
+                        <Time />
+                        <S.Min>13 min</S.Min>
+                      </S.Time>
+                    </S.Text>
+                  </S.CardTwo>
+                </Link>
+                <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+                  <S.CardFour>
+                    <Play />
+                    <S.Text>
+                      <S.Bold>Bicep build</S.Bold>
+                      <S.Time>
+                        <Time />
+                        <S.Min>4 min</S.Min>
+                      </S.Time>
+                    </S.Text>
+                  </S.CardFour>
+                </Link>
+                <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+                  <S.CardSix>
+                    <Play />
+                    <S.Text>
+                      <S.Bold>Leg tone</S.Bold>
+                      <S.Time>
+                        <Time />
+                        <S.Min>18 min</S.Min>
+                      </S.Time>
+                    </S.Text>
+                  </S.CardSix>
+                </Link>
+              </S.RowTwo>
+            </S.Cards>
+          </div>
+        </animated.div>
+      ),
+  )
   return (
     <div>
       <S.HeroVideos>

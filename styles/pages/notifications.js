@@ -1,18 +1,13 @@
 import styled from 'styled-components'
 
-import {
-  BLACK,
-  DARK_GREY,
-  PRIMARY,
-  GREY,
-} from 'styles/colors'
+import { BLACK, DARK_GREY, PRIMARY, GREY } from 'styles/colors'
 
 export const NavigationBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 0px;
+  height: 44px;
   margin-bottom: 8px;
 `
 

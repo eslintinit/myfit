@@ -1,6 +1,24 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import { BLACK, DARK_GREY, SOFT_ORANGE } from 'styles/colors'
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    margin-top: 400px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+`
+
+export const Wrapper = styled.div`
+  @media (prefers-reduced-motion: no-preference) {
+    animation-name: ${fadeIn};
+    animation-fill-mode: backwards;
+  }
+`
 
 export const Workouts = styled.div`
   display: flex;

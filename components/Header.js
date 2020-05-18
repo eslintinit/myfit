@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import Logo from 'public/Logo.svg'
 import Menu from 'public/icons/Dashboard.svg'
 import Notifications from 'public/icons/Notify.svg'
@@ -20,17 +21,21 @@ const Header = ({ showSidebar, setShowSidebar }) => {
 
   return (
     <S.Header>
-      {showSidebar ? (
-        <div style={{ width: 27 }} />
-      ) : (
+      <S.MenuWrapper show={!showSidebar}>
         <Menu onClick={() => setShowSidebar(true)} />
-      )}
+      </S.MenuWrapper>
       {showLogo ? (
         <Logo />
       ) : (
         <S.HeaderTitle>{routeTitleMap[route]}</S.HeaderTitle>
       )}
-      {showLogo ? <Notifications /> : <div style={{ width: 27 }} />}
+      {showLogo ? (
+        <Link href="/notifications">
+          <Notifications />
+        </Link>
+      ) : (
+        <div style={{ width: 27 }} />
+      )}
     </S.Header>
   )
 }
