@@ -169,11 +169,7 @@ export default ({ exercise, url }) => {
 
  
 
-  const [toggleFavorite, { error, loading, data }] = useMutation(TOGGLE_FAVORITE, {
-    onCompleted(){
-      setFavorite(!isFavorite)
-    }
-  })
+  const [toggleFavorite, { error, loading, data }] = useMutation(TOGGLE_FAVORITE)
 
   
 
@@ -226,11 +222,16 @@ export default ({ exercise, url }) => {
           }}
           onClick={() => {
             console.log("exercise url = ", url)
-            if (url) toggleFavorite({
+            
+            if (url && !loading) {
+              setFavorite(!isFavorite)
+              
+              toggleFavorite({
               variables: {
                 exercise: url,
               },
             })
+          }
             
           }}
         />
