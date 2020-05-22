@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
+
+import { userFavorites } from '../../../components/context'
 
 import Player from 'components/Player'
 
@@ -143,12 +145,37 @@ const TOGGLE_FAVORITE = gql`
   }
 `
 
-export default ({ exercise }) => {
+export default ({ exercise, url }) => {
   const { back, push } = useRouter()
+  const { favorites, setFavorites } = useContext(userFavorites)
 
-  const [isFavorite, setFavorite] = useState(false)
+  
 
-  const [toggleFavorite, { error, loading }] = useMutation(TOGGLE_FAVORITE)
+  const liked = favorites && favorites.find(fav => fav === url) 
+  const [isFavorite, setFavorite] = useState()
+
+  useEffect(() => {
+    if (liked) setFavorite(true)
+    else setFavorite(false)
+  }, [favorites])
+
+
+
+  /* if (typeof window !== 'undefined') {
+    console.log('favorites = ', JSON.stringify(favorites))
+    console.log('liked = ', liked, liked ? true : false)
+    
+  }  */
+
+ 
+
+  const [toggleFavorite, { error, loading, data }] = useMutation(TOGGLE_FAVORITE, {
+    onCompleted(){
+      setFavorite(!isFavorite)
+    }
+  })
+
+  
 
   useEffect(() => {
     window.scrollTo(0, 150)
@@ -198,12 +225,13 @@ export default ({ exercise }) => {
             right: '16px',
           }}
           onClick={() => {
-            toggleFavorite({
+            console.log("exercise url = ", url)
+            if (url) toggleFavorite({
               variables: {
-                exercise: exercise.url,
+                exercise: url,
               },
             })
-            setFavorite(!isFavorite)
+            
           }}
         />
         <ContentHeader>
@@ -304,9 +332,9 @@ export default ({ exercise }) => {
 
 export async function getStaticProps({ params, preview }) {
   const exercise = (await getExercise(params.exercise, preview)) || {}
-
+  const url = params.exercise
   return {
-    props: { exercise },
+    props: { exercise, url },
   }
 }
 

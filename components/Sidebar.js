@@ -60,6 +60,7 @@ export default ({ show, close, style }) => {
   const signOut = (e) => {
     e.preventDefault()
     Cookie.remove('token')
+    Cookie.remove('favorites')
     router.push('/auth/welcome')
   }
 

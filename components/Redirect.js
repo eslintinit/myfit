@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Cookie from 'js-cookie'
 
-import { userName, userEmail } from './context'
+import { userName, userEmail, userFavorites } from './context'
 
 import { useState } from 'react'
 
@@ -36,37 +36,41 @@ export default ({ children }) => {
 
 const [name, setName] = useState()
 const [email, setEmail] = useState()
+const [favorites, setFavorites] = useState()
 
   const ME = gql`
   query {
     me {
       name,
-      email
+      email,
+      favorites     
     }
   }
 `
-const { error, data } = useQuery(ME)
-
- if (!email && data && data.me.email && !name && data.me.name) { 
-  console.log(data.me.name)
+const { error, data } = useQuery(ME, {
+  onCompleted(data){
   setName(data.me.name) 
   setEmail(data.me.email) 
+  setFavorites(data.me.favorites)
+  Cookie.set('favorites', data.me.favorites)
+  }
+})
 
-  
-} 
-else if (error && !cancelRedirect) {
+  if (error && !cancelRedirect) {
    Cookie.remove('token')
+   Cookie.remove('favorites')
   router.push('/auth/onboarding') 
 }
   console.log('context = ', name, ' ', email)
   //else return (<S.Bg><Logo /></S.Bg>)
 
   return (
+   <userFavorites.Provider value={{ favorites, setFavorites }}> 
     <userName.Provider value={{ name, setName }}>
       <userEmail.Provider value={{ email, setEmail }}>
       {children}
       </userEmail.Provider>
     </userName.Provider>
-    
+    </userFavorites.Provider> 
     )
 }

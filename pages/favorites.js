@@ -1,14 +1,25 @@
 import { useTransition, animated } from 'react-spring'
 import { getFavoriteExercises } from 'lib/api'
 
+import { parseCookies } from '../lib/parseCookies'
+
+import stringArray from 'string-array'
+
 import Heart from 'public/icons/Heart.svg'
 import Arrow from 'public/icons/ArrowRight.svg'
 import Time from 'public/icons/TimeGray.svg'
 
-import * as S from 'styles/pages/favorites'
+import Cookie from 'js-cookie'
 
-export default ({ exercises }) => {
+import * as S from 'styles/pages/favorites'
+import { userFavorites } from '../components/context'
+import { useContext } from 'react'
+
+export default function favorites({ exercises }) {
   console.log(exercises)
+
+  
+  
 
   const transitions = useTransition(true, null, {
     from: { opacity: 0, marginTop: 300 },
@@ -41,7 +52,7 @@ export default ({ exercises }) => {
                   <Arrow />
                 </S.Exercise>
               ))}
-              <S.Exercise>
+             {/*  <S.Exercise>
                 <S.Picture src="https://i.imgur.com/jxaTxNT.png" />
                 <S.Info>
                   <S.TextBold>Exercise 2</S.TextBold>
@@ -62,7 +73,7 @@ export default ({ exercises }) => {
                   </S.Time>
                 </S.Info>
                 <Arrow />
-              </S.Exercise>
+              </S.Exercise> */}
             </S.Card>
             {/*
       <S.Card>
@@ -138,13 +149,17 @@ export default ({ exercises }) => {
       */}
     </S.Cards>
   )
-}
+};
 
-export async function getStaticProps({ preview }) {
-  const favoriteExercisesUrls = ['exercise-1', 'exercise-2', 'exercise-3']
+favorites.getInitialProps = async ({ preview, req }) => {
+  const cookies = parseCookies(req)
+  const cookieFav = cookies.favorites.replace(/"/g, '')
+  const favorites = await ((stringArray.parse(cookieFav)).array).sort()
+  console.log(favorites)
+  const favoriteExercisesUrls = favorites //["exercise-1", "exercise-2", "exercise-3"]
   const exercises =
     (await getFavoriteExercises(preview, favoriteExercisesUrls)) || []
   return {
-    props: { exercises },
+    exercises
   }
-}
+};
