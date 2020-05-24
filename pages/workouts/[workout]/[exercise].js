@@ -149,9 +149,7 @@ export default ({ exercise, url }) => {
   const { back, push } = useRouter()
   const { favorites, setFavorites } = useContext(userFavorites)
 
-  
-
-  const liked = favorites && favorites.find(fav => fav === url) 
+  const liked = favorites && favorites.find((fav) => fav === url)
   const [isFavorite, setFavorite] = useState()
 
   useEffect(() => {
@@ -159,19 +157,14 @@ export default ({ exercise, url }) => {
     else setFavorite(false)
   }, [favorites])
 
-
-
   /* if (typeof window !== 'undefined') {
     console.log('favorites = ', JSON.stringify(favorites))
     console.log('liked = ', liked, liked ? true : false)
-    
   }  */
 
- 
-
-  const [toggleFavorite, { error, loading, data }] = useMutation(TOGGLE_FAVORITE)
-
-  
+  const [toggleFavorite, { error, loading, data }] = useMutation(
+    TOGGLE_FAVORITE,
+  )
 
   useEffect(() => {
     window.scrollTo(0, 150)
@@ -187,7 +180,7 @@ export default ({ exercise, url }) => {
       }}
     >
       <Header style={{ zIndex: 2 }}>
-        <Back onClick={() => push('/combos')} />
+        <Back onClick={back} />
       </Header>
 
       {/*
@@ -221,18 +214,17 @@ export default ({ exercise, url }) => {
             right: '16px',
           }}
           onClick={() => {
-            console.log("exercise url = ", url)
-            
+            console.log('exercise url = ', url)
+
             if (url && !loading) {
               setFavorite(!isFavorite)
-              
+
               toggleFavorite({
-              variables: {
-                exercise: url,
-              },
-            })
-          }
-            
+                variables: {
+                  exercise: url,
+                },
+              })
+            }
           }}
         />
         <ContentHeader>

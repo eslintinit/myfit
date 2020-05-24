@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { withStyles } from '@material-ui/core/styles'
 
@@ -88,16 +89,16 @@ export const TextPersonal = styled(Text)`
   margin-bottom: 16px;
 `
 
-export const Overlay = styled.div`
+export const Overlay = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0);
 `
 
-export const PopOver = styled.div`
+export const PopOver = styled(motion.div)`
   border-radius: 20px 20px 0px 0px;
   background: #ffffff;
   padding: 24px 16px;
@@ -125,14 +126,6 @@ export const TextPopOver = styled.div`
   flex-grow: 1;
 `
 
-export const Field = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border-bottom: 1.5px solid BLACK;
-  padding-bottom: 16px;
-`
-
 export const Input = styled.input`
   border: none;
   font-weight: normal;
@@ -143,6 +136,18 @@ export const Input = styled.input`
   flex-grow: 1;
   margin-left: 16px;
 `
+
+export const Field = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1.5px solid rgba(189, 189, 189, 0.25);
+  padding-bottom: 16px;
+  ${Input}:focus && {
+    border-bottom: 1.5px solid rgba(189, 189, 189, 1);
+  }
+`
+
 export const Save = styled.div`
   border-radius: 8px;
   padding: 15px 16px;

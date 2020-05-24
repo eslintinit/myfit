@@ -58,6 +58,7 @@ export default () => {
           initial={{ marginBottom: -343 }}
           animate={{ marginBottom: 0 }}
           exit={{ marginBottom: -343 }}
+          transition={{ delay: 0.5 }}
         >
           <S.GetInTouchText>
             <S.TextBold>Get In Touch</S.TextBold>

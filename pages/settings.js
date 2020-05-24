@@ -27,7 +27,7 @@ import * as S from 'styles/pages/settings'
 
 const FirstSwitch = withStyles({
   switchBase: {
-    color: '#000',
+    // color: '#000',
     '&$checked': {
       color: '#FA4504',
     },
@@ -41,12 +41,12 @@ const FirstSwitch = withStyles({
 
 const ActiveSwitch = withStyles({
   switchBase: {
-    color: '#000',
+    // color: '#000',
     '&$checked': {
       color: '#FA4504',
     },
     '&$checked + $track': {
-      backgroundColor: '#F8F8F8',
+      backgroundColor: '#FFF',
     },
   },
   checked: {},
@@ -55,12 +55,12 @@ const ActiveSwitch = withStyles({
 
 const RSwitch = withStyles({
   switchBase: {
-    color: '#000',
+    // color: '#000',
     '&$checked': {
       color: '#FA4504',
     },
     '&$checked + $track': {
-      backgroundColor: '#F8F8F8',
+      backgroundColor: '#000',
     },
   },
   checked: {},
@@ -68,8 +68,6 @@ const RSwitch = withStyles({
 })(Switch)
 
 export default () => {
-
-
   const [showChangeEmail, setShowChangeEmail] = useState(false)
   const [showChangeName, setShowChangeName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
@@ -86,7 +84,6 @@ export default () => {
   const { name, setName } = useContext(userName)
   const { email, setEmail } = useContext(userEmail)
 
-
   const [newName, setNewName] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -95,39 +92,39 @@ export default () => {
   const CHANGE_NAME = gql`
     mutation changeName($name: String!) {
       changeName(name: $name) {
-       name
+        name
       }
     }
   `
-  const [changeName] = useMutation(CHANGE_NAME,{
-    onCompleted({ changeName }){
+  const [changeName] = useMutation(CHANGE_NAME, {
+    onCompleted({ changeName }) {
       setName(changeName.name)
-    }
+    },
   })
-  
+
   const CHANGE_EMAIL = gql`
-  mutation changeEmail($email: String!) {
-    changeEmail(email: $email) {
-     email
+    mutation changeEmail($email: String!) {
+      changeEmail(email: $email) {
+        email
+      }
     }
-  }
   `
-  const [changeEmail] = useMutation(CHANGE_EMAIL,{
-    onCompleted({ changeEmail }){
+  const [changeEmail] = useMutation(CHANGE_EMAIL, {
+    onCompleted({ changeEmail }) {
       setEmail(changeEmail.email)
-    }
+    },
   })
 
   const CHANGE_PASSWORD = gql`
     mutation changePassword($password: String!) {
       changePassword(password: $password) {
-      email
+        email
       }
     }
   `
   const [changePassword] = useMutation(CHANGE_PASSWORD)
-  
-  const close = () =>{
+
+  const close = () => {
     setShowChangeEmail(false)
     setShowChangeName(false)
     setShowChangePassword(false)
@@ -142,21 +139,19 @@ export default () => {
     setShowChangePassword(false)
     if (newName !== '') {
       changeName({ variables: { name: newName } })
-      setNewName('')      
+      setNewName('')
     }
     if (newEmail !== '') {
       changeEmail({ variables: { email: newEmail } })
       setNewEmail('')
     }
     if (newPassword !== '') {
-      changePassword ({ variables: { password: newPassword } })
+      changePassword({ variables: { password: newPassword } })
       setNewPassword('')
     }
   }
   return (
-    
     <S.Content>
-      
       {/*
       <S.CoverImage>
         <S.TextImage>Your cover image</S.TextImage>
@@ -230,81 +225,133 @@ export default () => {
       </S.Box>
       {showChangeEmail && (
         <>
-          <S.Overlay onClick={close} />
-          <S.PopOver>
-            <S.Caption>
-              <S.TextPopOver>Your Email</S.TextPopOver>
-              <Close onClick={close} />
-            </S.Caption>
-            <S.TextPersonal>Email</S.TextPersonal>
-            <S.Field>
-              <Profile />
-              <S.Input
-                placeholder="myfit@gmail.com"
-                type="email"
-                value={newEmail}
-                onChange={(e) => setNewEmail(e.target.value)}
-              />
-            </S.Field>
-            <S.Save onClick={validate(newEmail) && save} active={validate(newEmail)}>Save</S.Save>
-          </S.PopOver>
+          <AnimatePresence>
+            <S.Overlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.2 }}
+              exit={{ opacity: 0 }}
+              onClick={close}
+            />
+          </AnimatePresence>
+          <AnimatePresence>
+            <S.PopOver
+              initial={{ marginBottom: -343 }}
+              animate={{ marginBottom: 0 }}
+              exit={{ marginBottom: -343 }}
+            >
+              <S.Caption>
+                <S.TextPopOver>Your Email</S.TextPopOver>
+                <Close onClick={close} />
+              </S.Caption>
+              <S.TextPersonal>Email</S.TextPersonal>
+              <S.Field>
+                <Profile />
+                <S.Input
+                  placeholder="myfit@gmail.com"
+                  type="email"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                />
+              </S.Field>
+              <S.Save
+                onClick={validate(newEmail) && save}
+                active={validate(newEmail)}
+              >
+                Save
+              </S.Save>
+            </S.PopOver>
+          </AnimatePresence>
         </>
       )}
-       {showChangeName && (
+      {showChangeName && (
         <>
-          <S.Overlay onClick={close} />
-          <S.PopOver>
-            <S.Caption>
-              <S.TextPopOver>Your Full Name</S.TextPopOver>
-              <Close onClick={close} />
-            </S.Caption>
-            <S.TextPersonal>Full Name</S.TextPersonal>
-            <S.Field>
-              <Profile />
-              <S.Input
-                placeholder="Enter your name"
-                type="name"
-                value={newName}
-                onChange={(e) => setNewName(e.target.value)}
-              />
-            </S.Field>
-            <S.Save onClick={newName !== '' && save} active={newName !== ''}>Save</S.Save>
-          </S.PopOver>
+          <AnimatePresence>
+            <S.Overlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.2 }}
+              exit={{ opacity: 0 }}
+              onClick={close}
+            />
+          </AnimatePresence>
+          <AnimatePresence>
+            <S.PopOver
+              initial={{ marginBottom: -343 }}
+              animate={{ marginBottom: 0 }}
+              exit={{ marginBottom: -343 }}
+            >
+              <S.Caption>
+                <S.TextPopOver>Your Full Name</S.TextPopOver>
+                <Close onClick={close} />
+              </S.Caption>
+              <S.TextPersonal>Full Name</S.TextPersonal>
+              <S.Field>
+                <Profile />
+                <S.Input
+                  placeholder="Enter your name"
+                  type="name"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
+                />
+              </S.Field>
+              <S.Save onClick={newName !== '' && save} active={newName !== ''}>
+                Save
+              </S.Save>
+            </S.PopOver>
+          </AnimatePresence>
         </>
       )}
-       {showChangePassword && (
+      {showChangePassword && (
         <>
-          <S.Overlay onClick={close} />
-          <S.PopOver>
-            <S.Caption>
-              <S.TextPopOver>Your New Password</S.TextPopOver>
-              <Close onClick={close} />
-            </S.Caption>
-            <S.TextPersonal>Password</S.TextPersonal>
-            <S.Field>
-              <Profile />
-              <S.Input
-                placeholder="Password"
-                type="password"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-              />
-            </S.Field>
-            <S.TextPersonal>Confirm Password</S.TextPersonal>
-            <S.Field>
-              <Profile />
-              <S.Input
-                placeholder="Repeat password"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </S.Field>
-            <S.Save onClick={((newPassword === confirmPassword) && newPassword !== '') && save} active={(newPassword === confirmPassword) && newPassword !== ''}>Save</S.Save>
-          </S.PopOver>
+          <AnimatePresence>
+            <S.Overlay
+              onClick={close}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.2 }}
+              exit={{ opacity: 0 }}
+            />
+          </AnimatePresence>
+          <AnimatePresence>
+            <S.PopOver
+              initial={{ marginBottom: -343 }}
+              animate={{ marginBottom: 0 }}
+              exit={{ marginBottom: -343 }}
+            >
+              <S.Caption>
+                <S.TextPopOver>Your New Password</S.TextPopOver>
+                <Close onClick={close} />
+              </S.Caption>
+              <S.TextPersonal>Password</S.TextPersonal>
+              <S.Field style={{ marginBottom: 24 }}>
+                <Profile />
+                <S.Input
+                  placeholder="Password"
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+              </S.Field>
+              <S.TextPersonal>Confirm Password</S.TextPersonal>
+              <S.Field>
+                <Profile />
+                <S.Input
+                  placeholder="Repeat password"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </S.Field>
+              <S.Save
+                onClick={
+                  newPassword === confirmPassword && newPassword !== '' && save
+                }
+                active={newPassword === confirmPassword && newPassword !== ''}
+              >
+                Save
+              </S.Save>
+            </S.PopOver>
+          </AnimatePresence>
         </>
       )}
     </S.Content>
   )
 }
-

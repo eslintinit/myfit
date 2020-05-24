@@ -40,12 +40,12 @@ export default ({ children }) => {
       setShowSidebar(false)
     }
 
-    if (absY > 400) {
+    if (absY > 20) {
       // if workouts route
       if (route === '/') {
         if (dir === 'Up') {
           // push('/combos')
-          if (contentRef.current.scrollTop > 420) {
+          if (contentRef.current.scrollTop > 320) {
             contentRef.current.scrollTop = 0
             push('/combos')
           }
@@ -78,8 +78,6 @@ export default ({ children }) => {
       }
     }
   }
-
-  
 
   return (
     <S.Wrapper>
@@ -115,5 +113,3 @@ export default ({ children }) => {
     </S.Wrapper>
   )
 }
-
-
