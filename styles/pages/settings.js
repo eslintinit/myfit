@@ -152,5 +152,12 @@ export const Save = styled.div`
   font-size: 14px;
   line-height: 18px;
   color: white;
-  background: ${PRIMARY};
+  ${(props) =>
+    props.active
+      ? `
+    background: ${PRIMARY};
+  `
+      : `
+    background: rgba(250, 69, 4, 0.2);
+  `}
 `

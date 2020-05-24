@@ -107,7 +107,7 @@ export default () => {
               setPointThree(false)
 
               if (round === 2) {
-                const gym = answer[0]
+                const gym = `${answer[0]}, ${answer[1]}, ${answer[2]}`
                 if (!loading) question({ variables: { gym } })
               } else setRound(round + 1)
             }}

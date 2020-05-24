@@ -79,6 +79,8 @@ export default ({ children }) => {
     }
   }
 
+  
+
   return (
     <S.Wrapper>
       <Sidebar
@@ -113,3 +115,5 @@ export default ({ children }) => {
     </S.Wrapper>
   )
 }
+
+

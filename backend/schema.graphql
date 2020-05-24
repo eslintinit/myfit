@@ -8,6 +8,7 @@ type AuthPayload {
 }
 
 type Mutation {
+  changeEmail(email: String): User
   changeName(name: String): User
   changePassword(password: String): User
   login(email: String, password: String): AuthPayload!

@@ -4,6 +4,7 @@ const { idArg, mutationType, stringArg } = require('nexus')
 const { APP_SECRET, getUserId } = require('../utils')
 const { promisify } = require('util')
 const { randomBytes } = require('crypto')
+//const mailgun = require("mailgun-js");
 
 const nodemailer = require('nodemailer')
 
@@ -97,6 +98,24 @@ const Mutation = mutationType({
           where: { email },
         })
 
+        /* const api_key = '4cec2d4538071f55cca6cc8e2c99fcbc-e5e67e3e-a5b3ae90'
+        const DOMAIN = 'sandboxc6d61f6acdc240f19f2378a4f7181d8b.mailgun.org';
+        const mg = mailgun({apiKey: api_key, domain: DOMAIN});
+        const data = {
+          from: 'MYFIT <me@samples.mailgun.org>',
+          to: 'gmodhl67@gmail.com',
+          subject: 'Hello',
+          text: 'Testing some Mailgun awesomness!',
+          html: `<a href= "https://myfit.jjjuk.now.sh/auth/resetpassword/${result.resetToken}">Reset link (token=${result.resetToken})</a>`,
+        };
+        
+        await mg.messages().send(data, function (error, body) {
+          console.log(body);
+        });     */     
+        
+      
+
+
         const auth = {
           type: 'oauth2',
           user: 'gmodhl67@gmail.com',
@@ -185,6 +204,26 @@ const Mutation = mutationType({
         const userId = getUserId(ctx)
         return await ctx.prisma.user.update({
           data: { name },
+          where: { id: userId },
+        })
+      },
+    })
+
+    t.field('changeEmail', {
+      type: 'User',
+      nullable: true,
+      args: {
+        email: stringArg(),
+      },
+      resolve: async (parent, { email }, ctx) => {
+        const userId = getUserId(ctx)
+        const exists = await ctx.prisma.user.findOne({
+          where: { email }
+        })
+        console.log(exists)
+        if (exists) throw new Error(`User with email ${email} already exists`)
+        return await ctx.prisma.user.update({
+          data: { email },
           where: { id: userId },
         })
       },
