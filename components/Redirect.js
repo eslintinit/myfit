@@ -24,7 +24,9 @@ export default ({ children }) => {
     route === '/auth/welcome' ||
     route === '/auth/login' ||
     route === '/auth/signup' ||
-    route === '/auth/onboarding'
+    route === '/auth/onboarding' ||
+    route === '/auth/resetpassword' ||
+    route === '/auth/resetpassword/[resetToken]'
 
  /*  const token = Cookie.get('token')
 
