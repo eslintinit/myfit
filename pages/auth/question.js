@@ -20,7 +20,7 @@ export default () => {
   const quiz = [
     ['How often do you go to the gym?', "I don't", 'Rarely', 'Regulary'],
     ['What muscle groups you want to build?', 'Chest', 'Back', 'Arms'],
-    ["What's your goal?", 'Looking good', 'Getting strong', 'Feeling healthy'],
+    ["What's your goal?", 'Look good', 'Get strong', 'Feel healthy'],
   ]
 
   const [answer, setAnswer] = useState([])
@@ -36,7 +36,7 @@ export default () => {
   `
   const [question, { loading }] = useMutation(QUESTION, {
     onCompleted({ question }) {
-      alert(question.gym)
+      // alert(question.gym)
       router.push('/')
     },
   })
