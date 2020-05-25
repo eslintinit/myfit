@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 
+import Cookie from 'js-cookie'
+
 import { userFavorites } from '../../../components/context'
 
 import Player from 'components/Player'
@@ -149,6 +151,8 @@ export default ({ exercise, url }) => {
   const { back, push } = useRouter()
   const { favorites, setFavorites } = useContext(userFavorites)
 
+  const token = Cookie.get('token')
+
   const liked = favorites && favorites.find((fav) => fav === url)
   const [isFavorite, setFavorite] = useState()
 
@@ -163,7 +167,9 @@ export default ({ exercise, url }) => {
   }  */
 
   const [toggleFavorite, { error, loading, data }] = useMutation(
-    TOGGLE_FAVORITE,
+    TOGGLE_FAVORITE, {
+      context: { headers: { Authorization: 'Bearer ' + token }
+    }
   )
 
   useEffect(() => {
