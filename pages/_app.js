@@ -53,11 +53,13 @@ function MyApp({ Component, pageProps }) {
           {hideLayout ? (
             <Component {...pageProps} />
           ) : (
+            
             <Layout>
               
               <Component {...pageProps} />
               
             </Layout>
+            
           )}
         </Redirect>      
     </>

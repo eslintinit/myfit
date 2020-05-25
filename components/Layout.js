@@ -3,10 +3,12 @@ import { useRouter } from 'next/router'
 import { useSpring } from 'react-spring'
 import { Swipeable } from 'react-swipeable'
 /* import { Element } from 'react-scroll' */
+import { ScrollingProvider } from 'react-scroll-section';
 
 import Header from 'components/Header'
 import Sidebar from 'components/Sidebar'
 import Tabs from 'components/Tabs'
+
 
 import * as S from 'styles/components/Layout'
 
@@ -91,18 +93,22 @@ export default ({ children }) => {
         onSwiped={swipeHandler}
         preventDefaultTouchmoveEvent={false}
         delta={100}
-      >
+      > 
         <S.Page showSidebar={showSidebar} style={pageAnimation}>
           <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+          
           <S.Content ref={contentRef}>
-            {showTabs && <Tabs setShowSidebar={setShowSidebar} />}
-            <div style={{ marginLeft: showTabs ? 46 : 0, width: '100%' }}>
-            {/* <Element name="container" className="element" id="containerElement"> */}
-              {children}
-            {/* </Element>  */} 
-            </div>
+          <ScrollingProvider>
+              {showTabs && <Tabs setShowSidebar={setShowSidebar} />}
+              <div style={{ marginLeft: showTabs ? 46 : 0, width: '100%' }}> 
+                        
+                {children} 
+                        
+              </div>
+          </ScrollingProvider> 
           </S.Content>
         </S.Page>
+        
       </Swipeable>
       <style jsx global>
         {`

@@ -11,6 +11,8 @@ import Workouts from 'components/pages/Workouts'
 import Combos from 'components/pages/Combos'
 import Favorites from 'components/pages/Favorites'
 
+import { Section } from 'react-scroll-section';
+
 
 export default ({ workouts, combos }) => {
   
@@ -35,9 +37,9 @@ export default ({ workouts, combos }) => {
   return (
     
       <div>
-      {/* <Element name="workouts" className="element"> */}<Workouts workouts={workouts} />{/* </Element> */}
-      {/* <Element name="combos" className="element"> */}<Combos combos={combos} />{/* </Element> */}
-      {/* <Element name="favorites" className="element"> */} <Favorites exercises={exercises} />{/* </Element> */} 
+      <Section id="workouts"><Workouts workouts={workouts} /></Section>
+      <Section id="combos"><Combos combos={combos} /></Section>
+      <Section id="favorites"><Favorites exercises={exercises} /></Section>
       </div>
     
   )
