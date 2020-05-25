@@ -42,8 +42,7 @@ export default () => {
     }
   `
   const [question, { loading }] = useMutation(QUESTION, {
-    onCompleted({ question }) {
-      // alert(question.gym)
+    onCompleted() {
       router.push('/')
     },
   })
@@ -54,8 +53,8 @@ export default () => {
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back />
-          <S.Skip>Skip</S.Skip>
+          <Back onClick={()=> round > 0 ? setRound(round - 1) : router.push('/') } />
+          <S.Skip onClick={()=> router.push('/')}>Skip</S.Skip>
         </S.NavigationBar>
         <S.InfoBlock>
           <div
