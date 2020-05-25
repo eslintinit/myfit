@@ -3,15 +3,17 @@ import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
 import Layout from 'components/Layout'
 
+import { withApollo } from 'lib/apollo'
+
 import Cookie from 'js-cookie'
 
 import 'styles/index.css'
 
-import { ApolloClient } from 'apollo-boost'
+/* import { ApolloClient } from 'apollo-boost'
 import { HttpLink } from 'apollo-link-http'
 import { ApolloProvider } from '@apollo/react-hoc'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import fetch from 'isomorphic-unfetch'
+import fetch from 'isomorphic-unfetch' */
 //import { parseCookies } from '../lib/parseCookies'
 
 import Redirect from '../components/Redirect'
@@ -38,21 +40,9 @@ function MyApp({ Component, pageProps }) {
     route === '/auth/resetpassword/[resetToken]' ||
     route === '/notifications'
 
-  const cache = new InMemoryCache()
-  const link = new HttpLink({
-    headers: { Authorization: 'Bearer ' + token },
-    uri: 'https://glacial-anchorage-91351.herokuapp.com/',
-    fetch,
-  })
-
-  const client = new ApolloClient({
-    link,
-    cache,
-  })
 
   return (
-    <>
-      <ApolloProvider client={client}>
+    <>         
         <>
           <Reset />
           <FontsStyles />
@@ -65,20 +55,9 @@ function MyApp({ Component, pageProps }) {
               <Component {...pageProps} />
             </Layout>
           )}
-        </Redirect>
-      </ApolloProvider>
+        </Redirect>      
     </>
   )
 }
 
-/* MyApp.getInitialProps = ({ ctx }) => {
-  console.log('ctx.req = ', ctx.req.headers);
-  const cookies = parseCookies(ctx.req)
-  // const cookies = parseCookies(req);
-  console.log('cookies = ', cookies)
-  return {
-    token: cookies.token,
-  }
-} */
-
-export default MyApp
+export default withApollo()(MyApp)

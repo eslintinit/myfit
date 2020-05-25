@@ -2,10 +2,13 @@ import Heart from 'public/icons/Heart.svg'
 import Arrow from 'public/icons/ArrowRight.svg'
 import Time from 'public/icons/TimeGray.svg'
 
+
 import * as S from 'styles/pages/favorites'
 
 export default function favorites({ exercises }) {
-  return (
+  
+    
+ return (
     <S.Cards>
       <S.Card>
         <S.CaptionOne>
@@ -53,4 +56,5 @@ export default function favorites({ exercises }) {
       */}
     </S.Cards>
   )
+
 }
