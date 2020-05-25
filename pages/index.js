@@ -23,16 +23,14 @@ export default ({ workouts, combos }) => {
 
   const { favorites, setFavorites } = useContext(userFavorites)
  
-  useEffect(() => {
-    console.log("FAVFAVFAVFAVFAVFAV ", favorites)
-    
-   async () => {
-    const exerc = favorites && (await getFavoriteExercises(favorites)) || []
-    console.log('my exerc = ', exerc)
-      /* setExercises(
-      exerc.sort((a, b) =>
+  useEffect(() => {   
+    favorites && // check if react context exists
+  (getFavoriteExercises(favorites).then(result => {    
+    setExercises(
+            result.sort((a, b) =>
       a.name > b.name ? 1 : b.name > a.name ? -1 : 0)
-    )  */ }
+    )
+  })) || [] 
   }, [favorites])
 
   
