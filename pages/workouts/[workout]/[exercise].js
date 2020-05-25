@@ -168,7 +168,10 @@ export default ({ exercise, url }) => {
 
   const [toggleFavorite, { error, loading, data }] = useMutation(
     TOGGLE_FAVORITE, {
-      context: { headers: { Authorization: 'Bearer ' + token } }
+      context: { headers: { Authorization: 'Bearer ' + token } },
+      onCompleted(data){      
+        setFavorites(data.setFavorite.favorites)
+      }
     }
   )
 
