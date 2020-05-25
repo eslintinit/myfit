@@ -7,7 +7,7 @@ import { ScrollingProvider } from 'react-scroll-section';
 
 import Header from 'components/Header'
 import Sidebar from 'components/Sidebar'
-import Tabs from 'components/Tabs'
+//import Tabs from 'components/Tabs'
 
 
 import * as S from 'styles/components/Layout'
@@ -30,8 +30,8 @@ export default ({ children }) => {
     left: showSidebar ? '182px' : '0px',
   })
 
-  const showTabs =
-    route === '/' || route === '/favorites' || route === '/combos'
+ /*  const showTabs =
+    route === '/' || route === '/favorites' || route === '/combos' */
 
   const swipeHandler = (props) => {
     console.log(props)
@@ -98,14 +98,14 @@ export default ({ children }) => {
           <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
           
           <S.Content ref={contentRef}>
-          <ScrollingProvider>
-              {showTabs && <Tabs setShowSidebar={setShowSidebar} />}
-              <div style={{ marginLeft: showTabs ? 46 : 0, width: '100%' }}> 
+         {/*  <ScrollingProvider> */}
+              {/* {showTabs && <Tabs setShowSidebar={setShowSidebar} />} */}
+               
                         
                 {children} 
                         
-              </div>
-          </ScrollingProvider> 
+              
+          {/* </ScrollingProvider>  */}
           </S.Content>
         </S.Page>
         

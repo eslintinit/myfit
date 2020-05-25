@@ -1,13 +1,13 @@
 
 
-import { useRouter } from 'next/router'
+//import { useRouter } from 'next/router'
 
 import { SectionLink } from 'react-scroll-section'
 
 import * as S from 'styles/components/Tabs'
 
-export default function Tabs({ setShowSidebar }) {
-  const { route } = useRouter()
+export default function Tabs(/* { setShowSidebar } */) {
+  //const { route } = useRouter()
 
 
   return (
@@ -16,7 +16,7 @@ export default function Tabs({ setShowSidebar }) {
         {({ onClick, isSelected }) => (
           <S.Tab 
             active={isSelected} 
-            onClick={() => {setShowSidebar(false); onClick()}}
+            onClick={onClick}
             >
             Workout
           </S.Tab>
@@ -27,7 +27,7 @@ export default function Tabs({ setShowSidebar }) {
         {({ onClick, isSelected }) => (
           <S.Tab
             active={isSelected}
-            onClick={() => {setShowSidebar(false); onClick()}}
+            onClick={onClick}
           >
             Combos
           </S.Tab>
@@ -39,7 +39,7 @@ export default function Tabs({ setShowSidebar }) {
         {({ onClick, isSelected }) => (      
           <S.Tab
             active={isSelected}
-            onClick={() => {setShowSidebar(false); onClick()}}
+            onClick={onClick}
           >
             Favorites
           </S.Tab>

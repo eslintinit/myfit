@@ -1,6 +1,8 @@
 import { getWorkouts } from 'lib/api'
 import { getCombos } from 'lib/api'
 //import { Element } from 'react-scroll'
+import Tabs from 'components/Tabs'
+
 
 import { getFavoriteExercises } from 'lib/api'
 
@@ -11,7 +13,10 @@ import Workouts from 'components/pages/Workouts'
 import Combos from 'components/pages/Combos'
 import Favorites from 'components/pages/Favorites'
 
-import { Section } from 'react-scroll-section';
+import { Section, ScrollingProvider } from 'react-scroll-section';
+
+
+
 
 
 export default ({ workouts, combos }) => {
@@ -36,11 +41,16 @@ export default ({ workouts, combos }) => {
   
   return (
     
-      <div>
+      <ScrollingProvider>
+      <Tabs />
+      <div style={{ marginLeft: 46, width: '100%' }}>
+     
       <Section id="workouts"><Workouts workouts={workouts} /></Section>
       <Section id="combos"><Combos combos={combos} /></Section>
       <Section id="favorites"><Favorites exercises={exercises} /></Section>
       </div>
+      
+      </ScrollingProvider>
     
   )
 }
