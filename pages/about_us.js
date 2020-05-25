@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Instagram from 'public/icons/Instagram.svg'
 import Facebook from 'public/icons/FacebookIcon.svg'
 import Twitter from 'public/icons/Twitter.svg'
+import Logo from 'public/Logo.svg'
 
 import * as S from 'styles/pages/about_us'
 
@@ -13,7 +14,7 @@ export default () => {
     <div style={{ marginTop: 24 }}>
       <S.Content>
         <S.ContentTitle>
-          MyFit are a UK company looking to revolutionise the way we workout
+          MyFit are a UK company looking to revolutionise the way we workout.
         </S.ContentTitle>
         <S.Pictures>
           <img
@@ -47,6 +48,17 @@ export default () => {
           <br />
           Team MyFit
         </S.InfoBold>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            marginTop: 32,
+            marginBottom: 32,
+          }}
+        >
+          <Logo />
+        </div>
       </S.Content>
       {/*
         <S.SocialLinks>

@@ -6,8 +6,10 @@ import gql from 'graphql-tag'
 
 import Back from 'public/icons/Back.svg'
 import Arrow from 'public/icons/ArrowG.svg'
+import ArrowActive from 'public/icons/Arrow-active.svg'
 
 import * as S from 'styles/pages/auth/question'
+import { GREY, PRIMARY } from 'styles/colors'
 
 export default () => {
   const [color, setColor] = useState('default')
@@ -19,8 +21,13 @@ export default () => {
 
   const quiz = [
     ['How often do you go to the gym?', "I don't", 'Rarely', 'Regulary'],
-    ['What muscle groups you want to build?', 'Chest', 'Back', 'Arms'],
-    ["What's your goal?", 'Look good', 'Get strong', 'Feel healthy'],
+    [
+      'How would you describe your gym ability?',
+      'Beginner',
+      'Advanced',
+      'Intermediate',
+    ],
+    ['What are your fitness goals?', 'Tone', 'Build muscle', 'Lose weight'],
   ]
 
   const [answer, setAnswer] = useState([])
@@ -40,6 +47,8 @@ export default () => {
       router.push('/')
     },
   })
+
+  const somePointActive = pointOne || pointTwo || pointThree
 
   return (
     <div>
@@ -113,9 +122,22 @@ export default () => {
             }}
           >
             <S.Text>Choose one answer</S.Text>
-            <S.Next>
+            <S.Next active={somePointActive}>
               Go Next
-              <Arrow style={{ marginLeft: '4px' }} />
+              {somePointActive ? (
+                <ArrowActive
+                  style={{
+                    marginLeft: '4px',
+                  }}
+                />
+              ) : (
+                <Arrow
+                  style={{
+                    marginLeft: '4px',
+                    stroke: somePointActive ? PRIMARY : GREY,
+                  }}
+                />
+              )}
             </S.Next>
           </S.BottomNavigation>
         </S.InfoBlock>

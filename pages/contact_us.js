@@ -33,6 +33,7 @@ export default () => {
           <Arrow style={{ transform: 'rotate(270deg)' }} />
         </S.FAQ>
       </Link>
+      {/*
       <S.ChatBot>
         <S.Container>
           <Contact />
@@ -52,6 +53,7 @@ export default () => {
           <Arrow style={{ transform: 'rotate(270deg)' }} />
         </S.Chat>
       </S.ChatBot>
+      */}
 
       <AnimatePresence>
         <S.GetInTouch

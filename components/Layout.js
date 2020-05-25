@@ -40,43 +40,43 @@ export default ({ children }) => {
       setShowSidebar(false)
     }
 
-    if (absY > 20) {
-      // if workouts route
-      if (route === '/') {
-        if (dir === 'Up') {
-          // push('/combos')
-          if (contentRef.current.scrollTop > 320) {
-            contentRef.current.scrollTop = 0
-            push('/combos')
-          }
-        }
-      }
+    // if (absY > 20) {
+    //   // if workouts route
+    //   if (route === '/') {
+    //     if (dir === 'Up') {
+    //       // push('/combos')
+    //       if (contentRef.current.scrollTop > 320) {
+    //         contentRef.current.scrollTop = 0
+    //         push('/combos')
+    //       }
+    //     }
+    //   }
 
-      // if combos route
-      if (route === '/combos') {
-        if (dir === 'Up') {
-          // push('/favorites')
-          if (contentRef.current.scrollTop > 203) {
-            contentRef.current.scrollTop = 0
-            push('/favorites')
-          }
-        }
-        if (dir === 'Down') {
-          if (contentRef.current.scrollTop === 0) {
-            push('/')
-          }
-        }
-      }
+    //   // if combos route
+    //   if (route === '/combos') {
+    //     if (dir === 'Up') {
+    //       // push('/favorites')
+    //       if (contentRef.current.scrollTop > 203) {
+    //         contentRef.current.scrollTop = 0
+    //         push('/favorites')
+    //       }
+    //     }
+    //     if (dir === 'Down') {
+    //       if (contentRef.current.scrollTop === 0) {
+    //         push('/')
+    //       }
+    //     }
+    //   }
 
-      // if favorites route
-      if (route === '/favorites') {
-        if (dir === 'Down') {
-          if (contentRef.current.scrollTop === 0) {
-            push('/combos')
-          }
-        }
-      }
-    }
+    //   // if favorites route
+    //   if (route === '/favorites') {
+    //     if (dir === 'Down') {
+    //       if (contentRef.current.scrollTop === 0) {
+    //         push('/combos')
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   return (

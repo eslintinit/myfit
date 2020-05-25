@@ -14,6 +14,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 24px;
+  min-height: calc(100vh - 72px);
 `
 
 export const Column = styled.div`
@@ -44,22 +45,26 @@ export const Card = styled.div`
 
 export const CardOne = styled(Card)`
   background: ${SOFT_YELLOW};
-  height: 232px;
+  height: calc(50% - 20px);
+  box-sizing: border-box;
 `
 
 export const CardTwo = styled(Card)`
   background: ${SOFT_PINK};
-  height: 260px;
+  height: calc(50% - 20px);
+  box-sizing: border-box;
 `
 
 export const CardThree = styled(Card)`
   background: ${SOFT_BLUE};
-  height: 174px;
+  height: calc(50% - 20px);
+  box-sizing: border-box;
 `
 
 export const CardFour = styled(Card)`
   background: ${SOFT_ORANGE};
-  height: 146px;
+  height: calc(50% - 20px);
+  box-sizing: border-box;
 `
 
 export const Link = styled.a`

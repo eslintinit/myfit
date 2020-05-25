@@ -110,7 +110,7 @@ export const Text = styled.p`
 
 export const Next = styled.button`
   font-weight: bold;
-  font-size: 14px;
   line-height: 18px;
-  color: ${GREY};
+  color: ${(props) => (props.active ? PRIMARY : GREY)};
+  font-size: ${(props) => (props.active ? '16px' : '14px')};
 `
