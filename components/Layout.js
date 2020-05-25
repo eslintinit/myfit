@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { useSpring } from 'react-spring'
 import { Swipeable } from 'react-swipeable'
+/* import { Element } from 'react-scroll' */
 
 import Header from 'components/Header'
 import Sidebar from 'components/Sidebar'
@@ -96,7 +97,9 @@ export default ({ children }) => {
           <S.Content ref={contentRef}>
             {showTabs && <Tabs setShowSidebar={setShowSidebar} />}
             <div style={{ marginLeft: showTabs ? 46 : 0, width: '100%' }}>
+            {/* <Element name="container" className="element" id="containerElement"> */}
               {children}
+            {/* </Element>  */} 
             </div>
           </S.Content>
         </S.Page>

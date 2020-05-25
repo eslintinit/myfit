@@ -21,8 +21,8 @@ import SignOut from 'public/icons/SignOut.svg'
 import * as S from 'styles/components/Sidebar'
 import { PRIMARY } from 'styles/colors'
 
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
+/* import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag' */
 import Cookie from 'js-cookie'
 
 

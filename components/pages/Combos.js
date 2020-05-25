@@ -3,6 +3,8 @@ import Link from 'next/link'
 import Play from 'public/icons/Play-combo.svg'
 import Time from 'public/icons/TimeWhite.svg'
 
+import { Element } from 'react-scroll'
+
 import * as S from 'styles/pages/combos/index'
 
 export default ({ combos }) => {
@@ -12,7 +14,7 @@ export default ({ combos }) => {
   const restCombos = combos.slice(1)
 
   return (
-    <div>
+    <>
       <S.HeroVideos>
         {firstCombo && (
           <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
@@ -114,6 +116,6 @@ export default ({ combos }) => {
           </Link>
         </S.RowTwo>
       </S.Cards>
-    </div>
+    </>
   )
 }

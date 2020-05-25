@@ -1,11 +1,7 @@
 import { getWorkouts } from 'lib/api'
 import { getCombos } from 'lib/api'
+//import { Element } from 'react-scroll'
 
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
-
-
-import Cookie from 'js-cookie'
 import { getFavoriteExercises } from 'lib/api'
 
 import { useState, useContext, useEffect } from 'react'
@@ -37,11 +33,13 @@ export default ({ workouts, combos }) => {
 
   
   return (
-    <div>
-      <Workouts workouts={workouts} />
-      <Combos combos={combos} />
-       <Favorites exercises={exercises} /> 
-    </div>
+    
+      <div>
+      {/* <Element name="workouts" className="element"> */}<Workouts workouts={workouts} />{/* </Element> */}
+      {/* <Element name="combos" className="element"> */}<Combos combos={combos} />{/* </Element> */}
+      {/* <Element name="favorites" className="element"> */} <Favorites exercises={exercises} />{/* </Element> */} 
+      </div>
+    
   )
 }
 

@@ -3,6 +3,8 @@ import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
 import Layout from 'components/Layout'
 
+
+
 import { withApollo } from 'lib/apollo'
 
 import Cookie from 'js-cookie'
@@ -52,7 +54,9 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           ) : (
             <Layout>
+              
               <Component {...pageProps} />
+              
             </Layout>
           )}
         </Redirect>      

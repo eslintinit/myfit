@@ -1,6 +1,7 @@
 import Heart from 'public/icons/Heart.svg'
 import Arrow from 'public/icons/ArrowRight.svg'
 import Time from 'public/icons/TimeGray.svg'
+import { Element } from 'react-scroll'
 
 
 import * as S from 'styles/pages/favorites'
@@ -9,6 +10,7 @@ export default function favorites({ exercises }) {
   
     
  return (
+   
     <S.Cards>
       <S.Card>
         <S.CaptionOne>
@@ -55,6 +57,7 @@ export default function favorites({ exercises }) {
       </S.Card>
       */}
     </S.Cards>
+    
   )
 
 }
