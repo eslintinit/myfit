@@ -7,6 +7,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { deepOrange } from '@material-ui/core/colors'
 import { grey } from '@material-ui/core/colors'
 
+import Cookie from 'js-cookie'
+
 import { validate } from 'email-validator'
 
 import { userName, userEmail } from '../components/context'
