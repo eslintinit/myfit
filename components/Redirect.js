@@ -51,7 +51,7 @@ const [favorites, setFavorites] = useState()
 `
 
 
-const { error, data } = useQuery(ME, {
+const { error, data } = typeof window !== 'undefined' && useQuery(ME, {
   context: { headers: { Authorization: 'Bearer ' + token } },
   onCompleted(data){
   setName(data.me.name) 

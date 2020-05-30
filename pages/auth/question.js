@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/react-hooks'
 
+import Cookie from 'js-cookie'
+
 import gql from 'graphql-tag'
 
 import Back from 'public/icons/Back.svg'
@@ -12,6 +14,9 @@ import * as S from 'styles/pages/auth/question'
 import { GREY, PRIMARY } from 'styles/colors'
 
 export default () => {
+
+  const token = Cookie.get('token')
+
   const [color, setColor] = useState('default')
   const [pointOne, setPointOne] = useState(false)
   const [pointTwo, setPointTwo] = useState(false)
@@ -42,6 +47,7 @@ export default () => {
     }
   `
   const [question, { loading }] = useMutation(QUESTION, {
+    context: { headers: { Authorization: 'Bearer ' + token } },
     onCompleted() {
       router.push('/')
     },
