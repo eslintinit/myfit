@@ -3,7 +3,7 @@ import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
 import Layout from 'components/Layout'
 
-
+import OneSignal from 'react-onesignal';
 
 import { withApollo } from 'lib/apollo'
 
@@ -24,6 +24,8 @@ import Redirect from '../components/Redirect'
 // https://vimeo.com/248940683 - Apple Watch
 function MyApp({ Component, pageProps }) {
   const token = Cookie.get('token')
+
+  //OneSignal.initialize('da9b4f29-34d8-4e4b-9c57-522d153b729b', {})
 
   const { route } = useRouter()
   console.log(route)
