@@ -1,9 +1,8 @@
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
 import Layout from 'components/Layout'
-
-
 
 import { withApollo } from 'lib/apollo'
 
@@ -24,8 +23,14 @@ import Redirect from '../components/Redirect'
 // https://vimeo.com/248940683 - Apple Watch
 function MyApp({ Component, pageProps }) {
   const token = Cookie.get('token')
+  const { route, events } = useRouter()
 
-  const { route } = useRouter()
+  useEffect(() => {
+    events.on('routeChangeComplete', () => {
+      window.scrollTo(0, 0)
+    })
+  }, [])
+
   console.log(route)
   const hideLayout =
     route === '/workouts/[workout]' ||
@@ -42,26 +47,21 @@ function MyApp({ Component, pageProps }) {
     route === '/auth/resetpassword/[resetToken]' ||
     route === '/notifications'
 
-
   return (
-    <>         
-        <>
-          <Reset />
-          <FontsStyles />
-        </>
-        <Redirect>
-          {hideLayout ? (
+    <>
+      <>
+        <Reset />
+        <FontsStyles />
+      </>
+      <Redirect>
+        {hideLayout ? (
+          <Component {...pageProps} />
+        ) : (
+          <Layout>
             <Component {...pageProps} />
-          ) : (
-            
-            <Layout>
-              
-              <Component {...pageProps} />
-              
-            </Layout>
-            
-          )}
-        </Redirect>      
+          </Layout>
+        )}
+      </Redirect>
     </>
   )
 }

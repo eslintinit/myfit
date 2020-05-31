@@ -14,7 +14,7 @@ export default ({ combos }) => {
   const restCombos = combos.slice(1)
 
   return (
-    <>
+    <div id="index-combos">
       <S.HeroVideos>
         {firstCombo && (
           <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
@@ -116,6 +116,6 @@ export default ({ combos }) => {
           </Link>
         </S.RowTwo>
       </S.Cards>
-    </>
+    </div>
   )
 }

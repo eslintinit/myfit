@@ -18,7 +18,7 @@ import {
 } from 'styles/components/Player'
 
 // style={{ marginTop: -64, position: 'fixed', zIndex: 100 }}
-export default () => {
+export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
   const [playing, setPlaying] = useState(false)
   const [seeking, setSeeking] = useState(false)
   const [played, setPlayed] = useState(0)
@@ -64,7 +64,7 @@ export default () => {
     <>
       <PlayerWrapper>
         <ReactPlayer
-          url="https://vimeo.com/248940683"
+          url={videoUrl}
           width="100%"
           height="100%"
           className="react-player"

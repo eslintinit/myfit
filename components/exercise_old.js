@@ -14,8 +14,6 @@ import * as S from 'styles/pages/exercise'
 
 export default ({ exercise }) => {
   const { back } = useRouter()
-  console.log('exercise')
-  console.log(exercise)
 
   const [isFavorite, setFavorite] = useState(false)
 
@@ -34,7 +32,7 @@ export default ({ exercise }) => {
       }}
     >
       <S.Header>
-        <Back onClick={back} />
+        <Back onClick={() => back()} />
       </S.Header>
       <S.Content>
         <S.ContentHeader>

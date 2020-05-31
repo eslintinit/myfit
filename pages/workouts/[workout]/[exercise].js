@@ -167,17 +167,20 @@ export default ({ exercise, url }) => {
   }  */
 
   const [toggleFavorite, { error, loading, data }] = useMutation(
-    TOGGLE_FAVORITE, {
+    TOGGLE_FAVORITE,
+    {
       context: { headers: { Authorization: 'Bearer ' + token } },
-      onCompleted(data){      
+      onCompleted(data) {
         setFavorites(data.setFavorite.favorites)
-      }
-    }
+      },
+    },
   )
 
   useEffect(() => {
     window.scrollTo(0, 150)
   }, [])
+
+  console.log(exercise)
 
   return (
     <div
@@ -207,7 +210,11 @@ export default ({ exercise, url }) => {
         ></iframe>
       )}
       */}
-      <Player />
+      {exercise.video ? (
+        <Player videoUrl={exercise.video.url} />
+      ) : (
+        <div style={{ marginTop: 48 }} />
+      )}
       <Content
         style={{
           marginTop: 0,
@@ -237,38 +244,17 @@ export default ({ exercise, url }) => {
           }}
         />
         <ContentHeader>
-          <Name>Exercise 1</Name>
+          <Name>{exercise.name}</Name>
           <Description style={{ width: '80%' }}>
-            Challenging your balance is an essential part of exercise.
+            {exercise.description}
           </Description>
+          {exercise.content.map((tip, index) => (
+            <S.Tip>
+              <S.NumberTip style={{ width: 52 }}>Step {index + 1}</S.NumberTip>
+              <S.TipText>{tip.tip}</S.TipText>
+            </S.Tip>
+          ))}
           {/*
-          <Info>
-            <Favorite
-              fill={isFavorite ? PRIMARY : 'transparent'}
-              stroke={isFavorite ? 'none' : BLACK}
-              strokeWidth={1.5}
-              stroke-location="inside"
-            />
-            <DetailedButton>
-              Detailed Instructions
-              <Arrow
-                style={{
-                  position: 'absolute',
-                  right: 12,
-                  transform: 'rotate(-90deg)',
-                }}
-              />
-            </DetailedButton>
-          </Info>
-          */}
-          <S.Tip>
-            <S.NumberTip>Tip 1</S.NumberTip>
-            <S.TipText>
-              If you can’t quite perform a standard pushup with good form, drop
-              down to a modified stance on your knees — you’ll still reap many
-              of the benefits from this exercise while building strength.{' '}
-            </S.TipText>
-          </S.Tip>
           <S.Steps>
             <S.Step>
               <S.Ellipse />
@@ -305,6 +291,7 @@ export default ({ exercise, url }) => {
               stopping just below your chest.
             </S.TipText>
           </S.Tip>
+          */}
           {/*
           <S.Info>
             <Favorite

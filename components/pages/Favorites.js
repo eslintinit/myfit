@@ -3,15 +3,11 @@ import Arrow from 'public/icons/ArrowRight.svg'
 import Time from 'public/icons/TimeGray.svg'
 import { Element } from 'react-scroll'
 
-
 import * as S from 'styles/pages/favorites'
 
 export default function favorites({ exercises }) {
-  
-    
- return (
-   
-    <S.Cards>
+  return (
+    <S.Cards id="index-favorites">
       <S.Card>
         <S.CaptionOne>
           <div>
@@ -57,7 +53,5 @@ export default function favorites({ exercises }) {
       </S.Card>
       */}
     </S.Cards>
-    
   )
-
 }
