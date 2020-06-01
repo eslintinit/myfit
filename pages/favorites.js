@@ -104,14 +104,16 @@ export default function favorites({ exercises }) {
   )
 }
 
-favorites.getInitialProps = async ({ preview, req }) => {
+favorites.getInitialProps = async ({ req }) => {
   const cookies = parseCookies(req)
   const cookieFav = cookies.favorites.replace(/"/g, '')
   const favorites = await stringArray.parse(cookieFav).array
-  console.log(favorites)
+ 
   const favoriteExercisesUrls = favorites //["exercise-1", "exercise-2", "exercise-3"]
   const exercises =
-    (await getFavoriteExercises(preview, favoriteExercisesUrls)) || []
+    (await getFavoriteExercises(favoriteExercisesUrls)) || []
+
+    console.log(exercises)
   return {
     exercises: exercises.sort((a, b) =>
       a.name > b.name ? 1 : b.name > a.name ? -1 : 0,

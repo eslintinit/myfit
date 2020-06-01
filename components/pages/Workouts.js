@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import { Element } from 'react-scroll'
 
 import { Wrapper, Workouts, Card, Title, Subtitle } from 'styles/pages/index'
 
 export default ({ workouts }) => {
   return (
-    <Workouts style={{ marginBottom: 64 }}>
+    <Workouts style={{ marginBottom: 64 }} id="index-workouts">
       {(workouts || []).map((workout) => (
         <Link
           href={`/workouts/[workout]`}

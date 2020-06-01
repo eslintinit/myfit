@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useMutation } from '@apollo/react-hooks'
 
+import Cookie from 'js-cookie'
+
 import gql from 'graphql-tag'
 
 import Back from 'public/icons/Back.svg'
@@ -12,6 +14,9 @@ import * as S from 'styles/pages/auth/question'
 import { GREY, PRIMARY } from 'styles/colors'
 
 export default () => {
+
+  const token = Cookie.get('token')
+
   const [color, setColor] = useState('default')
   const [pointOne, setPointOne] = useState(false)
   const [pointTwo, setPointTwo] = useState(false)
@@ -52,8 +57,13 @@ export default () => {
     }
   `
   const [question, { loading }] = useMutation(QUESTION, {
+<<<<<<< HEAD
     onCompleted(/* { question } */) {
       //alert(question.gym)
+=======
+    context: { headers: { Authorization: 'Bearer ' + token } },
+    onCompleted() {
+>>>>>>> 7e61258244f3160c47930b9ba788a9dd8adfabd7
       router.push('/')
     },
   })
@@ -64,8 +74,8 @@ export default () => {
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back />
-          <S.Skip>Skip</S.Skip>
+          <Back onClick={()=> round > 0 ? setRound(round - 1) : router.push('/') } />
+          <S.Skip onClick={()=> router.push('/')}>Skip</S.Skip>
         </S.NavigationBar>
         <S.InfoBlock>
           <div

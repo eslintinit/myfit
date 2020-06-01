@@ -7,6 +7,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { deepOrange } from '@material-ui/core/colors'
 import { grey } from '@material-ui/core/colors'
 
+import Cookie from 'js-cookie'
+
 import { validate } from 'email-validator'
 
 import { userName, userEmail } from '../components/context'
@@ -77,6 +79,8 @@ export default () => {
     checkedC: false,
   })
 
+  const token = Cookie.get('token')
+
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked })
   }
@@ -97,6 +101,7 @@ export default () => {
     }
   `
   const [changeName] = useMutation(CHANGE_NAME, {
+    context: { headers: { Authorization: 'Bearer ' + token } },
     onCompleted({ changeName }) {
       setName(changeName.name)
     },
@@ -110,6 +115,7 @@ export default () => {
     }
   `
   const [changeEmail] = useMutation(CHANGE_EMAIL, {
+    context: { headers: { Authorization: 'Bearer ' + token } },
     onCompleted({ changeEmail }) {
       setEmail(changeEmail.email)
     },
@@ -122,7 +128,9 @@ export default () => {
       }
     }
   `
-  const [changePassword] = useMutation(CHANGE_PASSWORD)
+  const [changePassword] = useMutation(CHANGE_PASSWORD,{
+    context: { headers: { Authorization: 'Bearer ' + token } },
+  })
 
   const close = () => {
     setShowChangeEmail(false)

@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import gql from 'graphql-tag'
 import { useMutation } from '@apollo/react-hooks'
 
+import Cookie from 'js-cookie'
+
 import { userFavorites } from '../../../components/context'
 
 import Player from 'components/Player'
@@ -68,6 +70,29 @@ const Line = styled.div`
   background: rgba(189, 189, 189, 0.35);
   border-radius: 8px;
   margin: 0px 4px;
+`
+
+const Label = styled.div`
+  color: ${BLACK};
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 16px;
+`
+
+const Benefits = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+`
+const Benefit = styled.div`
+  font-size: 12px;
+  color: ${DARK_GREY};
+  border: 1.5px solid #f8f8f8;
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
 `
 
 const Active = styled.div`
@@ -149,6 +174,8 @@ export default ({ exercise, url }) => {
   const { back, push } = useRouter()
   const { favorites, setFavorites } = useContext(userFavorites)
 
+  const token = Cookie.get('token')
+
   const liked = favorites && favorites.find((fav) => fav === url)
   const [isFavorite, setFavorite] = useState()
 
@@ -164,12 +191,19 @@ export default ({ exercise, url }) => {
 
   const [toggleFavorite, { error, loading, data }] = useMutation(
     TOGGLE_FAVORITE,
+    {
+      context: { headers: { Authorization: 'Bearer ' + token } },
+      onCompleted(data) {
+        setFavorites(data.setFavorite.favorites)
+      },
+    },
   )
 
   useEffect(() => {
     window.scrollTo(0, 150)
   }, [])
 
+  if (!exercise) return null
   return (
     <div
       style={{
@@ -198,7 +232,11 @@ export default ({ exercise, url }) => {
         ></iframe>
       )}
       */}
-      <Player />
+      {exercise.video ? (
+        <Player videoUrl={exercise.video.url} />
+      ) : (
+        <div style={{ marginTop: 48 }} />
+      )}
       <Content
         style={{
           marginTop: 0,
@@ -228,38 +266,28 @@ export default ({ exercise, url }) => {
           }}
         />
         <ContentHeader>
-          <Name>Exercise 1</Name>
+          <Name>{exercise.name}</Name>
           <Description style={{ width: '80%' }}>
-            Challenging your balance is an essential part of exercise.
+            {exercise.description}
           </Description>
+          {exercise.benefits && exercise.benefits.length > 0 && (
+            <>
+              <Label>Benefits</Label>
+              <Benefits>
+                {exercise.benefits.map((benefit) => (
+                  <Benefit>{benefit.name}</Benefit>
+                ))}
+              </Benefits>
+            </>
+          )}
+
+          {exercise.content.map((tip, index) => (
+            <S.Tip>
+              <S.NumberTip style={{ width: 52 }}>Step {index + 1}</S.NumberTip>
+              <S.TipText>{tip.tip}</S.TipText>
+            </S.Tip>
+          ))}
           {/*
-          <Info>
-            <Favorite
-              fill={isFavorite ? PRIMARY : 'transparent'}
-              stroke={isFavorite ? 'none' : BLACK}
-              strokeWidth={1.5}
-              stroke-location="inside"
-            />
-            <DetailedButton>
-              Detailed Instructions
-              <Arrow
-                style={{
-                  position: 'absolute',
-                  right: 12,
-                  transform: 'rotate(-90deg)',
-                }}
-              />
-            </DetailedButton>
-          </Info>
-          */}
-          <S.Tip>
-            <S.NumberTip>Tip 1</S.NumberTip>
-            <S.TipText>
-              If you can’t quite perform a standard pushup with good form, drop
-              down to a modified stance on your knees — you’ll still reap many
-              of the benefits from this exercise while building strength.{' '}
-            </S.TipText>
-          </S.Tip>
           <S.Steps>
             <S.Step>
               <S.Ellipse />
@@ -296,6 +324,7 @@ export default ({ exercise, url }) => {
               stopping just below your chest.
             </S.TipText>
           </S.Tip>
+          */}
           {/*
           <S.Info>
             <Favorite

@@ -168,3 +168,19 @@ export const DetailedButton = styled.div`
 
   text-align: center;
 `
+
+export const Benefits = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+`
+export const Benefit = styled.div`
+  font-size: 12px;
+  color: ${DARK_GREY};
+  border: 1.5px solid #f8f8f8;
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+`

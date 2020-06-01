@@ -12,7 +12,7 @@ import Logo from 'public/LogoWhite.svg'
 
 import * as S from 'styles/pages/auth/slash_screen'
 
-
+import { graphql } from 'graphql'
 
 
 
@@ -28,9 +28,9 @@ export default ({ children }) => {
     route === '/auth/resetpassword' ||
     route === '/auth/resetpassword/[resetToken]'
 
- /*  const token = Cookie.get('token')
+   const token = Cookie.get('token')
 
-  if (typeof window !== 'undefined') {
+ /* if (typeof window !== 'undefined') {
      if (!token && !cancelRedirect) {
        router.push('/auth/onboarding')
      }
@@ -49,18 +49,19 @@ const [favorites, setFavorites] = useState()
     }
   }
 `
-const { error, data } = useQuery(ME, {
+
+
+const { error, data } = typeof window !== 'undefined' && useQuery(ME, {
+  context: { headers: { Authorization: 'Bearer ' + token } },
   onCompleted(data){
   setName(data.me.name) 
   setEmail(data.me.email) 
   setFavorites(data.me.favorites)
-  Cookie.set('favorites', data.me.favorites)
   }
 })
 
   if (error && !cancelRedirect) {
    Cookie.remove('token')
-   Cookie.remove('favorites')
   router.push('/auth/onboarding') 
 }
   console.log('context = ', name, ' ', email)

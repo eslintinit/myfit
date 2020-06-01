@@ -21,10 +21,9 @@ import SignOut from 'public/icons/SignOut.svg'
 import * as S from 'styles/components/Sidebar'
 import { PRIMARY } from 'styles/colors'
 
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
+/* import { useQuery } from '@apollo/react-hooks'
+import gql from 'graphql-tag' */
 import Cookie from 'js-cookie'
-
 
 export default ({ show, close, style }) => {
   const { route } = useRouter()
@@ -49,7 +48,7 @@ export default ({ show, close, style }) => {
   })
   const { name } = useContext(userName)
 
-/*   const GET_MY_NAME = gql`
+  /*   const GET_MY_NAME = gql`
     query {
       me {
         name
@@ -74,12 +73,12 @@ export default ({ show, close, style }) => {
     router.push('/auth/onboarding')
  } */
 
-
   const homeActive =
     route === '/' || route === '/favorites' || route === '/combos'
   const safetyActive = route === '/safety'
   const aboutUsActive = route === '/about_us'
   const contactUsActive = route === '/contact_us'
+  const reviewActive = route === '/review'
   const settingsActive = route === '/settings'
 
   const swipeHandler = ({ dir }) => {
@@ -113,9 +112,9 @@ export default ({ show, close, style }) => {
               src="https://i.imgur.com/PtZghFA.png"
               style={{ width: '33%', marginBottom: '16px' }}
             />
-           <S.Text>Hey,</S.Text>
+            <S.Text>Hey,</S.Text>
             <S.Text>
-             <S.Text>{name}</S.Text>
+              <S.Text>{name}</S.Text>
             </S.Text>
           </S.Account>
           <S.MenuPoints>
@@ -153,16 +152,12 @@ export default ({ show, close, style }) => {
                 <S.TextPoint>Contact Us</S.TextPoint>
               </S.Point>
             </Link>
-            <a
-              href="https://google.com"
-              target="_blank"
-              style={{ textDecoration: 'none' }}
-            >
-              <S.Point>
-                <Review fill="white" />
+            <Link href="/review">
+              <S.Point active={reviewActive} onClick={close}>
+                <Review fill={reviewActive ? PRIMARY : 'white'} />
                 <S.TextPoint>Review</S.TextPoint>
               </S.Point>
-            </a>
+            </Link>
             <Link href="/settings">
               <S.Point active={settingsActive} onClick={close}>
                 <Settings fill={settingsActive ? PRIMARY : 'white'} />
@@ -181,89 +176,3 @@ export default ({ show, close, style }) => {
     </S.SidebarContainer>
   )
 }
-// return (
-//   <S.SidebarContainer show={show}>
-//     <Swipeable onSwiped={swipeHandler} preventDefaultTouchmoveEvent={false}>
-//       <S.Header>
-//         <Close onClick={close} />
-//       </S.Header>
-//       <S.OpenMenu>
-//         <S.Account>
-//           <img
-//             src="https://i.imgur.com/PtZghFA.png"
-//             style={{ width: '33%', marginBottom: '16px' }}
-//           />
-//           {data && data.me.name ? (
-//             <S.Text>Hey,</S.Text>
-//           ) : (
-//             <S.Text>Wait for</S.Text>
-//           )}
-//           <S.Text>
-//             {data && data.me.name ? (
-//               <S.Text>{data.me.name}</S.Text>
-//             ) : (
-//               <S.Text>loading...</S.Text>
-//             )}
-//           </S.Text>
-//         </S.Account>
-//         <S.MenuPoints>
-//           <Link href="/">
-//             <S.Point active={homeActive} onClick={close}>
-//               <Home fill={homeActive ? PRIMARY : 'white'} />
-//               <S.TextPoint>Home</S.TextPoint>
-//             </S.Point>
-//           </Link>
-//           <a
-//             href="https://google.com"
-//             target="_blank"
-//             style={{ textDecoration: 'none' }}
-//           >
-//             <S.Point>
-//               <Shop />
-//               <S.TextPoint>Shop MyFit</S.TextPoint>
-//             </S.Point>
-//           </a>
-//           <Link href="/safety">
-//             <S.Point active={safetyActive} onClick={close}>
-//               <Safety fill={safetyActive ? PRIMARY : 'white'} />
-//               <S.TextPoint>Safety</S.TextPoint>
-//             </S.Point>
-//           </Link>
-//           <Link href="/about_us">
-//             <S.Point active={aboutUsActive} onClick={close}>
-//               <About fill={aboutUsActive ? PRIMARY : 'white'} />
-//               <S.TextPoint>About Us</S.TextPoint>
-//             </S.Point>
-//           </Link>
-//           <Link href="/contact_us">
-//             <S.Point active={contactUsActive} onClick={close}>
-//               <Contact fill={contactUsActive ? PRIMARY : 'white'} />
-//               <S.TextPoint>Contact Us</S.TextPoint>
-//             </S.Point>
-//           </Link>
-//           <a
-//             href="https://google.com"
-//             target="_blank"
-//             style={{ textDecoration: 'none' }}
-//           >
-//             <S.Point>
-//               <Review fill="white" />
-//               <S.TextPoint>Review</S.TextPoint>
-//             </S.Point>
-//           </a>
-//           <Link href="/settings">
-//             <S.Point active={settingsActive} onClick={close}>
-//               <Settings fill={settingsActive ? PRIMARY : 'white'} />
-//               <S.TextPoint>Settings</S.TextPoint>
-//             </S.Point>
-//           </Link>
-//         </S.MenuPoints>
-//         <S.Logout>
-//           <S.Point>
-//             <SignOut />
-//             <S.TextPoint onClick={(e) => signOut(e)}>Sign Out</S.TextPoint>
-//           </S.Point>
-//         </S.Logout>
-//       </S.OpenMenu>
-//     </Swipeable>
-//   </S.SidebarContainer>
