@@ -78,6 +78,7 @@ export default ({ show, close, style }) => {
   const safetyActive = route === '/safety'
   const aboutUsActive = route === '/about_us'
   const contactUsActive = route === '/contact_us'
+  const reviewActive = route === '/review'
   const settingsActive = route === '/settings'
 
   const swipeHandler = ({ dir }) => {
@@ -152,8 +153,8 @@ export default ({ show, close, style }) => {
               </S.Point>
             </Link>
             <Link href="/review">
-              <S.Point active={contactUsActive} onClick={close}>
-                <Review fill={safetyActive ? PRIMARY : 'white'} />
+              <S.Point active={reviewActive} onClick={close}>
+                <Review fill={reviewActive ? PRIMARY : 'white'} />
                 <S.TextPoint>Review</S.TextPoint>
               </S.Point>
             </Link>

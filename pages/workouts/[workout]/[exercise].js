@@ -72,6 +72,29 @@ const Line = styled.div`
   margin: 0px 4px;
 `
 
+const Label = styled.div`
+  color: ${BLACK};
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 16px;
+`
+
+const Benefits = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+`
+const Benefit = styled.div`
+  font-size: 12px;
+  color: ${DARK_GREY};
+  border: 1.5px solid #f8f8f8;
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+`
+
 const Active = styled.div`
   height: 2px;
   width: 35%;
@@ -180,8 +203,7 @@ export default ({ exercise, url }) => {
     window.scrollTo(0, 150)
   }, [])
 
-  console.log(exercise)
-
+  if (!exercise) return null
   return (
     <div
       style={{
@@ -248,6 +270,17 @@ export default ({ exercise, url }) => {
           <Description style={{ width: '80%' }}>
             {exercise.description}
           </Description>
+          {exercise.benefits && exercise.benefits.length > 0 && (
+            <>
+              <Label>Benefits</Label>
+              <Benefits>
+                {exercise.benefits.map((benefit) => (
+                  <Benefit>{benefit.name}</Benefit>
+                ))}
+              </Benefits>
+            </>
+          )}
+
           {exercise.content.map((tip, index) => (
             <S.Tip>
               <S.NumberTip style={{ width: 52 }}>Step {index + 1}</S.NumberTip>
