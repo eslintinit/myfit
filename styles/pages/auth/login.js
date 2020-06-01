@@ -46,6 +46,7 @@ export const TextBold = styled.div`
 `
 
 export const Text = styled.p`
+
   font-weight: bold;
   font-size: 12px;
   line-height: 16px;

@@ -41,13 +41,14 @@ export default () => {
 
   const [login, { error, loading }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
-      
       console.log('Get token value = ', login.token)
       Cookie.set('token', login.token)
       if (login.user.gym === "" ) router.push('/auth/question')
       else router.push('/')
     },
   })
+
+  
 
   return (
     <div>
@@ -94,7 +95,7 @@ export default () => {
                 justifyContent: 'space-between',
               }}
             >
-              Email {error && <S.Error>Something is wrong</S.Error>}
+              Email {error && error.message !== 'GraphQL error: Invalid password' && <S.Error>No user found</S.Error>}
             </S.Text>
             <S.Email>
               <Email />
@@ -111,7 +112,13 @@ export default () => {
                 }
               />
             </S.Email>
-            <S.Text>Password</S.Text>
+            <S.Text
+             style={{
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+            >Password {error && error.message === 'GraphQL error: Invalid password' && <S.Error>Invalid Password</S.Error>} </S.Text>
             <S.Password>
               <Key style={error ? { color: 'red' } : null} />
               <S.Input
