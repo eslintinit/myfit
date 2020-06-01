@@ -57,13 +57,8 @@ export default () => {
     }
   `
   const [question, { loading }] = useMutation(QUESTION, {
-<<<<<<< HEAD
-    onCompleted(/* { question } */) {
-      //alert(question.gym)
-=======
     context: { headers: { Authorization: 'Bearer ' + token } },
     onCompleted() {
->>>>>>> 7e61258244f3160c47930b9ba788a9dd8adfabd7
       router.push('/')
     },
   })

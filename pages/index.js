@@ -32,12 +32,6 @@ export default ({ workouts, combos }) => {
   }, [favorites])
 
   return (
-<<<<<<< HEAD
-    <div>
-      <Workouts workouts={workouts} />
-      {/* <Combos combos={combos} /> */}
-    </div>
-=======
     <ScrollingProvider>
       <Tabs />
       <div style={{ marginLeft: 46, width: '100%' }}>
@@ -52,7 +46,6 @@ export default ({ workouts, combos }) => {
         </Section>
       </div>
     </ScrollingProvider>
->>>>>>> 7e61258244f3160c47930b9ba788a9dd8adfabd7
   )
 }
 
