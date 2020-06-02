@@ -10,7 +10,7 @@ export const Bg = styled.div`
 
 export const NavigationBar = styled.div`
   height: 44px;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 `
 
 export const Caption = styled.div`
@@ -144,7 +144,16 @@ export const Description = styled.div`
   font-weight: normal;
   font-size: 14px;
   line-height: 18px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+`
+
+export const TipItem = styled.li`
+  color: ${DARK_GREY};
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 8px;
 `
 
 export const Info = styled.div`
@@ -173,7 +182,7 @@ export const Benefits = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 `
 export const Benefit = styled.div`
   font-size: 12px;

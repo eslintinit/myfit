@@ -17,7 +17,7 @@ export default function favorites({ exercises }) {
           <Heart />
         </S.CaptionOne>
         {exercises.map((exercise) => (
-          <S.Exercise>
+          <S.Exercise key={exercise.url}>
             <S.Picture src={exercise.image.url} />
             <S.Info>
               <S.TextBold>{exercise.name}</S.TextBold>

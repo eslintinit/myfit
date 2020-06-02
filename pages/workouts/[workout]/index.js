@@ -226,10 +226,12 @@ export default ({ workout }) => {
                 )}
                 <ExerciseInfo>
                   <ExerciseName>{exercise.name}</ExerciseName>
+                  {/*
                   <ExerciseTime>
                     <TimeSmall style={{ marginRight: 6 }} />
                     {exercise.time}
                   </ExerciseTime>
+                  */}
                   <ExerciseDescription>
                     {exercise.description}
                   </ExerciseDescription>

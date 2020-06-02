@@ -151,7 +151,7 @@ export default ({ exercise }) => {
       }}
     >
       <Header style={{ zIndex: 2 }}>
-        <Back onClick={() => push('/combos')} />
+        <Back onClick={back} />
       </Header>
       {/*
       {exercise.video && (

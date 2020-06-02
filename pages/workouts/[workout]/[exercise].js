@@ -79,12 +79,6 @@ const Label = styled.div`
   margin-bottom: 16px;
 `
 
-const Benefits = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-`
 const Benefit = styled.div`
   font-size: 12px;
   color: ${DARK_GREY};
@@ -128,15 +122,6 @@ const Name = styled.div`
   font-size: 16px;
   line-height: 20px;
   margin-bottom: 8px;
-`
-
-const Description = styled.div`
-  color: ${DARK_GREY};
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 18px;
-  margin-bottom: 16px;
 `
 
 const Info = styled.div`
@@ -267,26 +252,30 @@ export default ({ exercise, url }) => {
         />
         <ContentHeader>
           <Name>{exercise.name}</Name>
-          <Description style={{ width: '80%' }}>
+          <S.Description style={{ width: '80%' }}>
             {exercise.description}
-          </Description>
+          </S.Description>
           {exercise.benefits && exercise.benefits.length > 0 && (
             <>
               <Label>Benefits</Label>
-              <Benefits>
+              <S.Benefits>
                 {exercise.benefits.map((benefit) => (
                   <Benefit>{benefit.name}</Benefit>
                 ))}
-              </Benefits>
+              </S.Benefits>
             </>
           )}
 
-          {exercise.content.map((tip, index) => (
-            <S.Tip>
-              <S.NumberTip style={{ width: 52 }}>Step {index + 1}</S.NumberTip>
-              <S.TipText>{tip.tip}</S.TipText>
-            </S.Tip>
-          ))}
+          {exercise.content.length > 0 && (
+            <S.NumberTip style={{ width: 52, marginBottom: 8 }}>
+              Tips
+            </S.NumberTip>
+          )}
+          <ul>
+            {exercise.content.map((tip, index) => (
+              <S.TipItem>{tip.tip}</S.TipItem>
+            ))}
+          </ul>
           {/*
           <S.Steps>
             <S.Step>
