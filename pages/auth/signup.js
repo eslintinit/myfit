@@ -160,7 +160,7 @@ export default () => {
                 value={authCode}
                 onChange={(e) => setAuthCode(e.target.value)}
                 onBlur={() => {
-                  if (authCode !== '' && authCode !== '1234') {
+                  if (authCode === '' && authCode !== '1234') {
                     setErrorAuthCode(true)
                   } else {
                     setErrorAuthCode(false)
@@ -180,7 +180,7 @@ export default () => {
                 e.preventDefault()
                 if (!loading) signUp({ variables: { name, email, password } })
               }}
-              active={password && validate(email)}
+              active={password && validate(email) && authCode === '1234'}
             >
               Create Account
             </S.SignUp>

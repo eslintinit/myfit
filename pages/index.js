@@ -9,8 +9,8 @@ import { useState, useContext, useEffect } from 'react'
 import { userFavorites } from '../components/context'
 
 import Workouts from 'components/pages/Workouts'
-import Combos from 'components/pages/Combos'
-import Favorites from 'components/pages/Favorites'
+ import Combos from 'components/pages/Combos'
+import Favorites from 'components/pages/Favorites' 
 
 import { Section, ScrollingProvider } from 'react-scroll-section'
 
@@ -52,8 +52,8 @@ export default ({ workouts, combos }) => {
 export async function getStaticProps({ preview }) {
   const workouts = (await getWorkouts(preview)) || []
   const combos = (await getCombos(preview)) || []
-
+ 
   return {
-    props: { workouts, combos },
+    props: { workouts , combos  },
   }
 }
