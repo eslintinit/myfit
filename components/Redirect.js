@@ -44,7 +44,6 @@ export default ({ children }) => {
 
   const { error, data } =
     typeof window !== 'undefined' &&
-    !cancelRedirect &&
     useQuery(ME, {
       context: { headers: { Authorization: 'Bearer ' + token } },
       onCompleted(data) {
@@ -52,12 +51,18 @@ export default ({ children }) => {
         setEmail(data.me.email)
         setFavorites(data.me.favorites)
       },
+      onError(error) {
+        if (error && !cancelRedirect) {
+          Cookie.remove('token')
+          router.push('/auth/onboarding')
+        }
+      },
     })
 
-  if (error && !cancelRedirect) {
-    Cookie.remove('token')
-    router.push('/auth/onboarding')
-  }
+  // if (error && !cancelRedirect) {
+  // Cookie.remove('token')
+  // router.push('/auth/onboarding')
+  // }
 
   return (
     <userFavorites.Provider value={{ favorites, setFavorites }}>
