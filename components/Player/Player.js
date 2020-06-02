@@ -71,7 +71,7 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
         width: '20%',
         left: '40%',
         top: '185px'
-        }}/>}
+        }}/> }
         <ReactPlayer
           url={videoUrl}
           width="100%"
