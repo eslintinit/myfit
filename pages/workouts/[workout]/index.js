@@ -186,11 +186,11 @@ export default ({ workout }) => {
           <Info>
             <Name>{`${workout.name} Workout`}</Name>
             <InfoBottom>
-              <WorkoutTime>
+              {/* <WorkoutTime>
                 <Time style={{ marginRight: 4 }} />
                 {workout.time}
-              </WorkoutTime>
-              <NumberOfExercises>{workout.time}</NumberOfExercises>
+              </WorkoutTime> 
+              <NumberOfExercises>{workout.time}</NumberOfExercises>*/}
             </InfoBottom>
           </Info>
           {/*
@@ -204,12 +204,12 @@ export default ({ workout }) => {
           */}
         </ContentHeader>
 
-        <Label>Benefits</Label>
+        {/* <Label>Benefits</Label>
         <Benefits>
           {workout.benefits.map((benefit) => (
             <Benefit>{benefit.name}</Benefit>
           ))}
-        </Benefits>
+        </Benefits> */}
 
         <Label>Exercises</Label>
         <Exercises>
