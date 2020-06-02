@@ -68,8 +68,8 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
      {!buffered && playing && <Loading style={{
         position: 'absolute', 
         backgroundColor: 'transparent',
-        width: '20%',
-        left: '40%',
+        width: '30%',
+        left: '35%',
         top: '185px'
         }}/> }
         <ReactPlayer
