@@ -20,7 +20,7 @@ export default ({ workouts, combos }) => {
   const { favorites, setFavorites } = useContext(userFavorites)
 
   useEffect(() => {
-    ;(favorites && // check if react context exists
+    (favorites && // check if react context exists
       getFavoriteExercises(favorites).then((result) => {
         setExercises(
           result.sort((a, b) =>

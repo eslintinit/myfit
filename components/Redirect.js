@@ -3,7 +3,7 @@ import Cookie from 'js-cookie'
 
 import { userName, userEmail, userFavorites } from './context'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -19,6 +19,7 @@ import { graphql } from 'graphql'
 export default ({ children }) => {
   const router = useRouter()
   const { route } = useRouter()
+  
 
   const cancelRedirect =
     route === '/auth/welcome' ||
@@ -50,20 +51,24 @@ const [favorites, setFavorites] = useState()
   }
 `
 
-
-const { error, data } = typeof window !== 'undefined' && useQuery(ME, {
-  context: { headers: { Authorization: 'Bearer ' + token } },
+const { error, data } = typeof window !== 'undefined' && !cancelRedirect && useQuery(ME, {
+  context: { headers: { Authorization: 'Bearer ' + token } }, 
   onCompleted(data){
-  setName(data.me.name) 
-  setEmail(data.me.email) 
-  setFavorites(data.me.favorites)
+    setName(data.me.name) 
+    setEmail(data.me.email) 
+    setFavorites(data.me.favorites)
   }
 })
 
+
+  
   if (error && !cancelRedirect) {
-   Cookie.remove('token')
-  router.push('/auth/onboarding') 
-}
+    Cookie.remove('token')
+    router.push('/auth/onboarding') 
+  }
+
+
+  
   console.log('context = ', name, ' ', email)
   //else return (<S.Bg><Logo /></S.Bg>)
 
