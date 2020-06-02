@@ -79,6 +79,24 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
           onDuration={handleDuration}
           controls={false}
           style={{ zIndex: -1 }}
+          preload="true"
+          playsinline
+          config={{
+            file: {
+              attributes: {
+                preload: true,
+              },
+            },
+            vimeo: {
+              playsinline: true,
+              iframeParams: {
+                fullscreen: 0,
+                preload: true,
+              },
+              preload: true,
+            },
+          }}
+          onReady={() => console.log('ready')}
         />
       </PlayerWrapper>
       <Bg>
@@ -93,7 +111,6 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
           {playing ? (
             <Pause
               onClick={togglePlaying}
-              onTap={togglePlaying}
               style={{
                 margin: '0px 48px',
               }}
@@ -101,7 +118,6 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
           ) : (
             <Play
               onClick={() => setPlaying(true)}
-              onTap={() => setPlaying(true)}
               style={{
                 margin: '0px 48px',
               }}
