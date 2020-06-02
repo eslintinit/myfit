@@ -100,7 +100,7 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
           }}
           onReady={() => {
             console.log('ready')
-            setPlaying(true)
+            // setPlaying(true)
           }}
         />
       </PlayerWrapper>
