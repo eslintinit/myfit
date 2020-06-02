@@ -113,9 +113,7 @@ export default ({ show, close, style }) => {
               style={{ width: '33%', marginBottom: '16px' }}
             />
             <S.Text>Hey,</S.Text>
-            <S.Text>
-              <S.Text>{name}</S.Text>
-            </S.Text>
+            <S.Text>{name}</S.Text>
           </S.Account>
           <S.MenuPoints>
             <Link href="/">

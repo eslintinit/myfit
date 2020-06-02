@@ -10,17 +10,8 @@ import Cookie from 'js-cookie'
 
 import 'styles/index.css'
 
-/* import { ApolloClient } from 'apollo-boost'
-import { HttpLink } from 'apollo-link-http'
-import { ApolloProvider } from '@apollo/react-hoc'
-import { InMemoryCache } from 'apollo-cache-inmemory'
-import fetch from 'isomorphic-unfetch' */
-//import { parseCookies } from '../lib/parseCookies'
-
 import Redirect from '../components/Redirect'
 
-// https://vimeo.com/108980280 - Canyon
-// https://vimeo.com/248940683 - Apple Watch
 function MyApp({ Component, pageProps }) {
   const token = Cookie.get('token')
   const { route, events } = useRouter()
@@ -31,7 +22,6 @@ function MyApp({ Component, pageProps }) {
     })
   }, [])
 
-  console.log(route)
   const hideLayout =
     route === '/workouts/[workout]' ||
     route === '/workouts/[workout]/[exercise]' ||

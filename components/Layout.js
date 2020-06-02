@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useSpring } from 'react-spring'
 import { Swipeable } from 'react-swipeable'
@@ -14,7 +14,6 @@ import * as S from 'styles/components/Layout'
 export default ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false)
   const { route, push } = useRouter()
-  const contentRef = useRef(null)
 
   const sidebarAnimation = useSpring({
     // position: 'absolute',
@@ -54,17 +53,10 @@ export default ({ children }) => {
         preventDefaultTouchmoveEvent={false}
         delta={100}
       >
-        <S.Page showSidebar={showSidebar} style={pageAnimation}>
+        <S.Page style={pageAnimation}>
           <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
 
-          <S.Content ref={contentRef} id="layout-content">
-            {/*  <ScrollingProvider> */}
-            {/* {showTabs && <Tabs setShowSidebar={setShowSidebar} />} */}
-
-            {children}
-
-            {/* </ScrollingProvider>  */}
-          </S.Content>
+          <S.Content id="layout-content">{children}</S.Content>
         </S.Page>
       </Swipeable>
       <style jsx global>
