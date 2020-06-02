@@ -219,7 +219,11 @@ export default ({ workout }) => {
               as={`/workouts/${workout.url}/${exercise.url}`}
             >
               <Exercise>
-                <ExerciseImage src={exercise.image.url} />
+                {exercise.image ? (
+                  <ExerciseImage src={exercise.image.url} />
+                ) : (
+                  <ExerciseImage src="https://www.datocms-assets.com/26095/1589115012-mask-3.png" />
+                )}
                 <ExerciseInfo>
                   <ExerciseName>{exercise.name}</ExerciseName>
                   <ExerciseTime>
