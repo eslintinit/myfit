@@ -6,6 +6,7 @@ import Next from 'public/icons/Next.svg'
 import Plus10 from 'public/icons/plus10.svg'
 import Pause from 'public/icons/Pause.svg'
 import Play from 'public/icons/Play.svg'
+import Loading from 'public/icons/Loading.svg'
 
 import Duration from 'components/Player/Duration'
 
@@ -23,10 +24,11 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
   const [seeking, setSeeking] = useState(false)
   const [played, setPlayed] = useState(0)
   const [duration, setDuration] = useState(0)
+  const [ buffered, setBuffered] = useState(false)
 
   const playerRef = useRef(null)
 
-  const togglePlaying = () => setPlaying(true)
+  const togglePlaying = () => setPlaying(!playing)
 
   const handleProgress = ({ played }) => {
     if (!seeking) {
@@ -63,6 +65,13 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
   return (
     <>
       <PlayerWrapper>
+     {!buffered && playing && <Loading style={{
+        position: 'absolute', 
+        backgroundColor: 'transparent',
+        width: '20%',
+        left: '40%',
+        top: '185px'
+        }}/>}
         <ReactPlayer
           url={videoUrl}
           width="100%"
@@ -101,6 +110,11 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
           onReady={() => {
             console.log('ready')
             // setPlaying(true)
+          }}
+          onStart={()=>{
+
+            setBuffered(true)
+
           }}
         />
       </PlayerWrapper>
