@@ -19,7 +19,7 @@ import {
 
 // style={{ marginTop: -64, position: 'fixed', zIndex: 100 }}
 export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
-  const [playing, setPlaying] = useState(true)
+  const [playing, setPlaying] = useState(false)
   const [seeking, setSeeking] = useState(false)
   const [played, setPlayed] = useState(0)
   const [duration, setDuration] = useState(0)
