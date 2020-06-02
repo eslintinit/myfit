@@ -19,14 +19,14 @@ import {
 
 // style={{ marginTop: -64, position: 'fixed', zIndex: 100 }}
 export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
-  const [playing, setPlaying] = useState(false)
+  const [playing, setPlaying] = useState(true)
   const [seeking, setSeeking] = useState(false)
   const [played, setPlayed] = useState(0)
   const [duration, setDuration] = useState(0)
 
   const playerRef = useRef(null)
 
-  const togglePlaying = () => setPlaying(!playing)
+  const togglePlaying = () => setPlaying(true)
 
   const handleProgress = ({ played }) => {
     if (!seeking) {
@@ -85,6 +85,7 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
             file: {
               attributes: {
                 preload: true,
+                autoPlay: true,
               },
             },
             vimeo: {
@@ -92,11 +93,15 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
               iframeParams: {
                 fullscreen: 0,
                 preload: true,
+                autoPlay: true,
               },
               preload: true,
             },
           }}
-          onReady={() => console.log('ready')}
+          onReady={() => {
+            console.log('ready')
+            setPlaying(true)
+          }}
         />
       </PlayerWrapper>
       <Bg>
