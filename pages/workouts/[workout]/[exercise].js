@@ -267,7 +267,7 @@ export default ({ exercise, url }) => {
           )}
 
           {exercise.content.length > 0 && (
-            <S.NumberTip style={{ width: 52, marginBottom: 8 }}>
+            <S.NumberTip style={{ width: 52, marginBottom: 16 }}>
               Tips
             </S.NumberTip>
           )}

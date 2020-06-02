@@ -153,7 +153,7 @@ export const TipItem = styled.li`
   font-weight: normal;
   font-size: 14px;
   line-height: 18px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 `
 
 export const Info = styled.div`
