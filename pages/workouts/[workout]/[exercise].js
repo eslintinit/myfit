@@ -156,6 +156,7 @@ const TOGGLE_FAVORITE = gql`
 `
 
 export default ({ exercise, url }) => {
+  console.log(exercise)
   const { back, push } = useRouter()
   const { favorites, setFavorites } = useContext(userFavorites)
 
