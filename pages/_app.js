@@ -12,6 +12,11 @@ import 'styles/index.css'
 
 import Redirect from '../components/Redirect'
 
+Sentry.init({
+  enabled: process.env.NODE_ENV === 'production',
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+})
+
 function MyApp({ Component, pageProps }) {
   const token = Cookie.get('token')
   const { route, events } = useRouter()

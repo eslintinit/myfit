@@ -1,27 +1,42 @@
 require('dotenv').config()
-const path = require('path')
+const webpack = require('webpack')
 const withPWA = require('next-pwa')
+const path = require('path')
+const nextSourceMaps = require('@zeit/next-source-maps')()
 // const withImages = require('next-images')
 
-module.exports = withPWA({
-  target: 'serverless',
-  env: {
-    DATOCMS_API_TOKEN: process.env.DATOCMS_API_TOKEN,
-  },
-  webpack(config, options) {
-    config.resolve.modules.push(path.resolve('./'))
+module.exports = nextSourceMaps(
+  withPWA({
+    // target: 'serverless',
+    env: {
+      DATOCMS_API_TOKEN: process.env.DATOCMS_API_TOKEN,
+      SENTRY_DSN: process.env.SENTRY_DSN,
+    },
+    webpack(config, { isServer, buildId }) {
+      config.resolve.modules.push(path.resolve('./'))
 
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
-      },
-      use: ['@svgr/webpack'],
-    })
+      config.module.rules.push({
+        test: /\.svg$/,
+        issuer: {
+          test: /\.(js|ts)x?$/,
+        },
+        use: ['@svgr/webpack'],
+      })
 
-    return config
-  },
-  pwa: {
-    dest: 'public',
-  },
-})
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env.SENTRY_RELEASE': JSON.stringify(buildId),
+        }),
+      )
+
+      if (!isServer) {
+        config.resolve.alias['@sentry/node'] = '@sentry/browser'
+      }
+
+      return config
+    },
+    pwa: {
+      dest: 'public',
+    },
+  }),
+)
