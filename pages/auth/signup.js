@@ -46,7 +46,7 @@ export default () => {
   const [signUp, { loading }] = useMutation(SIGNUP_USER, {
     onCompleted({ signup }) {
       console.log('Get token value = ', signup.token)
-      Cookie.set('token', signup.token)
+      Cookie.set('token', signup.token, { expires: 365 })
       router.push('/auth/question')
     },
   })

@@ -52,6 +52,7 @@ export default ({ children }) => {
       setName(data.me.name)
       setEmail(data.me.email)
       setFavorites(data.me.favorites)
+      Cookie.set('token', token, { expires: 365 })
     },
     onError(error) {
       captureException(error)

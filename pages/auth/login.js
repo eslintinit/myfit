@@ -42,7 +42,7 @@ export default () => {
   const [login, { error, loading }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
       console.log('Get token value = ', login.token)
-      Cookie.set('token', login.token)
+      Cookie.set('token', login.token, { expires: 365 })
       if (login.user.gym === "" ) router.push('/auth/question')
       else router.push('/')
     },
