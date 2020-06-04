@@ -15,6 +15,10 @@ export const Bg = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (min-width: 375px) {
+    background-size: cover;
+    background-position: center;
+  }
 `
 
 export const NavigationBar = styled.div`

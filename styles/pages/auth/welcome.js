@@ -11,6 +11,7 @@ export const Bg = styled.div`
     url(https://i.imgur.com/wvzY70G.png);
   height: 100vh;
   background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

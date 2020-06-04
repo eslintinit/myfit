@@ -16,6 +16,8 @@ export const VideoBg = styled.div`
       rgba(0, 0, 0, 0.7) 100%
     ),
     url(https://i.imgur.com/vC9cRoQ.png);
+
+  background-size: cover;
   flex-grow: 1;
   border-radius: 0px 0px 20px 20px;
   display: flex;

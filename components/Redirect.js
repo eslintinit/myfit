@@ -56,6 +56,7 @@ export default ({ children }) => {
         router.push('/auth/onboarding')
       }
     },
+    errorPolicy: 'ignore',
   })
 
   // if (error && !cancelRedirect) {
