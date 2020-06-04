@@ -120,6 +120,8 @@ const ExerciseImage = styled.img`
 const ExerciseInfo = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin-top: -4px;
 `
 const ExerciseName = styled.div`
   color: ${BLACK};

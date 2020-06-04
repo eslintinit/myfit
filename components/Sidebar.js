@@ -100,7 +100,7 @@ export default ({ show, close, style }) => {
   //     </animated.div>
   //   ) : null,
   return (
-    <S.SidebarContainer show={show} style={style}>
+    <S.SidebarContainer style={style}>
       <Swipeable onSwiped={swipeHandler} preventDefaultTouchmoveEvent={false}>
         <S.Header>
           <Close onClick={close} />

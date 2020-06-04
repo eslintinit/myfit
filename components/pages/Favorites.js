@@ -1,35 +1,48 @@
+import Link from 'next/link'
+import { groupBy } from 'lodash'
+
 import Heart from 'public/icons/Heart.svg'
 import Arrow from 'public/icons/ArrowRight.svg'
 import Time from 'public/icons/TimeGray.svg'
-import { Element } from 'react-scroll'
 
 import * as S from 'styles/pages/favorites'
 
 export default function favorites({ exercises }) {
+  const exercisesByWorkout = groupBy(exercises, (i) => {
+    return i.workout.name
+  })
+
   return (
     <S.Cards id="index-favorites">
-      <S.Card>
-        <S.CaptionOne>
-          <div>
-            <S.HeadText>Core</S.HeadText>
-            <S.TinyText>{exercises.length} exercises</S.TinyText>
-          </div>
-          <Heart />
-        </S.CaptionOne>
-        {exercises.map((exercise) => (
-          <S.Exercise key={exercise.url}>
-            <S.Picture src={exercise.image.url} />
-            <S.Info>
-              <S.TextBold>{exercise.name}</S.TextBold>
-              <S.Time>
-                <Time />
-                <S.Min>{exercise.time}</S.Min>
-              </S.Time>
-            </S.Info>
-            <Arrow />
-          </S.Exercise>
-        ))}
-      </S.Card>
+      {Object.entries(exercisesByWorkout).map(([workout, favorites]) => (
+        <S.Card style={{ marginBottom: 36 }} key={workout}>
+          <S.CaptionOne>
+            <div>
+              <S.HeadText>{workout}</S.HeadText>
+              <S.TinyText>{favorites.length} exercises</S.TinyText>
+            </div>
+          </S.CaptionOne>
+          {favorites.map((exercise) => (
+            <Link
+              href={`/workouts/[workout]/[exercise]`}
+              as={`/workouts/${exercise.workout.url}/${exercise.url}`}
+              key={exercise.url}
+            >
+              <S.Exercise key={exercise.url}>
+                <S.Picture src={exercise.image.url} />
+                <S.Info>
+                  <S.TextBold>{exercise.name}</S.TextBold>
+                  <S.Time>
+                    <Time />
+                    <S.Min>{exercise.time}</S.Min>
+                  </S.Time>
+                </S.Info>
+                <Arrow />
+              </S.Exercise>
+            </Link>
+          ))}
+        </S.Card>
+      ))}
       {/*
       <S.Card>
         <S.CaptionTwo>

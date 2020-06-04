@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Cookie from 'js-cookie'
+import SplashScreen from './slash_screen'
 
 import { userName, userEmail, userFavorites } from './context'
 
@@ -42,22 +43,20 @@ export default ({ children }) => {
     }
   `
 
-  const { error, data } =
-    typeof window !== 'undefined' &&
-    useQuery(ME, {
-      context: { headers: { Authorization: 'Bearer ' + token } },
-      onCompleted(data) {
-        setName(data.me.name)
-        setEmail(data.me.email)
-        setFavorites(data.me.favorites)
-      },
-      onError(error) {
-        if (error && !cancelRedirect) {
-          Cookie.remove('token')
-          router.push('/auth/onboarding')
-        }
-      },
-    })
+  const { error, data, loading } = useQuery(ME, {
+    context: { headers: { Authorization: 'Bearer ' + token } },
+    onCompleted(data) {
+      setName(data.me.name)
+      setEmail(data.me.email)
+      setFavorites(data.me.favorites)
+    },
+    onError(error) {
+      if (error && !cancelRedirect) {
+        Cookie.remove('token')
+        router.push('/auth/onboarding')
+      }
+    },
+  })
 
   // if (error && !cancelRedirect) {
   // Cookie.remove('token')
@@ -68,7 +67,7 @@ export default ({ children }) => {
     <userFavorites.Provider value={{ favorites, setFavorites }}>
       <userName.Provider value={{ name, setName }}>
         <userEmail.Provider value={{ email, setEmail }}>
-          {children}
+          {loading ? <SplashScreen /> : children}
         </userEmail.Provider>
       </userName.Provider>
     </userFavorites.Provider>

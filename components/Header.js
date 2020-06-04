@@ -31,7 +31,9 @@ const Header = ({ showSidebar, setShowSidebar }) => {
       )}
       {showLogo ? (
         <Link href="/notifications">
-          <Notifications />
+          <div>
+            <Notifications />
+          </div>
         </Link>
       ) : (
         <div style={{ width: 27 }} />
