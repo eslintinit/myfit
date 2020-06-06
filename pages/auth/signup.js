@@ -9,7 +9,7 @@ import Cookie from 'js-cookie'
 
 import { useRouter } from 'next/router'
 
-import Back from 'public/icons/Back.svg'
+import Back, { toUpperCase } from 'public/icons/Back.svg'
 import EyeOpened from 'public/icons/EyeOpened.svg'
 import EyeClosed from 'public/icons/NoSeeG.svg'
 import Email from 'public/icons/Email.svg'
@@ -36,20 +36,40 @@ export default () => {
   const router = useRouter()
 
   const SIGNUP_USER = gql`
-    mutation signup($email: String!, $password: String!, $name: String!) {
-      signup(email: $email, password: $password, name: $name) {
+    mutation signup($email: String!, $password: String!, $name: String!, $authCode: String!) {
+      signup(email: $email, password: $password, name: $name, authCode: $authCode) {
         token
       }
     }
   `
 
-  const [signUp, { loading }] = useMutation(SIGNUP_USER, {
+  const [signUp, { loading, error }] = useMutation(SIGNUP_USER, {
     onCompleted({ signup }) {
       console.log('Get token value = ', signup.token)
       Cookie.set('token', signup.token, { expires: 365 })
       router.push('/auth/question')
+      
     },
   })
+
+  console.log('error here ==== ', JSON.stringify(error))
+
+  const handleCodeChange = (e) =>{
+    setErrorAuthCode(false)
+    //validate authCode format (for better UX)
+    let val = e.target.value.toUpperCase();
+    if ((val.length === 4 && authCode.length === 5) || 
+        (val.length === 9 && authCode.length === 10)) setAuthCode(val)
+    else if (val.length === 4 || val.length === 9) {
+      setAuthCode(val + "-")
+    }
+    else if (val.length <= 14) {
+      setAuthCode(val)
+    }
+  }
+
+
+
   return (
     <div>
       <S.Bg>
@@ -152,15 +172,22 @@ export default () => {
                 <EyeClosed onClick={() => setShowPassword(true)} />
               )}
             </S.Field>
-            <S.Text>Authentication Code</S.Text>
+            <S.Text
+            style={{
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+            >Authentication Code {error && error.message === "GraphQL error: Authorization code is invalid" && <S.Error>Invalid Code</S.Error>}
+            </S.Text>
             <S.Field>
               <Lock />
               <S.Input
                 placeholder="Enter Code"
                 value={authCode}
-                onChange={(e) => setAuthCode(e.target.value)}
+                onChange={(e) => {handleCodeChange(e)}}
                 onBlur={() => {
-                  if (authCode === '' && authCode !== '1234') {
+                  if (authCode !== '' && authCode.length !== 14) {
                     setErrorAuthCode(true)
                   } else {
                     setErrorAuthCode(false)
@@ -176,11 +203,13 @@ export default () => {
               )}
             </S.Field>
             <S.SignUp
-              onClick={(e) => {
-                e.preventDefault()
-                if (!loading) signUp({ variables: { name, email, password } })
+              onClick={(e) =>  {
+                if (password && validate(email) && authCode.length === 14){
+                  e.preventDefault()
+                  if (!loading) signUp({ variables: { name, email, password, authCode } })
+                }
               }}
-              active={password && validate(email) && authCode === '1234'}
+              active={password && validate(email) && authCode.length === 14}
             >
               Create Account
             </S.SignUp>
