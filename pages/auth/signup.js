@@ -185,7 +185,7 @@ export default () => {
                 value={authCode}
                 onChange={(e) => {handleCodeChange(e)}}
                 onBlur={() => {
-                  if (authCode !== '' && authCode.length !== 14) {
+                  if (authCode !== '' && authCode.length !== 7) {
                     setErrorAuthCode(true)
                   } else {
                     setErrorAuthCode(false)
@@ -202,7 +202,7 @@ export default () => {
             </S.Field>
             <S.SignUp
               onClick={(e) =>  {
-                if (password && validate(email) && authCode.length === 14){
+                if (password && validate(email) && authCode.length === 7){
                   e.preventDefault()
                   if (!loading) signUp({ variables: { name, email, password, authCode } })
                 }
