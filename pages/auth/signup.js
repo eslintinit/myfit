@@ -58,12 +58,10 @@ export default () => {
     setErrorAuthCode(false)
     //validate authCode format (for better UX)
     let val = e.target.value.toUpperCase();
-    if ((val.length === 4 && authCode.length === 5) || 
-        (val.length === 9 && authCode.length === 10)) setAuthCode(val)
-    else if (val.length === 4 || val.length === 9) {
-      setAuthCode(val + "-")
-    }
-    else if (val.length <= 14) {
+    if (val.length === 4 && authCode.length === 5) setAuthCode(val.slice(0,-1))
+    else if (val.length === 4 && authCode.length === 3) setAuthCode(val.slice(0,-1) + "-" + val.slice(-1))
+    
+    else if (val.length <= 7) {
       setAuthCode(val)
     }
   }
