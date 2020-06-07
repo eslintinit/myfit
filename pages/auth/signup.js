@@ -207,7 +207,7 @@ export default () => {
                   if (!loading) signUp({ variables: { name, email, password, authCode } })
                 }
               }}
-              active={password && validate(email) && authCode.length === 14}
+              active={password && validate(email) && authCode.length === 7}
             >
               Create Account
             </S.SignUp>
