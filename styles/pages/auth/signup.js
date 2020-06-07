@@ -114,7 +114,6 @@ export const Tooltip = styled.div`
   width: 180px;
 
   background: #ffffff;
-  box-shadow: -2px 8px 20px rgba(239, 244, 245, 0.5);
   border-radius: 8px;
   font-style: normal;
   font-weight: normal;
@@ -123,7 +122,7 @@ export const Tooltip = styled.div`
   color: #5B5B5B;
 
   background: #ffffff;
-  box-shadow: -2px 8px 20px rgba(239,244,245,0.5);
+  box-shadow: -2px 8px 20px rgba(239,244,245,0.8);
   border-radius: 8px;
   margin-top: -48px;
   padding: 12px 12px 16px;

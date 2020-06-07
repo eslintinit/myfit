@@ -14,7 +14,6 @@ import * as S from 'styles/pages/auth/question'
 import { GREY, PRIMARY } from 'styles/colors'
 
 export default () => {
-
   const token = Cookie.get('token')
 
   const [color, setColor] = useState('default')
@@ -27,9 +26,9 @@ export default () => {
   const quiz = [
     [
       'How often do you go to the gym?', //question
-      "I don't",                         /////////
-      'Rarely',                          //answers
-      'Regulary'                         /////////
+      "I don't", /////////
+      'Rarely', //answers
+      'Regulary', /////////
     ],
     [
       'How would you describe your gym ability?',
@@ -37,12 +36,7 @@ export default () => {
       'Advanced',
       'Intermediate',
     ],
-    [
-      'What are your fitness goals?', 
-      'Tone', 
-      'Build muscle', 
-      'Lose weight'
-    ],
+    ['What are your fitness goals?', 'Tone', 'Build muscle', 'Lose weight'],
   ]
 
   const [answer, setAnswer] = useState([])
@@ -58,9 +52,6 @@ export default () => {
   `
   const [question, { loading }] = useMutation(QUESTION, {
     context: { headers: { Authorization: 'Bearer ' + token } },
-    onCompleted() {
-      router.push('/')
-    },
   })
 
   const somePointActive = pointOne || pointTwo || pointThree
@@ -69,8 +60,10 @@ export default () => {
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back onClick={()=> round > 0 ? setRound(round - 1) : router.push('/') } />
-          <S.Skip onClick={()=> router.push('/')}>Skip</S.Skip>
+          <Back
+            onClick={() => (round > 0 ? setRound(round - 1) : router.push('/'))}
+          />
+          <S.Skip onClick={() => router.push('/')}>Skip</S.Skip>
         </S.NavigationBar>
         <S.InfoBlock>
           <div
@@ -88,13 +81,14 @@ export default () => {
           <S.TextBold>{quiz[round][0]}</S.TextBold>
           <S.Points>
             <S.Point1
+              round={round}
               onClick={() => {
-                if (round !== 2){setPointOne(!pointOne ? true : false)
-                setPointTwo(false)
-                setPointThree(false)}
-                else{
+                if (round !== 2) {
+                  setPointOne(!pointOne ? true : false)
+                  setPointTwo(false)
+                  setPointThree(false)
+                } else {
                   setPointOne(!pointOne)
-
                 }
               }}
               active={pointOne}
@@ -102,13 +96,14 @@ export default () => {
               {quiz[round][1]}
             </S.Point1>
             <S.Point2
+              round={round}
               onClick={() => {
-                if (round !== 2){setPointOne(false)
-                setPointTwo(!pointTwo ? true : false)
-                setPointThree(false)}
-                else{
+                if (round !== 2) {
+                  setPointOne(false)
+                  setPointTwo(!pointTwo ? true : false)
+                  setPointThree(false)
+                } else {
                   setPointTwo(!pointTwo)
-                  
                 }
               }}
               active={pointTwo}
@@ -116,13 +111,14 @@ export default () => {
               {quiz[round][2]}
             </S.Point2>
             <S.Point3
+              round={round}
               onClick={() => {
-               if (round !== 2) { setPointOne(false)
-                setPointTwo(false)
-                setPointThree(!pointThree ? true : false)}
-                else{
+                if (round !== 2) {
+                  setPointOne(false)
+                  setPointTwo(false)
+                  setPointThree(!pointThree ? true : false)
+                } else {
                   setPointThree(!pointThree)
-                  
                 }
               }}
               active={pointThree}
@@ -136,26 +132,44 @@ export default () => {
               e.preventDefault()
               let answers = []
               if (round === 2) {
-                const points = [{id: 1, state: pointOne},{id: 2, state: pointTwo},{id: 3, state: pointThree}]
-                const answersNotFiltered = points.map(point => point.state === true ? quiz[round][point.id] : null)
-                answers = answersNotFiltered.filter(answer => answer !== null)
+                const points = [
+                  { id: 1, state: pointOne },
+                  { id: 2, state: pointTwo },
+                  { id: 3, state: pointThree },
+                ]
+                const answersNotFiltered = points.map((point) =>
+                  point.state === true ? quiz[round][point.id] : null,
+                )
+                answers = answersNotFiltered.filter((answer) => answer !== null)
               }
               setAnswer([
                 ...answer,
-                round !== 2 ?( quiz[round][pointOne ? 1 : pointTwo ? 2 : 3]) : 
-                (answers)
+                round !== 2
+                  ? quiz[round][pointOne ? 1 : pointTwo ? 2 : 3]
+                  : answers,
               ])
               setPointOne(false)
               setPointTwo(false)
               setPointThree(false)
 
               if (round === 2) {
-                const gym = JSON.stringify({gym: answer[0], exp: answer[1], goals: answers})
-                if (!loading) question({ variables: { gym } })
+                const gym = JSON.stringify({
+                  gym: answer[0],
+                  exp: answer[1],
+                  goals: answers,
+                })
+                if (!loading) {
+                  router.push('/')
+                  question({ variables: { gym } })
+                }
               } else setRound(round + 1)
             }}
           >
-           { round !== 2 ? (<S.Text>Choose one answer</S.Text>) : (<S.Text>Choose answers</S.Text>)}
+            {round !== 2 ? (
+              <S.Text>Choose one answer</S.Text>
+            ) : (
+              <S.Text>Choose answers</S.Text>
+            )}
             <S.Next active={somePointActive}>
               Go Next
               {somePointActive ? (

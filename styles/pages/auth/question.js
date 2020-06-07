@@ -23,7 +23,7 @@ export const NavigationBar = styled.div`
   justify-content: space-between;
 `
 
-export const Skip = styled.button`
+export const Skip = styled.div`
   font-weight: bold;
   font-size: 14px;
   line-height: 18px;
@@ -52,6 +52,7 @@ export const TextBold = styled.p`
   width: 75vw;
   color: BLACK;
   text-transform: capitalize;
+  min-height: 108px;
 `
 export const Points = styled.div`
   align-self: center;
@@ -83,17 +84,69 @@ export const Point = styled.div`
   `}
 `
 export const Point1 = styled(Point)`
-  right: 10px;
+  transition: all 1s;
+  ${(props) =>
+    props.round === 0 &&
+    `
+    top: 0px;
+    right: 10px;
+  `}
+  ${(props) =>
+    props.round === 1 &&
+    `
+    top: 24px;
+    right: -110px;
+  `}
+  ${(props) =>
+    props.round === 2 &&
+    `
+    top: 120px;
+    right: -24px;
+  `}
 `
 
 export const Point2 = styled(Point)`
-  top: 24px;
-  left: 14px;
+  transition: all 1s;
+  ${(props) =>
+    props.round === 0 &&
+    `
+    top: 24px;
+    right: -110px;
+  `}
+  ${(props) =>
+    props.round === 1 &&
+    `
+    top: 120px;
+    right: -24px;
+  `}
+  ${(props) =>
+    props.round === 2 &&
+    `
+    top: 0px;
+    right: 10px;
+  `}
 `
 
 export const Point3 = styled(Point)`
-  top: 120px;
-  right: -24px;
+  transition: all 1s;
+  ${(props) =>
+    props.round === 0 &&
+    `
+    top: 120px;
+    right: -24px;
+  `}
+  ${(props) =>
+    props.round === 1 &&
+    `
+    top: 0px;
+    right: 10px;
+  `}
+  ${(props) =>
+    props.round === 2 &&
+    `
+    top: 24px;
+    right: -110px;
+  `}
 `
 export const BottomNavigation = styled.div`
   display: flex;
@@ -108,7 +161,7 @@ export const Text = styled.p`
   color: ${DARK_GREY};
 `
 
-export const Next = styled.button`
+export const Next = styled.div`
   font-weight: bold;
   line-height: 18px;
   color: ${(props) => (props.active ? PRIMARY : GREY)};
