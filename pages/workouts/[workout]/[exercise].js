@@ -219,7 +219,7 @@ export default ({ exercise, url }) => {
       )}
       */}
       {exercise.video ? (
-        <Player videoUrl={exercise.video.url} />
+        <Player videoUrl={exercise.video} />
       ) : (
         <div style={{ marginTop: 48 }} />
       )}
@@ -267,15 +267,17 @@ export default ({ exercise, url }) => {
             </>
           )}
 
-          {exercise.content.length > 0 && (
+          {console.log(exercise)}
+          {exercise.content && exercise.content.length > 0 && (
             <S.NumberTip style={{ width: 52, marginBottom: 16 }}>
               Tips
             </S.NumberTip>
           )}
           <ul>
-            {exercise.content.map((tip, index) => (
-              <S.TipItem>{tip.tip}</S.TipItem>
-            ))}
+            {exercise.content &&
+              exercise.content.map((tip, index) => (
+                <S.TipItem>{tip.tip}</S.TipItem>
+              ))}
           </ul>
           {/*
           <S.Steps>
