@@ -12,4 +12,8 @@ export const Bg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 375px) {
+    background-size: cover;
+    background-position: start;
+  }
 `
