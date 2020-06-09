@@ -3,6 +3,9 @@ import { useRouter } from 'next/router'
 import { Reset } from 'styled-reset'
 import FontsStyles from 'styles/fonts'
 import Layout from 'components/Layout'
+import React from "react";
+import useIsIOS from "../hooks/useIsIOS";
+import {InstallPWA} from "../components/InstallPWA";
 
 import { withApollo } from 'lib/apollo'
 
@@ -11,6 +14,7 @@ import Cookie from 'js-cookie'
 import 'styles/index.css'
 
 import Redirect from '../components/Redirect'
+
 
 function MyApp({ Component, pageProps }) {
   const token = Cookie.get('token')
@@ -37,6 +41,8 @@ function MyApp({ Component, pageProps }) {
     route === '/auth/resetpassword/[resetToken]' ||
     route === '/notifications'
 
+    const { prompt } = useIsIOS();
+
   return (
     <>
       <>
@@ -44,6 +50,7 @@ function MyApp({ Component, pageProps }) {
         <FontsStyles />
       </>
       <Redirect>
+      {prompt && <InstallPWA />}
         {hideLayout ? (
           <Component {...pageProps} />
         ) : (
