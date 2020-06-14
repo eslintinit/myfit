@@ -49,7 +49,6 @@ function MyApp({ Component, pageProps }) {
         <FontsStyles />
       </>
       <Redirect>
-        <InstallPWA />
         {prompt && <InstallPWA />}
         {hideLayout ? (
           <Component {...pageProps} />
