@@ -21,11 +21,11 @@ function checkForIOS() {
     return {isSamsungBrowser, prompt};
 }
 
-export default function useIsIOS() {
+export default function useIsSamsung() {
     const [isSamsung, setIsSamsung] = useState({});
 
     useEffect(() => {
-        setIsIOS(checkForIOS());
+        setIsSamsung(checkForIOS());
         return() => console.log("CLEANUP INSTALL PROMPT", isSamsung);
     }, []);
 

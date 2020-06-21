@@ -9,7 +9,7 @@ import { InstallPWA } from '../components/InstallPWA'
 import { InstallPWAS } from '../components/InstallPWAS'
 
 
-import useIsSamsung from '../hooks/useIsISamsung'
+import useIsSamsung from '../hooks/useIsSamsung'
 
 import { withApollo } from 'lib/apollo'
 

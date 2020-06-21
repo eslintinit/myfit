@@ -63,7 +63,7 @@ export default ({ children }) => {
     },
   })
 
-  // if (error && !cancelRedirect) {
+  // if (!token) {
   // Cookie.remove('token')
   // router.push('/auth/onboarding')
   // }
