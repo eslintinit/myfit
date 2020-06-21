@@ -2,9 +2,9 @@ import {useState, useEffect} from "react";
 import moment from "moment";
 
 function checkForIOS() {
-    if (navigator.standalone) {
+    /* if (navigator.standalone) {
         return false;
-    }
+    } */
     const today = moment().toDate();
     const lastPrompt = moment(localStorage.getItem("installPrompt"));
     const days = moment(today).diff(lastPrompt, "days");
