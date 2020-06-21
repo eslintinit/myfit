@@ -9,7 +9,7 @@ import image from '../public/Logo.svg'
 import Close from 'public/icons/Close.svg'
 import share from 'public/icons/AppleShare.svg'
 
-export const InstallPWA = ({ ...props }) => {
+export const InstallPWAS = ({ ...props }) => {
   const [modalOpen, setModalOpen, toggleModal] = useModal()
 
   useEffect(() => {
