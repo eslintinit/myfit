@@ -6,6 +6,10 @@ import Layout from 'components/Layout'
 import React from 'react'
 import useIsIOS from '../hooks/useIsIOS'
 import { InstallPWA } from '../components/InstallPWA'
+import { InstallPWAS } from '../components/InstallPWAS'
+
+
+import useIsSamsung from '../hooks/useIsISamsung'
 
 import { withApollo } from 'lib/apollo'
 
@@ -42,6 +46,8 @@ function MyApp({ Component, pageProps }) {
 
   const { prompt } = useIsIOS()
 
+  const { sPrompt } = useIsSamsung()
+
   return (
     <>
       <>
@@ -50,6 +56,7 @@ function MyApp({ Component, pageProps }) {
       </>
       <Redirect>
         {prompt && <InstallPWA />}
+        {sPrompt && <InstallPWAS />}
         {hideLayout ? (
           <Component {...pageProps} />
         ) : (
