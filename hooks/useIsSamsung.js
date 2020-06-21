@@ -12,7 +12,7 @@ function checkForIOS() {
     const webkit = !!ua.match(/WebKit/i);
     const isSamsungBrowser = webkit && !ua.match(/SamsungBrowser/i);
 
-    const prompt = (isNaN(days) || days > 5) && isIOS;
+    const prompt = (isNaN(days) || days > 5) && isSamsungBrowser;
 
     if (prompt && "localStorage" in window) {
         localStorage.setItem("installPrompt", today);
