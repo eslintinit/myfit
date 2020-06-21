@@ -66,7 +66,7 @@ export default ({ children }) => {
   // if (!token) {
   // Cookie.remove('token')
   // router.push('/auth/onboarding')
-  // }
+  // }//
 
   return (
     <userFavorites.Provider value={{ favorites, setFavorites }}>
