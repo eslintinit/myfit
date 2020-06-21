@@ -20,7 +20,7 @@ function checkForIOS() {
 }
 
 export default function useIsSamsung() {
-    const [isSamsung, setIsSamsung = useState({});
+    const [isSamsung, setIsSamsung] = useState({});
 
     useEffect(() => {
         setIsSamsung(checkForIOS());
