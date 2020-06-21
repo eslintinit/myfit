@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
 
   const { prompt } = useIsIOS()
 
-  const { sPrompt } = useIsSamsung()
+  const isSamsungBrowser = navigator.userAgent.match(/SamsungBrowser/i)
 
   return (
     <>
@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }) {
       </>
       <Redirect>
         {prompt && <InstallPWA />}
-        {sPrompt && <InstallPWAS />}
+        {isSamsungBrowser && <InstallPWAS />}
         {hideLayout ? (
           <Component {...pageProps} />
         ) : (
