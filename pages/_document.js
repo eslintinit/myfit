@@ -34,8 +34,14 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
+
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="apple-touch-fullscreen" content="yes" />
+          <meta name="apple-mobile-web-app-title" content="MyFit" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="mobile-web-app-capable" content="yes" />
           <script
             type="text/javascript"
             charset="utf8"
@@ -69,56 +75,160 @@ export default class MyDocument extends Document {
           />
 
           <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/favicon/apple-touch-icon.png"
-          />
-          <link
             rel="icon"
             type="image/png"
-            sizes="32x32"
-            href="/favicon/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon/favicon-16x16.png"
+            sizes="192x192"
+            href="/favicon/manifest-192.png"
           />
           <link rel="manifest" href="/manifest.json" />
           <link
             rel="mask-icon"
-            href="/favicon/safari-pinned-tab.svg"
+            href="/favicon/manifest-192.png"
             color="#5bbad5"
           />
-          <link rel="shortcut icon" href="/favicon/favicon.ico" />
+          <link rel="shortcut icon" href="/favicon/manifest-192.png" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
-
-          <meta name="twitter:card" content="summary" />
-          <meta name="twitter:url" content="https://yourdomain.com" />
-          <meta name="twitter:title" content="MyFit" />
-          <meta name="twitter:description" content="Best MyFit in the world" />
-          <meta
-            name="twitter:image"
-            content="https://yourdomain.com/favicon/android-chrome-192x192.png"
-          />
-          <meta name="twitter:creator" content="@DavidWShadow" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="MyFit" />
-          <meta property="og:description" content="Best MyFit in the world" />
+          <meta
+            property="og:description"
+            content="The Resistance Workout Revolution"
+          />
           <meta property="og:site_name" content="MyFit" />
           <meta property="og:url" content="https://myfit-one.now.sh" />
-          <meta
-            property="og:image"
-            content="https://yourdomain.com/favicon/apple-touch-icon.png"
-          />
           <script src="https://player.vimeo.com/api/player.js"></script>
           <script
             src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
             async=""
+          />
+
+          <meta
+            property="og:image"
+            content="https://yourdomain.com/favicon/apple-touch-icon.png"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/favicon/apple-icon-180.jpg"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="167x167"
+            href="/favicon/apple-icon-167.jpg"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="152x152"
+            href="/favicon/apple-icon-152.jpg"
+          />
+          <link
+            rel="apple-touch-icon"
+            sizes="120x120"
+            href="/favicon/apple-icon-120.jpg"
+          />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2048-2732.jpg"
+            media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2732-2048.jpg"
+            media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1668-2388.jpg"
+            media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2388-1668.jpg"
+            media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1668-2224.jpg"
+            media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2224-1668.jpg"
+            media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1536-2048.jpg"
+            media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2048-1536.jpg"
+            media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1242-2688.jpg"
+            media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2688-1242.jpg"
+            media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1125-2436.jpg"
+            media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2436-1125.jpg"
+            media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-828-1792.jpg"
+            media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1792-828.jpg"
+            media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1242-2208.jpg"
+            media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-2208-1242.jpg"
+            media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-750-1334.jpg"
+            media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1334-750.jpg"
+            media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-640-1136.jpg"
+            media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="apple-splash-1136-640.jpg"
+            media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
           />
         </Head>
         <body>

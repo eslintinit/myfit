@@ -78,6 +78,7 @@ export const GetInTouch = styled(motion.div)`
   position: fixed;
   bottom: 0;
   width: 100vw;
+  max-width: 100vw;
   box-sizing: border-box;
   margin-left: -16px;
 `

@@ -15,6 +15,7 @@ export const Bg = styled.div`
   # position: fixed;
   # bottom: 164px;
   margin-top: -84px;
+  min-height: 70px;
   z-index: 1;
 `
 

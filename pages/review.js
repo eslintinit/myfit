@@ -7,7 +7,9 @@ export default () => {
     <div style={{ marginTop: 24 }}>
       <S.Content>
         <S.ContentTitle>
-          We’re a small UK brand and your reviews help us a lot.
+          We’re a small UK brand,
+          <br />
+          your reviews help us a lot.
         </S.ContentTitle>
         <S.InfoNormal>
           We’d appreciate your feedback on our product. Below is a link to the
@@ -23,7 +25,7 @@ export default () => {
             background: SOFT_ORANGE,
             borderRadius: '8px',
             textDecoration: 'none',
-            padding: '22px 56px 14px',
+            padding: '22px 88px 14px',
             marginTop: 10,
           }}
         >
