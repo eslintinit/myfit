@@ -34,7 +34,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
           />
 
           <meta name="mobile-web-app-capable" content="yes" />

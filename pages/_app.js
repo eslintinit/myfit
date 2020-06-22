@@ -8,7 +8,6 @@ import useIsIOS from '../hooks/useIsIOS'
 import { InstallPWA } from '../components/InstallPWA'
 import { InstallPWAS } from '../components/InstallPWAS'
 
-
 import useIsSamsung from '../hooks/useIsSamsung'
 
 import { withApollo } from 'lib/apollo'
@@ -27,6 +26,20 @@ function MyApp({ Component, pageProps }) {
     events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0)
     })
+  }, [])
+
+  useEffect(() => {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      window.document.addEventListener(
+        'touchmove',
+        (e) => {
+          if (e.scale !== 1) {
+            e.preventDefault()
+          }
+        },
+        { passive: false },
+      )
+    }
   }, [])
 
   const hideLayout =

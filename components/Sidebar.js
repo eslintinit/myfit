@@ -107,11 +107,12 @@ export default ({ show, close, style }) => {
         </S.Header>
         <S.OpenMenu>
           <S.Account>
-            {/**/}
+            {/*
             <img
               src="https://i.imgur.com/PtZghFA.png"
               style={{ width: '33%', marginBottom: '16px' }}
             />
+            */}
             <S.Text>Hey,</S.Text>
             <S.Text>{name}</S.Text>
           </S.Account>

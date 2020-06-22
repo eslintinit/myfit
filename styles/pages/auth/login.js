@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import { BLACK, DARK_GREY, GREY, PRIMARY } from 'styles/colors'
 
+const isIOS =
+  process.browser &&
+  window &&
+  /iPad|iPhone|iPod/.test(window.navigator.userAgent) &&
+  !window.MSStream
+
 export const Bg = styled.div`
   background-image: linear-gradient(
       180deg,
@@ -86,6 +92,10 @@ export const Input = styled.input`
   margin: 15px 16px;
   outline: none;
   flex-grow: 1;
+  ${isIOS &&
+  `
+    font-size: 16px;
+  `}
 `
 
 export const Login = styled.div`
