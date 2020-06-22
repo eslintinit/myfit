@@ -92,10 +92,7 @@ export const Input = styled.input`
   margin: 15px 16px;
   outline: none;
   flex-grow: 1;
-  ${isIOS &&
-  `
-    font-size: 16px;
-  `}
+  ${isIOS && 'font-size: 16px;'}
 `
 
 export const Login = styled.div`

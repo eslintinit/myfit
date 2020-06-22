@@ -12,6 +12,12 @@ import {
   PRIMARY,
 } from 'styles/colors'
 
+const isIOS =
+  process.browser &&
+  window &&
+  /iPad|iPhone|iPod/.test(window.navigator.userAgent) &&
+  !window.MSStream
+
 export const Text = styled.div`
   margin-left: 14px;
   flex-grow: 1;
@@ -146,4 +152,5 @@ export const Textarea = styled(TextareaAutosize)`
   margin-top: 8px;
   outline: none;
   width: 100%;
+  ${isIOS && 'font-size: 16px;'}
 `

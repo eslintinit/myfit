@@ -4,6 +4,12 @@ import { withStyles } from '@material-ui/core/styles'
 
 import { BLACK, DARK_GREY, PRIMARY, GREY, SOFT_ORANGE } from 'styles/colors'
 
+const isIOS =
+  process.browser &&
+  window &&
+  /iPad|iPhone|iPod/.test(window.navigator.userAgent) &&
+  !window.MSStream
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -135,6 +141,8 @@ export const Input = styled.input`
   outline: none;
   flex-grow: 1;
   margin-left: 16px;
+
+  ${isIOS && 'font-size: 16px;'}
 `
 
 export const Field = styled.div`
