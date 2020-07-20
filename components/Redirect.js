@@ -9,11 +9,13 @@ import { useState, useEffect } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
+/* 
 import Logo from 'public/LogoWhite.svg'
 
 import * as S from 'styles/pages/auth/slash_screen'
 
-import { graphql } from 'graphql'
+import { graphql } from 'graphql' */
+
 import sentry from '../lib/sentry'
 
 const { Sentry, captureException } = sentry()

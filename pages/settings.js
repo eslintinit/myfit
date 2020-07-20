@@ -1,5 +1,5 @@
 import Sidebar from 'components/Sidebar'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Switch from '@material-ui/core/Switch'
 import FormGroup from '@material-ui/core/FormGroup'
@@ -26,6 +26,8 @@ import Photo from 'public/icons/PhotoRed.svg'
 import Close from 'public/icons/CloseBig.svg'
 
 import * as S from 'styles/pages/settings'
+
+const OneSignal = typeof window !== 'undefined' && window.OneSignal
 
 const FirstSwitch = withStyles({
   switchBase: {
@@ -73,17 +75,33 @@ export default () => {
   const [showChangeEmail, setShowChangeEmail] = useState(false)
   const [showChangeName, setShowChangeName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
-  const [state, setState] = useState({
-    checkedA: false,
-    checkedB: false,
-    checkedC: false,
+  const [push, setPush] = useState({
+    newVideo: false,
+    newProduct: false,
+    updates: false,
   })
 
   const token = Cookie.get('token')
 
   const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked })
+    setPush({ ...push, [event.target.name]: event.target.checked })
   }
+  
+  useEffect(()=>{
+    OneSignal.sendTag("newVideo", push.newVideo).then((tagsSend)=>{
+      console.log("tagsSend: " + tagsSend.newVideo)
+    })
+    OneSignal.sendTag("newProduct", push.newProduct).then((tagsSend)=>{
+      console.log("tagsSend: " + tagsSend.newProduct)
+    })
+    OneSignal.sendTag("updates", push.updates).then((tagsSend)=>{
+      console.log("tagsSend: " + tagsSend.updates)
+    })
+  }, [push])
+
+
+
+
 
   const { name, setName } = useContext(userName)
   const { email, setEmail } = useContext(userEmail)
@@ -196,9 +214,9 @@ export default () => {
             <S.Text>About new video content</S.Text>
             <Switch
               size="small"
-              checked={state.checkedA}
+              checked={push.newVideo}
               onChange={handleChange}
-              name="checkedA"
+              name="newVideo"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
           </S.InfoNotification>
@@ -206,9 +224,9 @@ export default () => {
             <S.Text>About new product</S.Text>
             <RSwitch
               size="small"
-              checked={state.checkedB}
+              checked={push.newProduct}
               onChange={handleChange}
-              name="checkedB"
+              name="newProduct"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
           </S.InfoNotification>
@@ -216,9 +234,9 @@ export default () => {
             <S.Text>MyFit Updates</S.Text>
             <ActiveSwitch
               size="small"
-              checked={state.checkedC}
+              checked={push.updates}
               onChange={handleChange}
-              name="checkedC"
+              name="updates"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
           </S.InfoNotification>
