@@ -48,8 +48,8 @@ export default class MyDocument extends Document {
             async=""
             src="https://player.vimeo.com/api/player.js"
           ></script>
-          {/* <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-          <script
+          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+          {/* <script
             async=""
             src="public/OneSIgnalInit.js"
           ></script> */}
