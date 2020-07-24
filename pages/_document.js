@@ -104,10 +104,6 @@ export default class MyDocument extends Document {
           <meta property="og:site_name" content="MyFit" />
           <meta property="og:url" content="https://myfit-one.now.sh" />
           <script src="https://player.vimeo.com/api/player.js"></script>
-          <script
-            src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
-            async=""
-          />
 
           <meta
             property="og:image"
