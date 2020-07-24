@@ -1,4 +1,4 @@
-if (process.browser) {
+//if (process.browser) {
 
   window.OneSignal = window.OneSignal || [];
 
@@ -12,7 +12,7 @@ if (process.browser) {
     });
     //OneSignal.showNativePrompt();
   });
-}
+//}
 
 
 
