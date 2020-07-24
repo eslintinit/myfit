@@ -27,7 +27,7 @@ import Close from 'public/icons/CloseBig.svg'
 
 import * as S from 'styles/pages/settings'
 
-const OneSignal = typeof window !== 'undefined' && window.OneSignal
+const OneSignal = window.OneSignal || []
 
 const FirstSwitch = withStyles({
   switchBase: {
@@ -220,7 +220,7 @@ export default () => {
             <S.Text>About new video content</S.Text>
             <Switch
               size="small"
-              checked={push.newVideo}
+              checked={push.newVideo || false}
               onChange={handleChange}
               name="newVideo"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -230,7 +230,7 @@ export default () => {
             <S.Text>About new product</S.Text>
             <RSwitch
               size="small"
-              checked={push.newProduct}
+              checked={push.newProduct || false}
               onChange={handleChange}
               name="newProduct"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -240,7 +240,7 @@ export default () => {
             <S.Text>MyFit Updates</S.Text>
             <ActiveSwitch
               size="small"
-              checked={push.updates}
+              checked={push.updates || false}
               onChange={handleChange}
               name="updates"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
