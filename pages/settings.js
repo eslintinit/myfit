@@ -27,7 +27,7 @@ import Close from 'public/icons/CloseBig.svg'
 
 import * as S from 'styles/pages/settings'
 
-const OneSignal = window.OneSignal || []
+const OneSignal = process.browser && window.OneSignal 
 
 const FirstSwitch = withStyles({
   switchBase: {
