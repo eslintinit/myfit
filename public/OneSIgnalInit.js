@@ -1,6 +1,6 @@
 if (process.browser) {
 
-  var OneSignal = window.OneSignal || [];
+  window.OneSignal = window.OneSignal || [];
 
 
   OneSignal.push(function() {
