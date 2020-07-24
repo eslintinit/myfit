@@ -75,27 +75,31 @@ export default () => {
   const [showChangeEmail, setShowChangeEmail] = useState(false)
   const [showChangeName, setShowChangeName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
-  const [push, setPush] = useState({
-    newVideo: false,
-    newProduct: false,
-    updates: false,
+  const [push, setPush] = typeof window !== 'undefined' && useState({
+    newVideo: window.localStorage.getItem('newVideo') || false,
+    newProduct: window.localStorage.getItem('newProduct') || false,
+    updates: window.localStorage.getItem('updates') || false,
   })
-
+  
   const token = Cookie.get('token')
 
+  
   const handleChange = (event) => {
     setPush({ ...push, [event.target.name]: event.target.checked })
   }
   
   useEffect(()=>{
     OneSignal.sendTag("newVideo", push.newVideo).then((tagsSend)=>{
-      console.log("tagsSend: " + tagsSend.newVideo)
+      console.log("newVideo: " + tagsSend.newVideo)
+      window.localStorage.setItem('newVideo', push.newVideo)
     })
     OneSignal.sendTag("newProduct", push.newProduct).then((tagsSend)=>{
-      console.log("tagsSend: " + tagsSend.newProduct)
+      console.log("newProduct: " + tagsSend.newProduct)
+      window.localStorage.setItem('newProduct', push.newProduct)
     })
     OneSignal.sendTag("updates", push.updates).then((tagsSend)=>{
-      console.log("tagsSend: " + tagsSend.updates)
+      console.log("updates: " + tagsSend.updates)
+      window.localStorage.setItem('updates', push.updates)
     })
   }, [push])
 
@@ -110,6 +114,8 @@ export default () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [newEmail, setNewEmail] = useState('')
+
+
 
   const CHANGE_NAME = gql`
     mutation changeName($name: String!) {
