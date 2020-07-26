@@ -18,9 +18,9 @@ export default ({ workouts, combos }) => {
   const [exercises, setExercises] = useState([])
   const OneSignal = process.browser && window.OneSignal
 
-  
+  const tagsExist = window.localStorage.getItem('newVideo') || window.localStorage.getItem('newProduct') || window.localStorage.getItem('updates')
 
-  if (process.browser) {
+  if (process.browser && !tagsExist) {
     
     OneSignal.getTags((tags) => {
     window.localStorage.setItem('newVideo', typeof tags.newVideo !== 'undefined' ? tags.newVideo : false)
@@ -32,7 +32,7 @@ export default ({ workouts, combos }) => {
     
   }
 
-  const tagsExist = window.localStorage.getItem('newVideo') || window.localStorage.getItem('newProduct') || window.localStorage.getItem('updates')
+  
 
 
   tagsExist && useEffect(()=>{
