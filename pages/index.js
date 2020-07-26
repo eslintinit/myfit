@@ -21,15 +21,15 @@ export default ({ workouts, combos }) => {
   
 
   if (process.browser) {
-    let tags = {}
-    OneSignal.getTags((receivedTags) => {
-    tags = receivedTags
-    console.log(receivedTags)
+    
+    OneSignal.getTags((tags) => {
+    window.localStorage.setItem('newVideo', tags.newVideo || false)
+    window.localStorage.setItem('newProduct', tags.newProduct  || false)
+    window.localStorage.setItem('updates', tags.updates  || false)
+    console.log(tags)
     })
     
-    window.localStorage.setItem('newVideo', tags.newVideo)
-    window.localStorage.setItem('newProduct', tags.newProduct)
-    window.localStorage.setItem('updates', tags.updates)
+    
   }
 
   const tagsExist = window.localStorage.getItem('newVideo') || window.localStorage.getItem('newProduct') || window.localStorage.getItem('updates')
