@@ -7,6 +7,8 @@ import { withStyles } from '@material-ui/core/styles'
 import { deepOrange } from '@material-ui/core/colors'
 import { grey } from '@material-ui/core/colors'
 
+import { useLocalStorage } from '../hooks/useLocalStorage'
+
 import Cookie from 'js-cookie'
 
 import { validate } from 'email-validator'
@@ -75,23 +77,27 @@ export default () => {
   const [showChangeEmail, setShowChangeEmail] = useState(false)
   const [showChangeName, setShowChangeName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
-  const [push, setPush] = typeof window !== 'undefined' && useState({
+  /* const [push, setPush] = typeof window !== 'undefined' && useState({
     newVideo: window.localStorage.getItem('newVideo'),
     newProduct: window.localStorage.getItem('newProduct'),
     updates: window.localStorage.getItem('updates'),
-  })
+  }) */
+
+  const [newVideo, setNewVideo] = useLocalStorage('newVideo', false)
+  const [newProduct, setNewProduct] = useLocalStorage('newProduct', false)
+  const [updates, setUpdates] = useLocalStorage('updates', false)
 
   console.log(window.localStorage.getItem('newVideo'))
   
   const token = Cookie.get('token')
 
   
-  const handleChange = (event) => {
+ /*  const handleChange = (event) => {
     setPush({ ...push, [event.target.name]: event.target.checked })
     window.localStorage.setItem(`${event.target.name}`, event.target.checked)
   }
-  
-  
+   */
+
 
 
 
@@ -210,8 +216,8 @@ export default () => {
             <S.Text>About new video content</S.Text>
             <Switch
               size="small"
-              checked={push.newVideo}
-              onChange={handleChange}
+              checked={newVideo}
+              onClick={() => { setNewVideo(!newVideo)}}
               name="newVideo"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
@@ -220,8 +226,8 @@ export default () => {
             <S.Text>About new product</S.Text>
             <Switch
               size="small"
-              checked={push.newProduct}
-              onChange={handleChange}
+              checked={newProduct}
+              onClick={() => { setNewProduct(!newProduct)}}
               name="newProduct"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
@@ -230,8 +236,8 @@ export default () => {
             <S.Text>MyFit Updates</S.Text>
             <Switch
               size="small"
-              checked={push.updates}
-              onChange={handleChange}
+              checked={updates}
+              onClick={() => { setUpdates(!updates)}}
               name="updates"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
