@@ -16,6 +16,21 @@ import { Section, ScrollingProvider } from 'react-scroll-section'
 
 export default ({ workouts, combos }) => {
   const [exercises, setExercises] = useState([])
+  const OneSignal = process.browser && window.OneSignal
+
+  const tagsExist = window.localStorage.getItem('newVideo') || window.localStorage.getItem('newProduct') || window.localStorage.getItem('updates')
+
+  tagsExist && useEffect(()=>{
+    OneSignal.sendTag("newVideo", window.localStorage.getItem('newVideo')).then((tagsSend)=>{
+      console.log("newVideo: " + tagsSend.newVideo)      
+    })
+    OneSignal.sendTag("newProduct", window.localStorage.getItem('newProduct')).then((tagsSend)=>{
+      console.log("newProduct: " + tagsSend.newProduct)     
+    })
+    OneSignal.sendTag("updates", window.localStorage.getItem('updates')).then((tagsSend)=>{
+      console.log("updates: " + tagsSend.updates)      
+    })
+  },)
 
   const { favorites, setFavorites } = useContext(userFavorites)
 

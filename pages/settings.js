@@ -27,7 +27,7 @@ import Close from 'public/icons/CloseBig.svg'
 
 import * as S from 'styles/pages/settings'
 
-const OneSignal = process.browser && window.OneSignal 
+ 
 
 const FirstSwitch = withStyles({
   switchBase: {
@@ -76,32 +76,22 @@ export default () => {
   const [showChangeName, setShowChangeName] = useState(false)
   const [showChangePassword, setShowChangePassword] = useState(false)
   const [push, setPush] = typeof window !== 'undefined' && useState({
-    newVideo: window.localStorage.getItem('newVideo') || false,
-    newProduct: window.localStorage.getItem('newProduct') || false,
-    updates: window.localStorage.getItem('updates') || false,
+    newVideo: window.localStorage.getItem('newVideo'),
+    newProduct: window.localStorage.getItem('newProduct'),
+    updates: window.localStorage.getItem('updates'),
   })
+
+  console.log(window.localStorage.getItem('newVideo'))
   
   const token = Cookie.get('token')
 
   
   const handleChange = (event) => {
     setPush({ ...push, [event.target.name]: event.target.checked })
+    window.localStorage.setItem(`${event.target.name}`, event.target.checked)
   }
   
-  useEffect(()=>{
-    OneSignal.sendTag("newVideo", push.newVideo).then((tagsSend)=>{
-      console.log("newVideo: " + tagsSend.newVideo)
-      window.localStorage.setItem('newVideo', push.newVideo)
-    })
-    OneSignal.sendTag("newProduct", push.newProduct).then((tagsSend)=>{
-      console.log("newProduct: " + tagsSend.newProduct)
-      window.localStorage.setItem('newProduct', push.newProduct)
-    })
-    OneSignal.sendTag("updates", push.updates).then((tagsSend)=>{
-      console.log("updates: " + tagsSend.updates)
-      window.localStorage.setItem('updates', push.updates)
-    })
-  }, [push])
+  
 
 
 
@@ -220,7 +210,7 @@ export default () => {
             <S.Text>About new video content</S.Text>
             <Switch
               size="small"
-              checked={push.newVideo || false}
+              checked={push.newVideo}
               onChange={handleChange}
               name="newVideo"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -228,9 +218,9 @@ export default () => {
           </S.InfoNotification>
           <S.InfoNotification>
             <S.Text>About new product</S.Text>
-            <RSwitch
+            <Switch
               size="small"
-              checked={push.newProduct || false}
+              checked={push.newProduct}
               onChange={handleChange}
               name="newProduct"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
@@ -238,9 +228,9 @@ export default () => {
           </S.InfoNotification>
           <S.InfoNotification>
             <S.Text>MyFit Updates</S.Text>
-            <ActiveSwitch
+            <Switch
               size="small"
-              checked={push.updates || false}
+              checked={push.updates}
               onChange={handleChange}
               name="updates"
               inputProps={{ 'aria-label': 'secondary checkbox' }}
