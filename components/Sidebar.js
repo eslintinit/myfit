@@ -133,31 +133,31 @@ export default ({ show, close, style }) => {
                 <S.TextPoint>Shop MyFit</S.TextPoint>
               </S.Point>
             </a>
-            <Link href="/safety">
+            <Link href="/app/safety">
               <S.Point active={safetyActive} onClick={close}>
                 <Safety fill={safetyActive ? PRIMARY : 'white'} />
                 <S.TextPoint>Safety</S.TextPoint>
               </S.Point>
             </Link>
-            <Link href="/about_us">
+            <Link href="/app/about_us">
               <S.Point active={aboutUsActive} onClick={close}>
                 <About fill={aboutUsActive ? PRIMARY : 'white'} />
                 <S.TextPoint>About Us</S.TextPoint>
               </S.Point>
             </Link>
-            <Link href="/contact_us">
+            <Link href="/app/contact_us">
               <S.Point active={contactUsActive} onClick={close}>
                 <Contact fill={contactUsActive ? PRIMARY : 'white'} />
                 <S.TextPoint>Contact Us</S.TextPoint>
               </S.Point>
             </Link>
-            <Link href="/review">
+            <Link href="/app/review">
               <S.Point active={reviewActive} onClick={close}>
                 <Review fill={reviewActive ? PRIMARY : 'white'} />
                 <S.TextPoint>Review</S.TextPoint>
               </S.Point>
             </Link>
-            <Link href="/settings">
+            <Link href="/app/settings">
               <S.Point active={settingsActive} onClick={close}>
                 <Settings fill={settingsActive ? PRIMARY : 'white'} />
                 <S.TextPoint>Settings</S.TextPoint>

@@ -8,8 +8,8 @@ export default ({ workouts }) => {
     <Workouts style={{ marginBottom: 64 }} id="index-workouts">
       {(workouts || []).map((workout) => (
         <Link
-          href={`/workouts/[workout]`}
-          as={`/workouts/${workout.url}`}
+          href={`/app/workouts/[workout]`}
+          as={`/app/workouts/${workout.url}`}
           key={workout.id}
         >
           <Card height={workout.height} image={workout.image.url}>

@@ -40,7 +40,10 @@ export default ({ combos }) => {
 
       <S.Cards>
         <S.RowOne>
-          <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+          <Link
+            href={`/app/combos/[combo]`}
+            as={`/app/combos/${firstCombo.url}`}
+          >
             <S.CardOne>
               <Play />
               <S.Text>
@@ -52,7 +55,10 @@ export default ({ combos }) => {
               </S.Text>
             </S.CardOne>
           </Link>
-          <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+          <Link
+            href={`/app/combos/[combo]`}
+            as={`/app/combos/${firstCombo.url}`}
+          >
             <S.CardThree>
               <Play />
               <S.Text>
@@ -64,7 +70,10 @@ export default ({ combos }) => {
               </S.Text>
             </S.CardThree>
           </Link>
-          <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+          <Link
+            href={`/app/combos/[combo]`}
+            as={`/app/combos/${firstCombo.url}`}
+          >
             <S.CardFive>
               <Play />
               <S.Text>
@@ -78,7 +87,10 @@ export default ({ combos }) => {
           </Link>
         </S.RowOne>
         <S.RowTwo>
-          <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+          <Link
+            href={`/app/combos/[combo]`}
+            as={`/app/combos/${firstCombo.url}`}
+          >
             <S.CardTwo>
               <Play />
               <S.Text>
@@ -90,7 +102,10 @@ export default ({ combos }) => {
               </S.Text>
             </S.CardTwo>
           </Link>
-          <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+          <Link
+            href={`/app/combos/[combo]`}
+            as={`/app/combos/${firstCombo.url}`}
+          >
             <S.CardFour>
               <Play />
               <S.Text>
@@ -102,7 +117,10 @@ export default ({ combos }) => {
               </S.Text>
             </S.CardFour>
           </Link>
-          <Link href={`/combos/[combo]`} as={`/combos/${firstCombo.url}`}>
+          <Link
+            href={`/app/combos/[combo]`}
+            as={`/app/combos/${firstCombo.url}`}
+          >
             <S.CardSix>
               <Play />
               <S.Text>

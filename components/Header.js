@@ -30,7 +30,7 @@ const Header = ({ showSidebar, setShowSidebar }) => {
         <S.HeaderTitle>{routeTitleMap[route]}</S.HeaderTitle>
       )}
       {showLogo ? (
-        <Link href="/notifications">
+        <Link href="/app/notifications">
           <div>
             <Notifications />
           </div>

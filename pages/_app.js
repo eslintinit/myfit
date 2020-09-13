@@ -42,20 +42,24 @@ function MyApp({ Component, pageProps }) {
     }
   }, [])
 
-  const hideLayout =
-    route === '/workouts/[workout]' ||
-    route === '/workouts/[workout]/[exercise]' ||
-    route === '/combos/[combo]' ||
-    route === '/faq' ||
-    route === '/auth/slash_screen' ||
-    route === '/auth/welcome' ||
-    route === '/auth/onboarding' ||
-    route === '/auth/login' ||
-    route === '/auth/signup' ||
-    route === '/auth/question' ||
-    route === '/auth/resetpassword' ||
-    route === '/auth/resetpassword/[resetToken]' ||
-    route === '/notifications'
+  let hideLayout = !route.startsWith('/app')
+
+  if (!hideLayout) {
+    hideLayout =
+      route === '/app/workouts/[workout]' ||
+      route === '/app/workouts/[workout]/[exercise]' ||
+      route === '/app/combos/[combo]' ||
+      route === '/app/faq' ||
+      route === '/app/auth/slash_screen' ||
+      route === '/app/auth/welcome' ||
+      route === '/app/auth/onboarding' ||
+      route === '/app/auth/login' ||
+      route === '/app/auth/signup' ||
+      route === '/app/auth/question' ||
+      route === '/app/auth/resetpassword' ||
+      route === '/app/auth/resetpassword/[resetToken]' ||
+      route === '/app/notifications'
+  }
 
   const { prompt } = useIsIOS()
 

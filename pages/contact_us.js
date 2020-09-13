@@ -1,89 +1,109 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import Link from 'next/link'
+import React, { Component } from 'react'
 
-import Dashboard from 'public/icons/Dashboard.svg'
-import Question from 'public/icons/Question.svg'
-import Arrow from 'public/icons/Arrow.svg'
-import Contact from 'public/icons/Contact_Us.svg'
-import Telegram from 'public/icons/Telegram.svg'
-import Facebook from 'public/icons/Facebook.svg'
+const FullKit = 'https://i.imgur.com/kkV6B8z.jpg'
 
-import Sidebar from 'components/Sidebar'
+import * as S from 'styles/contact.js'
 
-import * as S from 'styles/pages/contact_us'
+class ContactUs extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { value: '' }
 
-export default () => {
-  const [text, setText] = useState('')
-  const [showSidebar, setShowSidebar] = useState(false)
-
-  const sendMessage = () => {
-    alert('Thanks. We will contact you shortly')
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  return (
-    <div style={{ width: '100%', marginTop: 24 }}>
-      <Link href="/faq">
-        <S.FAQ>
-          <Question />
-          <S.Text>
-            <S.Bold>FAQ</S.Bold>
-            <S.Normal>Find answers to popular questions here</S.Normal>
-          </S.Text>
-          <Arrow style={{ transform: 'rotate(270deg)' }} />
-        </S.FAQ>
-      </Link>
-      {/*
-      <S.ChatBot>
-        <S.Container>
-          <Contact />
-          <S.Text>
-            <S.Bold>Use Chat Bot</S.Bold>
-            <S.Normal>Select messenger for communication</S.Normal>
-          </S.Text>
-        </S.Container>
-        <S.Chat href="https://t.me/ignatif" target="_blank">
-          <Telegram />
-          <S.ChatName>Telegram</S.ChatName>
-          <Arrow style={{ transform: 'rotate(270deg)' }} />
-        </S.Chat>
-        <S.Chat href="https://www.facebook.com/MyFitProducts/" target="_blank">
-          <Facebook />
-          <S.ChatName>Facebook Messenger</S.ChatName>
-          <Arrow style={{ transform: 'rotate(270deg)' }} />
-        </S.Chat>
-      </S.ChatBot>
-      */}
+  handleChange(event) {
+    this.setState({ value: event.target.value })
+  }
 
-      <AnimatePresence>
-        <S.GetInTouch
-          initial={{ marginBottom: -343 }}
-          animate={{ marginBottom: 0 }}
-          exit={{ marginBottom: -343 }}
-          transition={{ delay: 0.5 }}
-        >
-          <S.GetInTouchText>
-            <S.TextBold>Get In Touch</S.TextBold>
-            <S.TextNormal>
-              You can leave your question here and we will reply to you shortly
-              by email.
-            </S.TextNormal>
-          </S.GetInTouchText>
-          <S.YourQuestion>
-            <S.TextNormal style={{ fontWeight: 'bold' }}>
-              Your Question
-            </S.TextNormal>
-            <S.Textarea
-              placeholder="Enter message"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-          </S.YourQuestion>
-          <S.SendMessage onClick={sendMessage} active={text !== ''}>
-            Send Message
-          </S.SendMessage>
-        </S.GetInTouch>
-      </AnimatePresence>
-    </div>
-  )
+  handleSubmit(event) {
+    alert('Your email: ' + this.state.value)
+    event.preventDefault()
+  }
+
+  render() {
+    return (
+      <div>
+        <S.Bg>
+          <S.FullKitStyle src={FullKit} alt="MYFIT Full Kit" />
+          <S.ContactBox>
+            <S.Header>Question still not answered?</S.Header>
+            <S.HeadText>
+              We love to hear from our customers about anything! Want to become
+              an ambassador, a MYFIT retailer or a question about our app get in
+              touch below.
+            </S.HeadText>
+            <S.ContactForm onSubmit={this.handleSubmit}>
+              <S.Input type="text" name="name" placeholder="Name" />
+              <S.Input type="text" name="number" placeholder="Order number" />
+              <S.Input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <S.Input type="tel" name="phone" placeholder="Phone" />
+              <S.Select>
+                <option disabled>Type of Questions</option>
+                <option value="MYFIT PRODUCTS">MYFIT PRODUCTS</option>
+                <option value="MYFIT APP">MYFIT APP</option>
+                <option value="WHOLESALE">WHOLESALE</option>
+                <option value="AMAZON ORDER">AMAZON ORDER</option>
+                <option value="MYFIT E-COMMERCE">MYFIT E-COMMERCE</option>
+                <option value="AFFILIATE PROGRAMME">AFFILIATE PROGRAMME</option>
+              </S.Select>
+              <S.TextArea rows="5" name="text" placeholder="Your Question" />
+              <S.FormButton type="submit" value="Submit" />
+            </S.ContactForm>
+          </S.ContactBox>
+        </S.Bg>
+        <S.Footer>
+          <S.Container>
+            <S.MenuFooter>
+              <S.MenuButton>Shop Now</S.MenuButton>
+              <S.MenuButton>Contact</S.MenuButton>
+            </S.MenuFooter>
+            <S.Socials>
+              <a href="https://twitter.com/">
+                <img src={'/icons/Twitter.svg'} />
+              </a>
+              <a href="https://www.facebook.com/">
+                <img src={'/icons/Facebook.svg'} />
+              </a>
+              <a href="https://www.instagram.com/">
+                <img src={'/icons/Instagram.svg'} />
+              </a>
+            </S.Socials>
+            <S.FooterAddress>
+              Digimoat Limited (12539477), 64 Nile Street, International House,
+              London, N1 7SR, United Kingdom. contact@my-fit.io
+            </S.FooterAddress>
+            <S.EmailBox>
+              <S.EmailHead>Be part of the MYFIT Community</S.EmailHead>
+              <S.EmailText>
+                There is always something happening in the MYFIT Community.
+                Subscribe to our newsletter bellow. Then you are always the
+                first to get the latest fitness tips, special offers, and other
+                awesome stuff from us.
+              </S.EmailText>
+              <div>
+                <S.Email
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                />
+                <S.EmailButton onClick={alert}>Sign Up</S.EmailButton>
+              </div>
+            </S.EmailBox>
+          </S.Container>
+        </S.Footer>
+      </div>
+    )
+  }
 }
+
+export default ContactUs

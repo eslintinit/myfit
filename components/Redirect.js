@@ -60,7 +60,7 @@ export default ({ children }) => {
       captureException(error)
       if (error && !cancelRedirect) {
         Cookie.remove('token')
-        router.push('/auth/onboarding')
+        // router.push('/auth/onboarding')
       }
     },
   })

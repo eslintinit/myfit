@@ -49,8 +49,14 @@ export default class MyDocument extends Document {
             src="https://player.vimeo.com/api/player.js"
           ></script>
 
-          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-          <script type="text/javascript" src="/static/OneSIgnalInit.js"></script>
+          <script
+            src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"
+            async
+          ></script>
+          <script
+            type="text/javascript"
+            src="/static/OneSIgnalInit.js"
+          ></script>
 
           <link
             href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -209,6 +215,15 @@ export default class MyDocument extends Document {
             rel="apple-touch-startup-image"
             href="/favicon/apple-splash-1136-640.jpg"
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+          />
+
+          <link
+            href="https://fonts.googleapis.com/css2?family=Muli:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
           />
         </Head>
         <body>

@@ -24,8 +24,8 @@ export default function favorites({ exercises }) {
           </S.CaptionOne>
           {favorites.map((exercise) => (
             <Link
-              href={`/workouts/[workout]/[exercise]`}
-              as={`/workouts/${exercise.workout.url}/${exercise.url}`}
+              href={`/app/workouts/[workout]/[exercise]`}
+              as={`/app/workouts/${exercise.workout.url}/${exercise.url}`}
               key={exercise.url}
             >
               <S.Exercise key={exercise.url}>

@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const withPWA = require('next-pwa')
 const path = require('path')
 const withSourceMaps = require('@zeit/next-source-maps')
-// const withImages = require('next-images')
+const withImages = require('next-images')
 
 module.exports = withPWA(
   withSourceMaps({

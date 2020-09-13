@@ -6859,6 +6859,11 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
+react-scroll-position@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-scroll-position/-/react-scroll-position-1.0.1.tgz#f8c5e4310c44d2a433c53637e9070eeb041667e4"
+  integrity sha512-DrD92MCb0oA6In9JUjtVkLGrjGUf3F0tfEdAZHESRGWXjnqyPSj5+yP6IqQnqZ8q8fsQ7VRo20MUdXmpN8grxQ==
+
 react-scroll-section@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-scroll-section/-/react-scroll-section-2.0.0.tgz#46138df0b8e6f634589fb86e8eef71b57bac318b"
@@ -7136,6 +7141,11 @@ replace-ext@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
+
+reset-css@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/reset-css/-/reset-css-5.0.1.tgz#1ced0604fdb6836567e40d82de3537afaf3bb4c8"
+  integrity sha512-VyuJdNFfp5x/W6e5wauJM59C02Vs0P22sxzZGhQMPaqu/NGTeFxlBFOOw3eq9vQd19gIDdZp7zi89ylyKOJ33Q==
 
 resolve-from@^3.0.0:
   version "3.0.0"
