@@ -79,11 +79,11 @@ export default ({ workouts, combos }) => {
         <Section id="workouts">
           <Workouts workouts={workouts} />
         </Section>
-        <Section id="combos">
-          <Combos combos={combos} />
-        </Section>
         <Section id="favorites">
           <Favorites exercises={exercises} />
+        </Section>
+        <Section id="combos">
+          <Combos combos={combos} />
         </Section>
       </div>
     </ScrollingProvider>

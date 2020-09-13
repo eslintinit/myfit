@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 // import { Reset } from 'reset-css'
 import { ScrollingProvider, SectionLink, Section } from 'react-scroll-section'
-// import ContactUs from './pages/ContactUs.js'
 
 // import Image from 'icons/App.png'
 // import MainPhoto from 'icons/MainPhoto.jpg'
@@ -56,7 +55,10 @@ export default class MyComponent extends Component {
                   </SectionLink>
                   <SectionLink section="contact">
                     {({ onClick, isSelected }) => (
-                      <S.MenuButton onClick={onClick} selected={isSelected}>
+                      <S.MenuButton
+                        onClick={() => (window.location.href = '/contact')}
+                        selected={isSelected}
+                      >
                         Contact
                       </S.MenuButton>
                     )}
@@ -227,15 +229,17 @@ export default class MyComponent extends Component {
                   <S.FooterButton href="https://www.amazon.com/">
                     Shop Now
                   </S.FooterButton>
-                  <S.FooterButton>Contact</S.FooterButton>
-                  <S.FooterButton>Terms and Privacy Policy</S.FooterButton>
+                  <S.FooterButton href="/contact">Contact</S.FooterButton>
+                  <S.FooterButton href="/policy">
+                    Terms and Privacy Policy
+                  </S.FooterButton>
                 </S.MenuFooter>
                 <S.Socials>
                   <a href="https://twitter.com/">
                     <img src={'icons/Twitter.svg'} />
                   </a>
                   <a href="https://www.facebook.com/">
-                    <img src={'icons/Facebook.svg'} />
+                    <img src={'icons/Facebook2.svg'} />
                   </a>
                   <a href="https://www.instagram.com/">
                     <img src={'icons/Instagram.svg'} />
@@ -260,7 +264,9 @@ export default class MyComponent extends Component {
                       name="email"
                       placeholder="Enter your email"
                     />
-                    <S.EmailButton onClick={alert}>Sign Up</S.EmailButton>
+                    <S.EmailButton onClick={() => alert('yo')}>
+                      Sign Up
+                    </S.EmailButton>
                   </div>
                 </S.EmailBox>
               </S.Container>

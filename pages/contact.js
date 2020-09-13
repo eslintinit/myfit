@@ -96,7 +96,9 @@ class ContactUs extends React.Component {
                   name="email"
                   placeholder="Enter your email"
                 />
-                <S.EmailButton onClick={alert}>Sign Up</S.EmailButton>
+                <S.EmailButton onClick={() => alert('yo')}>
+                  Sign Up
+                </S.EmailButton>
               </div>
             </S.EmailBox>
           </S.Container>

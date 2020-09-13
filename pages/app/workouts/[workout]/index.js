@@ -178,7 +178,7 @@ export default ({ workout }) => {
   if (!workout) return null
 
   return (
-    <Container image={workout.image.url}>
+    <Container image={workout.image && workout.image.url}>
       <Header>
         <Back onClick={back} />
       </Header>
@@ -217,8 +217,8 @@ export default ({ workout }) => {
         <Exercises>
           {workout.exercices.map((exercise) => (
             <Link
-              href={`/workouts/[workout]/[exercise]`}
-              as={`/workouts/${workout.url}/${exercise.url}`}
+              href={`/app/workouts/[workout]/[exercise]`}
+              as={`/app/workouts/${workout.url}/${exercise.url}`}
             >
               <Exercise>
                 {exercise.image ? (

@@ -24,7 +24,7 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
   const [seeking, setSeeking] = useState(false)
   const [played, setPlayed] = useState(0)
   const [duration, setDuration] = useState(0)
-  const [ buffered, setBuffered] = useState(false)
+  const [buffered, setBuffered] = useState(false)
 
   const playerRef = useRef(null)
 
@@ -65,17 +65,22 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
   return (
     <>
       <PlayerWrapper>
-     {!buffered && playing && <Loading style={{
-        position: 'absolute', 
-        backgroundColor: 'transparent',
-        width: '30%',
-        left: '35%',
-        top: '185px'
-        }}/> }
+        {!buffered && playing && (
+          <Loading
+            style={{
+              position: 'absolute',
+              backgroundColor: 'transparent',
+              width: '30%',
+              left: '35%',
+              top: '185px',
+            }}
+          />
+        )}
         <ReactPlayer
           url={videoUrl}
           width="100%"
           height="100%"
+          loop
           className="react-player"
           style={{
             position: 'absolute',
@@ -111,10 +116,8 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
             console.log('ready')
             // setPlaying(true)
           }}
-          onStart={()=>{
-
+          onStart={() => {
             setBuffered(true)
-
           }}
         />
       </PlayerWrapper>

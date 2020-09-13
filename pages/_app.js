@@ -65,6 +65,17 @@ function MyApp({ Component, pageProps }) {
 
   const { sPrompt } = useIsSamsung()
 
+  const isApp = route.startsWith('/app')
+
+  if (!isApp)
+    return (
+      <>
+        <Reset />
+        <FontsStyles />
+        <Component {...pageProps} />
+      </>
+    )
+
   return (
     <>
       <>

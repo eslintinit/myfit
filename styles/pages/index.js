@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
-import { BLACK, DARK_GREY, SOFT_ORANGE } from 'styles/colors'
+import { PRIMARY, BLACK, DARK_GREY, SOFT_ORANGE, WHITE } from 'styles/colors'
 
 const fadeIn = keyframes`
   from {
@@ -44,12 +44,16 @@ export const Card = styled.div`
 `
 
 export const Title = styled.h2`
-  color: ${BLACK};
+  color: ${PRIMARY};
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 4px;
+  background: ${BLACK};
+  width: min-content;
+  padding: 4px;
 `
 export const Subtitle = styled.p`
-  color: ${DARK_GREY};
+  color: ${WHITE};
+  opacity: 0.9;
   font-size: 14px;
 `

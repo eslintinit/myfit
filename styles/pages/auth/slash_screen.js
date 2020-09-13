@@ -6,7 +6,7 @@ export const Bg = styled.div`
       rgba(0, 0, 0, 0.33) 0%,
       rgba(0, 0, 0, 0.5) 100%
     ),
-    url(https://i.imgur.com/wvzY70G.png);
+    url(https://i.imgur.com/H1ZZp6D.jpg);
   height: 100vh;
   background-repeat: no-repeat;
   display: flex;

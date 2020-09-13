@@ -12,7 +12,10 @@ export default ({ workouts }) => {
           as={`/app/workouts/${workout.url}`}
           key={workout.id}
         >
-          <Card height={workout.height} image={workout.image.url}>
+          <Card
+            height={workout.height}
+            image={workout.image ? workout.image.url : null}
+          >
             <Title>{workout.name}</Title>
             <Subtitle>{`${workout.exercices.length} exercises`}</Subtitle>
           </Card>
