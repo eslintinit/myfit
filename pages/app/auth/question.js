@@ -61,9 +61,11 @@ export default () => {
       <S.Bg>
         <S.NavigationBar>
           <Back
-            onClick={() => (round > 0 ? setRound(round - 1) : router.push('/'))}
+            onClick={() =>
+              round > 0 ? setRound(round - 1) : router.push('/app/')
+            }
           />
-          <S.Skip onClick={() => router.push('/')}>Skip</S.Skip>
+          <S.Skip onClick={() => router.push('/app/')}>Skip</S.Skip>
         </S.NavigationBar>
         <S.InfoBlock>
           <div
@@ -159,7 +161,7 @@ export default () => {
                   goals: answers,
                 })
                 if (!loading) {
-                  router.push('/')
+                  router.push('/app/')
                   question({ variables: { gym } })
                 }
               } else setRound(round + 1)

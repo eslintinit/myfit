@@ -31,8 +31,8 @@ export default () => {
   const LOGIN_USER = gql`
     mutation login($email: String!, $password: String!) {
       login(email: $email, password: $password) {
-        token,
-        user{
+        token
+        user {
           gym
         }
       }
@@ -43,18 +43,16 @@ export default () => {
     onCompleted({ login }) {
       console.log('Get token value = ', login.token)
       Cookie.set('token', login.token, { expires: 365 })
-      if (login.user.gym === "" ) router.push('/auth/question')
-      else router.push('/')
+      if (login.user.gym === '') router.push('/app/auth/question')
+      else router.push('/app/')
     },
   })
-
-  
 
   return (
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back onClick={() => router.push('/auth/welcome')} />
+          <Back onClick={() => router.push('/app/auth/welcome')} />
         </S.NavigationBar>
         <AnimatePresence>
           <S.InfoBlock
@@ -95,7 +93,10 @@ export default () => {
                 justifyContent: 'space-between',
               }}
             >
-              Email {error && error.message !== 'GraphQL error: Invalid password' && <S.Error>No user found</S.Error>}
+              Email{' '}
+              {error && error.message !== 'GraphQL error: Invalid password' && (
+                <S.Error>No user found</S.Error>
+              )}
             </S.Text>
             <S.Email>
               <Email />
@@ -113,12 +114,17 @@ export default () => {
               />
             </S.Email>
             <S.Text
-             style={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-            >Password {error && error.message === 'GraphQL error: Invalid password' && <S.Error>Invalid Password</S.Error>} </S.Text>
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              Password{' '}
+              {error && error.message === 'GraphQL error: Invalid password' && (
+                <S.Error>Invalid Password</S.Error>
+              )}{' '}
+            </S.Text>
             <S.Password>
               <Key style={error ? { color: 'red' } : null} />
               <S.Input
@@ -137,12 +143,15 @@ export default () => {
                 <EyeClosed onClick={() => setShowPassword(true)} />
               )}
             </S.Password>
-            
-            <S.RedText onClick={()=>{              
-              router.push('/auth/resetpassword')
-            }
-            }>Forgot password?</S.RedText>
-            
+
+            <S.RedText
+              onClick={() => {
+                router.push('/app/auth/resetpassword')
+              }}
+            >
+              Forgot password?
+            </S.RedText>
+
             <S.Login
               onClick={(e) => {
                 e.preventDefault()

@@ -12,7 +12,7 @@ const MainPhoto = 'https://i.imgur.com/r3m4hVg.jpeg'
 const ProductPhoto = 'https://i.imgur.com/6ODA47k.jpg'
 const FullKit = 'https://i.imgur.com/kkV6B8z.jpg'
 
-import * as S from 'styles/style.js'
+import * as S from 'styles/landing.js'
 
 export default class MyComponent extends Component {
   render() {
@@ -63,6 +63,12 @@ export default class MyComponent extends Component {
                       </S.MenuButton>
                     )}
                   </SectionLink>
+
+                  <S.MenuButton
+                    onClick={() => (window.location.href = '/blog')}
+                  >
+                    Blog
+                  </S.MenuButton>
                 </S.Menu>
                 <S.ButtonPrimary href="https://www.amazon.com/">
                   Buy Now
@@ -233,6 +239,7 @@ export default class MyComponent extends Component {
                   <S.FooterButton href="/policy">
                     Terms and Privacy Policy
                   </S.FooterButton>
+                  <S.FooterButton href="/blog">Blog</S.FooterButton>
                 </S.MenuFooter>
                 <S.Socials>
                   <a href="https://twitter.com/">

@@ -11,7 +11,7 @@ export default () => {
   const swipeHandler = (props) => {
     const { dir } = props
     if (dir === 'Left') {
-      push('/auth/welcome')
+      push('/app/auth/welcome')
     }
   }
 
@@ -32,7 +32,7 @@ export default () => {
             </S.Points>
           </S.Text>
         </S.VideoBg>
-        <Link href="/auth/welcome" prefetch>
+        <Link href="/app/auth/welcome" prefetch>
           <S.Button>
             <p>Get Started</p>
             <Arrow />

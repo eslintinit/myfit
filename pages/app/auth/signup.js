@@ -30,6 +30,8 @@ export default () => {
   const [showPassword, setShowPassword] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
 
+  const [termsAgreed, setTermsAgreed] = useState(false)
+
   const [errorName, setErrorName] = useState(false)
   const [errorEmail, setErrorEmail] = useState(false)
 
@@ -47,7 +49,7 @@ export default () => {
     onCompleted({ signup }) {
       console.log('Get token value = ', signup.token)
       Cookie.set('token', signup.token, { expires: 365 })
-      router.push('/auth/question')
+      router.push('/app/auth/question')
     },
   })
 
@@ -55,7 +57,7 @@ export default () => {
     <div>
       <S.Bg>
         <S.NavigationBar>
-          <Back onClick={() => router.push('/auth/welcome')} />
+          <Back onClick={() => router.push('/app/auth/welcome')} />
         </S.NavigationBar>
         <AnimatePresence>
           <S.InfoBlock
@@ -153,16 +155,40 @@ export default () => {
                 <EyeClosed onClick={() => setShowPassword(true)} />
               )}
             </S.Field>
+            <div>
+              <input
+                type="checkbox"
+                id="terms"
+                name="terms"
+                value={termsAgreed}
+                onChange={(e) => setTermsAgreed(e.target.value)}
+                style={{ marginRight: 8, marginBottom: 24 }}
+              />
+              <label htmlFor="terms">
+                I agree to the
+                <a
+                  href="/policy"
+                  target="_blank"
+                  style={{
+                    color: '#fa4504',
+                    marginLeft: '4px',
+                    textDecoration: 'underline',
+                  }}
+                >
+                  terms and conditions
+                </a>
+              </label>
+            </div>
             <S.SignUp
               onClick={async (e) => {
-                if (password && validate(email)) {
+                if (password && validate(email) && termsAgreed) {
                   e.preventDefault()
                   if (!loading) {
                     signUp({ variables: { name, email, password } })
                   }
                 }
               }}
-              active={password && validate(email)}
+              active={password && validate(email) && termsAgreed}
             >
               {loading ? (
                 <Loader

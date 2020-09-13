@@ -34,7 +34,10 @@ class ContactUs extends React.Component {
               an ambassador, a MYFIT retailer or a question about our app get in
               touch below.
             </S.HeadText>
-            <S.ContactForm onSubmit={this.handleSubmit}>
+            <S.ContactForm
+              action="mailto:ignatif@gmail.com"
+              onSubmit={this.handleSubmit}
+            >
               <S.Input type="text" name="name" placeholder="Name" />
               <S.Input type="text" name="number" placeholder="Order number" />
               <S.Input

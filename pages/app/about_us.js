@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import Instagram from 'public/icons/Instagram.svg'
-import Facebook from 'public/icons/FacebookIcon.svg'
+import Facebook from 'public/icons/Facebook2.svg'
 import Twitter from 'public/icons/Twitter.svg'
 import Logo from 'public/Logo.svg'
 

@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useMutation } from '@apollo/react-hooks'
@@ -19,58 +18,50 @@ import Key from 'public/icons/Key.svg'
 import * as S from 'styles/pages/auth/login'
 
 export default () => {
-    const router = useRouter()
-    const [email, setEmail] = useState('')
+  const router = useRouter()
+  const [email, setEmail] = useState('')
 
-    const [errorStyle, setErrorStyle] = useState(false)
+  const [errorStyle, setErrorStyle] = useState(false)
 
-    const REQUEST_RESET = gql`
+  const REQUEST_RESET = gql`
     mutation requestReset($email: String!) {
-      requestReset(email: $email) {        
-          name
-          email        
+      requestReset(email: $email) {
+        name
+        email
       }
     }
   `
 
-  const [ requestReset, {  error, loading }] = useMutation(REQUEST_RESET, {
+  const [requestReset, { error, loading }] = useMutation(REQUEST_RESET, {
     onCompleted({ requestReset }) {
-      alert(`Dear ${requestReset.name}! Please check your email: ${requestReset.email}`)
-    }
+      alert(
+        `Dear ${requestReset.name}! Please check your email: ${requestReset.email}`,
+      )
+    },
   })
 
-
-
-
-
-
-
-
-
-
-
-    return (
-        <div>
-          <S.Bg>
-            <S.NavigationBar>
-              <Back onClick={() => router.push('/auth/login')} />
-            </S.NavigationBar>
-            <AnimatePresence>
-              <S.InfoBlock
-                initial={{ marginBottom: -431 }}
-                animate={{ marginBottom: 0 }}
-                exit={{ marginBottom: -431 }}
+  return (
+    <div>
+      <S.Bg>
+        <S.NavigationBar>
+          <Back onClick={() => router.push('/app/auth/login')} />
+        </S.NavigationBar>
+        <AnimatePresence>
+          <S.InfoBlock
+            initial={{ marginBottom: -431 }}
+            animate={{ marginBottom: 0 }}
+            exit={{ marginBottom: -431 }}
+          >
+            <S.Caption>
+              <S.TextBold>Reset Password</S.TextBold>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-end',
+                }}
               >
-                <S.Caption>
-                  <S.TextBold>Reset Password</S.TextBold>
-                  <div
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'flex-end',
-                    }}
-                  >
-                    {/*
+                {/*
                     <img src="https://i.imgur.com/AC7RyMh.png" />
                     <div
                       style={{
@@ -85,50 +76,48 @@ export default () => {
                       />
                     </div>
                     */}
-                  </div>
-                </S.Caption>
-                <S.Text
-                  style={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  Email { error && <S.Error>Something is wrong</S.Error>} { errorStyle && <S.Error>Invalid Email</S.Error>}
-                </S.Text>
-                <S.Email>
-                  <Email />
-                  <S.Input
-                    placeholder="myfit@gmailcom"
-                    type="email"
-                    value={email}
-                    onChange={(e) => {
-                       setErrorStyle(false) 
-                      setEmail(e.target.value)
-                    }}
-                    onBlur={() => {
-                      if (!validate(email) && email !== '') setErrorStyle(true)
-                      else setErrorStyle(false)
-                    }}
-                     style={
-                       errorStyle && email !== '' ? { color: 'red' } : null 
-                    } 
-                  />
-                </S.Email>
-                <S.Login
-                  onClick={(e) => {
-                    e.preventDefault()
-                     if (!loading) requestReset({ variables: { email } })
-                   /* if (error) setErrorStyle(true) */
-                  }}
-                  active={ validate (email) }
-                >
-                  Send reset email
-                </S.Login>
-              </S.InfoBlock>
-            </AnimatePresence>
-          </S.Bg>
-        </div>
-      )
-    }
-    
+              </div>
+            </S.Caption>
+            <S.Text
+              style={{
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              Email {error && <S.Error>Something is wrong</S.Error>}{' '}
+              {errorStyle && <S.Error>Invalid Email</S.Error>}
+            </S.Text>
+            <S.Email>
+              <Email />
+              <S.Input
+                placeholder="myfit@gmailcom"
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setErrorStyle(false)
+                  setEmail(e.target.value)
+                }}
+                onBlur={() => {
+                  if (!validate(email) && email !== '') setErrorStyle(true)
+                  else setErrorStyle(false)
+                }}
+                style={errorStyle && email !== '' ? { color: 'red' } : null}
+              />
+            </S.Email>
+            <S.Login
+              onClick={(e) => {
+                e.preventDefault()
+                if (!loading) requestReset({ variables: { email } })
+                /* if (error) setErrorStyle(true) */
+              }}
+              active={validate(email)}
+            >
+              Send reset email
+            </S.Login>
+          </S.InfoBlock>
+        </AnimatePresence>
+      </S.Bg>
+    </div>
+  )
+}

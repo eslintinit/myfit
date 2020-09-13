@@ -11,7 +11,7 @@ export default () => {
   const swipeHandler = (props) => {
     const { dir } = props
     if (dir === 'Right') {
-      router.push('/auth/onboarding')
+      router.push('/app/auth/onboarding')
     }
   }
 
@@ -24,10 +24,12 @@ export default () => {
             <S.Line />
             <S.Text>Join the Resistance Workout Revolution</S.Text>
           </S.Container>
-          <S.SignUp onClick={() => router.push('/auth/signup')}>
+          <S.SignUp onClick={() => router.push('/app/auth/signup')}>
             Sign Up
           </S.SignUp>
-          <S.Login onClick={() => router.push('/auth/login')}>Login</S.Login>
+          <S.Login onClick={() => router.push('/app/auth/login')}>
+            Login
+          </S.Login>
         </S.Bg>
       </div>
     </Swipeable>

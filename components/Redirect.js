@@ -25,12 +25,12 @@ export default ({ children }) => {
   const { route } = useRouter()
 
   const cancelRedirect =
-    route === '/auth/welcome' ||
-    route === '/auth/login' ||
-    route === '/auth/signup' ||
-    route === '/auth/onboarding' ||
-    route === '/auth/resetpassword' ||
-    route === '/auth/resetpassword/[resetToken]'
+    route === '/app/auth/welcome' ||
+    route === '/app/auth/login' ||
+    route === '/app/auth/signup' ||
+    route === '/app/auth/onboarding' ||
+    route === '/app/auth/resetpassword' ||
+    route === '/app/auth/resetpassword/[resetToken]'
 
   const token = Cookie.get('token')
 
@@ -60,14 +60,14 @@ export default ({ children }) => {
       captureException(error)
       if (error && !cancelRedirect) {
         Cookie.remove('token')
-        // router.push('/auth/onboarding')
+        router.push('/app/auth/onboarding')
       }
     },
   })
 
   // if (!token) {
   // Cookie.remove('token')
-  // router.push('/auth/onboarding')
+  // router.push('/app/auth/onboarding')
   // }//
 
   return (

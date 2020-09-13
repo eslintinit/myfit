@@ -1,7 +1,5 @@
-import styled from 'styled-components';
-import { device } from './device.js';
-
-
+import styled from 'styled-components'
+import { device } from './device.js'
 
 import {
   BLACK,
@@ -11,13 +9,15 @@ import {
   PRIMARY,
   WHITE,
   SOFT_PINK,
-  SOFT_ORANGE
+  SOFT_ORANGE,
 } from './colors.js'
-
 
 export const Bg = styled.div`
   height: 100vh;
   width: 100vw;
+  * {
+    font-family: 'Futura' !important;
+  }
 `
 
 export const Main = styled.div`
@@ -273,7 +273,6 @@ export const MainButtons = styled.div`
   }
 `
 
-
 export const Benefits = styled.div`
   padding: 100px 0px;
   text-align: center;
@@ -334,10 +333,9 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  height: 210px;
   width: 276px;
   padding: 16px 32px;
-  background: #F8F8F8;
+  background: #f8f8f8;
   border-radius: 8px;
   @media ${device.laptop} {
     padding: 16px 24px;
@@ -351,9 +349,7 @@ export const Card = styled.div`
   }
 `
 
-export const CardOne = styled(Card)`
-
-`
+export const CardOne = styled(Card)``
 
 export const CardTwo = styled(Card)`
   margin: 0px 80px;
@@ -391,7 +387,6 @@ export const CardText = styled.p`
   line-height: 18px;
   color: ${BLACK};
 `
-
 
 export const ProductBlock = styled.div`
   display: flex;
@@ -595,7 +590,7 @@ export const AppCard = styled.div`
   padding: 20px 24px;
   border-radius: 8px;
   display: flex;
-  background: #F8F8F8;
+  background: #f8f8f8;
   @media ${device.laptop} {
     padding: 20px 20px 20px 25px;
     width: 42%;
@@ -605,9 +600,7 @@ export const AppCard = styled.div`
   }
 `
 
-export const WorkoutCard = styled(AppCard)`
-
-`
+export const WorkoutCard = styled(AppCard)``
 
 export const CombosCard = styled(AppCard)`
   margin-top: 16px;
@@ -678,7 +671,6 @@ export const Footer = styled.div`
   align-items: start;
   overflow: hidden;
   @media ${device.mobile} {
-
   }
 `
 

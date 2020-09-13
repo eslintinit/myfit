@@ -60,7 +60,7 @@ export default ({ show, close, style }) => {
     e.preventDefault()
     Cookie.remove('token')
     Cookie.remove('favorites')
-    router.push('/auth/welcome')
+    router.push('/app/auth/welcome')
   }
 
   /* const { error, data } = useQuery(GET_MY_NAME)
@@ -70,16 +70,16 @@ export default ({ show, close, style }) => {
 
   else if (error) {
     Cookie.remove('token')
-    router.push('/auth/onboarding')
+router.push('/app/auth/onboarding')
  } */
 
   const homeActive =
-    route === '/' || route === '/favorites' || route === '/combos'
-  const safetyActive = route === '/safety'
-  const aboutUsActive = route === '/about_us'
-  const contactUsActive = route === '/contact_us'
-  const reviewActive = route === '/review'
-  const settingsActive = route === '/settings'
+    route === '/app' || route === '/app/favorites' || route === '/app/combos'
+  const safetyActive = route === '/app/safety'
+  const aboutUsActive = route === '/app/about_us'
+  const contactUsActive = route === '/app/contact_us'
+  const reviewActive = route === '/app/review'
+  const settingsActive = route === '/app/settings'
 
   const swipeHandler = ({ dir }) => {
     if (dir === 'Left') {
@@ -117,7 +117,7 @@ export default ({ show, close, style }) => {
             <S.Text>{name}</S.Text>
           </S.Account>
           <S.MenuPoints>
-            <Link href="/">
+            <Link href="/app">
               <S.Point active={homeActive} onClick={close}>
                 <Home fill={homeActive ? PRIMARY : 'white'} />
                 <S.TextPoint>Home</S.TextPoint>
