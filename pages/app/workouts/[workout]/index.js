@@ -178,7 +178,7 @@ export default ({ workout }) => {
   if (!workout) return null
 
   return (
-    <Container image={workout.image && workout.image.jpeg}>
+    <Container image={workout.image && workout.image.url}>
       <Header>
         <Back onClick={back} />
       </Header>
