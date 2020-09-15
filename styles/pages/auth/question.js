@@ -162,6 +162,7 @@ export const Text = styled.p`
 `
 
 export const Next = styled.div`
+  display: flex;
   font-weight: bold;
   line-height: 18px;
   color: ${(props) => (props.active ? PRIMARY : GREY)};

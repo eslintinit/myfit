@@ -29,9 +29,7 @@ export default function Tabs() {
             active={isSelected}
             onClick={() => {
               document.getElementById('layout-content').scrollTo({
-                top:
-                  document.getElementById('index-workouts').clientHeight +
-                  document.getElementById('index-combos').clientHeight,
+                top: document.getElementById('index-workouts').clientHeight,
                 left: 0,
                 behavior: 'smooth',
               })
@@ -49,7 +47,9 @@ export default function Tabs() {
             active={isSelected}
             onClick={() => {
               document.getElementById('layout-content').scrollTo({
-                top: document.getElementById('index-workouts').clientHeight,
+                top:
+                  document.getElementById('index-workouts').clientHeight +
+                  document.getElementById('index-combos').clientHeight,
                 left: 0,
                 behavior: 'smooth',
               })

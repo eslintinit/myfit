@@ -2,6 +2,7 @@ import { getWorkouts } from 'lib/api'
 import { getCombos } from 'lib/api'
 //import { Element } from 'react-scroll'
 import Tabs from 'components/Tabs'
+import Loader from 'react-loader-spinner'
 
 import { getFavoriteExercises } from 'lib/api'
 

@@ -19,8 +19,11 @@ import {
 } from 'styles/components/Player'
 
 // style={{ marginTop: -64, position: 'fixed', zIndex: 100 }}
-export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
-  const [playing, setPlaying] = useState(false)
+export default ({
+  videoUrl = 'https://vimeo.com/248940683',
+  onReady = () => {},
+}) => {
+  const [playing, setPlaying] = useState(true)
   const [seeking, setSeeking] = useState(false)
   const [played, setPlayed] = useState(0)
   const [duration, setDuration] = useState(0)
@@ -99,21 +102,27 @@ export default ({ videoUrl = 'https://vimeo.com/248940683' }) => {
             file: {
               attributes: {
                 preload: true,
-                autoPlay: true,
+                autoplay: true,
               },
             },
             vimeo: {
+              // playerOptions: {
+              //   fullscreen: 0,
+              //   preload: true,
+              //   autoplay: true,
+              // },
               playsinline: true,
               iframeParams: {
                 fullscreen: 0,
                 preload: true,
-                autoPlay: true,
+                autoplay: true,
               },
+              autoplay: true,
               preload: true,
             },
           }}
           onReady={() => {
-            console.log('ready')
+            onReady()
             // setPlaying(true)
           }}
           onStart={() => {

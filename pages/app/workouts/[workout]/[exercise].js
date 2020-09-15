@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import gql from 'graphql-tag'
+import Loader from 'react-loader-spinner'
 import { useMutation } from '@apollo/react-hooks'
 
 import Cookie from 'js-cookie'
@@ -156,7 +157,7 @@ const TOGGLE_FAVORITE = gql`
 `
 
 export default ({ exercise, url }) => {
-  console.log(exercise)
+  const [videoLoading, setLoading] = useState(true)
   const { back, push } = useRouter()
   const { favorites, setFavorites } = useContext(userFavorites)
 
@@ -190,6 +191,7 @@ export default ({ exercise, url }) => {
   }, [])
 
   if (!exercise) return null
+
   return (
     <div
       style={{
@@ -199,6 +201,24 @@ export default ({ exercise, url }) => {
         justifyContent: 'space-between',
       }}
     >
+      {videoLoading && (
+        <div
+          style={{
+            position: 'fixed',
+            width: '100vw',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: 'white',
+            top: 0,
+            left: 0,
+            zIndex: 100,
+          }}
+        >
+          <Loader type="Oval" color="#FA4504" height={100} width={100} />
+        </div>
+      )}
       <Header style={{ zIndex: 2 }}>
         <Back onClick={back} />
       </Header>
@@ -219,7 +239,7 @@ export default ({ exercise, url }) => {
       )}
       */}
       {exercise.video ? (
-        <Player videoUrl={exercise.video} />
+        <Player videoUrl={exercise.video} onReady={() => setLoading(false)} />
       ) : (
         <div style={{ marginTop: 48 }} />
       )}
