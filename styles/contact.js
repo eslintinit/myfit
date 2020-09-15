@@ -1,14 +1,7 @@
-import styled from 'styled-components';
-import { device } from './device.js';
+import styled from 'styled-components'
+import { device } from './device.js'
 
-import {
-  BLACK,
-  DARK_GREY,
-  GREY,
-  PRIMARY,
-  WHITE,
-  LIGHT_DARK,
-} from './colors.js'
+import { BLACK, DARK_GREY, GREY, PRIMARY, WHITE, LIGHT_DARK } from './colors.js'
 
 export const Bg = styled.div`
   overflow: hidden;
@@ -45,7 +38,7 @@ export const ContactForm = styled.form`
 `
 
 export const Input = styled.input`
-  background: #F8F8F8;
+  background: #f8f8f8;
   font-size: 18px;
   line-height: 24px;
   border: none;
@@ -54,10 +47,10 @@ export const Input = styled.input`
   height: 60px;
   padding-left: 16px;
   margin-bottom: 18px;
-  font-family: "FuturaMedium";
+  font-family: 'FuturaMedium';
 `
 export const Select = styled.select`
-  background: #F8F8F8;
+  background: #f8f8f8;
   font-size: 18px;
   line-height: 24px;
   border: none;
@@ -67,11 +60,11 @@ export const Select = styled.select`
   padding-left: 16px;
   margin-bottom: 18px;
   color: #7d7d7d;
-  font-family: "FuturaMedium";
+  font-family: 'FuturaMedium';
 `
 
 export const TextArea = styled.textarea`
-  background: #F8F8F8;
+  background: #f8f8f8;
   font-size: 18px;
   line-height: 24px;
   border: none;
@@ -80,7 +73,7 @@ export const TextArea = styled.textarea`
   height: 60px;
   padding-left: 16px;
   margin-bottom: 32px;
-  font-family: "FuturaMedium";
+  font-family: 'FuturaMedium';
 `
 
 export const FormButton = styled.input`
@@ -89,7 +82,7 @@ export const FormButton = styled.input`
   font-weight: bold;
   font-size: 16px;
   line-height: 134.7%;
-  font-family: "FuturaHeavy";
+  font-family: 'FuturaHeavy';
   border: none;
   width: min-content;
   border-radius: 8px;
@@ -157,7 +150,7 @@ export const MenuButton = styled.a`
 `
 
 export const Socials = styled.div`
-  width: 128px;
+  width: 74px;
   opacity: 0.8;
   display: flex;
   justify-content: space-between;

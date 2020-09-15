@@ -7,17 +7,17 @@ import Notifications from 'public/icons/Notify.svg'
 import * as S from 'styles/components/Header'
 
 const routeTitleMap = {
-  '/safety': 'Safety',
-  '/about_us': 'About Us',
-  '/contact_us': 'Contact Us',
-  '/review': 'Review',
-  '/settings': 'Settings',
+  '/app/safety': 'Safety',
+  '/app/about_us': 'About Us',
+  '/app/contact_us': 'Contact Us',
+  '/app/review': 'Review',
+  '/app/settings': 'Settings',
 }
 
 const Header = ({ showSidebar, setShowSidebar }) => {
   const { route } = useRouter()
   const showLogo =
-    route === '/' || route === '/favorites' || route === '/combos'
+    route === '/app' || route === '/app/favorites' || route === '/app/combos'
 
   return (
     <S.Header>
@@ -31,9 +31,9 @@ const Header = ({ showSidebar, setShowSidebar }) => {
       )}
       {showLogo ? (
         <Link href="/app/notifications">
-          <div>
+          <div>{/*
             <Notifications />
-          </div>
+            */}</div>
         </Link>
       ) : (
         <div style={{ width: 27 }} />

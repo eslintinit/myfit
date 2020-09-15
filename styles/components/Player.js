@@ -15,7 +15,7 @@ export const Bg = styled.div`
   # position: fixed;
   # bottom: 164px;
   margin-top: -84px;
-  min-height: 70px;
+  min-height: 100px;
   z-index: 1;
 `
 
@@ -93,5 +93,6 @@ export const RangeInput = styled.input`
 
 export const PlayerWrapper = styled.div`
   position: relative;
-  padding-top: 177.25%; /* Player ratio: 100 / (360 / 640) */
+  // padding-top: 177.25%; /* Player ratio: 100 / (360 / 640) */
+  padding-top: 193.25%; /* Player ratio: 100 / (360 / 640) */
 `

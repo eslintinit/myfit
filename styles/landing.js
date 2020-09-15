@@ -713,7 +713,7 @@ export const FooterButton = styled(MenuButton)`
 `
 
 export const Socials = styled.div`
-  width: 128px;
+  width: 74px;
   opacity: 0.8;
   display: flex;
   justify-content: space-between;

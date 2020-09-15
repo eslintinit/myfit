@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }) {
 
   const isApp = route.startsWith('/app')
 
-  if (!isApp)
+  if (!isApp) {
     return (
       <>
         <Reset />
@@ -75,6 +75,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </>
     )
+  }
 
   return (
     <>
@@ -83,8 +84,7 @@ function MyApp({ Component, pageProps }) {
         <FontsStyles />
       </>
       <Redirect>
-        {prompt && <InstallPWA />}
-        {sPrompt && <InstallPWAS />}
+        {process.browser && prompt && <InstallPWA />}
         {hideLayout ? (
           <Component {...pageProps} />
         ) : (

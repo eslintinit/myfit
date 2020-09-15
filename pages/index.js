@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Head from 'next/head'
 // import { Reset } from 'reset-css'
 import { ScrollingProvider, SectionLink, Section } from 'react-scroll-section'
 
@@ -25,8 +26,11 @@ export default class MyComponent extends Component {
             <S.Box>
               <S.MobileMenu>
                 <img src={`/icons/LogoWhite.svg`} />
-                <S.ButtonPrimaryMobile href="https://www.amazon.com/">
-                  Buy Now
+                <S.ButtonPrimaryMobile
+                  href="https://amazon.co.uk/myfit"
+                  target="_blank"
+                >
+                  MF Amazon Store
                 </S.ButtonPrimaryMobile>
               </S.MobileMenu>
               <S.NavigationMenu>
@@ -41,37 +45,32 @@ export default class MyComponent extends Component {
                   </SectionLink>
                   <SectionLink section="product">
                     {({ onClick, isSelected }) => (
-                      <S.MenuButton onClick={onClick} selected={isSelected}>
+                      <S.MenuButton
+                        href="https://amazon.co.uk/myfit"
+                        target="_blank"
+                      >
                         Product
                       </S.MenuButton>
                     )}
                   </SectionLink>
                   <SectionLink section="app">
                     {({ onClick, isSelected }) => (
-                      <S.MenuButton onClick={onClick} selected={isSelected}>
-                        App
-                      </S.MenuButton>
+                      <S.MenuButton href="/app">App</S.MenuButton>
                     )}
                   </SectionLink>
                   <SectionLink section="contact">
                     {({ onClick, isSelected }) => (
-                      <S.MenuButton
-                        onClick={() => (window.location.href = '/contact')}
-                        selected={isSelected}
-                      >
-                        Contact
-                      </S.MenuButton>
+                      <S.MenuButton href="/contact">Contact</S.MenuButton>
                     )}
                   </SectionLink>
 
-                  <S.MenuButton
-                    onClick={() => (window.location.href = '/blog')}
-                  >
-                    Blog
-                  </S.MenuButton>
+                  <S.MenuButton href="/blog">Blog</S.MenuButton>
                 </S.Menu>
-                <S.ButtonPrimary href="https://www.amazon.com/">
-                  Buy Now
+                <S.ButtonPrimary
+                  href="https://amazon.co.uk/myfit"
+                  target="_blank"
+                >
+                  MF Amazon Store
                 </S.ButtonPrimary>
               </S.NavigationMenu>
               <S.MainCTA>
@@ -82,10 +81,16 @@ export default class MyComponent extends Component {
                   you are.
                 </S.MainText>
                 <S.MainButtons>
-                  <S.ButtonPrimary href="https://www.amazon.com/">
-                    Shop Now
+                  <S.ButtonPrimary
+                    href="https://amazon.co.uk/myfit"
+                    target="_blank"
+                  >
+                    MF Amazon Store
                   </S.ButtonPrimary>
-                  <S.AmazonButton href="https://www.amazon.com/">
+                  <S.AmazonButton
+                    href="https://amazon.co.uk/myfit"
+                    target="_blank"
+                  >
                     <img src={'icons/AmazonName.svg'} />
                   </S.AmazonButton>
                 </S.MainButtons>
@@ -157,8 +162,11 @@ export default class MyComponent extends Component {
                     muscle groups, we've got your back. Join the resistance
                     workout revolution.
                   </S.ProductText>
-                  <S.ButtonPrimary href="https://www.amazon.com/">
-                    Shop Now
+                  <S.ButtonPrimary
+                    href="https://amazon.co.uk/myfit"
+                    target="_blank"
+                  >
+                    MF Amazon Store
                   </S.ButtonPrimary>
                 </S.ProductCTA>
                 <S.ProductStyle src={ProductPhoto} alt="MYFIT Handband" />
@@ -223,8 +231,8 @@ export default class MyComponent extends Component {
           </Section>
           <S.Bottom>
             <S.TextHead>Order your MYFIT bands now.</S.TextHead>
-            <S.OrderButton href="https://www.amazon.com/">
-              Shop Now
+            <S.OrderButton href="https://amazon.co.uk/myfit" target="_blank">
+              MF Amazon Store
             </S.OrderButton>
             <img src={'icons/Amazon.svg'} />
           </S.Bottom>
@@ -232,8 +240,11 @@ export default class MyComponent extends Component {
             <S.Footer>
               <S.Container>
                 <S.MenuFooter>
-                  <S.FooterButton href="https://www.amazon.com/">
-                    Shop Now
+                  <S.FooterButton
+                    href="https://amazon.co.uk/myfit"
+                    target="_blank"
+                  >
+                    MF Amazon Store
                   </S.FooterButton>
                   <S.FooterButton href="/contact">Contact</S.FooterButton>
                   <S.FooterButton href="/policy">
@@ -242,13 +253,10 @@ export default class MyComponent extends Component {
                   <S.FooterButton href="/blog">Blog</S.FooterButton>
                 </S.MenuFooter>
                 <S.Socials>
-                  <a href="https://twitter.com/">
-                    <img src={'icons/Twitter.svg'} />
-                  </a>
-                  <a href="https://www.facebook.com/">
+                  <a href="https://www.facebook.com/MYFITUK">
                     <img src={'icons/Facebook2.svg'} />
                   </a>
-                  <a href="https://www.instagram.com/">
+                  <a href="https://www.instagram.com/myfit_uk/">
                     <img src={'icons/Instagram.svg'} />
                   </a>
                 </S.Socials>

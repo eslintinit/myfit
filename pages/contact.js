@@ -70,14 +70,11 @@ class ContactUs extends React.Component {
               <S.MenuButton>Contact</S.MenuButton>
             </S.MenuFooter>
             <S.Socials>
-              <a href="https://twitter.com/">
-                <img src={'/icons/Twitter.svg'} />
+              <a href="https://www.facebook.com/MYFITUK">
+                <img src={'icons/Facebook2.svg'} />
               </a>
-              <a href="https://www.facebook.com/">
-                <img src={'/icons/Facebook.svg'} />
-              </a>
-              <a href="https://www.instagram.com/">
-                <img src={'/icons/Instagram.svg'} />
+              <a href="https://www.instagram.com/myfit_uk/">
+                <img src={'icons/Instagram.svg'} />
               </a>
             </S.Socials>
             <S.FooterAddress>
