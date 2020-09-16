@@ -85,7 +85,7 @@ export default class MyComponent extends Component {
                     href="https://amazon.co.uk/myfit"
                     target="_blank"
                   >
-                    Shop Now
+                    Buy Now
                   </S.ButtonPrimary>
                   <S.AmazonButton
                     href="https://amazon.co.uk/myfit"
@@ -166,7 +166,7 @@ export default class MyComponent extends Component {
                     href="https://amazon.co.uk/myfit"
                     target="_blank"
                   >
-                    Shop Now
+                    Buy Now
                   </S.ButtonPrimary>
                 </S.ProductCTA>
                 <S.ProductStyle src={ProductPhoto} alt="MYFIT Handband" />
@@ -232,7 +232,7 @@ export default class MyComponent extends Component {
           <S.Bottom>
             <S.TextHead>Order your MYFIT bands now.</S.TextHead>
             <S.OrderButton href="https://amazon.co.uk/myfit" target="_blank">
-              Shop Now
+              Buy Now
             </S.OrderButton>
             <img src={'icons/Amazon.svg'} />
           </S.Bottom>
@@ -244,7 +244,7 @@ export default class MyComponent extends Component {
                     href="https://amazon.co.uk/myfit"
                     target="_blank"
                   >
-                    Shop Now
+                    Buy Now
                   </S.FooterButton>
                   <S.FooterButton href="/contact">Contact</S.FooterButton>
                   <S.FooterButton href="/policy">
