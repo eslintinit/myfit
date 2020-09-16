@@ -30,7 +30,7 @@ export default class MyComponent extends Component {
                   href="https://amazon.co.uk/myfit"
                   target="_blank"
                 >
-                  MF Amazon Store
+                  Buy Now
                 </S.ButtonPrimaryMobile>
               </S.MobileMenu>
               <S.NavigationMenu>
@@ -70,7 +70,7 @@ export default class MyComponent extends Component {
                   href="https://amazon.co.uk/myfit"
                   target="_blank"
                 >
-                  MF Amazon Store
+                  Buy Now
                 </S.ButtonPrimary>
               </S.NavigationMenu>
               <S.MainCTA>
@@ -85,7 +85,7 @@ export default class MyComponent extends Component {
                     href="https://amazon.co.uk/myfit"
                     target="_blank"
                   >
-                    MF Amazon Store
+                    Shop Now
                   </S.ButtonPrimary>
                   <S.AmazonButton
                     href="https://amazon.co.uk/myfit"
@@ -166,7 +166,7 @@ export default class MyComponent extends Component {
                     href="https://amazon.co.uk/myfit"
                     target="_blank"
                   >
-                    MF Amazon Store
+                    Shop Now
                   </S.ButtonPrimary>
                 </S.ProductCTA>
                 <S.ProductStyle src={ProductPhoto} alt="MYFIT Handband" />
@@ -232,7 +232,7 @@ export default class MyComponent extends Component {
           <S.Bottom>
             <S.TextHead>Order your MYFIT bands now.</S.TextHead>
             <S.OrderButton href="https://amazon.co.uk/myfit" target="_blank">
-              MF Amazon Store
+              Shop Now
             </S.OrderButton>
             <img src={'icons/Amazon.svg'} />
           </S.Bottom>
@@ -244,7 +244,7 @@ export default class MyComponent extends Component {
                     href="https://amazon.co.uk/myfit"
                     target="_blank"
                   >
-                    MF Amazon Store
+                    Shop Now
                   </S.FooterButton>
                   <S.FooterButton href="/contact">Contact</S.FooterButton>
                   <S.FooterButton href="/policy">
