@@ -46,7 +46,7 @@ class ContactUs extends React.Component {
                 onChange={this.handleChange}
               />
               <S.Input type="tel" name="phone" placeholder="Phone" />
-              <S.Select>
+              <S.Select name="type_of_question">
                 <option disabled>Type of Questions</option>
                 <option value="MYFIT PRODUCTS">MYFIT PRODUCTS</option>
                 <option value="MYFIT APP">MYFIT APP</option>
