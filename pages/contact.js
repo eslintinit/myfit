@@ -34,7 +34,7 @@ class ContactUs extends React.Component {
               an ambassador, a MYFIT retailer or a question about our app get in
               touch below.
             </S.HeadText>
-            <S.ContactForm action="https://formspree.io/mleorvrd" method="POST">
+            <S.ContactForm action="https://formspree.io/mwkwezea" method="POST">
               <S.Input type="text" name="name" placeholder="Name" />
               <S.Input type="text" name="number" placeholder="Order number" />
               <S.Input

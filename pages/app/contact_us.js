@@ -69,7 +69,7 @@ export default () => {
               by email.
             </S.TextNormal>
           </S.GetInTouchText>
-          <S.YourQuestion action="https://formspree.io/mleorvrd" method="POST">
+          <S.YourQuestion action="https://formspree.io/mwkwezea" method="POST">
             <S.TextNormal style={{ fontWeight: 'bold' }}>
               Your Question
             </S.TextNormal>
