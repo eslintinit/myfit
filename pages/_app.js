@@ -23,6 +23,12 @@ function MyApp({ Component, pageProps }) {
   const { route, events } = useRouter()
 
   useEffect(() => {
+    if (process.browser && window.navigator.standalone) {
+      if (window.location.href !== '/app') window.location.href = '/app'
+    }
+  }, [])
+
+  useEffect(() => {
     events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0)
     })
