@@ -23,8 +23,12 @@ function MyApp({ Component, pageProps }) {
   const { route, events } = useRouter()
 
   useEffect(() => {
-    if (process.browser && window.navigator.standalone) {
-      if (window.location.href !== '/app') window.location.href = '/app'
+    const isInWebAppiOS = window.navigator.standalone == true
+    const isInWebAppChrome = window.matchMedia('(display-mode: standalone)')
+      .matches
+    const isInWebApp = isInWebAppChrome || isInWebAppiOS
+    if (process.browser && isInWebApp) {
+      if (window.location.href === '/') window.location.href = '/app'
     }
   }, [])
 
