@@ -77,7 +77,7 @@ export const ChatName = styled.p`
   color: ${BLACK};
 `
 
-export const GetInTouch = styled(motion.div)`
+export const GetInTouch = styled(motion.form)`
   background: ${BLACK};
   padding: 24px 16px 56px 16px;
   border-radius: 20px 20px 0px 0px;
@@ -122,7 +122,7 @@ export const Message = styled.div`
 `
 // margin-top: 87px;
 
-export const SendMessage = styled.div`
+export const SendMessage = styled.button`
   border-radius: 8px;
   padding: 15px 16px;
   text-align: center;

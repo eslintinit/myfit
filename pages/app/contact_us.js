@@ -69,7 +69,7 @@ export default () => {
               by email.
             </S.TextNormal>
           </S.GetInTouchText>
-          <S.YourQuestion>
+          <S.YourQuestion action="https://formspree.io/mleorvrd" method="POST">
             <S.TextNormal style={{ fontWeight: 'bold' }}>
               Your Question
             </S.TextNormal>
@@ -79,7 +79,7 @@ export default () => {
               onChange={(e) => setText(e.target.value)}
             />
           </S.YourQuestion>
-          <S.SendMessage onClick={sendMessage} active={text !== ''}>
+          <S.SendMessage active={text !== ''} type="submit">
             Send Message
           </S.SendMessage>
         </S.GetInTouch>
