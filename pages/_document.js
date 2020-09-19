@@ -85,15 +85,15 @@ export default class MyDocument extends Document {
             rel="icon"
             type="image/png"
             sizes="192x192"
-            href="/favicon/manifest-192.png"
+            href="/favicon/manifest-icon-192.png"
           />
           <link rel="manifest" href="/manifest.json" />
           <link
             rel="mask-icon"
-            href="/favicon/manifest-192.png"
+            href="/favicon/manifest-icon-192.png"
             color="#5bbad5"
           />
-          <link rel="shortcut icon" href="/favicon/manifest-192.png" />
+          <link rel="shortcut icon" href="/favicon/manifest-icon-192.png" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
@@ -110,7 +110,7 @@ export default class MyDocument extends Document {
 
           <meta
             property="og:image"
-            content="https://yourdomain.com/favicon/apple-touch-icon.png"
+            content="http://my-fit.io/favicon/apple-icon-180.jpg"
           />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <link
