@@ -24,7 +24,7 @@ export default ({ workouts, combos }) => {
     window.localStorage.getItem('newProduct') ||
     window.localStorage.getItem('updates')
 
-  if (process.browser && !tagsExist) {
+  if (process.browser && !tagsExist && OneSignal) {
     OneSignal.getTags((tags) => {
       window.localStorage.setItem(
         'newVideo',
