@@ -105,12 +105,12 @@ export default class MyDocument extends Document {
             content="The Resistance Workout Revolution"
           />
           <meta property="og:site_name" content="MyFit" />
-          <meta property="og:url" content="https://myfit-one.now.sh" />
+          <meta property="og:url" content="https://my-fit.io" />
           <script src="https://player.vimeo.com/api/player.js"></script>
 
           <meta
             property="og:image"
-            content="http://my-fit.io/favicon/apple-icon-180.jpg"
+            content="/favicon/apple-icon-180.jpg"
           />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <link
