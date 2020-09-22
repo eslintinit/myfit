@@ -34,3 +34,7 @@ input {
   font-family: 'FuturaMedium';
   src: local('FuturaMedium'), url(/fonts/Futura-medium.ttf) format('truetype');
 }
+
+.workout-image {
+  position: absolute !important;
+}

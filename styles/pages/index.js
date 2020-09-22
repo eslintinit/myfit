@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { Image } from 'react-datocms'
 
 import { PRIMARY, BLACK, DARK_GREY, SOFT_ORANGE, WHITE } from 'styles/colors'
 
@@ -28,9 +29,9 @@ export const Workouts = styled.div`
   height: 1044px;
   margin-top: 24px;
 `
+// background-image: url(${(props) => props.image});
 export const Card = styled.div`
   flex-basis: calc(50% - 8px);
-  background-image: url(${(props) => props.image});
   border-radius: 8px;
   height: ${(props) => props.height}px;
   max-height: ${(props) => props.height}px;
