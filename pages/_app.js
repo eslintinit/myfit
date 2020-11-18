@@ -58,6 +58,7 @@ function MyApp({ Component, pageProps }) {
     hideLayout =
       route === '/app/workouts/[workout]' ||
       route === '/app/workouts/[workout]/[exercise]' ||
+      route === '/app/instructions/[instruction]' ||
       route === '/app/combos/[combo]' ||
       route === '/app/faq' ||
       route === '/app/auth/slash_screen' ||

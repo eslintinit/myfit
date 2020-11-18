@@ -1,5 +1,5 @@
 import { getWorkouts } from 'lib/api'
-import { getCombos } from 'lib/api'
+import { getCombos, getInstructions } from 'lib/api'
 //import { Element } from 'react-scroll'
 import Tabs from 'components/Tabs'
 import Loader from 'react-loader-spinner'
@@ -9,13 +9,14 @@ import { getFavoriteExercises } from 'lib/api'
 import { useState, useContext, useEffect } from 'react'
 import { userFavorites } from 'components/context'
 
+import Instructions from 'components/pages/Instructions'
 import Workouts from 'components/pages/Workouts'
 import Combos from 'components/pages/Combos'
 import Favorites from 'components/pages/Favorites'
 
 import { Section, ScrollingProvider } from 'react-scroll-section'
 
-export default ({ workouts, combos }) => {
+export default ({ workouts, combos, instructions }) => {
   const [exercises, setExercises] = useState([])
   const OneSignal = process.browser && window.OneSignal
 
@@ -80,6 +81,9 @@ export default ({ workouts, combos }) => {
         <Section id="workouts">
           <Workouts workouts={workouts} />
         </Section>
+        <Section id="instructions">
+          <Instructions instructions={instructions} />
+        </Section>
         <Section id="favorites">
           <Favorites exercises={exercises} />
         </Section>
@@ -94,8 +98,9 @@ export default ({ workouts, combos }) => {
 export async function getStaticProps({ preview }) {
   const workouts = (await getWorkouts(preview)) || []
   const combos = (await getCombos(preview)) || []
+  const instructions = (await getInstructions(preview)) || []
 
   return {
-    props: { workouts, combos },
+    props: { workouts, combos, instructions },
   }
 }

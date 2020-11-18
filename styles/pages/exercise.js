@@ -145,6 +145,12 @@ export const Description = styled.div`
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 24px;
+  ol,
+  ul {
+    list-style: inherit;
+    margin-left: 16px;
+    width: 100%;
+  }
 `
 
 export const TipItem = styled.li`

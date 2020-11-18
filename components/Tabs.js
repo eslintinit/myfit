@@ -23,13 +23,33 @@ export default function Tabs() {
         )}
       </SectionLink>
 
-      <SectionLink section="favorites">
+      <SectionLink section="instructions">
         {({ onClick, isSelected }) => (
           <S.Tab
             active={isSelected}
             onClick={() => {
               document.getElementById('layout-content').scrollTo({
                 top: document.getElementById('index-workouts').clientHeight,
+                left: 0,
+                behavior: 'smooth',
+              })
+              onClick()
+            }}
+          >
+            Instructions
+          </S.Tab>
+        )}
+      </SectionLink>
+
+      <SectionLink section="favorites">
+        {({ onClick, isSelected }) => (
+          <S.Tab
+            active={isSelected}
+            onClick={() => {
+              document.getElementById('layout-content').scrollTo({
+                top:
+                  document.getElementById('index-workouts').clientHeight +
+                  document.getElementById('index-instructions').clientHeight,
                 left: 0,
                 behavior: 'smooth',
               })
@@ -49,6 +69,7 @@ export default function Tabs() {
               document.getElementById('layout-content').scrollTo({
                 top:
                   document.getElementById('index-workouts').clientHeight +
+                  document.getElementById('index-instructions').clientHeight +
                   document.getElementById('index-combos').clientHeight,
                 left: 0,
                 behavior: 'smooth',
