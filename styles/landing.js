@@ -16,7 +16,7 @@ export const Bg = styled.div`
   height: 100vh;
   width: 100vw;
   * {
-    font-family: 'Futura' !important;
+    font-family: 'Futura';
   }
 `
 

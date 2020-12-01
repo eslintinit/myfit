@@ -38,3 +38,8 @@ input {
 .workout-image {
   position: absolute !important;
 }
+
+@font-face {
+  font-family: 'MadeSans';
+  src: local('MadeSans'), url(/fonts/MADESansBold.otf) format('truetype');
+}
