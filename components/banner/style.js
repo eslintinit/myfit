@@ -83,7 +83,14 @@ export const Policy = styled.div`
   margin-top: 32px;
 `
 
-export const PolicyText = styled.span`
+export const PolicyLink = styled.a`
+  margin-left: 4px;
+  :hover {
+    color: #fa4504;
+  }
+`
+
+export const PolicyText = styled.a`
   font-size: 14px;
   margin-left: 12px;
 `

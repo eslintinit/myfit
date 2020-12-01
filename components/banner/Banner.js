@@ -23,15 +23,34 @@ const Banner = () => {
         <S.Block
           action="https://formspree.io/f/xqkgdwjq"
           method="POST"
-          onSubmit={(e) => {
+          onSubmit={(ev) => {
             if (!checked) {
               alert('You must accept our privacy policy')
-              e.preventDefault()
+              ev.preventDefault()
               return
             }
-            alert(`Thanks you! We'll get in touch as soon as we are re-stock`)
-            setBannerClosed(true)
-            setBannerDismissed(true)
+
+            ev.preventDefault()
+            const form = ev.target
+            const data = new FormData(form)
+            const xhr = new XMLHttpRequest()
+            xhr.open(form.method, form.action)
+            xhr.setRequestHeader('Accept', 'application/json')
+            xhr.onreadystatechange = () => {
+              if (xhr.readyState !== XMLHttpRequest.DONE) return
+              if (xhr.status === 200) {
+                form.reset()
+                alert(
+                  `Thank you, we'll get in touch as soon as we've re-stocked`,
+                )
+                setBannerClosed(true)
+                setBannerDismissed(true)
+                // this.setState({ status: "SUCCESS" });
+              } else {
+                // this.setState({ status: "ERROR" });
+              }
+            }
+            xhr.send(data)
           }}
         >
           <S.Box
@@ -59,7 +78,12 @@ const Banner = () => {
                 checked={checked}
                 onChange={() => setChecked(!checked)}
               />
-              <S.PolicyText>i accept the private policy</S.PolicyText>
+              <S.PolicyText>
+                i accept the
+                <S.PolicyLink target="_blank" href="https://my-fit.io/policy">
+                  private policy
+                </S.PolicyLink>
+              </S.PolicyText>
             </label>
           </S.Policy>
           <S.SignUp type="submit" value="Submit">
