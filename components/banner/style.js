@@ -14,7 +14,7 @@ export const Outer = styled.div`
 `
 
 export const Bg = styled.div`
-  width: 948px;
+  width: fit-content;
   height: 529px;
   background: ${WHITE};
   border: ${BLACK} 2px solid;
@@ -24,11 +24,19 @@ export const Bg = styled.div`
     font-family: 'MadeSans' !important;
   }
   z-index: 5;
+  @media (max-width: 768px) {
+    transform: scale(0.9);
+    height: fit-content;
+    padding-bottom: 40px;
+  }
 `
 
 export const Image = styled.img`
   width: 382px;
   height: 100%;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Block = styled.form`
@@ -40,6 +48,9 @@ export const Block = styled.form`
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
+  @media (max-width: 768px) {
+    width: 100vw;
+  }
 `
 export const Box = styled.img`
   align-self: flex-end;
