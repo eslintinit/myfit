@@ -89,7 +89,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   return (
-    <>
+    <div className="app">
       <>
         <Reset />
         <FontsStyles />
@@ -104,7 +104,7 @@ function MyApp({ Component, pageProps }) {
           </Layout>
         )}
       </Redirect>
-    </>
+    </div>
   )
 }
 
