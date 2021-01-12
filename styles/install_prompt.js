@@ -23,6 +23,7 @@ export const Modal = styled.div`
   border-radius: 4px;
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  font-family: 'Muli';
 `
 
 export const CloseIcon = styled.div`
