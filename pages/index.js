@@ -117,8 +117,8 @@ const Index = () => {
               </S.CaptionText>
             </S.Caption>
             <S.Content>
-              <S.CardOne>
-                <img src={'icons/Leaf.svg'} />
+              <S.CardOne style={{ alignItems: 'center' }}>
+                <img src={'icons/Leaf.svg'} style={{ width: 48, height: 48 }}  />
                 <S.CardTextBold>
                   Build muscle and shred fat from the comfort of your own home.
                 </S.CardTextBold>
@@ -127,8 +127,8 @@ const Index = () => {
                   nurture growth whilst burning body fats. At your convenience.
                 </S.CardText>
               </S.CardOne>
-              <S.CardTwo>
-                <img src={'icons/Phone.svg'} />
+              <S.CardTwo style={{ alignItems: 'center' }}>
+                <img src={'icons/Phone.svg'} style={{ width: 48, height: 48 }}  />
                 <S.CardTextBold>
                   Exclusive app to help you achieve your goals. Whatever they
                   may be.
@@ -138,8 +138,8 @@ const Index = () => {
                   for all muscle groups. Regularly updated by experts.
                 </S.CardText>
               </S.CardTwo>
-              <S.CardThree>
-                <img src={'icons/Leaf.svg'} />
+              <S.CardThree style={{ alignItems: 'center' }}>
+                <img src={'icons/Leaf.svg'} style={{ width: 48, height: 48 }} />
                 <S.CardTextBold>
                   MYFIT resistance bands are made from 100% natural latex.
                   Naturally sourced.
