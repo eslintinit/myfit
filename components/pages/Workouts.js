@@ -40,7 +40,7 @@ export default ({ workouts }) => {
                 position: 'absolute',
                 // height: '100%',
                 objectFit: 'cover',
-                height: workout.height,
+                height: workout.height + 32,
               }}
             />
             <Title>{workout.name}</Title>
