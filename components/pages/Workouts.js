@@ -19,6 +19,7 @@ export default ({ workouts }) => {
             style={{
               overflow: 'hidden',
               position: 'relative',
+              padding: '16px 12px 0 12px'
             }}
           >
             <Image
@@ -40,7 +41,7 @@ export default ({ workouts }) => {
                 position: 'absolute',
                 // height: '100%',
                 objectFit: 'cover',
-                height: workout.height + 48,
+                height: workout.height + 36,
               }}
             />
             <Title>{workout.name}</Title>
