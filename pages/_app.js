@@ -6,6 +6,7 @@ import Layout from 'components/Layout'
 import React from 'react'
 import useIsIOS from '../hooks/useIsIOS'
 import { InstallPWA } from '../components/InstallPWA'
+import MigratePopup from '../components/MigratePopup'
 import { InstallPWAS } from '../components/InstallPWAS'
 
 import useIsSamsung from '../hooks/useIsSamsung'
@@ -96,6 +97,7 @@ function MyApp({ Component, pageProps }) {
       </>
       <Redirect>
         {process.browser && prompt && <InstallPWA />}
+        <MigratePopup />
         {hideLayout ? (
           <Component {...pageProps} />
         ) : (
