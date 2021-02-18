@@ -35,6 +35,14 @@ module.exports = withPWA(
 
       return config
     },
+    async rewrites() {
+      return [
+        {
+          source: '/',
+          destination: '/app',
+        },
+      ]
+    },
     pwa: {
       dest: 'public',
     },
