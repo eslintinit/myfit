@@ -35,7 +35,7 @@ module.exports = withPWA(
 
       return config
     },
-    async rewrites() {
+    async redirects() {
       return [
         {
           source: '/',
