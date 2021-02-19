@@ -40,6 +40,7 @@ module.exports = withPWA(
         {
           source: '/',
           destination: '/app',
+          permanent: true,
         },
       ]
     },
