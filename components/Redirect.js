@@ -16,10 +16,6 @@ import * as S from 'styles/pages/auth/slash_screen'
 
 import { graphql } from 'graphql' */
 
-import sentry from '../lib/sentry'
-
-const { Sentry, captureException } = sentry()
-
 export default ({ children }) => {
   const router = useRouter()
   const { route } = useRouter()
@@ -57,7 +53,6 @@ export default ({ children }) => {
       Cookie.set('token', token, { expires: 365 })
     },
     onError(error) {
-      captureException(error)
       if (error && !cancelRedirect) {
         Cookie.remove('token')
         router.push('/app/auth/onboarding')

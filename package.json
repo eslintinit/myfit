@@ -70,5 +70,8 @@
     "singleQuote": true,
     "semi": false,
     "trailingComma": "all"
+  },
+  "peerDependencies": {
+    "webpack": "^5.23.0"
   }
 }

@@ -29,10 +29,6 @@ module.exports = withPWA(
         }),
       )
 
-      if (!isServer) {
-        config.resolve.alias['@sentry/node'] = '@sentry/browser'
-      }
-
       return config
     },
     async rewrites() {

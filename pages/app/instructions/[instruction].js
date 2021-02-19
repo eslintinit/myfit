@@ -231,7 +231,7 @@ export async function getStaticPaths() {
   return {
     paths:
       allInstructions?.map(
-        (instruction) => `/app/Instructions/${instruction.id}`,
+        (instruction) => `/app/instructions/${instruction.id}`,
       ) || [],
     fallback: true,
   }
